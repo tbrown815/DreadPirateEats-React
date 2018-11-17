@@ -5,13 +5,12 @@
   width: 390px;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
 }
 
 .dreadPirateImage {
   height: 100%;
 }
-
-
 
 .hangryTauntSection {
   text-align: center;
@@ -27,4 +26,28 @@ p {
 li.offerDisplay {
   padding-right: 16%; 
   list-style-type: none;
+}
+
+input {
+  border-color: silver;
+}
+
+.link2, .link2 a {
+  color: black;
+  text-decoration: underline;
+}
+
+.link2:visited, .link2 a:visited {
+  color: black;
+  text-decoration: underline;
+}
+
+.link2:hover, .link2 a:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+.link2:active, .link2 a:active {
+  color: black;
+  text-decoration: underline;
 }

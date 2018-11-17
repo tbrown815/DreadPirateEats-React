@@ -1,6 +1,6 @@
 
 nav {
-    background-color: grey;
+    background-color: slategray;
     width: 100%;
     height: 100px;
     margin-top: -2%;
@@ -25,6 +25,27 @@ nav .navTitle {
     margin-top: 2%;
     color: whitesmoke;
     }
+
+
+.link, .link a {
+    color: whitesmoke;
+    text-decoration: underline;
+}
+
+.link:visited, .link a:visited {
+    color: whitesmoke;
+    text-decoration: underline;
+}
+
+.link:hover, .link a:hover {
+    color: whitesmoke;
+    text-decoration: underline;
+}
+
+.link:active, .link a:active {
+    color: whitesmoke;
+    text-decoration: underline;
+}
 
 
 .modalForm {
