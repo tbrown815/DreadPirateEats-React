@@ -24,7 +24,7 @@ p {
 }
 
 li.offerDisplay {
-  padding-right: 16%; 
+  padding-right: 3%; 
   list-style-type: none;
 }
 
@@ -50,4 +50,13 @@ input {
 .link2:active, .link2 a:active {
   color: black;
   text-decoration: underline;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+
+  li.offerDisplay {
+    padding-right: 16%; 
+    list-style-type: none;
+  }
+
 }

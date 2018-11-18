@@ -1,0 +1,14 @@
+language: node_js
+node_js: node
+cache:
+  directories:
+  - node_modules
+env:
+- CI=true
+deploy:
+  provider: heroku
+  api_key:
+    secure: AGg5j53Sm9HrLtOVXr4tC3ATAIsmy7WAW4IuuXoYdR4i3eQorOkhjPPonaq4nEHdofS4TA8dJ3NZxlGy+Cc7DPepKxXbOmmmbGFZAUVndNyf6hEj9p2dA7Z0d8upWTyjaDacIie/eQl9rsU8nP5bYmIIWHLSmp8wwH/MP/PtHonA+663YhYDRAO8xPnPamyHKvx3cqv2EvATvSa6yqHtWvlV84AH4yPV2HBuTLptwOADUER384fQ+3kHU7TaifAnt6Xsi6rMMzFHQOs7tr3tz2YDucGwI4FPEBrmYlqJI7YrWGzgibnM+Z+yDsWlb3FIWqElhiFR4deu5RP1Q9kn9boe9HsPZx1H3jw9RSlGprvb7K7J1rD9LMEq9tlzMN8WMDkBlgBX+ntBf2dpnGlR3wzy9Oqm9+smyHi7iuC9nXYZ2NVlQTHIQl2zWxi/YC2jdzjGd+k6tfv+Eq9tbVh9DYG9hLgmfYpwazeBvl0MUS43lt8jNVlCMgGpWOmHTNc6j8g6kj9LM4wqM1HLqkLv2m921sdmobbCo17x/S2tfhCjvmZ7+f6QEJ1PPvQ3Sa1Vgad9axOLR6jid86bF89wE1Y/8CjWMJT/hTyUQDh0mZ3vSNggQu56NB7kFBrXTsHLLPharWgRFRj99diQkRC/EZzGTMigppuThOLNxyhUvMw=
+  app: shielded-eyrie-90605
+  on:
+    repo: BrotherFatcake/DreadPirateEats-StaticReact

@@ -81,6 +81,7 @@ export default class DreadPirate extends React.Component {
 
       let theOffer = this.state.grubJoints[random]
 
+      
       this.setState({
         theOffer,
         madeOffers: [...this.state.madeOffers, `${theOffer} `]
