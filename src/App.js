@@ -1,9 +1,25 @@
-import React, { Component } from 'react';
+//import React, { Component } from 'react';
+
+import React from 'react';
 
 import './App.css';
 
 import Nav from './nav'
 import DrawBox from './drawbox';
+
+export default function DreadPirate(props) {
+
+  return(
+    <div>
+      <Nav />
+      <DrawBox />      
+    </div>
+  )
+
+}
+
+
+/*
 
 export default class DreadPirate extends React.Component {
 
@@ -231,3 +247,4 @@ export default class DreadPirate extends React.Component {
 
 }
 
+*/
