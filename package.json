@@ -23,6 +23,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "netlify": "^2.2.1"
+    "netlify": "^2.2.1",
+    "react-redux": "^5.1.1",
+    "redux": "^4.0.1"
   }
 }

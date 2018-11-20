@@ -1,6 +1,8 @@
 //import React, { Component } from 'react';
 
 import React from 'react';
+import {connect} from 'react-redux'
+
 
 import './App.css';
 
@@ -10,10 +12,20 @@ import DrawBox from './drawbox';
 export default function DreadPirate(props) {
 
   return(
-    <div>
+    <main>
+
       <Nav />
-      <DrawBox />      
-    </div>
+
+      <br />
+      <div className='pirateImageSection'>
+        <img src={require('./dreadPirate.png')} className='dreadPirateImage' alt='The Dread Pirate himself' />
+      </div>
+
+      <DrawBox />
+
+
+    </main>
+
   )
 
 }

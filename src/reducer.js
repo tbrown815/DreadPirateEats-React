@@ -7,7 +7,6 @@ const initialState = {
     theOffer: '',
     hangryTaunt: 'Click ta draw ya scally wag!',
     loggedIn: 0,
-    numDraws: 1,
     gameOn: true,
     restart: false
   }
@@ -20,7 +19,6 @@ const initialState = {
             madeOffers: [],
             theOffer: '',
             hangryTaunt: 'Click ta draw ya scally wag!',
-            numDraws: 1,
             gameOn: true,
             restart: false  
         })
@@ -53,16 +51,30 @@ const initialState = {
     if (action.type === FIND_GRUB) {
         
         let numOffers = state.madeOffers.length;
-        
-        if(numoffers > 2) {
-            
+        let hangryTaunt;
+
+        if(numOffers === 3) {
+            hangryTaunt =  `It's yer last stand ya scurvy dog!`
+    
+            console.log('FIND_GRUB')
+            return Object.assign({}, state, {
+                hangryTaunt
+            })
         }
 
-        return Object.assign({}, state, {
+        if(numOffers === 4) {
+            hangryTaunt =  `Yer time is up, walk thee plank!`    
 
-        })
+            console.log('FIND_GRUB')
+            return Object.assign({}, state, {
+                hangryTaunt,
+                restart: true
+            })
+        }
+
+
     }
 
-
+    return state;
 
   } //end of export
