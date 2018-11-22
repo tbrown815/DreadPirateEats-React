@@ -1,4 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux'
+import { loginUser, logoutUser } from './actions'
+
 
 import About from './about'
 import Favorites from './favorites'
@@ -6,58 +9,24 @@ import Favorites from './favorites'
 import './nav.css'
 
 
-export default class Nav extends React.Component {
-
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            login: 0
-        }
-    }
-
+class Nav extends React.Component {
 
     loginClick(event) {
         event.preventDefault();
 
-        this.setState({
-            login: 1
-        }, () => {
-            let login = this.state.login
-
-            this.props.setLogin(login)
-        })
+        this.props.dispatch(loginUser())
     }
 
     logoutClick(event) {
         event.preventDefault();
 
-        this.setState({
-            login: 0
-        }, () => {
-
-            let login = this.state.login
-
-            this.props.setLogin(login)
-        })
+        this.props.dispatch(logoutUser())
     }
-
-    userLoggedIn(loggedInStatus) {
-
-        if (loggedInStatus > 2) {
-
-            this.setState({
-                login: loggedInStatus
-            })
-        }
-    }
-
-
 
     render() {
 
 
-        if (this.state.login === 0) {
+        if (this.props.loggedIn === 0) {
             return (
 
                 <header>
@@ -70,15 +39,15 @@ export default class Nav extends React.Component {
                         </ul>
                     </nav>
 
-                <About />
-                
+                    <About />
+
                 </header>
 
             )
         }
 
 
-        if (this.state.login === 1) {
+        if (this.props.loggedIn === 1 || this.props.loggedIn === 2) {
             return (
                 <header>
 
@@ -89,7 +58,7 @@ export default class Nav extends React.Component {
                         </ul>
                     </nav>
 
-                <About />
+                    <About />
 
                 </header>
             )
@@ -97,7 +66,7 @@ export default class Nav extends React.Component {
 
 
 
-        if (this.state.login === 3) {
+        if (this.props.loggedIn === 3) {
             return (
                 <header>
 
@@ -110,9 +79,9 @@ export default class Nav extends React.Component {
                         </ul>
                     </nav>
 
-                <About />
+                    <About />
 
-                <Favorites />
+                    <Favorites />
 
                 </header>
             )
@@ -121,4 +90,12 @@ export default class Nav extends React.Component {
     }
 
 }
+
+
+const mapStateToProps = state => ({
+    loggedIn: state.loggedIn
+})
+
+
+export default connect(mapStateToProps)(Nav)
 

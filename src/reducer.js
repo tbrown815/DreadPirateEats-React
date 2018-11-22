@@ -31,43 +31,70 @@ const initialState = {
     }
 
     if (action.type === LOGIN_USER) {
+        console.log('LOGIN_USER')
+
         return Object.assign({}, state, {
             loggedIn: 1
         })
     }
     
     if (action.type === SIGNUP_USER) {
+        console.log('SIGNUP_USER')
+
         return Object.assign({}, state, {
             loggedIn: 2
         })
     }
 
     if (action.type === LOGIN_SUCCESS) {
+        console.log('LOGIN_SUCCESS')
+
         return Object.assign({}, state, {
             loggedIn: 3
         })
     }
 
     if (action.type === FIND_GRUB) {
-        
-        let numOffers = state.madeOffers.length;
+
+        let random = Math.floor(Math.random() * parseInt(state.grubJoints.length)) + 0;
+
+        let theOffer = state.grubJoints[random]
+
+        let madeOffers = [...state.madeOffers, `${theOffer} `]
+
+        let numOffers = state.madeOffers.length +1;
+
         let hangryTaunt;
+
+        console.log('numOffers: ', numOffers)
+
+        if(numOffers < 3) {
+            hangryTaunt =  `Draw again ya scally wag!`
+    
+            console.log('FIND_GRUB < 3')
+            return Object.assign({}, state, {
+                hangryTaunt,
+                madeOffers
+            })
+        }
 
         if(numOffers === 3) {
             hangryTaunt =  `It's yer last stand ya scurvy dog!`
     
-            console.log('FIND_GRUB')
+            console.log('FIND_GRUB = 3')
             return Object.assign({}, state, {
-                hangryTaunt
+                hangryTaunt,
+                madeOffers
             })
         }
 
         if(numOffers === 4) {
             hangryTaunt =  `Yer time is up, walk thee plank!`    
 
-            console.log('FIND_GRUB')
+            console.log('FIND_GRUB = 4')
             return Object.assign({}, state, {
                 hangryTaunt,
+                madeOffers,
                 restart: true
             })
         }
