@@ -83,8 +83,6 @@ export function DreadPirate(props) {
 } //end of export
 
 const mapStateToProps = state => ({
-  hangryTaunt: state.hangryTaunt,
-  madeOffers: state.madeOffers,
   loggedIn: state.loggedIn
 
 })
