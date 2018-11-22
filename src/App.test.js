@@ -1,9 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import {shallow, mount} from 'enzyme';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
-});
+import DreadPirate from './App';
+//import {FIND_GRUB, RESTART_APP, LOGIN_USER, LOGOUT_USER, SIGNUP_USER, LOGIN_SUCCESS} from '../actions'
+
+import reducer from '../reducer'
+
+describe('<DreadPirate />', () => {
+
+    it('render without crashing', () => {
+        shallow(<DreadPirate />);
+    })
+}
