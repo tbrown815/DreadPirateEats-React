@@ -1,12 +1,11 @@
-import { FIND_GRUB, RESTART_APP, LOGIN_USER, LOGOUT_USER, SIGNUP_USER, LOGIN_SUCCESS } from './actions'
-
+import { FIND_GRUB, RESTART_APP, LOGIN_USER, LOGOUT_USER, SIGNUP_USER, CREATE_USER, LOGIN_SUCCESS } from './actions'
 
 const initialState = {
     grubJoints: ['roadhouse', 'olive garden', 'old chicago', 'pizza hut', 'longhorn', 'red lobster', 'mcDonalds', 'burger king', 'subway', 'hardees', 'potbelly'],
     madeOffers: [],
     theOffer: '',
     hangryTaunt: 'Click ta draw ya scally wag!',
-    loggedIn: 0,
+    loggedIn: 1,
     gameOn: true,
     restart: false
   }
@@ -46,8 +45,18 @@ const initialState = {
         })
     }
 
+    if (action.type === CREATE_USER) {
+        console.log('CREATE_USER')
+        console.log('userOBJ CU: ', action.userObj)
+
+        return Object.assign({}, state, {
+            loggedIn: 3
+        })
+    }
+
     if (action.type === LOGIN_SUCCESS) {
         console.log('LOGIN_SUCCESS')
+        console.log('userLoginObj LS: ', action.userLoginObj)
 
         return Object.assign({}, state, {
             loggedIn: 3
@@ -105,3 +114,8 @@ const initialState = {
     return state;
 
   } //end of export
+
+  //function for error message alert display
+function errFunc(xhr) {
+    return alert(`${xhr.responseJSON.reason}: ${xhr.responseJSON.location} ${xhr.responseJSON.message}`)
+}

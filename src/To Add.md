@@ -1,4 +1,25 @@
 
+Server side validation of pass/passConf
+Clean up server side error messages and locations
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 -==Public==-
 Nav bar - [Login, Restart, Sign-Up, About]

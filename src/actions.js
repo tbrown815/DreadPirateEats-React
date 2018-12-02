@@ -1,4 +1,5 @@
 
+
 export const FIND_GRUB = 'FIND_GRUB'
 export const findGrub = () => ({
     type: FIND_GRUB
@@ -25,6 +26,13 @@ export const signupUser = () => ({
 })
 
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
-export const loginSuccess = () => ({
-    type: LOGIN_SUCCESS
+export const loginSuccess = (userLoginObj) => ({
+    type: LOGIN_SUCCESS,
+    userLoginObj: userLoginObj
+})
+
+export const CREATE_USER = 'CREATE_USER'
+export const createUser = (userObj) => ({
+    type: CREATE_USER,
+    userObj: userObj
 })

@@ -5,3 +5,7 @@
   margin-right: auto;
   text-align: center;
 }
+
+#alertMessage, #errorMessage {
+  color: red;
+}
