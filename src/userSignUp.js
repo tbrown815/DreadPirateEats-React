@@ -3,8 +3,8 @@
 
 import React from 'react';
 import { connect } from 'react-redux'
-import { loginSuccess, loginUser, createUser } from './actions';
-import { CREATE_USER_URL } from './config'
+import { loginUser, createUserCheck } from './actions';
+//import { CREATE_USER_URL } from './config'
 
 
 import './userSignUp.css';
@@ -21,14 +21,18 @@ userCheck(event) {
     const email = this.email.value;
     const password = this.password.value;
     const passwordConf = this.passwordConf.value;
-
+/*
     const userObj = {
         username: this.username.value,
         email: this.email.value,
         password: this.password.value,
         passwordConf: this.passwordConf.value
     }
+*/
+    return this.props.dispatch(createUserCheck(username, email, password, passwordConf))
 
+
+/*
     return fetch(`${CREATE_USER_URL}`, {
         method: 'POST',
         body: JSON.stringify({username: `${userObj.username}`, email: `${userObj.email}`, password: `${userObj.password}`, password_Confirmation: `${userObj.passwordConf}`}),
@@ -53,6 +57,7 @@ userCheck(event) {
            )
        }
    })
+*/
 
 }
 
@@ -188,8 +193,7 @@ userCheck(event) {
                     <input type='password' name='passwordConf' id='passwordConf' ref={passwordConf => (this.passwordConf = passwordConf)} />
                     <br /><br />
                     {/*<span id='alertMessage'></span>  <br /> */}
-                    <span id='errorMessage'></span>
-
+                    <span id='errorMessage'>{this.props.errorMessage}</span>
                     <br /><br />
                     <button type='submit' name='submit' id='joinButton' className='joinButton'>Join!</button>
 
@@ -202,5 +206,9 @@ userCheck(event) {
         )
     }
 }
+const mapStateToProps = state => ({
+    errorMessage: state.errorMessage
+  
+  })
 
-export default connect()(UserSignUp)
+export default connect(mapStateToProps)(UserSignUp)

@@ -1,13 +1,17 @@
-import { FIND_GRUB, RESTART_APP, LOGIN_USER, LOGOUT_USER, SIGNUP_USER, CREATE_USER, LOGIN_SUCCESS } from './actions'
+import { FIND_GRUB, RESTART_APP, LOGIN_USER, LOGOUT_SUCCESS, SIGNUP_USER, CREATE_NEW_USER, LOGIN_SUCCESS, SET_AUTH_TOKEN, ERROR_STATE } from './actions'
 
 const initialState = {
     grubJoints: ['roadhouse', 'olive garden', 'old chicago', 'pizza hut', 'longhorn', 'red lobster', 'mcDonalds', 'burger king', 'subway', 'hardees', 'potbelly'],
     madeOffers: [],
     theOffer: '',
     hangryTaunt: 'Click ta draw ya scally wag!',
-    loggedIn: 1,
     gameOn: true,
-    restart: false
+    restart: false,
+    loggedIn: 0,
+    authToken: null,
+    userToken: null,
+    currentUser: null,
+    errorMessage: null
   }
 
   export default (state = initialState, action) => {
@@ -23,9 +27,14 @@ const initialState = {
         })
     }
 
-    if (action.type === LOGOUT_USER) {
+    if (action.type === LOGOUT_SUCCESS) {
+        console.log('LOGOUT_SUCCESS')
         return Object.assign({}, state, {
-            loggedIn: 0
+            loggedIn: 0,
+            authToken: null,
+            userToken: null,
+            currentUser: null,
+            errorMessage: null
         })
     }
 
@@ -45,21 +54,41 @@ const initialState = {
         })
     }
 
-    if (action.type === CREATE_USER) {
-        console.log('CREATE_USER')
+    if (action.type === CREATE_NEW_USER) {
+        console.log('CREATE_NEW_USER')
         console.log('userOBJ CU: ', action.userObj)
 
         return Object.assign({}, state, {
+            currentUser: action.currentUser,
+            userToken: action.currentUser.id,
             loggedIn: 3
         })
     }
 
     if (action.type === LOGIN_SUCCESS) {
         console.log('LOGIN_SUCCESS')
-        console.log('userLoginObj LS: ', action.userLoginObj)
+        console.log('currentUser LS: ', action.currentUser)
+        
+        return Object.assign({}, state, {
+            currentUser: action.currentUser,
+            userToken: action.currentUser.id,
+            loggedIn: 3
+        })
+    }
+
+    if (action.type === SET_AUTH_TOKEN) {
+        console.log('SET_AUTH_TOKEN')
 
         return Object.assign({}, state, {
-            loggedIn: 3
+            authToken: action.authToken
+        })
+    }
+
+    if (action.type === ERROR_STATE) {
+        console.log('ERROR_STATE')
+
+        return Object.assign({}, state, {
+            errorMessage: action.errorMessage
         })
     }
 

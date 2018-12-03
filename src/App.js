@@ -9,7 +9,8 @@ import UserLogin from './userLogin';
 import UserSignUp from './userSignUp';
 
 export function DreadPirate(props) {
-
+  
+  console.log('state: ', props)
 
   if (props.loggedIn === 0) {
     return (
@@ -75,7 +76,6 @@ export function DreadPirate(props) {
         </div>
 
         <DrawBox />
-
        </main>
 
     )
@@ -83,7 +83,11 @@ export function DreadPirate(props) {
 } //end of export
 
 const mapStateToProps = state => ({
-  loggedIn: state.loggedIn
+  loggedIn: state.loggedIn,
+  authToken: state.authToken,
+  userToken: state.userToken,
+  currentUser: state.currentUser,
+  errorMessage: state.errorMessage
 
 })
 

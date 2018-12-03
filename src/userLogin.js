@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { loginSuccess, signupUser } from './actions';
-import { USER_LOGIN_URL } from './config'
+import { loginSuccess, signupUser, userLogin, authTokenHandler } from './actions';
+//import { USER_LOGIN_URL } from './config'
 
 import './userLogin.css';
 
@@ -13,28 +13,28 @@ class UserLogin extends React.Component {
         const username = this.username.value;
         const password = this.password.value;
 
-        const userLoginObj = {
-            username: this.username.value,
-            password: this.password.value,
-            userToken: ''
-        }
+        return this.props.dispatch(userLogin(username, password))
 
+/*
         return fetch(`${USER_LOGIN_URL}`, {
             method: 'POST',
             body: JSON.stringify({username: `${userLoginObj.username}`, password: `${userLoginObj.password}`}),
             headers: {'Content-Type': 'application/json'}
         })
-        .then(res => console.log(res.json()))
+        .then(res => (console.log(res.json({PromiseValue: Object.authToken}))))
+       // .then(({authToken}) => authTokenHandler(authToken))
         .then(res => {
-            console.log('authToken: ', res)
             if(!res.ok){
-                 return res.json().then(err => Promise.reject(err));
-             }
+                return res.json().then(err => Promise.reject(err));
+            }
             
-            userLoginObj.userToken = res.body.authToken
+            console.log('authToken state: ', this.state.authToken)
+
+           // this.props.dispatch(authTokenHandler(authToken))
+            //userLoginObj.userToken = res.body.authToken
              
     
-             this.props.dispatch(loginSuccess(userLoginObj))
+             //this.props.dispatch(loginSuccess(userLoginObj))
     
          })
          .catch(err => {
@@ -47,6 +47,7 @@ class UserLogin extends React.Component {
                )
            }
        })
+*/
     }
     
     signUpScreen(event) {
@@ -67,8 +68,8 @@ class UserLogin extends React.Component {
                     <p>Enter your password:</p>
                     <input type='password' name='password' id='password' ref={password => (this.password = password)} />
                     <br /><br />
-                    <span id='errorMessage'></span>
-
+                    <span id='errorMessage'>{this.props.errorMessage}</span>
+                    <br /><br />
                     <button type='submit' name='submit' id='logInButton' className='logInButton'>Log In</button>
                 </form>
                 <p className='joinCrew'>Not a member of the crew?  <span id='signUpButton' className='signUpButton'
@@ -79,4 +80,9 @@ class UserLogin extends React.Component {
     }
 }
 
-export default connect()(UserLogin)
+const mapStateToProps = state => ({
+    errorMessage: state.errorMessage
+  
+  })
+
+export default connect(mapStateToProps)(UserLogin)

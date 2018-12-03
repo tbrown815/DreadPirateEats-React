@@ -20,7 +20,7 @@ class Nav extends React.Component {
     logoutClick(event) {
         event.preventDefault();
 
-        this.props.dispatch(logoutUser())
+       return this.props.dispatch(logoutUser())
     }
 
     render() {
