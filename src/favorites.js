@@ -24,7 +24,7 @@ export default function Favorites(props) {
 
                     <h2>Add a new Favorite!</h2>
 
-                    <p>Resturant Name:</p>
+                    <p>Restaurant Name:</p>
                     <input type='text' />
                     <p>Enter resturant city and state:</p>
                     <input type='text' />
