@@ -1,4 +1,5 @@
-import { FIND_GRUB, RESTART_APP, LOGIN_USER, LOGOUT_SUCCESS, SIGNUP_USER, CREATE_NEW_USER, LOGIN_SUCCESS, SET_AUTH_TOKEN, ERROR_STATE } from './actions'
+import { FIND_GRUB, RESTART_APP, LOGIN_USER, LOGOUT_SUCCESS, SIGNUP_USER, 
+        CREATE_NEW_USER, LOGIN_SUCCESS, SET_AUTH_TOKEN, ERROR_STATE, CANCEL_STATE } from './actions'
 
 const initialState = {
     grubJoints: ['roadhouse', 'olive garden', 'old chicago', 'pizza hut', 'longhorn', 'red lobster', 'mcDonalds', 'burger king', 'subway', 'hardees', 'potbelly'],
@@ -89,6 +90,14 @@ const initialState = {
 
         return Object.assign({}, state, {
             errorMessage: action.errorMessage
+        })
+    }
+
+    if (action.type === CANCEL_STATE) {
+        console.log('CANCEL_STATE')
+
+        return Object.assign({}, state, {
+            loggedIn: 0
         })
     }
 

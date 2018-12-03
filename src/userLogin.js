@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { loginSuccess, signupUser, userLogin, authTokenHandler } from './actions';
+import { loginSuccess, signupUser, userLogin, authTokenHandler, cancelState } from './actions';
 //import { USER_LOGIN_URL } from './config'
 
 import './userLogin.css';
@@ -56,6 +56,12 @@ class UserLogin extends React.Component {
         this.props.dispatch(signupUser())
     }
 
+    cancel(event) {
+        event.preventDefault();
+
+        this.props.dispatch(cancelState())
+    }
+
     render() {
         return (
 
@@ -74,6 +80,7 @@ class UserLogin extends React.Component {
                 </form>
                 <p className='joinCrew'>Not a member of the crew?  <span id='signUpButton' className='signUpButton'
                     onClick={event => this.signUpScreen(event)}>[Join Now!]</span></p>
+                <p className='cancel'><button id='cancelButton' className='cancelButton'onClick={event => this.cancel(event)}>Cancel</button></p>                   
             </div>
 
         )

@@ -3,7 +3,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux'
-import { loginUser, createUserCheck } from './actions';
+import { loginUser, createUserCheck, cancelState } from './actions';
 //import { CREATE_USER_URL } from './config'
 
 
@@ -172,6 +172,12 @@ userCheck(event) {
         this.props.dispatch(loginUser())
     }
 
+    cancel(event) {
+        event.preventDefault();
+
+        this.props.dispatch(cancelState())
+    }
+
     render() {
         
 
@@ -201,6 +207,8 @@ userCheck(event) {
                 </form>
                 <p className='joinCrew'>Already a member of the crew?  <span id='logInButton' className='logInButton'
                     onClick={event => this.callUserLogin(event)}>[Login Now!]</span></p>
+                <p className='cancel'><button id='cancelButton' className='cancelButton'onClick={event => this.cancel(event)}>Cancel</button></p>                   
+
             </div>
             
         )

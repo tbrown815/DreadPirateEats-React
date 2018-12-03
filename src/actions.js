@@ -54,6 +54,11 @@ export const setErrorState = errorMessage => ({
     errorMessage
 })
 
+export const CANCEL_STATE = 'CANCEL_STATE'
+export const cancelState = () => ({
+    type: CANCEL_STATE
+})
+
 
 
 export const userLogin = (username, password) => dispatch => {
