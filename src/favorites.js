@@ -45,3 +45,20 @@ export default function Favorites(props) {
     )
 
 }
+
+
+/*
+
+
+Search
+
+require for search - name, user zip
+
+Results
+Show top 5 only
+Sort by Distance to entered zip - nice to have determin location
+Save to DB - 'userRef', 'resturantName', 'resturantZip', 'resturantCost', 'resturantYelpId'
+
+
+
+*/

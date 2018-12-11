@@ -30,6 +30,8 @@ export const signupUser = () => ({
     type: SIGNUP_USER
 })
 
+
+//CAN DELETE IF WILL NOT USE
 export const CREATE_NEW_USER = 'CREATE_NEW_USER'
 export const createNewUser = (userObj) => ({
     type: CREATE_NEW_USER,

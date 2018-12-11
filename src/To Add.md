@@ -6,21 +6,6 @@ Clean up server side error messages and locations
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 -==Public==-
 Nav bar - [Login, Restart, Sign-Up, About]
 Main page
@@ -37,3 +22,6 @@ Main page
     Draw box
 
     Results
+
+
+

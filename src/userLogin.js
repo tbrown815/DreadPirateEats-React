@@ -14,40 +14,6 @@ class UserLogin extends React.Component {
         const password = this.password.value;
 
         return this.props.dispatch(userLogin(username, password))
-
-/*
-        return fetch(`${USER_LOGIN_URL}`, {
-            method: 'POST',
-            body: JSON.stringify({username: `${userLoginObj.username}`, password: `${userLoginObj.password}`}),
-            headers: {'Content-Type': 'application/json'}
-        })
-        .then(res => (console.log(res.json({PromiseValue: Object.authToken}))))
-       // .then(({authToken}) => authTokenHandler(authToken))
-        .then(res => {
-            if(!res.ok){
-                return res.json().then(err => Promise.reject(err));
-            }
-            
-            console.log('authToken state: ', this.state.authToken)
-
-           // this.props.dispatch(authTokenHandler(authToken))
-            //userLoginObj.userToken = res.body.authToken
-             
-    
-             //this.props.dispatch(loginSuccess(userLoginObj))
-    
-         })
-         .catch(err => {
-             const {reason, message, location} = err;
-           //  let cleanLocation = location.charAt(0).toUpperCase() + location.slice(1);
-             if(reason === 'ERROR') {
-                 return Promise.reject(
-                     document.getElementById('errorMessage').innerHTML=`${location} ${message}`
-    
-               )
-           }
-       })
-*/
     }
     
     signUpScreen(event) {
