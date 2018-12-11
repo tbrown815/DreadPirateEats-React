@@ -1,15 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux'
 
 import './nav.css';
 
-export default function Favorites(props) {
+//export default function Favorites(props) {
+class UserFavorites extends React.Component {
 
+    render() {
     return (
 
-        <div id='favsModal' className='modal modalContent'>
             <div>
-                <a href='#close' title='Close' className='close'>X</a>
-                <h2 className='modalTitle'>Your current Dread Pirate Eats favorites!</h2>
+                <h2 className='modalTitle'>Your Dread Pirate Eats favorites!</h2>
                 <form className='modalForm'>
                     <br />
                     <p><input type='checkbox' /> Favorite place #1 </p>
@@ -40,12 +41,17 @@ export default function Favorites(props) {
 
                 </form>
             </div>
-        </div>
 
-    )
 
+    )}
 }
 
+const mapStateToProps = state => ({
+    errorMessage: state.errorMessage
+  
+  })
+
+export default connect(mapStateToProps)(UserFavorites)
 
 /*
 

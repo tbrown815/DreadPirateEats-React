@@ -1,4 +1,4 @@
-import { FIND_GRUB, RESTART_APP, LOGIN_USER, LOGOUT_SUCCESS, SIGNUP_USER, 
+import { FIND_GRUB, RESTART_APP, LOGIN_USER, LOGOUT_SUCCESS, SIGNUP_USER, EDIT_FAVS, RETURN_TO_GAME,
         CREATE_NEW_USER, LOGIN_SUCCESS, SET_AUTH_TOKEN, ERROR_STATE, CANCEL_STATE } from './actions'
 
 const initialState = {
@@ -8,7 +8,7 @@ const initialState = {
     hangryTaunt: 'Click ta draw ya scally wag!',
     gameOn: true,
     restart: false,
-    loggedIn: 0,
+    loggedIn: 4,
     authToken: null,
     userToken: null,
     currentUser: null,
@@ -77,6 +77,21 @@ const initialState = {
         })
     }
 
+    if (action.type === EDIT_FAVS) {
+        console.log('EDIT_FAVS')
+        
+        return Object.assign({}, state, {
+            loggedIn: 4
+        })
+    }
+
+    if (action.type === RETURN_TO_GAME) {
+        console.log('RETURN_TO_GAME')
+        
+        return Object.assign({}, state, {
+            loggedIn: 3
+        })
+    }
     if (action.type === SET_AUTH_TOKEN) {
         console.log('SET_AUTH_TOKEN')
 

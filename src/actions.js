@@ -32,6 +32,30 @@ export const signupUser = () => ({
     type: SIGNUP_USER
 })
 
+export const EDIT_FAVS = 'EDIT_FAVS'
+export const editFavs = () => ({
+    type: EDIT_FAVS
+})
+
+export const CANCEL_EDIT_FAVS = 'CANCEL_EDIT_FAVS'
+export const cancelEditFavs = () => ({
+    type: CANCEL_EDIT_FAVS
+})
+
+export const ADD_FAVS = 'EDIT_FAVS'
+export const addFavs = () => ({
+    type: EDIT_FAVS
+})
+
+export const CANCEL_ADD_FAVS = 'CANCEL_ADD_FAVS'
+export const cancelAddFavs = () => ({
+    type: CANCEL_ADD_FAVS
+})
+
+export const RETURN_TO_GAME = 'RETURN_TO_GAME'
+export const returnToGame = () => ({
+    type: RETURN_TO_GAME
+})
 
 //CAN DELETE IF WILL NOT USE
 export const CREATE_NEW_USER = 'CREATE_NEW_USER'

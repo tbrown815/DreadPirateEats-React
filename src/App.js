@@ -7,6 +7,7 @@ import Nav from './nav'
 import DrawBox from './drawbox';
 import UserLogin from './userLogin';
 import UserSignUp from './userSignUp';
+import UserFavorites from './favorites';
 
 require ('dotenv').config();
 
@@ -78,6 +79,22 @@ export function DreadPirate(props) {
         </div>
 
         <DrawBox />
+       </main>
+
+    )
+  }
+
+  if (props.loggedIn === 4) {
+    return (
+      <main>
+
+        <Nav />
+
+        <br />
+        <div className='pirateImageSection'>
+        <UserFavorites />
+        </div>
+
        </main>
 
     )
