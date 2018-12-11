@@ -1,8 +1,10 @@
 import jwtDecode from 'jwt-decode';
 
-import { USER_LOGIN_URL, CREATE_USER_URL } from './config';
+import { REACT_APP_USER_LOGIN_URL, REACT_APP_CREATE_USER_URL } from './config';
 
 import {storeAuthToken, clearAuthToken, storeUserToken, clearUserToken} from './localStore';
+
+require ('dotenv').config();
 
 
 export const FIND_GRUB = 'FIND_GRUB'
@@ -78,7 +80,7 @@ export const userLogin = (username, password) => dispatch => {
     }
 
     else {
-    return fetch(`${USER_LOGIN_URL}`, {
+    return fetch(`${REACT_APP_USER_LOGIN_URL}`, {
         method: 'POST',
         body: JSON.stringify({username, password}),
         headers: {'Content-Type': 'application/json'}
@@ -191,7 +193,7 @@ export const createUserCheck = (username, email, password, passwordConf) => disp
         console.log('email: ', email)
         console.log('password: ', password)
 
-    return fetch(`${CREATE_USER_URL}`, {
+    return fetch(`${REACT_APP_CREATE_USER_URL}`, {
         method: 'POST',
         body: JSON.stringify({username, email, password}),
         headers: {'Content-Type': 'application/json'}

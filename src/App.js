@@ -8,6 +8,8 @@ import DrawBox from './drawbox';
 import UserLogin from './userLogin';
 import UserSignUp from './userSignUp';
 
+require ('dotenv').config();
+
 export function DreadPirate(props) {
   
   console.log('state: ', props)
