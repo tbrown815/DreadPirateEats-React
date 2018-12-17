@@ -1,14 +1,19 @@
-import { FIND_GRUB, RESTART_APP, LOGIN_USER, LOGOUT_SUCCESS, SIGNUP_USER, EDIT_FAVS, RETURN_TO_GAME,
+import { FIND_GRUB, RESTART_APP, LOGIN_USER, LOGOUT_SUCCESS, SIGNUP_USER, RETURN_TO_GAME,
         CREATE_NEW_USER, LOGIN_SUCCESS, SET_AUTH_TOKEN, ERROR_STATE, CANCEL_STATE } from './actions'
 
+import { EDIT_FAVS, SEARCH_NEW_FAVS, DISPLAY_NEW_FAVS, SET_SELECTED_FAV, CANCEL_SEARCH_FAVS, VIEW_FAVS, CANCEL_ADD_FAVS } from './favActions'
+
 const initialState = {
-    grubJoints: ['roadhouse', 'olive garden', 'old chicago', 'pizza hut', 'longhorn', 'red lobster', 'mcDonalds', 'burger king', 'subway', 'hardees', 'potbelly'],
+    grubJoints: [],
     madeOffers: [],
     theOffer: '',
     hangryTaunt: 'Click ta draw ya scally wag!',
     gameOn: true,
     restart: false,
-    loggedIn: 4,
+    loggedIn: 3,
+    favState: 0,
+    newFavorites: [],
+    selectedSearchFav: null,
     authToken: null,
     userToken: null,
     currentUser: null,
@@ -19,18 +24,22 @@ const initialState = {
 
     if (action.type === RESTART_APP) {
         return Object.assign({}, state, {
-            grubJoints: ['roadhouse', 'olive garden', 'old chicago', 'pizza hut', 'longhorn', 'red lobster', 'mcDonalds', 'burger king', 'subway', 'hardees', 'potbelly'],
             madeOffers: [],
             theOffer: '',
             hangryTaunt: 'Click ta draw ya scally wag!',
             gameOn: true,
-            restart: false  
+            restart: false,
+            newFavorites: null
         })
     }
 
     if (action.type === LOGOUT_SUCCESS) {
         console.log('LOGOUT_SUCCESS')
         return Object.assign({}, state, {
+            grubJoints: ['place'],
+            madeOffers: [],
+            theOffer: '',
+            hangryTaunt: 'Click ta draw ya scally wag!',
             loggedIn: 0,
             authToken: null,
             userToken: null,
@@ -77,11 +86,60 @@ const initialState = {
         })
     }
 
+    if (action.type === SEARCH_NEW_FAVS) {
+        console.log('SEARCH_NEW_FAVS')
+
+        return Object.assign({}, state, {
+            favState: 1
+
+        })
+    }
+
+    if (action.type === DISPLAY_NEW_FAVS) {
+        console.log('DISPLAY_NEW_FAVS')
+
+        return Object.assign({}, state, {
+            newFavorites: action.displayResults
+        })
+    }
+
+    if (action.type === VIEW_FAVS) {
+        console.log('VIEW_FAVS')
+
+        return Object.assign({}, state, {
+            grubJoints: action.displayFavs
+        })
+    }
+
+    if (action.type === SET_SELECTED_FAV) {
+        console.log('SET_SELECTED_FAV')
+
+        return Object.assign({}, state,{
+            selectedSearchFav: action.selectedFav
+        })
+    }
+
+    if (action.type === CANCEL_ADD_FAVS) {
+        console.log('CANCEL_ADD_FAVS')
+
+        return Object.assign({}, state, {
+            favState: 0
+        })
+    }
+
     if (action.type === EDIT_FAVS) {
         console.log('EDIT_FAVS')
         
         return Object.assign({}, state, {
             loggedIn: 4
+        })
+    }
+
+    if (action.type === CANCEL_SEARCH_FAVS) {
+        console.log('CANCEL_SEARCH_FAVS')
+        
+        return Object.assign({}, state, {
+            favState: 0
         })
     }
 
@@ -120,7 +178,7 @@ const initialState = {
 
         let random = Math.floor(Math.random() * parseInt(state.grubJoints.length)) + 0;
 
-        let theOffer = state.grubJoints[random]
+        let theOffer = state.grubJoints[random].resturantName
 
         let madeOffers = [...state.madeOffers, `${theOffer} `]
 

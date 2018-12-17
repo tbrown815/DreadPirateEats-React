@@ -7,13 +7,14 @@ import Nav from './nav'
 import DrawBox from './drawbox';
 import UserLogin from './userLogin';
 import UserSignUp from './userSignUp';
-import UserFavorites from './favorites';
+import Favorites from './favorites';
 
 require ('dotenv').config();
 
 export function DreadPirate(props) {
   
   console.log('state: ', props)
+
 
   if (props.loggedIn === 0) {
     return (
@@ -68,6 +69,7 @@ export function DreadPirate(props) {
   }
 
   if (props.loggedIn === 3) {
+
     return (
       <main>
 
@@ -92,7 +94,7 @@ export function DreadPirate(props) {
 
         <br />
         <div className='pirateImageSection'>
-        <UserFavorites />
+        <Favorites />
         </div>
 
        </main>
@@ -106,7 +108,8 @@ const mapStateToProps = state => ({
   authToken: state.authToken,
   userToken: state.userToken,
   currentUser: state.currentUser,
-  errorMessage: state.errorMessage
+  errorMessage: state.errorMessage,
+  grubJoints: state.grubJoints
 
 })
 

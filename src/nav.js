@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { loginUser, logoutUser, editFavs, returnToGame } from './actions'
-
+import { loginUser, logoutUser, returnToGame } from './actions'
+import { editFavs } from './favActions'
 
 import About from './about'
 import Favorites from './favorites'
