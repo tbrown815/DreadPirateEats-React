@@ -84,8 +84,9 @@ class SearchFavorites extends React.Component {
                             </li>
                         )}
                     </ul>
-                    <br /><br />
+                    <br />
                     <button type='submit' name='submit' id='saveToFavsButton' className='saveToFavsButton'>Save Selected</button>
+                    <br /><br />
 
                 </form>
 

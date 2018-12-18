@@ -88,8 +88,17 @@ const mapResultsHandler = (businesses, dispatch) => {
             address: business.location.address1, city: business.location.city, cost: business.price}))
 
     let displayResults = [];
-      
-      for (let i=0; i < 5; i++) {
+    
+    let loopLength;
+
+        if (businesses.length > 6) {
+             loopLength = 6;
+        }
+        else {
+            loopLength = businesses.length;
+        };
+
+      for (let i=0; i < loopLength; i++) {
 
         displayResults = [...displayResults, results[i]]
 
@@ -152,7 +161,7 @@ const mapFavResultsHandler = (userFavs, dispatch) => {
 
         }
       
-        console.log('displayResults: ', displayFavs)
+        console.log('displayFavs: ', displayFavs)
 
         dispatch(viewFavs(displayFavs))
         
