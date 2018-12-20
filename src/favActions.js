@@ -61,7 +61,7 @@ export const noFavsError = (noFavs) => ({
     noFavs
 })
 
-export const performYelpCall = (resturantName, resturantZip) => dispatch => {
+export const performYelpCall = (resturantName, resturantZip, publicSort) => dispatch => {
     if(resturantName === undefined || resturantName === null || resturantName === '') {
  
         dispatch(setErrorState('Please enter the resturant name.'))
@@ -77,7 +77,7 @@ export const performYelpCall = (resturantName, resturantZip) => dispatch => {
 
         return fetch(`${REACT_APP_FAV_SEARCH_DETAIL_URL}`, {
             method: 'POST',
-            body: JSON.stringify({resturantName, resturantZip}),
+            body: JSON.stringify({resturantName, resturantZip, publicSort}),
             headers: {'Content-Type': 'application/json'}
         })
         .then(res => res.json())
@@ -91,7 +91,7 @@ const mapResultsHandler = (businesses, dispatch) => {
     console.log('businesses: ', businesses)
 
     let results = businesses.map(business => ({resturantYelpId: business.id, url: business.url, resturantName: business.name,
-            address: business.location.address1, city: business.location.city, cost: business.price}))
+            address: business.location.address1, city: business.location.city, cost: business.price, resturantAlias: business.alias}))
 
     let displayResults = [];
     
@@ -119,14 +119,15 @@ const mapResultsHandler = (businesses, dispatch) => {
 export const callAddNewFav = (resturant, userToken, authToken) => dispatch => {
     let resturantYelpId = resturant[0].resturantYelpId;
     let resturantName = resturant[0].resturantName;
+    let resturantAlias = resturant[0].resturantAlias;
 
     console.log('actionuserToken: ', userToken)
     console.log('actionauthToken: ', authToken)
 
         return fetch(`${REACT_APP_FAVS_URL}`, {
             method: 'POST',
-            body: JSON.stringify({userRef: userToken, resturantYelpId: resturantYelpId, 
-                resturantName: resturantName}),
+            body: JSON.stringify({userRef: userToken, resturantYelpId: resturantYelpId, resturantName: resturantName,
+                resturantAlias: resturantAlias}),
             headers: 
                 {
                     'Content-Type': 'application/json',
@@ -140,6 +141,7 @@ export const callAddNewFav = (resturant, userToken, authToken) => dispatch => {
 
 export const callViewFavs = (userToken, authToken) => dispatch => {
     console.log('callViewFavs')
+
     return fetch(`${REACT_APP_USERFAVS_URL}${userToken}`, {
         method: 'GET',
         headers:
@@ -166,7 +168,8 @@ const mapFavResultsHandler = (userFavs, dispatch) => {
 
     else {
 
-    let favResults = userFavs.map(userFav => ({id: userFav.id, resturantYelpId: userFav.resturantYelpId, resturantName: userFav.resturantName}))
+    let favResults = userFavs.map(userFav => ({id: userFav.id, resturantYelpId: userFav.resturantYelpId, 
+            resturantName: userFav.resturantName, resturantAlias: userFav.resturantAlias}))
 
     let displayFavs = [];
       

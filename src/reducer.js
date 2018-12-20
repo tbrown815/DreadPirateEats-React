@@ -9,8 +9,9 @@ const initialState = {
     madeOffers: [],
     theOffer: '',
     hangryTaunt: 'Click ta draw ya scally wag!',
-    publicSearch: ['rating', 'review_count', 'distance'],
+    publicSort: ['rating', 'review_count', 'distance'],
     gameOn: true,
+    random: [],
     restart: false,
     loggedIn: 3,
     favState: 0,
@@ -29,6 +30,7 @@ const initialState = {
         return Object.assign({}, state, {
             madeOffers: [],
             theOffer: '',
+            random: [],
             hangryTaunt: 'Click ta draw ya scally wag!',
             gameOn: true,
             restart: false,
@@ -42,13 +44,18 @@ const initialState = {
             grubJoints: ['place'],
             madeOffers: [],
             theOffer: '',
+            random: [],
             hangryTaunt: 'Click ta draw ya scally wag!',
-            publicSearch: ['rating', 'review_count', 'distance'],
+            publicSort: ['rating', 'review_count', 'distance'],
             loggedIn: 0,
+            favState: 0,
+            newFavorites: [],
+            selectedSearchFav: null,
             authToken: null,
             userToken: null,
             currentUser: null,
-            errorMessage: null
+            errorMessage: null,
+            noFavsMessage: null
         })
     }
 
@@ -86,7 +93,7 @@ const initialState = {
         return Object.assign({}, state, {
             currentUser: action.currentUser,
             userToken: action.currentUser.id,
-            publicSearch: [],
+            publicSort: [],
             loggedIn: 3
         })
     }
@@ -190,9 +197,11 @@ const initialState = {
 
     if (action.type === FIND_GRUB) {
 
-        let random = Math.floor(Math.random() * parseInt(state.grubJoints.length)) + 0;
+        let randomVal = Math.floor(Math.random() * parseInt(state.grubJoints.length)) + 0;
 
-        let theOffer = state.grubJoints[random].resturantName
+      //  let random = [...state.random, `${randomVal}`]
+
+        let theOffer = state.grubJoints[randomVal].resturantName
 
         let madeOffers = [...state.madeOffers, `${theOffer} `]
 

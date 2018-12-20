@@ -15,19 +15,20 @@ class SearchFavorites extends React.Component {
         console.log('search')
         const resturantName = this.resturantName.value;
         const resturantZip = this.resturantZip.value;
+        const publicSort = this.props.publicSort;
 
-        return this.props.dispatch(performYelpCall(resturantName, resturantZip))
+        return this.props.dispatch(performYelpCall(resturantName, resturantZip, publicSort))
     }
 
     saveToFavs(event2) {
         event2.preventDefault();
 
         let yelpID = this.props.selectedSearchFav
-        let userToken = localStorage.getItem('userToken')
-        let authToken = localStorage.getItem('authToken')
+
+        let userToken = this.props.userToken
+        let authToken = this.props.authToken
 
         console.log('resturantId to save: ', yelpID)
-
 
         let resturant = this.props.newFavorites.filter(data => {
             return data.resturantYelpId === yelpID
@@ -55,10 +56,10 @@ class SearchFavorites extends React.Component {
                 <form className='searchForFavs' onSubmit={event => this.searchLocation(event)}>
                     <h2>Add a new Favorite!</h2>
 
-                    <p>Enter resturant Name:</p>
+                    <p>Enter resturant name:</p>
                     <input type='text' ref={resturantName => (this.resturantName = resturantName)} />
                     <br />
-                    <p>Enter your zipcode:</p>
+                    <p>Enter City or Zipcode:</p>
                     <input type='text' ref={resturantZip => (this.resturantZip = resturantZip)} />
                     <br /><br />
                     <span id='errorMessage'>{this.props.errorMessage}</span>
@@ -98,10 +99,13 @@ class SearchFavorites extends React.Component {
 }
 
 const mapStateToProps = state => ({
+    userToken: state.userToken,
+    authToken: state.authToken,
     errorMessage: state.errorMessage,
     userToken: state.userToken,
     newFavorites: state.newFavorites,
-    selectedSearchFav: state.selectedSearchFav
+    selectedSearchFav: state.selectedSearchFav,
+    publicSort: state.publicSort
 
 })
 

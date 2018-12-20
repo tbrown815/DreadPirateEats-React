@@ -10,9 +10,10 @@ class DrawBox extends React.Component {
 
     
     componentDidMount() {
-        if(this.props.publicSearch.length === 0) {
-            let userToken = localStorage.getItem('userToken')
-            let authToken = localStorage.getItem('authToken')
+        if(this.props.publicSort.length < 1) {
+           
+            let userToken = this.props.userToken
+            let authToken = this.props.authToken
 
             this.props.dispatch(callViewFavs(userToken, authToken))
         }
@@ -85,10 +86,12 @@ render() {
 
 
 const mapStateToProps = state => ({
+    userToken: state.userToken,
+    authToken: state.authToken,
     restart: state.restart,
     hangryTaunt: state.hangryTaunt,
     madeOffers: state.madeOffers,
-    publicSearch: state.publicSearch
+    publicSort: state.publicSort
 })
 
 

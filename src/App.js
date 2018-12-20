@@ -109,7 +109,8 @@ const mapStateToProps = state => ({
   userToken: state.userToken,
   currentUser: state.currentUser,
   errorMessage: state.errorMessage,
-  grubJoints: state.grubJoints
+  grubJoints: state.grubJoints,
+  publicSort: state.publicSort
 
 })
 

@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import {REACT_APP_FAV_YELP_URL} from './config'
 import { setErrorState } from './actions'
 import { performYelpCall, setSelectedFav, callAddNewFav, callViewFavs, searchNewFavs } from './favActions'
 
 
 import './favorites.css';
 
-//export default function Favorites(props) {
 class UserFavorites extends React.Component {
 
     componentDidMount() {
@@ -23,6 +23,20 @@ class UserFavorites extends React.Component {
 
     }
 
+    changeSelectedFavState(event) {
+        console.log('selected: ', event.target.value)
+        let selectedFav = event.target.value;
+
+        return this.props.dispatch(setSelectedFav(selectedFav))
+    }
+
+    editFavCall(event) {
+        event.preventDefault();
+        console.log('EDIT CALL')
+
+    }
+
+
     render() {
         
         return (
@@ -30,13 +44,20 @@ class UserFavorites extends React.Component {
             <div>
                 <h2 className='modalTitle'>Your Dread Pirate Eats favorites!</h2>
                 <br />
+                <form className='editFavs' onSubmit={event => this.editFavCall(event)}>
 
                 {this.props.noFavsMessage}<br/>
                 {this.props.grubJoints.map(data => 
-                    <li className='mapDisplayUserFavs'>
-                        {data.resturantName}
-                    </li>
+                        <li key={data.resturantYelpId} className='mapDisplayResults'>
+                                <input type='radio' className='mapDisplayRadio' name='mapDisplayRadio' value={data.resturantYelpId}
+                                    onChange={event => this.changeSelectedFavState(event)} />
+                                <a href={REACT_APP_FAV_YELP_URL+data.resturantAlias} target='_blank'>{data.resturantName}</a>
+                        </li>
                 )}
+                <br/>
+                    <button type='submit' name='submit' id='editButton' className='editButton'>Edit Favorite</button>
+                </form>
+
 
                 <br />
                 <span id='addFavsButton' className='addFavsButton'
