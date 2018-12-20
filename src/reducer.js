@@ -1,13 +1,15 @@
 import { FIND_GRUB, RESTART_APP, LOGIN_USER, LOGOUT_SUCCESS, SIGNUP_USER, RETURN_TO_GAME,
         CREATE_NEW_USER, LOGIN_SUCCESS, SET_AUTH_TOKEN, ERROR_STATE, CANCEL_STATE } from './actions'
 
-import { EDIT_FAVS, SEARCH_NEW_FAVS, DISPLAY_NEW_FAVS, SET_SELECTED_FAV, CANCEL_SEARCH_FAVS, VIEW_FAVS, CANCEL_ADD_FAVS } from './favActions'
+import { EDIT_FAVS, SEARCH_NEW_FAVS, DISPLAY_NEW_FAVS, SET_SELECTED_FAV, CANCEL_SEARCH_FAVS, VIEW_FAVS, CANCEL_ADD_FAVS,
+            NO_FAVS } from './favActions'
 
 const initialState = {
     grubJoints: [],
     madeOffers: [],
     theOffer: '',
     hangryTaunt: 'Click ta draw ya scally wag!',
+    publicSearch: ['rating', 'review_count', 'distance'],
     gameOn: true,
     restart: false,
     loggedIn: 3,
@@ -17,7 +19,8 @@ const initialState = {
     authToken: null,
     userToken: null,
     currentUser: null,
-    errorMessage: null
+    errorMessage: null,
+    noFavsMessage: null
   }
 
   export default (state = initialState, action) => {
@@ -40,6 +43,7 @@ const initialState = {
             madeOffers: [],
             theOffer: '',
             hangryTaunt: 'Click ta draw ya scally wag!',
+            publicSearch: ['rating', 'review_count', 'distance'],
             loggedIn: 0,
             authToken: null,
             userToken: null,
@@ -82,6 +86,7 @@ const initialState = {
         return Object.assign({}, state, {
             currentUser: action.currentUser,
             userToken: action.currentUser.id,
+            publicSearch: [],
             loggedIn: 3
         })
     }
@@ -107,7 +112,8 @@ const initialState = {
         console.log('VIEW_FAVS')
 
         return Object.assign({}, state, {
-            grubJoints: action.displayFavs
+            grubJoints: action.displayFavs,
+            noFavsMessage: null
         })
     }
 
@@ -173,6 +179,14 @@ const initialState = {
             loggedIn: 0
         })
     }
+
+    if (action.type === NO_FAVS) {
+        console.log('NO_FAVS')
+
+        return Object.assign({}, state, {
+            noFavsMessage: action.noFavs
+        })
+    }    
 
     if (action.type === FIND_GRUB) {
 

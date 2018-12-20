@@ -31,6 +31,7 @@ class UserFavorites extends React.Component {
                 <h2 className='modalTitle'>Your Dread Pirate Eats favorites!</h2>
                 <br />
 
+                {this.props.noFavsMessage}<br/>
                 {this.props.grubJoints.map(data => 
                     <li className='mapDisplayUserFavs'>
                         {data.resturantName}
@@ -50,7 +51,8 @@ class UserFavorites extends React.Component {
 
 const mapStateToProps = state => ({
     errorMessage: state.errorMessage,
-    grubJoints: state.grubJoints
+    noFavsMessage: state.noFavsMessage,
+        grubJoints: state.grubJoints
 
 })
 

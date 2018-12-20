@@ -10,7 +10,7 @@ class DrawBox extends React.Component {
 
     
     componentDidMount() {
-        if(this.props.grubJoints.length === 0) {
+        if(this.props.publicSearch.length === 0) {
             let userToken = localStorage.getItem('userToken')
             let authToken = localStorage.getItem('authToken')
 
@@ -88,7 +88,7 @@ const mapStateToProps = state => ({
     restart: state.restart,
     hangryTaunt: state.hangryTaunt,
     madeOffers: state.madeOffers,
-    grubJoints: state.grubJoints
+    publicSearch: state.publicSearch
 })
 
 

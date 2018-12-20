@@ -55,6 +55,12 @@ export const cancelSearchFavs = () => ({
     type: CANCEL_SEARCH_FAVS
 })
 
+export const NO_FAVS = 'NO_FAVS'
+export const noFavsError = (noFavs) => ({
+    type: NO_FAVS,
+    noFavs
+})
+
 export const performYelpCall = (resturantName, resturantZip) => dispatch => {
     if(resturantName === undefined || resturantName === null || resturantName === '') {
  
@@ -151,6 +157,15 @@ const mapFavResultsHandler = (userFavs, dispatch) => {
     
     console.log('userFavs: ', userFavs)
 
+    if (userFavs === undefined || userFavs === null) {
+
+        let noFavs = 'You have no favorites.  Click below to add!'
+        
+        dispatch(noFavsError(noFavs))
+    }
+
+    else {
+
     let favResults = userFavs.map(userFav => ({id: userFav.id, resturantYelpId: userFav.resturantYelpId, resturantName: userFav.resturantName}))
 
     let displayFavs = [];
@@ -164,5 +179,5 @@ const mapFavResultsHandler = (userFavs, dispatch) => {
         console.log('displayFavs: ', displayFavs)
 
         dispatch(viewFavs(displayFavs))
-        
+    }   
     }
