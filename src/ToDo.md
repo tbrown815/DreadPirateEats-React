@@ -19,7 +19,7 @@ CSS clean-up
 Tests
 
 
-
+`
 API-
 
 Server side validation of pass/passConf
@@ -27,6 +27,10 @@ Clean up server side error messages and locations
 
 
 Tests
+
+
+-==Done==-
+Add code to fix error on 0 favs
 
 
 
