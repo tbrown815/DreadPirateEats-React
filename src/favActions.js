@@ -66,13 +66,20 @@ export const noFavsError = (noFavs) => ({
     noFavs
 })
 
-export const getFavsSetState = (resturantYelpId) => dispatch => {
+export const getFavsSetState = (findFav, authToken) => dispatch => {
 
-    return fetch(`${REACT_APP_FAV_SEARCH_DETAIL_URL}`, {
-        method: 'GET',
-        body: JSON.stringify({})
+    return fetch(`${REACT_APP_FAV_SEARCH_DETAIL_URL}${findFav}`, {
+        method: 'POST',
+        body: JSON.stringify({favYelpId: findFav}),
+        headers: 
+            {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${authToken}`
+        
+            }
     })
-
+    .then(res => console.log('res: ', res.json()))
+    //.then(({}) => mapFavResultsHandler({}, dispatch))
 }
 
 export const performYelpCall = (resturantName, resturantZip, publicSort) => dispatch => {

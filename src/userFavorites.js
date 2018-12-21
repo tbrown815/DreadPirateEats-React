@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { REACT_APP_FAV_YELP_URL } from './config'
 import { setErrorState } from './actions'
-import { performYelpCall, setSelectedFav, callAddNewFav, callViewFavs, searchNewFavs, getFavsSetState } from './favActions'
+import { performYelpCall, setSelectedFav, callAddNewFav, callViewFavs, searchNewFavs, getFavsSetState, editFavsState } from './favActions'
 
 
 import './favorites.css';
@@ -10,8 +10,8 @@ import './favorites.css';
 class UserFavorites extends React.Component {
 
     componentDidMount() {
-        let userToken = localStorage.getItem('userToken')
-        let authToken = localStorage.getItem('authToken')
+        let userToken = this.props.userToken
+        let authToken = this.props.authToken
 
         this.props.dispatch(callViewFavs(userToken, authToken))
     }
@@ -28,14 +28,16 @@ class UserFavorites extends React.Component {
 
         console.log('selected: ', event.target.value)
         let selectedFav = event.target.value;
-
+    
         return this.props.dispatch(setSelectedFav(selectedFav))
+
     }
 
     editSelectedFavState(event) {
         event.preventDefault();
+        let findFav = this.props.selectedFavorite;
 
-        return this.props.dispatch(getFavsSetState())
+        return this.props.dispatch(getFavsSetState(findFav))
     }
 
     editFavCall(event) {
@@ -44,9 +46,9 @@ class UserFavorites extends React.Component {
 
     }
 
-
     render() {
 
+        
 
         if (this.props.editFavState === 0) {
 
@@ -87,18 +89,16 @@ class UserFavorites extends React.Component {
                 <div>
                     <h2 className='favsTitle'>Your Dread Pirate Eats favorites!</h2>
                     <br />
-                    <form className='editFavs' onSubmit={event => this.editFavCall(event)}>
+                    <form className='editFavs' onSubmit={event => this.editSelectedFavState(event)}>
 
                         {this.props.noFavsMessage}<br />
                         {this.props.grubJoints.map(data =>
                             <li key={data.resturantYelpId} className='mapDisplayResults'>
-                                {this.props.selectedFavorite === data.resturantYelpId && <input type='radio' className='mapDisplayRadio' name='mapDisplayRadio' value={data.resturantYelpId} />}
-                                {this.props.selectedFavorite === data.resturantYelpId && <a href={REACT_APP_FAV_YELP_URL + data.resturantAlias} target='_blank'>{data.resturantName}</a>}
-
-                                {this.props.selectedFavorite === data.resturantYelpId && <input type='text' className='mapDisplayText' name='mapDisplayText' value={data.resturantYelpId} placeholder={data.resturantName} />}
+                                <input type='radio' className='mapDisplayRadio' name='mapDisplayRadio' value={data.resturantYelpId} />
+                                <a href={REACT_APP_FAV_YELP_URL + data.resturantAlias} target='_blank'>{data.resturantName}</a>}
 
                             </li>
-                        )}
+                        )}                       
                         <br />
                         <button type='submit' name='submit' id='editButton' className='editButton'>Edit Favorite</button>
                     </form>
@@ -117,6 +117,8 @@ class UserFavorites extends React.Component {
 }
 
 const mapStateToProps = state => ({
+    userToken: state.userToken,
+    authToken: state.authToken,
     errorMessage: state.errorMessage,
     noFavsMessage: state.noFavsMessage,
     grubJoints: state.grubJoints,
@@ -129,6 +131,20 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps)(UserFavorites)
 
 /*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Search
