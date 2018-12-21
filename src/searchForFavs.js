@@ -23,7 +23,7 @@ class SearchFavorites extends React.Component {
     saveToFavs(event2) {
         event2.preventDefault();
 
-        let yelpID = this.props.selectedSearchFav
+        let yelpID = this.props.selectedFavorite
 
         let userToken = this.props.userToken
         let authToken = this.props.authToken
@@ -33,14 +33,16 @@ class SearchFavorites extends React.Component {
         let resturant = this.props.newFavorites.filter(data => {
             return data.resturantYelpId === yelpID
         })
-            
-            console.log('resturant to save: ', resturant)
 
-                    
+        console.log('resturant to save: ', resturant)
+
+
         return this.props.dispatch(callAddNewFav(resturant, userToken, authToken))
     }
 
     changeSelectedFavState(event) {
+        event.preventDefault();
+
         console.log('selected: ', event.target.value)
         let selectedFav = event.target.value;
 
@@ -104,7 +106,7 @@ const mapStateToProps = state => ({
     errorMessage: state.errorMessage,
     userToken: state.userToken,
     newFavorites: state.newFavorites,
-    selectedSearchFav: state.selectedSearchFav,
+    selectedFavorite: state.selectedFavorite,
     publicSort: state.publicSort
 
 })

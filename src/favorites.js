@@ -11,25 +11,25 @@ import './favorites.css';
 export function Favorites(props) {
 
 
-        if (props.favState === 0) {
-            return (
+    if (props.favState === 0) {
+        return (
 
-                <div>
-                    <UserFavorites />
+            <div>
+                <UserFavorites />
 
-                </div>
-            )
-        }
+            </div>
+        )
+    }
 
-        if (props.favState === 1) {
-            return (
+    if (props.favState === 1) {
+        return (
 
-                <div>
-                    <SearchFavorites />
+            <div>
+                <SearchFavorites />
 
-                </div>
-            )
-        }
+            </div>
+        )
+    }
 }
 
 const mapStateToProps = state => ({

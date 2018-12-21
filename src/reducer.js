@@ -1,8 +1,12 @@
-import { FIND_GRUB, RESTART_APP, LOGIN_USER, LOGOUT_SUCCESS, SIGNUP_USER, RETURN_TO_GAME,
-        CREATE_NEW_USER, LOGIN_SUCCESS, SET_AUTH_TOKEN, ERROR_STATE, CANCEL_STATE } from './actions'
+import {
+    FIND_GRUB, RESTART_APP, LOGIN_USER, LOGOUT_SUCCESS, SIGNUP_USER, RETURN_TO_GAME,
+    CREATE_NEW_USER, LOGIN_SUCCESS, SET_AUTH_TOKEN, ERROR_STATE, CANCEL_STATE
+} from './actions'
 
-import { EDIT_FAVS, SEARCH_NEW_FAVS, DISPLAY_NEW_FAVS, SET_SELECTED_FAV, CANCEL_SEARCH_FAVS, VIEW_FAVS, CANCEL_ADD_FAVS,
-            NO_FAVS } from './favActions'
+import {
+    EDIT_FAVS, SEARCH_NEW_FAVS, DISPLAY_NEW_FAVS, SET_SELECTED_FAV, CANCEL_SEARCH_FAVS, VIEW_FAVS, CANCEL_ADD_FAVS,
+    NO_FAVS, EDIT_FAVS_STATE
+} from './favActions'
 
 const initialState = {
     grubJoints: [],
@@ -15,16 +19,18 @@ const initialState = {
     restart: false,
     loggedIn: 3,
     favState: 0,
+    editFavState: 1,
     newFavorites: [],
-    selectedSearchFav: null,
+    isHidden: true,
+    selectedFavorite: "5c1af9e221f30a1c56c59c47",
     authToken: null,
     userToken: null,
     currentUser: null,
     errorMessage: null,
     noFavsMessage: null
-  }
+}
 
-  export default (state = initialState, action) => {
+export default (state = initialState, action) => {
 
     if (action.type === RESTART_APP) {
         return Object.assign({}, state, {
@@ -49,8 +55,10 @@ const initialState = {
             publicSort: ['rating', 'review_count', 'distance'],
             loggedIn: 0,
             favState: 0,
+            editFavState: 0,
             newFavorites: [],
-            selectedSearchFav: null,
+            isHidden: true,
+            selectedFavorite: null,
             authToken: null,
             userToken: null,
             currentUser: null,
@@ -66,7 +74,7 @@ const initialState = {
             loggedIn: 1
         })
     }
-    
+
     if (action.type === SIGNUP_USER) {
         console.log('SIGNUP_USER')
 
@@ -89,7 +97,7 @@ const initialState = {
     if (action.type === LOGIN_SUCCESS) {
         console.log('LOGIN_SUCCESS')
         console.log('currentUser LS: ', action.currentUser)
-        
+
         return Object.assign({}, state, {
             currentUser: action.currentUser,
             userToken: action.currentUser.id,
@@ -127,8 +135,8 @@ const initialState = {
     if (action.type === SET_SELECTED_FAV) {
         console.log('SET_SELECTED_FAV')
 
-        return Object.assign({}, state,{
-            selectedSearchFav: action.selectedFav
+        return Object.assign({}, state, {
+            selectedFavorite: action.selectedFav
         })
     }
 
@@ -142,15 +150,23 @@ const initialState = {
 
     if (action.type === EDIT_FAVS) {
         console.log('EDIT_FAVS')
-        
+
         return Object.assign({}, state, {
             loggedIn: 4
         })
     }
 
+    if (action.type === EDIT_FAVS_STATE) {
+        console.log('EDIT_FAVS_STATE')
+
+        return Object.assign({}, state, {
+            editFavState: 1
+        })
+    }
+
     if (action.type === CANCEL_SEARCH_FAVS) {
         console.log('CANCEL_SEARCH_FAVS')
-        
+
         return Object.assign({}, state, {
             favState: 0
         })
@@ -158,7 +174,7 @@ const initialState = {
 
     if (action.type === RETURN_TO_GAME) {
         console.log('RETURN_TO_GAME')
-        
+
         return Object.assign({}, state, {
             loggedIn: 3
         })
@@ -193,27 +209,27 @@ const initialState = {
         return Object.assign({}, state, {
             noFavsMessage: action.noFavs
         })
-    }    
+    }
 
     if (action.type === FIND_GRUB) {
 
         let randomVal = Math.floor(Math.random() * parseInt(state.grubJoints.length)) + 0;
 
-      //  let random = [...state.random, `${randomVal}`]
+        //  let random = [...state.random, `${randomVal}`]
 
         let theOffer = state.grubJoints[randomVal].resturantName
 
         let madeOffers = [...state.madeOffers, `${theOffer} `]
 
-        let numOffers = state.madeOffers.length +1;
+        let numOffers = state.madeOffers.length + 1;
 
         let hangryTaunt;
 
         console.log('numOffers: ', numOffers)
 
-        if(numOffers < 3) {
-            hangryTaunt =  `Draw again ya scally wag!`
-    
+        if (numOffers < 3) {
+            hangryTaunt = `Draw again ya scally wag!`
+
             console.log('FIND_GRUB < 3')
             return Object.assign({}, state, {
                 hangryTaunt,
@@ -221,9 +237,9 @@ const initialState = {
             })
         }
 
-        if(numOffers === 3) {
-            hangryTaunt =  `It's yer last stand ya scurvy dog!`
-    
+        if (numOffers === 3) {
+            hangryTaunt = `It's yer last stand ya scurvy dog!`
+
             console.log('FIND_GRUB = 3')
             return Object.assign({}, state, {
                 hangryTaunt,
@@ -231,8 +247,8 @@ const initialState = {
             })
         }
 
-        if(numOffers === 4) {
-            hangryTaunt =  `Yer time is up, walk thee plank!`    
+        if (numOffers === 4) {
+            hangryTaunt = `Yer time is up, walk thee plank!`
 
             console.log('FIND_GRUB = 4')
             return Object.assign({}, state, {
@@ -247,9 +263,9 @@ const initialState = {
 
     return state;
 
-  } //end of export
+} //end of export
 
-  //function for error message alert display
+//function for error message alert display
 function errFunc(xhr) {
     return alert(`${xhr.responseJSON.reason}: ${xhr.responseJSON.location} ${xhr.responseJSON.message}`)
 }

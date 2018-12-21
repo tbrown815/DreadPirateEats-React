@@ -17,6 +17,11 @@ export const editFavs = () => ({
     type: EDIT_FAVS
 })
 
+export const EDIT_FAVS_STATE = 'EDIT_FAVS_STATE'
+export const editFavsState = () => ({
+    type: EDIT_FAVS_STATE
+})
+
 export const CANCEL_EDIT_FAVS = 'CANCEL_EDIT_FAVS'
 export const cancelEditFavs = () => ({
     type: CANCEL_EDIT_FAVS
@@ -60,6 +65,15 @@ export const noFavsError = (noFavs) => ({
     type: NO_FAVS,
     noFavs
 })
+
+export const getFavsSetState = (resturantYelpId) => dispatch => {
+
+    return fetch(`${REACT_APP_FAV_SEARCH_DETAIL_URL}`, {
+        method: 'GET',
+        body: JSON.stringify({})
+    })
+
+}
 
 export const performYelpCall = (resturantName, resturantZip, publicSort) => dispatch => {
     if(resturantName === undefined || resturantName === null || resturantName === '') {

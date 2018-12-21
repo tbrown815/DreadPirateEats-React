@@ -9,10 +9,10 @@ import UserLogin from './userLogin';
 import UserSignUp from './userSignUp';
 import Favorites from './favorites';
 
-require ('dotenv').config();
+require('dotenv').config();
 
 export function DreadPirate(props) {
-  
+
   console.log('state: ', props)
 
 
@@ -81,7 +81,7 @@ export function DreadPirate(props) {
         </div>
 
         <DrawBox />
-       </main>
+      </main>
 
     )
   }
@@ -94,10 +94,10 @@ export function DreadPirate(props) {
 
         <br />
         <div className='pirateImageSection'>
-        <Favorites />
+          <Favorites />
         </div>
 
-       </main>
+      </main>
 
     )
   }
