@@ -17,12 +17,13 @@ const initialState = {
     gameOn: true,
     random: [],
     restart: false,
-    loggedIn: 3,
+    loggedIn: 0,
     favState: 0,
-    editFavState: 1,
+    editFavState: 0,
+    editFavOjb: null,
     newFavorites: [],
     isHidden: true,
-    selectedFavorite: "5c1af9e221f30a1c56c59c47",
+    selectedFavorite: null,
     authToken: null,
     userToken: null,
     currentUser: null,
@@ -160,7 +161,8 @@ export default (state = initialState, action) => {
         console.log('EDIT_FAVS_STATE')
 
         return Object.assign({}, state, {
-            editFavState: 1
+            editFavState: 1,
+            editFavOjb: action.favOjb
         })
     }
 

@@ -18,8 +18,9 @@ export const editFavs = () => ({
 })
 
 export const EDIT_FAVS_STATE = 'EDIT_FAVS_STATE'
-export const editFavsState = () => ({
-    type: EDIT_FAVS_STATE
+export const editFavsState = (favOjb) => ({
+    type: EDIT_FAVS_STATE,
+    favOjb
 })
 
 export const CANCEL_EDIT_FAVS = 'CANCEL_EDIT_FAVS'
@@ -66,21 +67,59 @@ export const noFavsError = (noFavs) => ({
     noFavs
 })
 
+export const updateFavCall = (newFavName, favId, authToken) => dispatch => {
+
+    let resturantName = newFavName;
+    let id = favId;
+
+    return fetch(`${REACT_APP_FAVS_URL}${favId}`, {
+        method: 'PATCH',
+        body: JSON.stringify({id, resturantName}),
+        headers:
+            {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${authToken}`   
+            }
+    })
+    .then(res => {
+        let resObj = res.json()
+
+        if(resObj.reason === 'SUCCESS') {
+           // dispatch()
+           console.log('resObj: ', resObj)
+        }
+    })
+}
+
+
 export const getFavsSetState = (findFav, authToken) => dispatch => {
 
-    return fetch(`${REACT_APP_FAV_SEARCH_DETAIL_URL}${findFav}`, {
-        method: 'POST',
-        body: JSON.stringify({favYelpId: findFav}),
+    return fetch(`${REACT_APP_FAVS_URL}${findFav}`, {
+        method: 'GET',
         headers: 
             {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${authToken}`
-        
             }
     })
-    .then(res => console.log('res: ', res.json()))
-    //.then(({}) => mapFavResultsHandler({}, dispatch))
+    .then(res => {
+       let resObj = res.json();
+
+       return resObj;
+    })
+    .then(resObj => setFavObject(resObj, dispatch))
+
 }
+
+ const setFavObject = (resObj, dispatch) => {
+    console.log('resObj: ', resObj)
+    
+    let favOjb ={id: resObj.id, resturantYelpId: resObj.resturantYelpId, resturantName: resObj.resturantName,
+        resturantAlias: resObj.alias}
+
+        dispatch(editFavsState(favOjb))
+    
+    }
 
 export const performYelpCall = (resturantName, resturantZip, publicSort) => dispatch => {
     if(resturantName === undefined || resturantName === null || resturantName === '') {
@@ -94,7 +133,6 @@ export const performYelpCall = (resturantName, resturantZip, publicSort) => disp
     }
 
     else {
-        let searchName = resturantName;
 
         return fetch(`${REACT_APP_FAV_SEARCH_DETAIL_URL}`, {
             method: 'POST',
