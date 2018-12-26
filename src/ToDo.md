@@ -7,6 +7,10 @@ Add front end options - sign-in or play as guest
 
 Review state params and remove unused
 
+Clean up console.logs, commented code, 
+
+No Favs message didn't display in Prod.
+
 Add Yelp credits
 
 CSS clean-up 
