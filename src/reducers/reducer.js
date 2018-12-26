@@ -16,7 +16,7 @@ const initialState = {
     numJoints: 0,
     madeOffers: [],
     theOffer: '',
-    hangryTaunt: 'Click ta draw ya scally wag!',
+    hangryTaunt: 'Click ta draw ya scallywag!',
     publicSort: ['rating', 'review_count', 'distance'],
     gameOn: true,
     randomCheck: ['x'],
@@ -45,7 +45,7 @@ export default (state = initialState, action) => {
             madeOffers: [],
             theOffer: '',
             randomCheck: ['x'],
-            hangryTaunt: 'Click ta draw ya scally wag!',
+            hangryTaunt: 'Click ta draw ya scallywag!',
             gameOn: true,
             restart: false,
             newFavorites: null
@@ -61,7 +61,7 @@ export default (state = initialState, action) => {
             theOffer: '',
             restart: false,
             randomCheck: ['x'],
-            hangryTaunt: 'Click ta draw ya scally wag!',
+            hangryTaunt: 'Click ta draw ya scallywag!',
             publicSort: ['rating', 'review_count', 'distance'],
             loggedIn: 0,
             favState: 0,
@@ -112,7 +112,7 @@ export default (state = initialState, action) => {
         return Object.assign({}, state, {
             currentUser: action.currentUser,
             userToken: action.currentUser.id,
-            publicSort: 'rating',
+            publicSort: ['rating'],
             loggedIn: 3,
             errorMessage: null
 
@@ -150,7 +150,7 @@ export default (state = initialState, action) => {
             madeOffers: [],
             theOffer: '',
             randomCheck: ['x'],
-            hangryTaunt: 'Click ta draw ya scally wag!',
+            hangryTaunt: 'Click ta draw ya scallywag!',
             gameOn: true,
             restart: false,
             newFavorites: []

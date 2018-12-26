@@ -11,8 +11,8 @@ class DrawBox extends React.Component {
 
 
     componentDidMount() {
-        if (this.props.publicSort.length < 1) {
 
+        if (this.props.publicSort.length < 2) {
             let userToken = this.props.userToken
             let authToken = this.props.authToken
 
@@ -66,8 +66,24 @@ class DrawBox extends React.Component {
                 
                 console.log('numOffers: ', numOffers)
 
+                if (numOffers < numJoints) {
+                    hangryTaunt = `Draw again ya scoundrel!`
+                    restart = false
+        
+                    this.props.dispatch(grubSearch(hangryTaunt, madeOffers, restart, theOffer, userToken, authToken))
+        
+                }
+
+                if (numOffers < numJoints-2) {
+                    hangryTaunt = `Draw again ya scallywag!`
+                    restart = false
+        
+                    this.props.dispatch(grubSearch(hangryTaunt, madeOffers, restart, theOffer, userToken, authToken))
+        
+                }
+
                 if (numOffers === numJoints-1) {
-                    hangryTaunt = `Draw again ya scally wag!`
+                    hangryTaunt = `It's yer last stand ya scurvy dog!`
                     restart = false
         
                     this.props.dispatch(grubSearch(hangryTaunt, madeOffers, restart, theOffer, userToken, authToken))
@@ -75,7 +91,7 @@ class DrawBox extends React.Component {
                 }
 
                 if (numOffers === numJoints) {
-                    hangryTaunt = `It's yer last stand ya scurvy dog!`
+                    //hangryTaunt = `It's yer last stand ya scurvy dog!`
                     restart = true
         
                     this.props.dispatch(grubSearch(hangryTaunt, madeOffers, restart, theOffer, userToken, authToken))
@@ -130,7 +146,7 @@ class DrawBox extends React.Component {
                         </form>
                         <br />
                         <div className='hangryTauntSection'>
-                                <span> `Yer time is up, walk thee plank!` </span>
+                                <span> Yer time is up, walk thee plank! </span>
                             <br />
                             <ul>
                                 {this.props.madeOffers.map(offer => <li className='offerDisplay' >{offer}</li>)}
