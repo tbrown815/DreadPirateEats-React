@@ -66,6 +66,7 @@ class DrawBox extends React.Component {
                 
                 console.log('numOffers: ', numOffers)
 
+                if(numJoints < 5) {
                 if (numOffers < numJoints) {
                     hangryTaunt = `Draw again ya scoundrel!`
                     restart = false
@@ -97,6 +98,41 @@ class DrawBox extends React.Component {
                     this.props.dispatch(grubSearch(hangryTaunt, madeOffers, restart, theOffer, userToken, authToken))
         
                 }
+            }
+            else {
+                if (numOffers < numJoints) {
+                    hangryTaunt = `Draw again ya scoundrel!`
+                    restart = false
+        
+                    this.props.dispatch(grubSearch(hangryTaunt, madeOffers, restart, theOffer, userToken, authToken))
+        
+                }
+
+                if (numOffers === 2) {
+                    hangryTaunt = `Arr ya scallywag, draw again!`
+                    restart = false
+        
+                    this.props.dispatch(grubSearch(hangryTaunt, madeOffers, restart, theOffer, userToken, authToken))
+        
+                }
+
+                if (numOffers === 3) {
+                    hangryTaunt = `It's yer last stand ya scurvy dog!`
+                    restart = false
+        
+                    this.props.dispatch(grubSearch(hangryTaunt, madeOffers, restart, theOffer, userToken, authToken))
+        
+                }
+
+                if (numOffers === 4) {
+                    //hangryTaunt = `It's yer last stand ya scurvy dog!`
+                    restart = true
+        
+                    this.props.dispatch(grubSearch(hangryTaunt, madeOffers, restart, theOffer, userToken, authToken))
+        
+                }
+
+            }
               
     }
 
@@ -146,7 +182,7 @@ class DrawBox extends React.Component {
                         </form>
                         <br />
                         <div className='hangryTauntSection'>
-                                <span> Yer time is up, walk thee plank! </span>
+                                <span> Ye time is up, walk thee plank! </span>
                             <br />
                             <ul>
                                 {this.props.madeOffers.map(offer => <li className='offerDisplay' >{offer}</li>)}
