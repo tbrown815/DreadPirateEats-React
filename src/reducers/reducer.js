@@ -1,21 +1,25 @@
 import {
-    FIND_GRUB, RESTART_APP, LOGIN_USER, LOGOUT_SUCCESS, SIGNUP_USER, RETURN_TO_GAME,
+    LOGIN_USER, LOGOUT_SUCCESS, SIGNUP_USER, RETURN_TO_GAME,
     CREATE_NEW_USER, LOGIN_SUCCESS, SET_AUTH_TOKEN, ERROR_STATE, CANCEL_STATE
-} from './actions'
+} from '../actions/actions'
 
 import {
     EDIT_FAVS, SEARCH_NEW_FAVS, DISPLAY_NEW_FAVS, SET_SELECTED_FAV, CANCEL_SEARCH_FAVS, VIEW_FAVS, CANCEL_ADD_FAVS,
-    NO_FAVS, EDIT_FAVS_STATE
-} from './favActions'
+    NO_FAVS, EDIT_FAVS_STATE, CANCEL_EDIT_FAVS
+} from '../actions/favActions'
+
+import { FIND_GRUB, RESTART_APP } from '../actions/grubActions'
+
 
 const initialState = {
     grubJoints: [],
+    numJoints: 0,
     madeOffers: [],
     theOffer: '',
     hangryTaunt: 'Click ta draw ya scally wag!',
     publicSort: ['rating', 'review_count', 'distance'],
     gameOn: true,
-    random: [],
+    randomCheck: ['x'],
     restart: false,
     loggedIn: 0,
     favState: 0,
@@ -28,30 +32,35 @@ const initialState = {
     userToken: null,
     currentUser: null,
     errorMessage: null,
-    noFavsMessage: null
+    noFavsMessage: null,
+    userMessage: null
 }
 
 export default (state = initialState, action) => {
 
+    //NO LONGER USED COULD DELETE
+ /* 
     if (action.type === RESTART_APP) {
         return Object.assign({}, state, {
             madeOffers: [],
             theOffer: '',
-            random: [],
+            randomCheck: ['x'],
             hangryTaunt: 'Click ta draw ya scally wag!',
             gameOn: true,
             restart: false,
             newFavorites: null
         })
     }
-
+*/
     if (action.type === LOGOUT_SUCCESS) {
         console.log('LOGOUT_SUCCESS')
         return Object.assign({}, state, {
-            grubJoints: ['place'],
+            grubJoints: [],
+            numJoints: 0,
             madeOffers: [],
             theOffer: '',
-            random: [],
+            restart: false,
+            randomCheck: ['x'],
             hangryTaunt: 'Click ta draw ya scally wag!',
             publicSort: ['rating', 'review_count', 'distance'],
             loggedIn: 0,
@@ -64,7 +73,8 @@ export default (state = initialState, action) => {
             userToken: null,
             currentUser: null,
             errorMessage: null,
-            noFavsMessage: null
+            noFavsMessage: null,
+            userMessage: null
         })
     }
 
@@ -102,8 +112,10 @@ export default (state = initialState, action) => {
         return Object.assign({}, state, {
             currentUser: action.currentUser,
             userToken: action.currentUser.id,
-            publicSort: [],
-            loggedIn: 3
+            publicSort: 'rating',
+            loggedIn: 3,
+            errorMessage: null
+
         })
     }
 
@@ -120,7 +132,9 @@ export default (state = initialState, action) => {
         console.log('DISPLAY_NEW_FAVS')
 
         return Object.assign({}, state, {
-            newFavorites: action.displayResults
+            newFavorites: action.displayResults,
+            userMessage: action.userMessage
+
         })
     }
 
@@ -129,7 +143,17 @@ export default (state = initialState, action) => {
 
         return Object.assign({}, state, {
             grubJoints: action.displayFavs,
-            noFavsMessage: null
+            noFavsMessage: null,
+            editFavState: 0,
+            selectedFavorite: null,
+            numJoints: action.numJoints,
+            madeOffers: [],
+            theOffer: '',
+            randomCheck: ['x'],
+            hangryTaunt: 'Click ta draw ya scally wag!',
+            gameOn: true,
+            restart: false,
+            newFavorites: []
         })
     }
 
@@ -163,6 +187,16 @@ export default (state = initialState, action) => {
         return Object.assign({}, state, {
             editFavState: 1,
             editFavOjb: action.favOjb
+        })
+    }
+
+    if (action.type === CANCEL_EDIT_FAVS) {
+        console.log('CANCEL_ADD_FAVS')
+
+        return Object.assign({}, state, {
+            editFavState: 0,
+            selectedFavorite: null
+
         })
     }
 
@@ -214,53 +248,13 @@ export default (state = initialState, action) => {
     }
 
     if (action.type === FIND_GRUB) {
+        console.log('FIND_GRUB')
 
-        let randomVal = Math.floor(Math.random() * parseInt(state.grubJoints.length)) + 0;
-
-        //  let random = [...state.random, `${randomVal}`]
-
-        let theOffer = state.grubJoints[randomVal].resturantName
-
-        let madeOffers = [...state.madeOffers, `${theOffer} `]
-
-        let numOffers = state.madeOffers.length + 1;
-
-        let hangryTaunt;
-
-        console.log('numOffers: ', numOffers)
-
-        if (numOffers < 3) {
-            hangryTaunt = `Draw again ya scally wag!`
-
-            console.log('FIND_GRUB < 3')
-            return Object.assign({}, state, {
-                hangryTaunt,
-                madeOffers
-            })
-        }
-
-        if (numOffers === 3) {
-            hangryTaunt = `It's yer last stand ya scurvy dog!`
-
-            console.log('FIND_GRUB = 3')
-            return Object.assign({}, state, {
-                hangryTaunt,
-                madeOffers
-            })
-        }
-
-        if (numOffers === 4) {
-            hangryTaunt = `Yer time is up, walk thee plank!`
-
-            console.log('FIND_GRUB = 4')
-            return Object.assign({}, state, {
-                hangryTaunt,
-                madeOffers,
-                restart: true
-            })
-        }
-
-
+        return Object.assign({}, state, {
+            hangryTaunt: action.hangryTaunt,
+            madeOffers: action.madeOffers,
+            restart: action.restart, 
+            randomCheck: action.randomCheck        })
     }
 
     return state;

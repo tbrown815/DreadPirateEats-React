@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { REACT_APP_FAV_YELP_URL } from './config'
-import { setErrorState } from './actions'
-import { performYelpCall, setSelectedFav, callAddNewFav, callViewFavs, searchNewFavs, getFavsSetState, updateFavCall } from './favActions'
+import { REACT_APP_FAV_YELP_URL } from '../config'
+import { setErrorState } from '../actions/actions'
+import { performYelpCall, setSelectedFav, callAddNewFav, callViewFavs, searchNewFavs, getFavsSetState, updateFavCall,
+    cancelEditFavs } from '../actions/favActions'
 
 
 import './favorites.css';
@@ -52,12 +53,23 @@ class UserFavorites extends React.Component {
         
         let newFavName = this.newFavName.value
         let favId = this.favId.value
+        let userToken = this.props.userToken
         let authToken = this.props.authToken
-
+        
         console.log('newFavName: ', newFavName)
         console.log('favId: ', favId)
 
-        return this.props.dispatch(updateFavCall(newFavName, favId, authToken))
+        return this.props.dispatch(updateFavCall(newFavName, favId, userToken, authToken))
+    }
+
+    cancelEditFavCall(event) {
+        event.preventDefault();
+
+        let userToken = this.props.userToken
+        let authToken = this.props.authToken
+
+        this.props.dispatch(callViewFavs(userToken, authToken))
+
     }
 
     render() {
@@ -89,7 +101,7 @@ class UserFavorites extends React.Component {
 
                     <br />
                     <button id='addFavsButton' className='addFavsButton'
-                        onClick={event => this.updateFavsState(event)}>Add new Favorites!i</button>
+                        onClick={event => this.updateFavsState(event)}>Add new Favorites!</button>
 
                 </div>
 
@@ -118,6 +130,10 @@ class UserFavorites extends React.Component {
                         <br />
                         <button type='submit' name='submit' id='editButton' className='editButton'>Save Change</button>
                     </form>
+                    <br/>
+                       <button type='cancel' name='cancel' id='editCancelButton' className='editCancelButton'
+                        onClick={event => this.cancelEditFavCall(event)}>Cancel</button>
+
 
 
                     <br />

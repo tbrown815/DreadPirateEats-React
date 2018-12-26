@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { setErrorState } from './actions'
-import { performYelpCall, setSelectedFav, callAddNewFav } from './favActions'
+import { setErrorState } from '../actions/actions'
+import { performYelpCall, setSelectedFav, callAddNewFav } from '../actions/favActions'
 
 
 import './favorites.css';
@@ -77,7 +77,8 @@ class SearchFavorites extends React.Component {
 
                 <form className='saveToFavsForm' onSubmit={event => this.saveToFavs(event)}>
                     <ul>
-
+                        <span className='userMessage'>{this.props.userMessage}</span>
+                        
                         {this.props.newFavorites.map(data =>
                             <li key={data.resturantYelpId} className='mapDisplayResults'>
                                 <input type='radio' className='mapDisplayRadio' name='mapDisplayRadio' value={data.resturantYelpId}
@@ -107,7 +108,8 @@ const mapStateToProps = state => ({
     userToken: state.userToken,
     newFavorites: state.newFavorites,
     selectedFavorite: state.selectedFavorite,
-    publicSort: state.publicSort
+    publicSort: state.publicSort,
+    userMessage: state.userMessage
 
 })
 

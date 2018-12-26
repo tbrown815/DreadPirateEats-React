@@ -1,15 +1,16 @@
 import jwtDecode from 'jwt-decode';
 
-import { REACT_APP_FAVS_URL, REACT_APP_FAV_SEARCH_DETAIL_URL, REACT_APP_USERFAVS_URL } from './config';
+import { REACT_APP_FAVS_URL, REACT_APP_FAV_SEARCH_DETAIL_URL, REACT_APP_USERFAVS_URL } from '../config';
 import {setErrorState} from './actions'
-import {storeAuthToken, clearAuthToken, storeUserToken, clearUserToken} from './localStore';
+import {storeAuthToken, clearAuthToken, storeUserToken, clearUserToken} from '../localStore';
 
 require ('dotenv').config();
 
 export const VIEW_FAVS = 'VIEW_FAVS'
-export const viewFavs = (displayFavs) => ({
+export const viewFavs = (displayFavs, numJoints) => ({
     type: VIEW_FAVS,
-    displayFavs
+    displayFavs,
+    numJoints
 })
 
 export const EDIT_FAVS = 'EDIT_FAVS'
@@ -45,9 +46,10 @@ export const searchNewFavs = () => ({
 })
 
 export const DISPLAY_NEW_FAVS = 'DISPLAY_NEW_FAVS'
-export const displayNewFavs = displayResults => ({
+export const displayNewFavs = (displayResults, userMessage) => ({
     type: DISPLAY_NEW_FAVS,
-    displayResults
+    displayResults,
+    userMessage
 })
 
 export const SET_SELECTED_FAV = 'SET_SELECTED_FAV'
@@ -67,7 +69,7 @@ export const noFavsError = (noFavs) => ({
     noFavs
 })
 
-export const updateFavCall = (newFavName, favId, authToken) => dispatch => {
+export const updateFavCall = (newFavName, favId, userToken, authToken) => dispatch => {
 
     let resturantName = newFavName;
     let id = favId;
@@ -83,14 +85,27 @@ export const updateFavCall = (newFavName, favId, authToken) => dispatch => {
     })
     .then(res => {
         let resObj = res.json()
+        return resObj;
 
-        if(resObj.reason === 'SUCCESS') {
-           // dispatch()
-           console.log('resObj: ', resObj)
-        }
     })
-}
 
+    .then(resObj => {
+        
+            let checkObj ={code: resObj.code, reason: resObj.reason, location: resObj.location,
+                message: resObj.message}
+                
+                console.log('resObj action: ', checkObj)
+                
+                if(checkObj.reason === 'SUCCESS') {
+                    console.log('SUCCESS')
+                    dispatch(callViewFavs(userToken, authToken))
+                 }
+                 else {
+                     dispatch(cancelEditFavs())
+                 }
+        })
+        
+}
 
 export const getFavsSetState = (findFav, authToken) => dispatch => {
 
@@ -156,7 +171,13 @@ const mapResultsHandler = (businesses, dispatch) => {
     
     let loopLength;
 
-        if (businesses.length > 6) {
+    let userMessage;
+
+        if(businesses.length < 1) {
+            userMessage = '0 Results - Please refine your search'
+        }
+
+        else if (businesses.length > 6) {
              loopLength = 6;
         }
         else {
@@ -171,7 +192,7 @@ const mapResultsHandler = (businesses, dispatch) => {
       
         console.log('displayResults: ', displayResults)
 
-        dispatch(displayNewFavs(displayResults))
+        dispatch(displayNewFavs(displayResults, userMessage))
     }
             
             
@@ -237,9 +258,10 @@ const mapFavResultsHandler = (userFavs, dispatch) => {
         displayFavs = [...displayFavs, favResults[i]]
 
         }
+        let numJoints = displayFavs.length
       
         console.log('displayFavs: ', displayFavs)
 
-        dispatch(viewFavs(displayFavs))
+        dispatch(viewFavs(displayFavs, numJoints))
     }   
     }

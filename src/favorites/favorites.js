@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { setErrorState } from './actions'
-import { performYelpCall, setSelectedFav, callAddNewFav } from './favActions'
+import { setErrorState } from '../actions/actions'
+import { performYelpCall, setSelectedFav, callAddNewFav } from '../actions/favActions'
 import SearchFavorites from './searchForFavs'
 import UserFavorites from './userFavorites'
 

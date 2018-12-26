@@ -16,3 +16,7 @@ input.mapDisplayResults {
     margin-left: -5%;
 }
 
+.userMessage {
+    color: red;
+    margin-right: 13%;
+}

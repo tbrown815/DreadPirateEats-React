@@ -3,11 +3,11 @@ import { connect } from 'react-redux'
 
 import './App.css';
 
-import Nav from './nav'
-import DrawBox from './drawbox';
-import UserLogin from './userLogin';
-import UserSignUp from './userSignUp';
-import Favorites from './favorites';
+import Nav from './nav/nav'
+import DrawBox from './drawbox/drawbox';
+import UserLogin from './login_signup/userLogin';
+import UserSignUp from './login_signup/userSignUp';
+import Favorites from './favorites/favorites';
 
 require('dotenv').config();
 
@@ -24,7 +24,7 @@ export function DreadPirate(props) {
 
         <br />
         <div className='pirateImageSection'>
-          <img src={require('./dreadPirate.png')} className='dreadPirateImage' alt='The Dread Pirate himself' />
+          <img src={require('./images/dreadPirate.png')} className='dreadPirateImage' alt='The Dread Pirate himself' />
         </div>
 
         <DrawBox />
@@ -77,7 +77,7 @@ export function DreadPirate(props) {
 
         <br />
         <div className='pirateImageSection'>
-          <img src={require('./dreadPirate.png')} className='dreadPirateImage' alt='The Dread Pirate himself' />
+          <img src={require('./images/dreadPirate.png')} className='dreadPirateImage' alt='The Dread Pirate himself' />
         </div>
 
         <DrawBox />
@@ -110,7 +110,13 @@ const mapStateToProps = state => ({
   currentUser: state.currentUser,
   errorMessage: state.errorMessage,
   grubJoints: state.grubJoints,
-  publicSort: state.publicSort
+  publicSort: state.publicSort,
+  madeOffers: state. madeOffers,
+  restart: state.restart,
+  theOffer: state.theOffer,
+  numJoints: state.numJoints,
+  newFavorites: state.newFavorites,
+  userMessage: state.userMessage
 
 })
 

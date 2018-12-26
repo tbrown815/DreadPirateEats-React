@@ -25,7 +25,7 @@ to eat OR one of us was feeling too picky with the others' suggestions.  Out of 
 </p>
                 <div className='origDPEBox'>
                     <h4>The original Dread Pirate Eats!</h4>
-                    <img src={require('./origDPE.jpg')} alt='the original dread pirate eats' className='origDPE' />
+                    <img src={require('../images/origDPE.jpg')} alt='the original dread pirate eats' className='origDPE' />
                 </div>
             </div>
         </div>

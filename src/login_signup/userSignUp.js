@@ -3,7 +3,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux'
-import { loginUser, createUserCheck, cancelState } from './actions';
+import { loginUser, createUserCheck, cancelState } from '../actions/actions';
 //import { CREATE_USER_URL } from './config'
 
 

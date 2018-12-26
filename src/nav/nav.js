@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { loginUser, logoutUser, returnToGame } from './actions'
-import { editFavs } from './favActions'
+import { loginUser, logoutUser, returnToGame } from '../actions/actions'
+
+import { editFavs } from '../actions/favActions'
 
 import About from './about'
-import Favorites from './favorites'
+import Favorites from '../favorites/favorites'
 
 import './nav.css'
 

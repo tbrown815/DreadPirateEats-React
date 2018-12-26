@@ -1,12 +1,12 @@
 import jwtDecode from 'jwt-decode';
 
-import { REACT_APP_USER_LOGIN_URL, REACT_APP_CREATE_USER_URL } from './config';
+import { REACT_APP_USER_LOGIN_URL, REACT_APP_CREATE_USER_URL } from '../config';
 
-import { storeAuthToken, clearAuthToken, storeUserToken, clearUserToken } from './localStore';
+import { storeAuthToken, clearAuthToken, storeUserToken, clearUserToken } from '../localStore';
 
 require('dotenv').config();
 
-
+/*
 export const FIND_GRUB = 'FIND_GRUB'
 export const findGrub = () => ({
     type: FIND_GRUB
@@ -16,6 +16,7 @@ export const RESTART_APP = 'RESTART_APP'
 export const restartApp = () => ({
     type: RESTART_APP
 })
+*/
 
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS'
 export const logoutSuccess = () => ({
