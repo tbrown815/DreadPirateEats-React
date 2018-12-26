@@ -7,6 +7,7 @@ Add front end options - sign-in or play as guest
 
 Review state params and remove unused
 
+Add Yelp credits
 
 CSS clean-up 
 

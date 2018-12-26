@@ -27,8 +27,10 @@ export function DreadPirate(props) {
           <img src={require('./images/dreadPirate.png')} className='dreadPirateImage' alt='The Dread Pirate himself' />
         </div>
 
-        <DrawBox />
-
+      <br/>
+        <div  >
+          <span className='tempText'>Login to start</span>
+        </div>
       </main>
 
     )
