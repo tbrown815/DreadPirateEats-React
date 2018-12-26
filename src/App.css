@@ -1,4 +1,8 @@
 
+.tempText {
+  margin-left: 47%;
+  margin-right: auto;
+}
 
 .pirateImageSection{
   height: 400px;
@@ -51,5 +55,11 @@ input {
     padding-right: 16%; 
     list-style-type: none;
   }
+
+
+.tempText {
+  margin-left: 35%;
+  margin-right: auto;
+}
 
 }
