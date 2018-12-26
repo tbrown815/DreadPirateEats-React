@@ -1,0 +1,22 @@
+ul, li {
+    list-style-type: none;
+}
+
+li.mapDisplayResults {
+    padding-top: 5px;
+    margin-left: 20%;
+    text-align: left;
+}
+
+input.mapDisplayResults {
+    margin-right: 175px;
+}
+
+.mapDisplayRadio {
+    margin-left: -5%;
+}
+
+.userMessage {
+    color: red;
+    margin-right: 13%;
+}

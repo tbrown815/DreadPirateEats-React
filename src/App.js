@@ -3,16 +3,18 @@ import { connect } from 'react-redux'
 
 import './App.css';
 
-import Nav from './nav'
-import DrawBox from './drawbox';
-import UserLogin from './userLogin';
-import UserSignUp from './userSignUp';
+import Nav from './nav/nav'
+import DrawBox from './drawbox/drawbox';
+import UserLogin from './login_signup/userLogin';
+import UserSignUp from './login_signup/userSignUp';
+import Favorites from './favorites/favorites';
 
-require ('dotenv').config();
+require('dotenv').config();
 
 export function DreadPirate(props) {
-  
+
   console.log('state: ', props)
+
 
   if (props.loggedIn === 0) {
     return (
@@ -22,7 +24,7 @@ export function DreadPirate(props) {
 
         <br />
         <div className='pirateImageSection'>
-          <img src={require('./dreadPirate.png')} className='dreadPirateImage' alt='The Dread Pirate himself' />
+          <img src={require('./images/dreadPirate.png')} className='dreadPirateImage' alt='The Dread Pirate himself' />
         </div>
 
         <DrawBox />
@@ -67,6 +69,7 @@ export function DreadPirate(props) {
   }
 
   if (props.loggedIn === 3) {
+
     return (
       <main>
 
@@ -74,11 +77,27 @@ export function DreadPirate(props) {
 
         <br />
         <div className='pirateImageSection'>
-          <img src={require('./dreadPirate.png')} className='dreadPirateImage' alt='The Dread Pirate himself' />
+          <img src={require('./images/dreadPirate.png')} className='dreadPirateImage' alt='The Dread Pirate himself' />
         </div>
 
         <DrawBox />
-       </main>
+      </main>
+
+    )
+  }
+
+  if (props.loggedIn === 4) {
+    return (
+      <main>
+
+        <Nav />
+
+        <br />
+        <div className='pirateImageSection'>
+          <Favorites />
+        </div>
+
+      </main>
 
     )
   }
@@ -89,7 +108,15 @@ const mapStateToProps = state => ({
   authToken: state.authToken,
   userToken: state.userToken,
   currentUser: state.currentUser,
-  errorMessage: state.errorMessage
+  errorMessage: state.errorMessage,
+  grubJoints: state.grubJoints,
+  publicSort: state.publicSort,
+  madeOffers: state. madeOffers,
+  restart: state.restart,
+  theOffer: state.theOffer,
+  numJoints: state.numJoints,
+  newFavorites: state.newFavorites,
+  userMessage: state.userMessage
 
 })
 

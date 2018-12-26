@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { loginSuccess, signupUser, userLogin, authTokenHandler, cancelState } from './actions';
+import { loginSuccess, signupUser, userLogin, authTokenHandler, cancelState } from '../actions/actions';
 //import { USER_LOGIN_URL } from './config'
 
 import './userLogin.css';
@@ -13,8 +13,20 @@ class UserLogin extends React.Component {
         const username = this.username.value;
         const password = this.password.value;
 
+
         return this.props.dispatch(userLogin(username, password))
     }
+
+    bypassLogin(event) {
+        event.preventDefault();
+
+        const username = 'ricksanchez'
+        const password = 'test9033'
+
+        return this.props.dispatch(userLogin(username, password))
+
+    }
+
     
     signUpScreen(event) {
         event.preventDefault();
@@ -46,7 +58,11 @@ class UserLogin extends React.Component {
                 </form>
                 <p className='joinCrew'>Not a member of the crew?  <span id='signUpButton' className='signUpButton'
                     onClick={event => this.signUpScreen(event)}>[Join Now!]</span></p>
-                <p className='cancel'><button id='cancelButton' className='cancelButton'onClick={event => this.cancel(event)}>Cancel</button></p>                   
+                <p className='cancel'><button id='cancelButton' className='cancelButton'onClick={event => this.cancel(event)}>Cancel</button></p>  
+                <br />
+                <p className='cancel'><button id='cancelButton' className='cancelButton' 
+                    onClick={event => this.bypassLogin(event)}>BYPASS LOGIN</button></p>  
+         
             </div>
 
         )
