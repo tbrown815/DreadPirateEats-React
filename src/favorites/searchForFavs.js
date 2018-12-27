@@ -67,7 +67,7 @@ class SearchFavorites extends React.Component {
                     <span id='errorMessage'>{this.props.errorMessage}</span>
                     <br /><br />
 
-                    <button type='submit' name='submit' id='searchButton' className='searchButton'>Search</button>
+                    <button type='submit' name='submit' id='searchButton' className='searchButton dpe_button'>Search</button>
                 </form>
 
                 <br />
@@ -89,7 +89,7 @@ class SearchFavorites extends React.Component {
                         )}
                     </ul>
                     <br />
-                    <button type='submit' name='submit' id='saveToFavsButton' className='saveToFavsButton'>Save Selected</button>
+                    <button type='submit' name='submit' id='saveToFavsButton' className='saveToFavsButton dpe_button'>Save Selected</button>
                     <br /><br />
 
                 </form>

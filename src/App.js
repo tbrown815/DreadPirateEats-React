@@ -8,15 +8,31 @@ import DrawBox from './drawbox/drawbox';
 import UserLogin from './login_signup/userLogin';
 import UserSignUp from './login_signup/userSignUp';
 import Favorites from './favorites/favorites';
+import GuestUser from './guestUser/guestUser';
+
 
 require('dotenv').config();
 
-export function DreadPirate(props) {
+//export function DreadPirate(props) {
+class DreadPirate extends React.Component {
 
-  console.log('state: ', props)
+  
+  render() {
+    
+    console.log('state: ', this.props)
 
 
-  if (props.loggedIn === 0) {
+/*LOGGEDIN STATE*/
+/*
+1 = User login displayed
+2 = User sign up displayed -> on successful creation state moves to 3
+3 = Valid user is logged in
+4 = User favorites are displayed
+5 = Guest "login"
+6 = User is Guest
+*/
+
+  if (this.props.loggedIn === 0) {
     return (
       <main>
 
@@ -28,15 +44,14 @@ export function DreadPirate(props) {
         </div>
 
       <br/>
-        <div  >
-          <span className='tempText'>Login to start</span>
-        </div>
+      <DrawBox />
+
       </main>
 
     )
   }
 
-  if (props.loggedIn === 1) {
+  if (this.props.loggedIn === 1) {
     return (
       <main>
 
@@ -53,7 +68,7 @@ export function DreadPirate(props) {
     )
   }
 
-  if (props.loggedIn === 2) {
+  if (this.props.loggedIn === 2) {
     return (
       <main>
 
@@ -70,7 +85,7 @@ export function DreadPirate(props) {
     )
   }
 
-  if (props.loggedIn === 3) {
+  if (this.props.loggedIn === 3) {
 
     return (
       <main>
@@ -88,7 +103,7 @@ export function DreadPirate(props) {
     )
   }
 
-  if (props.loggedIn === 4) {
+  if (this.props.loggedIn === 4) {
     return (
       <main>
 
@@ -103,6 +118,39 @@ export function DreadPirate(props) {
 
     )
   }
+
+  if (this.props.loggedIn === 5) {
+    return (
+      <main>
+
+        <Nav />
+
+        <br />
+        <div className='pirateImageSection'>
+          <GuestUser />
+        </div>
+
+      </main>
+
+    )
+  }
+
+  if (this.props.loggedIn === 6) {
+    return (
+      <main>
+
+        <Nav />
+
+        <br />
+        <div className='pirateImageSection'>
+          <DrawBox />
+        </div>
+
+      </main>
+
+    )
+  }
+}
 } //end of export
 
 const mapStateToProps = state => ({
@@ -121,6 +169,16 @@ const mapStateToProps = state => ({
   userMessage: state.userMessage
 
 })
+
+/*LOGGEDIN STATE*/
+/*
+1 = User login displayed
+2 = User sign up displayed -> on successful creation state moves to 3
+3 = Valid user is logged in
+4 = User favorites are displayed
+5 = Guest "login"
+6 = User is Guest
+*/
 
 
 export default connect(mapStateToProps)(DreadPirate)

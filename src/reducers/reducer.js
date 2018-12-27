@@ -10,6 +10,17 @@ import {
 
 import { FIND_GRUB, RESTART_APP } from '../actions/grubActions'
 
+import {GUEST_LOGIN, GUEST_SUCCESS} from '../actions/guestActions'
+
+/*LOGGEDIN STATE*/
+/*
+1 = User login displayed
+2 = User sign up displayed -> on successful creation state moves to 3
+3 = Valid user is logged in
+4 = User favorites are displayed
+5 = Guest "login"
+6 = User is Guest
+*/
 
 const initialState = {
     grubJoints: [],
@@ -83,6 +94,22 @@ export default (state = initialState, action) => {
 
         return Object.assign({}, state, {
             loggedIn: 1
+        })
+    }
+
+    if (action.type === GUEST_LOGIN) {
+        console.log('GUEST_LOGIN')
+
+        return Object.assign({}, state, {
+            loggedIn: 5
+        })
+    }
+
+    if (action.type === GUEST_SUCCESS) {
+        console.log('GUEST_SUCCESS')
+
+        return Object.assign({}, state, {
+            loggedIn: 6
         })
     }
 

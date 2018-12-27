@@ -1,11 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-//import { findGrub, restartApp } from '../actions/actions';
+import { loginUser } from '../actions/actions';
 import { callViewFavs } from '../actions/favActions'
 import { findGrub, restartApp, grubSearch, callRestart } from '../actions/grubActions'
+import { guestLogin } from '../actions/guestActions'
 
 import './drawbox.css'
+
 
 class DrawBox extends React.Component {
 
@@ -149,14 +151,43 @@ class DrawBox extends React.Component {
         this.props.dispatch(callRestart(userToken, authToken))
     }
 
+    loginClick(event) {
+        event.preventDefault();
+
+        this.props.dispatch(loginUser())
+    }
+    
+    continueGuest(event) {
+        event.preventDefault();
+
+        this.props.dispatch(guestLogin())
+    }
+
     render() {
 
+        if (this.props.loggedIn === 0){
+
+            return (
+                <div>
+                    <div  className='homeDecision'>
+                        <button className='drawBoxLoginButton homeDecisionButton dpe_button' onClick={event => this.loginClick(event)}>Login to start</button>
+                        <br/><br/>
+                        <button className='drawBoxGuestButton homeDecisionButton dpe_button' onClick={event => this.continueGuest(event)}>Continue as Guest</button>
+    
+                    </div>
+    
+                </div>
+            )
+    
+        }
+
+    else if(this.props.loggedIn > 0 && this.props.loggedIn < 5) {
         if (!this.props.restart) {
             return (
                 <div>
                     <div className='drawForm'>
                         <form onSubmit={event => this.onDraw(event)}>
-                            <button type='submit' name='submit' id='drawButton' className='drawbutton'>Whar do ye want to eat?</button>
+                            <button type='submit' name='submit' id='drawButton' className='drawbutton dpe_button'>Whar do ye want to eat?</button>
                         </form>
                     </div>
 
@@ -166,7 +197,7 @@ class DrawBox extends React.Component {
 
                         <br />
                         <ul>
-                            {this.props.madeOffers.map(offer => <li className='offerDisplay' >{offer}</li>)}
+                            {this.props.madeOffers.map(offer => <li key={offer} className='offerDisplay' >{offer}</li>)}
                         </ul>
                     </div>
                 </div>
@@ -178,14 +209,14 @@ class DrawBox extends React.Component {
                 <div>
                     <div className='drawForm'>
                         <form onSubmit={event => this.restartApp(event)}>
-                            <button type='submit' name='reset' id='restartButton' className='restartButton'>Restart the game?</button>
+                            <button type='submit' name='reset' id='restartButton' className='restartButton dpe_button'>Restart the game?</button>
                         </form>
                         <br />
                         <div className='hangryTauntSection'>
                                 <span> Ye time is up, walk thee plank! </span>
                             <br />
                             <ul>
-                                {this.props.madeOffers.map(offer => <li className='offerDisplay' >{offer}</li>)}
+                                {this.props.madeOffers.map(offer => <li key={offer} className='offerDisplay' >{offer}</li>)}
                             </ul>
                         </div>
                     </div>
@@ -193,10 +224,38 @@ class DrawBox extends React.Component {
         }
     }
 
-}
+    else if (this.props.loggedIn === 6){
+
+        return (
+            <div>
+                <div className='drawForm'>
+                <span>GUEST</span>
+                    <form onSubmit={event => this.onDraw(event)}>
+                        <button type='submit' name='submit' id='drawButton' className='drawbutton dpe_button'>Whar do ye want to eat?</button>
+                    </form>
+                </div>
+
+                <br />
+                <div className='hangryTauntSection'>
+                    {this.props.hangryTaunt}
+
+                    <br />
+                    <ul>
+                        {this.props.madeOffers.map(offer => <li key={offer} className='offerDisplay' >{offer}</li>)}
+                    </ul>
+                </div>
+            </div>
+        )
+
+    }
+    
+    }//END RENDER
+
+}//END CLASS
 
 
 const mapStateToProps = state => ({
+    loggedIn: state.loggedIn,
     userToken: state.userToken,
     authToken: state.authToken,
     restart: state.restart,

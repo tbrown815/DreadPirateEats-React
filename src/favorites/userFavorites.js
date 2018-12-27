@@ -95,7 +95,7 @@ class UserFavorites extends React.Component {
                             </li>
                         )}
                         <br />
-                        <button type='submit' name='submit' id='editButton' className='editButton'>Edit Favorite</button>
+                        <button type='submit' name='submit' id='editButton' className='editButton dpe_button'>Edit Favorite</button>
                     </form>
 
 
@@ -131,7 +131,7 @@ class UserFavorites extends React.Component {
                         <button type='submit' name='submit' id='editButton' className='editButton'>Save Change</button>
                     </form>
                     <br/>
-                       <button type='cancel' name='cancel' id='editCancelButton' className='editCancelButton'
+                       <button type='cancel' name='cancel' id='editCancelButton' className='editCancelButton dpe_button'
                         onClick={event => this.cancelEditFavCall(event)}>Cancel</button>
 
 

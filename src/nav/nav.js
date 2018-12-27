@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { loginUser, logoutUser, returnToGame } from '../actions/actions'
+import { loginUser, logoutUser, returnToGame, signupUser } from '../actions/actions'
 
 import { editFavs } from '../actions/favActions'
 
@@ -16,6 +16,12 @@ class Nav extends React.Component {
         event.preventDefault();
 
         this.props.dispatch(loginUser())
+    }
+
+    signUpClick(event) {
+        event.preventDefault();
+
+        this.props.dispatch(signupUser())
     }
 
     logoutClick(event) {
@@ -116,7 +122,27 @@ class Nav extends React.Component {
                 </header>
             )
         }
-    }
+
+        if (this.props.loggedIn === 5 || this.props.loggedIn === 6) {
+            return (
+                <header>
+
+                    <nav className='col-12 topNav'>
+                        <h1 className='navTitle'>Dread Pirate Eats</h1>
+                        <ul>
+                            <li><span className='link'><a href='#aboutModal'>[About]</a></span></li>
+                            <li><span className='link' onClick={event => this.signUpClick(event)}>[Join the Crew!]</span></li>
+                            <li><span className='link' onClick={event => this.loginClick(event)}>[LogIn]</span></li>
+                        </ul>
+                    </nav>
+
+                    <About />
+
+                </header>
+            )
+        }
+
+    }//END RENDER
 
 }
 

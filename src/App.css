@@ -1,8 +1,18 @@
 
-.tempText {
+.homeDecisionButton {
+
+}
+
+.drawBoxLoginButton {
   margin-left: 47%;
   margin-right: auto;
 }
+
+.drawBoxGuestButton {
+  margin-left: 46%;
+  margin-right: auto;
+}
+
 
 .pirateImageSection{
   height: 400px;
@@ -57,8 +67,18 @@ input {
   }
 
 
-.tempText {
+.homeDecisionButton {
   margin-left: 35%;
+  margin-right: auto;
+}
+
+.drawBoxLoginButton {
+  margin-left: 35%;
+  margin-right: auto;
+}
+
+.drawBoxGuestButton {
+  margin-left: 31%;
   margin-right: auto;
 }
 
