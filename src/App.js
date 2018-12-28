@@ -13,13 +13,9 @@ import GuestUser from './guestUser/guestUser';
 
 require('dotenv').config();
 
-//export function DreadPirate(props) {
-class DreadPirate extends React.Component {
+export function DreadPirate(props) {
 
-  
-  render() {
-    
-    console.log('state: ', this.props)
+  console.log('state: ', props)
 
 
 /*LOGGEDIN STATE*/
@@ -32,7 +28,7 @@ class DreadPirate extends React.Component {
 6 = User is Guest
 */
 
-  if (this.props.loggedIn === 0) {
+  if (props.loggedIn === 0) {
     return (
       <main>
 
@@ -51,7 +47,7 @@ class DreadPirate extends React.Component {
     )
   }
 
-  if (this.props.loggedIn === 1) {
+  if (props.loggedIn === 1) {
     return (
       <main>
 
@@ -68,7 +64,7 @@ class DreadPirate extends React.Component {
     )
   }
 
-  if (this.props.loggedIn === 2) {
+  if (props.loggedIn === 2) {
     return (
       <main>
 
@@ -85,7 +81,7 @@ class DreadPirate extends React.Component {
     )
   }
 
-  if (this.props.loggedIn === 3) {
+  if (props.loggedIn === 3) {
 
     return (
       <main>
@@ -103,7 +99,7 @@ class DreadPirate extends React.Component {
     )
   }
 
-  if (this.props.loggedIn === 4) {
+  if (props.loggedIn === 4) {
     return (
       <main>
 
@@ -119,7 +115,7 @@ class DreadPirate extends React.Component {
     )
   }
 
-  if (this.props.loggedIn === 5) {
+  if (props.loggedIn === 5) {
     return (
       <main>
 
@@ -138,7 +134,7 @@ class DreadPirate extends React.Component {
     )
   }
 
-  if (this.props.loggedIn === 6) {
+  if (props.loggedIn === 6) {
     return (
       <main>
 
@@ -156,7 +152,6 @@ class DreadPirate extends React.Component {
 
     )
   }
-}
 } //end of export
 
 const mapStateToProps = state => ({
