@@ -21,16 +21,16 @@ class DrawBox extends React.Component {
             this.props.dispatch(callViewFavs(userToken, authToken))
         }
     }
-/*
-    onDraw(event) {
-
-        event.preventDefault();
-
-        console.log('onSubmit this.props.restart', this.props)
-
-        this.props.dispatch(callGrubSelection())
-    }
-*/
+    /*
+        onDraw(event) {
+    
+            event.preventDefault();
+    
+            console.log('onSubmit this.props.restart', this.props)
+    
+            this.props.dispatch(callGrubSelection())
+        }
+    */
 
     searchAgain(event) {
         this.onDraw(event)
@@ -43,99 +43,99 @@ class DrawBox extends React.Component {
 
         console.log('randomVal: ', randomVal)
 
-           
-                let theOffer = this.props.grubJoints[randomVal].resturantName
-        
-                let madeOffers = [...this.props.madeOffers, `${theOffer} `]
-                
-                let numOffers = this.props.madeOffers.length + 1;
-                
-                let hangryTaunt;
-                
-                let restart;
 
-                let updatedGrub = this.props.grubJoints.splice(randomVal, 1)
+        let theOffer = this.props.grubJoints[randomVal]
 
-                let numJoints = this.props.numJoints;
+        let madeOffers = [...this.props.madeOffers, { resturantName: theOffer.resturantName, resturantAlias: `https://www.yelp.com/biz/${theOffer.resturantAlias}` }]
 
-                let userToken = this.props.userToken
-                
-                let authToken = this.props.authToken
+        let numOffers = this.props.madeOffers.length + 1;
 
-                console.log('theOffer: ', theOffer)
+        let hangryTaunt;
 
-                console.log('updatedGrub: ', updatedGrub)
-                
-                console.log('numOffers: ', numOffers)
+        let restart;
 
-                if(numJoints < 5) {
-                if (numOffers < numJoints) {
-                    hangryTaunt = `Draw again ya scoundrel!`
-                    restart = false
-        
-                    this.props.dispatch(grubSearch(hangryTaunt, madeOffers, restart, theOffer, userToken, authToken))
-        
-                }
+        let updatedGrub = this.props.grubJoints.splice(randomVal, 1)
 
-                if (numOffers < numJoints-2) {
-                    hangryTaunt = `Draw again ya scallywag!`
-                    restart = false
-        
-                    this.props.dispatch(grubSearch(hangryTaunt, madeOffers, restart, theOffer, userToken, authToken))
-        
-                }
+        let numJoints = this.props.numJoints;
 
-                if (numOffers === numJoints-1) {
-                    hangryTaunt = `It's yer last stand ya scurvy dog!`
-                    restart = false
-        
-                    this.props.dispatch(grubSearch(hangryTaunt, madeOffers, restart, theOffer, userToken, authToken))
-        
-                }
+        let userToken = this.props.userToken
 
-                if (numOffers === numJoints) {
-                    //hangryTaunt = `It's yer last stand ya scurvy dog!`
-                    restart = true
-        
-                    this.props.dispatch(grubSearch(hangryTaunt, madeOffers, restart, theOffer, userToken, authToken))
-        
-                }
-            }
-            else {
-                if (numOffers < numJoints) {
-                    hangryTaunt = `Draw again ya scoundrel!`
-                    restart = false
-        
-                    this.props.dispatch(grubSearch(hangryTaunt, madeOffers, restart, theOffer, userToken, authToken))
-        
-                }
+        let authToken = this.props.authToken
 
-                if (numOffers === 2) {
-                    hangryTaunt = `Arr ya scallywag, draw again!`
-                    restart = false
-        
-                    this.props.dispatch(grubSearch(hangryTaunt, madeOffers, restart, theOffer, userToken, authToken))
-        
-                }
+        console.log('theOffer: ', theOffer)
 
-                if (numOffers === 3) {
-                    hangryTaunt = `It's yer last stand ya scurvy dog!`
-                    restart = false
-        
-                    this.props.dispatch(grubSearch(hangryTaunt, madeOffers, restart, theOffer, userToken, authToken))
-        
-                }
+        console.log('updatedGrub: ', updatedGrub)
 
-                if (numOffers === 4) {
-                    //hangryTaunt = `It's yer last stand ya scurvy dog!`
-                    restart = true
-        
-                    this.props.dispatch(grubSearch(hangryTaunt, madeOffers, restart, theOffer, userToken, authToken))
-        
-                }
+        console.log('numOffers: ', numOffers)
+
+        if (numJoints < 5) {
+            if (numOffers < numJoints) {
+                hangryTaunt = `Draw again ya scoundrel!`
+                restart = false
+
+                this.props.dispatch(grubSearch(hangryTaunt, madeOffers, restart, theOffer, userToken, authToken))
 
             }
-              
+
+            if (numOffers < numJoints - 2) {
+                hangryTaunt = `Draw again ya scallywag!`
+                restart = false
+
+                this.props.dispatch(grubSearch(hangryTaunt, madeOffers, restart, theOffer, userToken, authToken))
+
+            }
+
+            if (numOffers === numJoints - 1) {
+                hangryTaunt = `It's yer last stand ya scurvy dog!`
+                restart = false
+
+                this.props.dispatch(grubSearch(hangryTaunt, madeOffers, restart, theOffer, userToken, authToken))
+
+            }
+
+            if (numOffers === numJoints) {
+                //hangryTaunt = `It's yer last stand ya scurvy dog!`
+                restart = true
+
+                this.props.dispatch(grubSearch(hangryTaunt, madeOffers, restart, theOffer, userToken, authToken))
+
+            }
+        }
+        else {
+            if (numOffers < numJoints) {
+                hangryTaunt = `Draw again ya scoundrel!`
+                restart = false
+
+                this.props.dispatch(grubSearch(hangryTaunt, madeOffers, restart, theOffer, userToken, authToken))
+
+            }
+
+            if (numOffers === 2) {
+                hangryTaunt = `Arr ya scallywag, draw again!`
+                restart = false
+
+                this.props.dispatch(grubSearch(hangryTaunt, madeOffers, restart, theOffer, userToken, authToken))
+
+            }
+
+            if (numOffers === 3) {
+                hangryTaunt = `It's yer last stand ya scurvy dog!`
+                restart = false
+
+                this.props.dispatch(grubSearch(hangryTaunt, madeOffers, restart, theOffer, userToken, authToken))
+
+            }
+
+            if (numOffers === 4) {
+                //hangryTaunt = `It's yer last stand ya scurvy dog!`
+                restart = true
+
+                this.props.dispatch(grubSearch(hangryTaunt, madeOffers, restart, theOffer, userToken, authToken))
+
+            }
+
+        }
+
     }
 
 
@@ -144,7 +144,7 @@ class DrawBox extends React.Component {
         event.preventDefault();
 
         let userToken = this.props.userToken
-                
+
         let authToken = this.props.authToken
         console.log('restartApp')
 
@@ -156,7 +156,7 @@ class DrawBox extends React.Component {
 
         this.props.dispatch(loginUser())
     }
-    
+
     continueGuest(event) {
         event.preventDefault();
 
@@ -165,90 +165,71 @@ class DrawBox extends React.Component {
 
     render() {
 
-        if (this.props.loggedIn === 0){
+        if (this.props.loggedIn === 0) {
 
             return (
                 <div>
-                    <div  className='homeDecision'>
+                    <div className='homeDecision'>
                         <button className='drawBoxLoginButton homeDecisionButton dpe_button' onClick={event => this.loginClick(event)}>Login to start</button>
-                        <br/><br/>
+                        <br /><br />
                         <button className='drawBoxGuestButton homeDecisionButton dpe_button' onClick={event => this.continueGuest(event)}>Continue as Guest</button>
-    
+
                     </div>
-    
+
                 </div>
             )
-    
+
         }
 
-    else if(this.props.loggedIn > 0 && this.props.loggedIn < 5) {
-        if (!this.props.restart) {
-            return (
-                <div>
-                    <div className='drawForm'>
-                        <form onSubmit={event => this.onDraw(event)}>
-                            <button type='submit' name='submit' id='drawButton' className='drawbutton dpe_button'>Whar do ye want to eat?</button>
-                        </form>
-                    </div>
+            if (!this.props.restart) {
+                return (
+                    <div>
+                        <div className='drawForm'>
+                            <form onSubmit={event => this.onDraw(event)}>
+                                <button type='submit' name='submit' id='drawButton' className='drawbutton dpe_button'>Whar do ye want to eat?</button>
+                            </form>
+                        </div>
 
-                    <br />
-                    <div className='hangryTauntSection'>
-                        {this.props.hangryTaunt}
-
-                        <br />
-                        <ul>
-                            {this.props.madeOffers.map(offer => <li key={offer} className='offerDisplay' >{offer}</li>)}
-                        </ul>
-                    </div>
-                </div>
-            )
-        }
-
-        if (this.props.restart) {
-            return (
-                <div>
-                    <div className='drawForm'>
-                        <form onSubmit={event => this.restartApp(event)}>
-                            <button type='submit' name='reset' id='restartButton' className='restartButton dpe_button'>Restart the game?</button>
-                        </form>
                         <br />
                         <div className='hangryTauntSection'>
-                                <span> Ye time is up, walk thee plank! </span>
+                            {this.props.hangryTaunt}
+
                             <br />
                             <ul>
-                                {this.props.madeOffers.map(offer => <li key={offer} className='offerDisplay' >{offer}</li>)}
+                                {this.props.madeOffers.map(offer => 
+                                <li key={offer.resturantName} className='offerDisplay' >
+                                    <a href={offer.resturantAlias} target='_blank'>{offer.resturantName}</a>
+                                </li>
+                                )}
                             </ul>
                         </div>
                     </div>
-                </div>)
-        }
-    }
+                )
+            }
 
-    else if (this.props.loggedIn === 6){
+            if (this.props.restart) {
+                return (
+                    <div>
+                        <div className='drawForm'>
+                            <form onSubmit={event => this.restartApp(event)}>
+                                <button type='submit' name='reset' id='restartButton' className='restartButton dpe_button'>Restart the game?</button>
+                            </form>
+                            <br />
+                            <div className='hangryTauntSection'>
+                                <span> Ye time is up, walk thee plank! </span>
+                                <br />
+                                <ul>
+                                {this.props.madeOffers.map(offer => 
+                                <li key={offer.resturantName} className='offerDisplay' >
+                                    <a href={offer.resturantAlias} target='_blank'>{offer.resturantName}</a>
+                                </li>
+                                )}
+                            </ul>
+                            </div>
+                        </div>
+                    </div>)
+            }
 
-        return (
-            <div>
-                <div className='drawForm'>
-                <span>GUEST</span>
-                    <form onSubmit={event => this.onDraw(event)}>
-                        <button type='submit' name='submit' id='drawButton' className='drawbutton dpe_button'>Whar do ye want to eat?</button>
-                    </form>
-                </div>
-
-                <br />
-                <div className='hangryTauntSection'>
-                    {this.props.hangryTaunt}
-
-                    <br />
-                    <ul>
-                        {this.props.madeOffers.map(offer => <li key={offer} className='offerDisplay' >{offer}</li>)}
-                    </ul>
-                </div>
-            </div>
-        )
-
-    }
-    
     }//END RENDER
 
 }//END CLASS
@@ -262,7 +243,7 @@ const mapStateToProps = state => ({
     hangryTaunt: state.hangryTaunt,
     madeOffers: state.madeOffers,
     publicSort: state.publicSort,
-    randomCheck: state.randomCheck, 
+    randomCheck: state.randomCheck,
     theOffer: state.theOffer,
     grubJoints: state.grubJoints,
     numJoints: state.numJoints

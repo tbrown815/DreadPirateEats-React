@@ -1,8 +1,10 @@
 import jwtDecode from 'jwt-decode';
 
-import { REACT_APP_USER_LOGIN_URL, REACT_APP_CREATE_USER_URL } from '../config';
+import { REACT_APP_USER_LOGIN_URL, REACT_APP_CREATE_USER_URL, REACT_APP_FAV_SEARCH_DETAIL_URL} from '../config';
 
 import { storeAuthToken, clearAuthToken, storeUserToken, clearUserToken } from '../localStore';
+
+import {noFavsError} from './favActions'
 
 require('dotenv').config();
 
@@ -12,10 +14,17 @@ export const guestLogin = () => ({
 })
 
 export const GUEST_SUCCESS = 'GUEST_SUCCESS'
-export const guestSuccess = () => ({
-    type: GUEST_SUCCESS
+export const guestSuccess = (guestFavState, publicNumJoints) => ({
+    type: GUEST_SUCCESS,
+    guestFavState,
+    publicNumJoints
 })
 
+export const GUEST_RESET = 'GUEST_RESET'
+export const resetGuestState = authToken => ({
+    type: GUEST_RESET,
+    
+})
 export const ERROR_STATE = 'ERROR_STATE'
 export const setErrorState = errorMessage => ({
     type: ERROR_STATE,
@@ -28,11 +37,20 @@ export const setAuthToken = authToken => ({
     authToken
 })
 
+export const GUEST_FIND_GRUB = 'GUEST_FIND_GRUB'
+export const publicFindGrub = (publicHangryTaunt, publicMadeOffers, publicRestart, publicTheOffer) => ({
+    type: GUEST_FIND_GRUB,
+    publicHangryTaunt: publicHangryTaunt, 
+    publicMadeOffers: publicMadeOffers, 
+    publicRestart: publicRestart, 
+    publicTheOffer: publicTheOffer
+    
+})
 
 
-export const guestLoginCall = (username, password, userLocation) => dispatch => {
-    console.log('username: ', username)
-    console.log('password: ', password)
+export const guestLoginCall = (userLocation, sortForPub) => dispatch => {
+   // console.log('username: ', username)
+    //console.log('password: ', password)
 
     if (userLocation === undefined || userLocation === null || userLocation === '') {
 
@@ -40,41 +58,70 @@ export const guestLoginCall = (username, password, userLocation) => dispatch => 
     }
 
     else {
-        return fetch(`${REACT_APP_USER_LOGIN_URL}`, {
+
+        //Will need to create action that is cross of callViewFavs and performYelpCall
+            //call performYelpCall, then callViewFavs to store returned values to state
+        let resturantZip = userLocation;
+        let publicSort = sortForPub;
+        let resturantName = ''
+
+        return fetch(`${REACT_APP_FAV_SEARCH_DETAIL_URL}`, {
             method: 'POST',
-            body: JSON.stringify({ username, password }),
-            headers: { 'Content-Type': 'application/json' }
+            body: JSON.stringify({resturantZip, publicSort, resturantName}),
+            headers: {'Content-Type': 'application/json'}
         })
-            .then(res => res.json())
-            .then(({ authToken }) => setTokenHandler(authToken, dispatch, userLocation))
-            .catch(err => {
-
-                dispatch(setErrorState('Unable to authorize access! Please try again.'))
-
-            })
-    }
-
-}   // END USERLOGIN
-
-const getGrubJoints = (userLocation) => dispatch => {
-    dispatch(setErrorState('getGrubJoints'))
+        .then(res => res.json())
+        .then(({businesses}) => mapResultsHandler(businesses, dispatch))            
+  }
     
-    //Will need to create action that is cross of callViewFavs and performYelpCall
-        //call performYelpCall, then callViewFavs to store returned values to state
-    
-    
-    dispatch(guestSuccess())
-    
+}   // END guestLoginCall
 
+const mapResultsHandler = (businesses, dispatch) => {
+    
+    console.log('businesses: ', businesses)
+
+    let results = businesses.map(business => ({resturantYelpId: business.id, url: business.url, resturantName: business.name,
+            address: business.location.address1, city: business.location.city, cost: business.price, resturantAlias: business.alias}))
+
+    let guestFavs = [];
+    
+    let loopLength;
+
+
+        if(businesses.length < 1) {
+            let userMessage = '0 Results - Please refine your search'
+
+            dispatch(noFavsError(userMessage))
+
+        }
+
+        else if (businesses.length > 6) {
+             loopLength = businesses.length;
+        }
+
+      for (let i=0; i < loopLength; i++) {
+
+        guestFavs = [...guestFavs, results[i]]
+
+        }
+      
+        dispatch(saveGuestFavs(guestFavs))
+}// END mapRESULTS
+
+const saveGuestFavs = (guestFavs) => dispatch => {
+
+    
+    let guestFavState = guestFavs.map(guestFav => ({resturantName: guestFav.resturantName, address: guestFav.address, city: guestFav.city, url: guestFav.url}))
+    
+    let publicNumJoints = guestFavState.length
+    console.log('guestFavState: ', guestFavState)
+
+    dispatch(guestSuccess(guestFavState, publicNumJoints))
 }
 
-const setTokenHandler = (authToken, dispatch, userLocation) => {
-    console.log('setToken: ', authToken)
-    const decodedToken = jwtDecode(authToken)
-    dispatch(setAuthToken(authToken))
-    dispatch(setErrorState('Login successful, please standby.'))
-    dispatch(guestLogin(decodedToken.user))
-    dispatch(getGrubJoints(userLocation, dispatch))
-    storeAuthToken(authToken)
-    storeUserToken(decodedToken.user.id)
-};
+export const publicGrubSearch = (publicHangryTaunt, publicMadeOffers, publicRestart, publicTheOffer) => dispatch => {
+    console.log('publicGrubSearch CALLED')
+
+    dispatch(publicFindGrub(publicHangryTaunt, publicMadeOffers, publicRestart, publicTheOffer))
+}
+

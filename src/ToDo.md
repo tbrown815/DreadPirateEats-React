@@ -1,10 +1,5 @@
 
 
-Front-
-Add front end options - sign-in or play as guest
-    setup guest mode - call API w/ some random values for search order and return
-
-
 Review state params and remove unused
 
 Clean up console.logs, commented code, 
@@ -14,6 +9,8 @@ No Favs message didn't display in Prod.
 Add Yelp credits
 
 CSS clean-up 
+
+SHIFT+CTRL+I on all docs
 
 Accessibility
 
@@ -58,6 +55,17 @@ Add code to prevent repeat offers
 
 Add messaging when no results returned for search
 
+
+
+Front-
+Add front end options - sign-in or play as guest
+    setup guest mode - call API w/ some random values for search order and return
+
+
+
+
+
+    
 
 -==Public==-
 Nav bar - [Login, Restart, Sign-Up, About]

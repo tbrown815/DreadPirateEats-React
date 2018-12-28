@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { guestLoginCall } from '../actions/guestActions';
-import { callViewFavs } from '../actions/favActions'
+import { guestLoginCall, publicGrubSearch, resetGuestState } from '../actions/guestActions';
+import { cancelState } from '../actions/actions'
 
 import './guestUser.css'
 
@@ -12,52 +12,238 @@ class GuestUser extends React.Component {
     guestLogin(event) {
         event.preventDefault();
 
-        const userLocation = this.userLoc.value
-        const username = 'ricksanchez'
-        const password = 'test9033'
+        let randomVal = Math.floor(Math.random() * parseInt(this.props.publicSort.length)) + 0;
+        let sortForPub = this.props.publicSort[randomVal]
 
-        return this.props.dispatch(guestLoginCall(username, password, userLocation))
+        console.log('sortForPub: ', sortForPub)
+
+        const userLocation = this.userLoc.value
+
+        return this.props.dispatch(guestLoginCall(userLocation, sortForPub))
+
+    }
+
+    guestReset(event) {
+        event.preventDefault();
+
+        return this.props.dispatch(resetGuestState())
+    }
+
+
+    cancel(event) {
+        event.preventDefault();
+
+        this.props.dispatch(cancelState())
+    }
+
+    guestDraw(event) {
+        event.preventDefault();
+
+        let randomVal = Math.floor(Math.random() * parseInt(this.props.publicJoints.length)) + 0;
+
+        console.log('randomVal: ', randomVal)
+
+
+        let publicTheOffer = this.props.publicJoints[randomVal]
+
+        let publicMadeOffers = [...this.props.publicMadeOffers, { resturantName: publicTheOffer.resturantName, url: publicTheOffer.url }]
+
+        let publicDrawCount = this.props.publicMadeOffers.length + 1;
+
+        let publicHangryTaunt;
+
+        let publicRestart;
+
+        let updatedGrub = this.props.publicJoints.splice(randomVal, 1)
+
+        let publicNumJoints = this.props.publicNumJoints;
+
+        console.log('publicTheOffer: ', publicTheOffer)
+
+        console.log('updatedGrub: ', updatedGrub)
+
+        console.log('publicDrawCount: ', publicDrawCount)
+
+        if (publicNumJoints < 5) {
+            console.log('publicNumJoints < 5: ', publicNumJoints)
+            if (publicDrawCount < publicNumJoints) {
+                publicHangryTaunt = `Draw again ya scoundrel!`
+                publicRestart = false
+
+                this.props.dispatch(publicGrubSearch(publicHangryTaunt, publicMadeOffers, publicRestart, publicTheOffer))
+
+            }
+
+            if (publicDrawCount < publicNumJoints - 2) {
+                publicHangryTaunt = `Draw again ya scallywag!`
+                publicRestart = false
+
+                this.props.dispatch(publicGrubSearch(publicHangryTaunt, publicMadeOffers, publicRestart, publicTheOffer))
+
+            }
+
+            if (publicDrawCount === publicNumJoints - 1) {
+                publicHangryTaunt = `It's yer last stand ya scurvy dog!`
+                publicRestart = false
+
+                this.props.dispatch(publicGrubSearch(publicHangryTaunt, publicMadeOffers, publicRestart, publicTheOffer))
+
+            }
+
+            if (publicDrawCount === publicNumJoints) {
+                //publicHangryTaunt = `It's yer last stand ya scurvy dog!`
+                publicRestart = true
+
+                this.props.dispatch(publicGrubSearch(publicHangryTaunt, publicMadeOffers, publicRestart, publicTheOffer))
+
+            }
+        }
+        else {
+            console.log('publicNumJoints >= 5: ', publicNumJoints)
+
+            if (publicDrawCount < publicNumJoints) {
+                publicHangryTaunt = `Draw again ya scoundrel!`
+                publicRestart = false
+
+                this.props.dispatch(publicGrubSearch(publicHangryTaunt, publicMadeOffers, publicRestart, publicTheOffer))
+
+            }
+
+            if (publicDrawCount === 2) {
+                publicHangryTaunt = `Arr ya scallywag, draw again!`
+                publicRestart = false
+
+                this.props.dispatch(publicGrubSearch(publicHangryTaunt, publicMadeOffers, publicRestart, publicTheOffer))
+
+            }
+
+            if (publicDrawCount === 3) {
+                publicHangryTaunt = `It's yer last stand ya scurvy dog!`
+                publicRestart = false
+
+                this.props.dispatch(publicGrubSearch(publicHangryTaunt, publicMadeOffers, publicRestart, publicTheOffer))
+
+            }
+
+            if (publicDrawCount === 4) {
+                //publicHangryTaunt = `It's yer last stand ya scurvy dog!`
+                publicRestart = true
+
+                this.props.dispatch(publicGrubSearch(publicHangryTaunt, publicMadeOffers, publicRestart, publicTheOffer))
+
+            }
+
+        }
 
     }
 
     render() {
 
-        return (
+        if (this.props.loggedIn < 6) {
 
-            <div className='pirateImageSection'>
-                <h2 className='loginTitle'>Login to Dread Pirate Eats!</h2>
-                <form className='logInForm' onSubmit={event => this.guestLogin(event)}>
-                    <p>Enter your location (City or Zip):</p>
-                    <input type='text' ref={userLoc => (this.userLoc = userLoc)} />
+            return (
+
+                <div className='pirateImageSection'>
+                    <h2 className='loginTitle'>Ye be a vistor aboard me ship!</h2>
+                    <form className='logInForm' onSubmit={event => this.guestLogin(event)}>
+                        <p>Enter your location (City or Zip):</p>
+                        <input type='text' ref={userLoc => (this.userLoc = userLoc)} />
+                        <br />
+                        <span id='errorMessage'>{this.props.errorMessage}</span>
+                        <br />
+                        <button type='submit' name='submit' id='logInButton' className='logInButton'>Play as Guest</button>
+                    </form>
+                    <p className='cancel'><button id='cancelButton' className='cancelButton'onClick={event => this.cancel(event)}>Cancel</button></p>  
                     <br /><br />
-                    <span id='errorMessage'>{this.props.errorMessage}</span>
-                    <br /><br />
-                    <button type='submit' name='submit' id='logInButton' className='logInButton'>Play as Guest</button>
-                </form>
-                <p className='joinCrew'>Want to join the crew?  <span id='signUpButton' className='signUpButton'
-                    onClick={event => this.signUpScreen(event)}>[Join Now!]</span></p>
-                <p className='cancel'><button id='cancelButton' className='cancelButton'onClick={event => this.cancel(event)}>Cancel</button></p>  
 
-         
-            </div>
+                </div>
 
-        )
+            )
+        }
+
+        if (this.props.loggedIn === 6) {
+
+            if (!this.props.publicRestart) {
+                return (
+                    <div>
+                        <div className='drawForm'>
+                            <form onSubmit={event => this.guestDraw(event)}>
+                                <button type='submit' name='submit' id='drawButton' className='drawbutton dpe_button'>Whar do ye want to eat?</button>
+                            </form>
+                        </div>
+
+
+                        <div className='publicHangryTauntSection'>
+                            {this.props.noFavsMessage}
+                            <br />
+                            {this.props.publicHangryTaunt}
+
+                            <br />
+                            <ul>
+                                {this.props.publicMadeOffers.map(offer =>
+                                    <li key={offer.resturantName} className='offerDisplay' >
+                                        <a href={offer.url} target='_blank'>{offer.resturantName}</a>
+                                    </li>
+                                )}
+                            </ul>
+                        </div>
+                    </div>
+                )
+            }
+
+            if (this.props.publicRestart) {
+                return (
+                    <div>
+                        <div className='drawForm'>
+                            <form onSubmit={event => this.guestReset(event)}>
+                                <button type='submit' name='reset' id='restartButton' className='restartButton dpe_button'>Restart the game?</button>
+                            </form>
+                            <p className='cancel'><button id='cancelButton' className='cancelButton'onClick={event => this.cancel(event)}>Cancel</button></p>  
+
+                        </div>
+
+
+                        <div className='publicHangryTauntSection'>
+                            <br />
+                            <span> Ye time is up, walk thee plank! </span>
+
+                            <br />
+                            <ul>
+                                {this.props.publicMadeOffers.map(offer =>
+                                    <li key={offer.resturantName} className='offerDisplay' >
+                                        <a href={offer.url} target='_blank'>{offer.resturantName}</a>
+                                    </li>
+                                )}
+                            </ul>
+                        </div>
+                    </div>
+                )
+
+            }
+
+
+
+        }
     }
 
 }
 
 const mapStateToProps = state => ({
-    userToken: state.userToken,
-    authToken: state.authToken,
+    loggedIn: state.loggedIn,
     restart: state.restart,
-    hangryTaunt: state.hangryTaunt,
-    madeOffers: state.madeOffers,
+    publicHangryTaunt: state.publicHangryTaunt,
+    randomCheck: state.randomCheck,
     publicSort: state.publicSort,
-    randomCheck: state.randomCheck, 
-    theOffer: state.theOffer,
-    grubJoints: state.grubJoints,
-    numJoints: state.numJoints
+    publicJoints: state.publicJoints,
+    publicNumJoints: state.publicNumJoints,
+    publicMadeOffers: state.publicMadeOffers,
+    publicTheOffer: state.publicTheOffer,
+    publicRestart: state.publicRestart,
+    publicDrawCount: state.publicDrawCount,
+    noFavsMessage: state.noFavsMessage
 })
+
+//noFavsMessage
 
 
 export default connect(mapStateToProps)(GuestUser)

@@ -84,7 +84,7 @@ class SearchFavorites extends React.Component {
                                 <input type='radio' className='mapDisplayRadio' name='mapDisplayRadio' value={data.resturantYelpId}
                                     onChange={event => this.changeSelectedFavState(event)} />
                                 <a href={data.url} target='_blank'>{data.resturantName}:</a>
-                                <br /> {data.address}, {data.city} | {data.cost}
+                                <br /> {data.address}, {data.city}
                             </li>
                         )}
                     </ul>

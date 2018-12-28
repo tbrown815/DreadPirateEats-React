@@ -127,6 +127,9 @@ class DreadPirate extends React.Component {
 
         <br />
         <div className='pirateImageSection'>
+          <img src={require('./images/dreadPirate.png')} className='dreadPirateImage' alt='The Dread Pirate himself' />
+        </div>
+        <div className='pirateImageSection'>
           <GuestUser />
         </div>
 
@@ -140,10 +143,13 @@ class DreadPirate extends React.Component {
       <main>
 
         <Nav />
-
         <br />
         <div className='pirateImageSection'>
-          <DrawBox />
+          <img src={require('./images/dreadPirate.png')} className='dreadPirateImage' alt='The Dread Pirate himself' />
+        </div>
+
+        <div className='pirateImageSection'>
+          <GuestUser />
         </div>
 
       </main>
@@ -166,7 +172,17 @@ const mapStateToProps = state => ({
   theOffer: state.theOffer,
   numJoints: state.numJoints,
   newFavorites: state.newFavorites,
-  userMessage: state.userMessage
+  userMessage: state.userMessage,
+  publicHangryTaunt: state.publicHangryTaunt,
+  randomCheck: state.randomCheck,
+  publicSort: state.publicSort,
+  publicJoints: state.publicJoints,
+  publicNumJoints: state.publicNumJoints,
+  publicMadeOffers: state.publicMadeOffers,
+  publicTheOffer: state.publicTheOffer,
+  publicRestart: state.publicRestart,
+  publicDrawCount: state.publicDrawCount,
+  noFavsMessage: state.noFavsMessage
 
 })
 

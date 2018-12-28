@@ -8,14 +8,6 @@ import {storeAuthToken, clearAuthToken, storeUserToken, clearUserToken} from '..
 
 require ('dotenv').config();
 
-/*
-export const VIEW_FAVS = 'VIEW_FAVS'
-export const viewFavs = (displayFavs) => ({
-    type: VIEW_FAVS,
-    displayFavs
-})
-*/
-
 export const FIND_GRUB = 'FIND_GRUB'
 export const findGrub = (hangryTaunt, madeOffers, restart, theOffer) => ({
     type: FIND_GRUB,
@@ -33,6 +25,7 @@ export const restartApp = () => ({
 
 
 export const grubSearch = (hangryTaunt, madeOffers, restart, theOffer, userToken, authToken) => dispatch => {
+    console.log('grubSearch CALLED')
 
         dispatch(findGrub(hangryTaunt, madeOffers, restart, theOffer))
 }

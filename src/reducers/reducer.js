@@ -10,7 +10,7 @@ import {
 
 import { FIND_GRUB, RESTART_APP } from '../actions/grubActions'
 
-import {GUEST_LOGIN, GUEST_SUCCESS} from '../actions/guestActions'
+import {GUEST_LOGIN, GUEST_SUCCESS, GUEST_FIND_GRUB, GUEST_RESET} from '../actions/guestActions'
 
 /*LOGGEDIN STATE*/
 /*
@@ -28,8 +28,6 @@ const initialState = {
     madeOffers: [],
     theOffer: '',
     hangryTaunt: 'Click ta draw ya scallywag!',
-    publicSort: ['rating', 'review_count', 'distance'],
-    gameOn: true,
     randomCheck: ['x'],
     restart: false,
     loggedIn: 0,
@@ -44,7 +42,16 @@ const initialState = {
     currentUser: null,
     errorMessage: null,
     noFavsMessage: null,
-    userMessage: null
+    userMessage: null,
+    publicJoints: [],
+    publicNumJoints: 0,
+    publicMadeOffers: [],
+    publicTheOffer: '',
+    publicSort: ['rating', 'review_count', 'distance'],
+    publicRestart: false,
+    publicDrawCount: 0,
+    publicHangryTaunt: 'Click ta draw ya scallywag!'
+
 }
 
 export default (state = initialState, action) => {
@@ -109,10 +116,35 @@ export default (state = initialState, action) => {
         console.log('GUEST_SUCCESS')
 
         return Object.assign({}, state, {
-            loggedIn: 6
+            loggedIn: 6,
+            publicJoints: action.guestFavState,
+            noFavsMessage: null,
+            publicNumJoints: action.publicNumJoints,
+            publicMadeOffers: [],
+            publicTheOffer: '',
+            randomCheck: ['x'],
+            publicHangryTaunt: 'Click ta draw ya scallywag!',
+            publicRestart: false,
+            publicDrawCount: 0            
         })
     }
 
+    if (action.type === GUEST_RESET) {
+        console.log('GUEST_RESET')
+
+        return Object.assign({}, state, {
+            loggedIn: 5,
+            publicJoints: action.guestFavState,
+            noFavsMessage: null,
+            publicNumJoints: action.publicNumJoints,
+            publicMadeOffers: [],
+            publicTheOffer: '',
+            randomCheck: ['x'],
+            publicHangryTaunt: 'Click ta draw ya scallywag!',
+            publicRestart: false,
+            publicDrawCount: 0            
+        })
+    }
     if (action.type === SIGNUP_USER) {
         console.log('SIGNUP_USER')
 
@@ -178,7 +210,6 @@ export default (state = initialState, action) => {
             theOffer: '',
             randomCheck: ['x'],
             hangryTaunt: 'Click ta draw ya scallywag!',
-            gameOn: true,
             restart: false,
             newFavorites: []
         })
@@ -281,9 +312,20 @@ export default (state = initialState, action) => {
             hangryTaunt: action.hangryTaunt,
             madeOffers: action.madeOffers,
             restart: action.restart, 
-            randomCheck: action.randomCheck        })
+            randomCheck: action.randomCheck        
+        })
     }
 
+    if (action.type === GUEST_FIND_GRUB) {
+        console.log('GUEST_FIND_GRUB')
+
+        return Object.assign({}, state, {
+            publicHangryTaunt: action.publicHangryTaunt, 
+            publicMadeOffers: action.publicMadeOffers, 
+            publicRestart: action.publicRestart, 
+            publicTheOffer: action.publicTheOffer      
+        })
+    }
     return state;
 
 } //end of export
