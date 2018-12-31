@@ -1,33 +1,62 @@
 import React from 'react';
+import { connect } from 'react-redux'
+import { cancelAbout } from '../actions/actions'
 
-import './nav.css';
+import './about.css';
 
-export default function About(props) {
+class About extends React.Component {
 
-    return (
+    clickReturn(event) {
+        event.preventDefault();
+        
+        let oldLoginState = this.props.prevLoggedIn;
 
-        <div id='aboutModal' className='modal modalContent'>
-            <div>
-                <a href='#close' title='Close' className='close'>X</a>
-                <h2 className='modalTitle'>About Dread Pirate Eats!</h2>
-                <h4>How to play the Dread Pirate Eats game-</h4>
-                <br />
-                <ol>
-                    <li>Click the button to draw a resturant.</li>
-                    <li>You receive 3 initial selections to choose from.</li>
-                    <li>Your 4th selection is your "Last Stand", this is your final selection and if used is the option you must choose.</li>
-                </ol>
-                <h4>History of the Dread Pirate Eats-</h4>
-                <p>The Dread Pirate Eats game started around 2009.  My wife and I found that either neither of us cared where we went
-to eat OR one of us was feeling too picky with the others' suggestions.  Out of this issue the Dread Pirate Eats was born! <br />
-                    We wrote the names down of our favorite and new resturants on pieces of paper, loaded them into an old pirate cookie jar, and
-                    created the rules for the game.  Now the Dread Pirate Eats gets a digital upgrade!
-</p>
-                <div className='origDPEBox'>
-                    <h4>The original Dread Pirate Eats!</h4>
-                    <img src={require('../images/origDPE.jpg')} alt='the original dread pirate eats' className='origDPE' />
+        this.props.dispatch(cancelAbout(oldLoginState))
+    }
+
+
+    render() {
+        return (
+
+            <div id='odpe_about' className='odpe_about'>
+                <div >
+                    <h2 role='banner' className='aboutTitle'>About Dread Pirate Eats!</h2>
+                    <h4>How to play the Dread Pirate Eats game-</h4>
+
+                    <ul role='list' className='dpeList'>
+                        <li role='listitem' className='dpeListItem'>Click the button to draw a resturant.</li>
+                        <li role='listitem' className='dpeListItem'>You receive 3 initial selections to choose from.</li>
+                        <li role='listitem' className='dpeListItem'>Your 4th selection is your "Last Stand", this is your final selection and if used is the option you must choose.</li>
+                    </ul>
+                    <h4 role='banner' className='aboutTitle'>History of the Dread Pirate Eats-</h4>
+                    <p role='contentinfo' className='dpeInfo'>
+                        <ul role='list' className='dpeList'>
+                        <li className='dpeInfoItem'>The Dread Pirate Eats game started around 2009.  My wife and I found that either neither of us cared where we went
+                        to eat OR one of us was feeling too picky with the others' suggestions.  Out of this issue the Dread Pirate Eats was born!</li>
+                        <br /><br />
+                        <li className='dpeInfoItem'>We wrote the names down of our favorite and new resturants on pieces of paper, loaded them into an old pirate cookie jar, and
+                        created the rules for the game.  Now the Dread Pirate Eats gets a digital upgrade!</li>
+
+                        </ul>            
+                        </p>
+                    <div className='origDPEBox'>
+                        <h4 role='banner'>The original Dread Pirate Eats!</h4>
+                        <img src={require('../images/origDPE.jpg')} alt='the original dread pirate eats' className='origDPE' />
+                    </div>
                 </div>
+                <p className='returnButton'><button id='returnButton' className='returnButton' onClick={event => this.clickReturn(event)}>Return</button></p>
             </div>
-        </div>
-    )
+        )
+    }
 }
+
+
+
+
+const mapStateToProps = state => ({
+    loggedIn: state.loggedIn,
+    prevLoggedIn: state.prevLoggedIn
+})
+
+
+export default connect(mapStateToProps)(About)

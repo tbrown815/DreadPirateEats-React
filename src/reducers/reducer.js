@@ -1,6 +1,6 @@
 import {
-    LOGIN_USER, LOGOUT_SUCCESS, SIGNUP_USER, RETURN_TO_GAME,
-    CREATE_NEW_USER, LOGIN_SUCCESS, SET_AUTH_TOKEN, ERROR_STATE, CANCEL_STATE
+    LOGIN_USER, LOGOUT_SUCCESS, SIGNUP_USER, RETURN_TO_GAME, DISPLAY_ABOUT, CANCEL_ABOUT,
+    LOGIN_SUCCESS, SET_AUTH_TOKEN, ERROR_STATE, CANCEL_STATE
 } from '../actions/actions'
 
 import {
@@ -8,9 +8,9 @@ import {
     NO_FAVS, EDIT_FAVS_STATE, CANCEL_EDIT_FAVS
 } from '../actions/favActions'
 
-import { FIND_GRUB, RESTART_APP } from '../actions/grubActions'
+import { FIND_GRUB } from '../actions/grubActions'
 
-import {GUEST_LOGIN, GUEST_SUCCESS, GUEST_FIND_GRUB, GUEST_RESET} from '../actions/guestActions'
+import { GUEST_LOGIN, GUEST_SUCCESS, GUEST_FIND_GRUB, GUEST_RESET } from '../actions/guestActions'
 
 /*LOGGEDIN STATE*/
 /*
@@ -20,6 +20,7 @@ import {GUEST_LOGIN, GUEST_SUCCESS, GUEST_FIND_GRUB, GUEST_RESET} from '../actio
 4 = User favorites are displayed
 5 = Guest "login"
 6 = User is Guest
+7 = Display About
 */
 
 const initialState = {
@@ -43,6 +44,7 @@ const initialState = {
     errorMessage: null,
     noFavsMessage: null,
     userMessage: null,
+    prevLoggedIn: 0,
     publicJoints: [],
     publicNumJoints: 0,
     publicMadeOffers: [],
@@ -57,19 +59,19 @@ const initialState = {
 export default (state = initialState, action) => {
 
     //NO LONGER USED COULD DELETE
- /* 
-    if (action.type === RESTART_APP) {
-        return Object.assign({}, state, {
-            madeOffers: [],
-            theOffer: '',
-            randomCheck: ['x'],
-            hangryTaunt: 'Click ta draw ya scallywag!',
-            gameOn: true,
-            restart: false,
-            newFavorites: null
-        })
-    }
-*/
+    /* 
+       if (action.type === RESTART_APP) {
+           return Object.assign({}, state, {
+               madeOffers: [],
+               theOffer: '',
+               randomCheck: ['x'],
+               hangryTaunt: 'Click ta draw ya scallywag!',
+               gameOn: true,
+               restart: false,
+               newFavorites: null
+           })
+       }
+   */
     if (action.type === LOGOUT_SUCCESS) {
         console.log('LOGOUT_SUCCESS')
         return Object.assign({}, state, {
@@ -82,6 +84,7 @@ export default (state = initialState, action) => {
             hangryTaunt: 'Click ta draw ya scallywag!',
             publicSort: ['rating', 'review_count', 'distance'],
             loggedIn: 0,
+            prevLoggedIn: 0,
             favState: 0,
             editFavState: 0,
             newFavorites: [],
@@ -117,6 +120,7 @@ export default (state = initialState, action) => {
 
         return Object.assign({}, state, {
             loggedIn: 6,
+            prevLoggedIn: 0,
             publicJoints: action.guestFavState,
             noFavsMessage: null,
             publicNumJoints: action.publicNumJoints,
@@ -125,7 +129,7 @@ export default (state = initialState, action) => {
             randomCheck: ['x'],
             publicHangryTaunt: 'Click ta draw ya scallywag!',
             publicRestart: false,
-            publicDrawCount: 0            
+            publicDrawCount: 0
         })
     }
 
@@ -134,6 +138,7 @@ export default (state = initialState, action) => {
 
         return Object.assign({}, state, {
             loggedIn: 5,
+            prevLoggedIn: 0,
             publicJoints: action.guestFavState,
             noFavsMessage: null,
             publicNumJoints: action.publicNumJoints,
@@ -142,25 +147,33 @@ export default (state = initialState, action) => {
             randomCheck: ['x'],
             publicHangryTaunt: 'Click ta draw ya scallywag!',
             publicRestart: false,
-            publicDrawCount: 0            
+            publicDrawCount: 0
         })
     }
+
+    if (action.type === DISPLAY_ABOUT) {
+        console.log('DISPLAY_ABOUT')
+
+        return Object.assign({}, state, {
+            loggedIn: 7,
+            prevLoggedIn: action.oldLoginState
+
+        })
+    }
+
+    if (action.type === CANCEL_ABOUT) {
+        console.log('CANCEL_ABOUT')
+
+        return Object.assign({}, state, {
+            loggedIn: action.oldLoginState
+        })
+    }
+
     if (action.type === SIGNUP_USER) {
         console.log('SIGNUP_USER')
 
         return Object.assign({}, state, {
             loggedIn: 2
-        })
-    }
-
-    if (action.type === CREATE_NEW_USER) {
-        console.log('CREATE_NEW_USER')
-        console.log('userOBJ CU: ', action.userObj)
-
-        return Object.assign({}, state, {
-            currentUser: action.currentUser,
-            userToken: action.currentUser.id,
-            loggedIn: 3
         })
     }
 
@@ -311,8 +324,8 @@ export default (state = initialState, action) => {
         return Object.assign({}, state, {
             hangryTaunt: action.hangryTaunt,
             madeOffers: action.madeOffers,
-            restart: action.restart, 
-            randomCheck: action.randomCheck        
+            restart: action.restart,
+            randomCheck: action.randomCheck
         })
     }
 
@@ -320,10 +333,10 @@ export default (state = initialState, action) => {
         console.log('GUEST_FIND_GRUB')
 
         return Object.assign({}, state, {
-            publicHangryTaunt: action.publicHangryTaunt, 
-            publicMadeOffers: action.publicMadeOffers, 
-            publicRestart: action.publicRestart, 
-            publicTheOffer: action.publicTheOffer      
+            publicHangryTaunt: action.publicHangryTaunt,
+            publicMadeOffers: action.publicMadeOffers,
+            publicRestart: action.publicRestart,
+            publicTheOffer: action.publicTheOffer
         })
     }
     return state;

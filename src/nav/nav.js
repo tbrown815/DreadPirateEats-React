@@ -1,11 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { loginUser, logoutUser, returnToGame, signupUser } from '../actions/actions'
-
+import { loginUser, logoutUser, returnToGame, signupUser, displayAbout } from '../actions/actions'
 import { editFavs } from '../actions/favActions'
-
-import About from './about'
-import Favorites from '../favorites/favorites'
 
 import './nav.css'
 
@@ -27,7 +23,7 @@ class Nav extends React.Component {
     logoutClick(event) {
         event.preventDefault();
 
-       return this.props.dispatch(logoutUser())
+        return this.props.dispatch(logoutUser())
     }
 
     editUserFavs(event) {
@@ -42,6 +38,14 @@ class Nav extends React.Component {
         this.props.dispatch(returnToGame())
     }
 
+    clickAbout(event) {
+        event.preventDefault();
+        
+        let oldLoginState = this.props.loggedIn;
+
+        this.props.dispatch(displayAbout(oldLoginState))
+    }
+
     render() {
 
 
@@ -50,15 +54,13 @@ class Nav extends React.Component {
 
                 <header>
 
-                    <nav className='col-12 topNav'>
-                        <h1 className='navTitle'>Dread Pirate Eats</h1>
-                        <ul>
-                            <li><span className='link'><a href='#aboutModal'>[About]</a></span></li>
-                            <li><span className='link' onClick={event => this.loginClick(event)}>[LogIn]</span></li>
+                    <nav className='topNav' role='navigation'>
+                        <h1 role='banner' className='navTitle'>Dread Pirate Eats</h1>
+                        <ul role='list'>
+                            <li role='listitem'><span className='link'onClick={event => this.clickAbout(event)}>[About]</span></li>
+                            <li role='listitem'><span className='link' onClick={event => this.loginClick(event)}>[LogIn]</span></li>
                         </ul>
                     </nav>
-
-                    <About />
 
                 </header>
 
@@ -70,14 +72,12 @@ class Nav extends React.Component {
             return (
                 <header>
 
-                    <nav className='col-12 topNav'>
-                        <h1 className='navTitle'>Dread Pirate Eats</h1>
-                        <ul>
-                            <li><span className='link'><a href='#aboutModal'>[About]</a></span></li>
+                    <nav className='topNav' role='navigation'>
+                        <h1 role='banner' className='navTitle'>Dread Pirate Eats</h1>
+                        <ul role='list'>
+                        <li role='listitem'><span className='link'onClick={event => this.clickAbout(event)}>[About]</span></li>
                         </ul>
                     </nav>
-
-                    <About />
 
                 </header>
             )
@@ -89,16 +89,14 @@ class Nav extends React.Component {
             return (
                 <header>
 
-                    <nav className='col-12 topNav'>
-                        <h1 className='navTitle'>Dread Pirate Eats</h1>
-                        <ul>
-                            <li><span className='link' onClick={event => this.logoutClick(event)}>[Logout]</span></li>
-                            <li><span className='link'><a href='#aboutModal'>[About]</a></span></li>
-                            <li><span className='link' onClick={event => this.editUserFavs(event)}>[Favorites]</span></li>
+                    <nav className='topNav' role='navigation'>
+                        <h1 role='banner' className='navTitle'>Dread Pirate Eats</h1>
+                        <ul role='list'>
+                            <li role='listitem'><span className='link' onClick={event => this.logoutClick(event)}>[Logout]</span></li>
+                            <li role='listitem'><span className='link'onClick={event => this.clickAbout(event)}>[About]</span></li>
+                            <li role='listitem'><span className='link' onClick={event => this.editUserFavs(event)}>[Favorites]</span></li>
                         </ul>
                     </nav>
-
-                    <About />
 
                 </header>
             )
@@ -108,16 +106,14 @@ class Nav extends React.Component {
             return (
                 <header>
 
-                    <nav className='col-12 topNav'>
-                        <h1 className='navTitle'>Dread Pirate Eats</h1>
-                        <ul>
-                            <li><span className='link' onClick={event => this.logoutClick(event)}>[Logout]</span></li>
-                            <li><span className='link'><a href='#aboutModal'>[About]</a></span></li>
-                            <li><span className='link' onClick={event => this.returnGame(event)}>[Play Game]</span></li>
+                    <nav className='topNav' role='navigation'>
+                        <h1 role='banner' className='navTitle'>Dread Pirate Eats</h1>
+                        <ul role='list'>
+                            <li role='listitem'><span className='link' onClick={event => this.logoutClick(event)}>[Logout]</span></li>
+                            <li role='listitem'><span className='link'onClick={event => this.clickAbout(event)}>[About]</span></li>
+                            <li role='listitem'><span className='link' onClick={event => this.returnGame(event)}>[Play Game]</span></li>
                         </ul>
                     </nav>
-
-                    <About />
 
                 </header>
             )
@@ -127,20 +123,37 @@ class Nav extends React.Component {
             return (
                 <header>
 
-                    <nav className='col-12 topNav'>
-                        <h1 className='navTitle'>Dread Pirate Eats</h1>
-                        <ul>
-                            <li><span className='link'><a href='#aboutModal'>[About]</a></span></li>
-                            <li><span className='link' onClick={event => this.signUpClick(event)}>[Join the Crew!]</span></li>
-                            <li><span className='link' onClick={event => this.loginClick(event)}>[LogIn]</span></li>
+                    <nav className='topNav' role='navigation'>
+                        <h1 role='banner' className='navTitle'>Dread Pirate Eats</h1>
+                        <ul role='list'>
+                        <li role='listitem'><span className='link'onClick={event => this.clickAbout(event)}>[About]</span></li>
+                            <li role='listitem'><span className='link' onClick={event => this.signUpClick(event)}>[Join the Crew!]</span></li>
+                            <li role='listitem'><span className='link' onClick={event => this.loginClick(event)}>[LogIn]</span></li>
                         </ul>
                     </nav>
-
-                    <About />
 
                 </header>
             )
         }
+
+        if (this.props.loggedIn === 7) {
+            return (
+                <header>
+
+                    <nav className='topNav' role='navigation'>
+                        <h1 role='banner' className='navTitle'>Dread Pirate Eats</h1>
+                        <ul role='list'>
+                        <li role='listitem'><span className='link'onClick={event => this.clickAbout(event)}>[About]</span></li>
+                            <li role='listitem'><span className='link' onClick={event => this.signUpClick(event)}>[Join the Crew!]</span></li>
+                            <li role='listitem'><span className='link' onClick={event => this.loginClick(event)}>[LogIn]</span></li>
+                        </ul>
+                    </nav>
+
+                </header>
+            )
+        }
+
+
 
     }//END RENDER
 
@@ -148,7 +161,8 @@ class Nav extends React.Component {
 
 
 const mapStateToProps = state => ({
-    loggedIn: state.loggedIn
+    loggedIn: state.loggedIn,
+    prevLoggedIn: state.prevLoggedIn
 })
 
 

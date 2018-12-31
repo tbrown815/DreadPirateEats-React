@@ -4,7 +4,7 @@ ul, li {
 
 li.mapDisplayResults {
     padding-top: 5px;
-    margin-left: 20%;
+    margin-left: 10%;
     text-align: left;
 }
 
@@ -17,6 +17,59 @@ input.mapDisplayResults {
 }
 
 .userMessage {
+    font-size: large;
     color: red;
+    text-shadow: 2px 2px #022b3b;
     margin-right: 13%;
 }
+
+.favsTitle, .resturantToEdit {
+    font-size: xx-large;
+    text-shadow: 2px 2px #2b718b;
+}
+
+.resturantToEdit {
+    font-size: x-large;
+    text-shadow: 2px 2px #2b718b;
+}
+
+.editFavTextBox, .searchFormBox {
+    font-size: x-large;
+}
+
+.mapDisplayResults a {
+    color: #022b3b;
+    text-decoration: underline;
+    font-size: xx-large;
+    text-shadow: 1px 1px #2b718b;
+  }
+  
+  .mapDisplayResults a:visited {
+    color: #022b3b;
+    text-decoration: underline;
+  }
+  
+  .mapDisplayResults a:hover {
+    color: #022b3b;
+    text-decoration: underline;
+  }
+  
+  .mapDisplayResults a:active {
+    color: #022b3b;
+    text-decoration: underline;
+  }
+
+  .searchTitle {
+    font-size: xx-large;
+    text-shadow: 2px 2px #2b718b;
+  }
+
+  .searchFormText {
+    font-size: x-large;
+    text-shadow: 2px 2px #2b718b;
+  }
+
+  .searchData {
+    font-size: x-large;
+    text-shadow: 2px 2px #2b718b;  
+  }

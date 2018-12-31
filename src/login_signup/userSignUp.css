@@ -6,6 +6,21 @@
   text-align: center;
 }
 
+
+.signupLoginTitle, .signupFormText {
+  text-shadow: 2px 2px #022b3b;
+}
+
+.signupLoginTitle {
+  font-size: xx-large;
+}
+
+.signupFormText {
+  font-size: x-large;
+}
+
 #alertMessage, #errorMessage {
+  font-size: large;
   color: red;
+  text-shadow: 2px 2px #022b3b;
 }

@@ -1,25 +1,24 @@
 
 
+Accessibility
+Move About to a component
+Tests
+SHIFT+CTRL+I on all docs
+Add Yelp credits
+CSS clean-up 
 Review state params and remove unused
-
 Clean up console.logs, commented code, 
 
 No Favs message didn't display in Prod.
 
-Add Yelp credits
-
-CSS clean-up 
-
-SHIFT+CTRL+I on all docs
-
-Accessibility
-
-Tests
 
 
 If time-
-On Edit page add ability to restore original name
-Paginate favs list?
+-On Edit page add ability to restore original name
+-Paginate favs list?
+-shorten username requirement
+-get zip code when creating so that basic search can occur w/o favs
+-change username to email
 
 
 
@@ -36,6 +35,7 @@ Tests
 
 
 -==Done==-
+email required for form
 Add code to fix error on 0 favs
 Add ability to save rest alias to DB to build URL on display Favs page
 Change location from zip to City/zip

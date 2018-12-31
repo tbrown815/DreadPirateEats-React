@@ -1,6 +1,25 @@
+body {
+  background-image: url('./images/ocean_bgimg.jpg');
+  background-size: auto;
+  background-position: right top;
+  font-family: 'Ubuntu Mono', monospace !important;
+  color: whitesmoke;
+  font-weight: bolder;
 
-.homeDecisionButton {
+}
 
+button {
+  border: 20;
+  border-color: #032d3b;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-weight: bold;
+  background-color: #2b718b;
+  color: whitesmoke;
+  font-size: large;
+  text-shadow: 1px 1px #022b3b;
 }
 
 .drawBoxLoginButton {
@@ -20,6 +39,7 @@
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  margin-top: -50px;
 }
 
 .dreadPirateImage {
@@ -32,7 +52,7 @@ p {
 
 li.offerDisplay {
   padding-right: 3%; 
-  list-style-type: none;
+  list-style-type: square;
 }
 
 input {
@@ -61,25 +81,9 @@ input {
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
 
-  li.offerDisplay {
-    padding-right: 16%; 
-    list-style-type: none;
-  }
-
-
-.homeDecisionButton {
-  margin-left: 35%;
-  margin-right: auto;
+.pirateImageSection{
+  margin-top: 0px;
 }
 
-.drawBoxLoginButton {
-  margin-left: 35%;
-  margin-right: auto;
-}
-
-.drawBoxGuestButton {
-  margin-left: 31%;
-  margin-right: auto;
-}
 
 }

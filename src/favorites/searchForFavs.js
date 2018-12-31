@@ -1,12 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { setErrorState } from '../actions/actions'
 import { performYelpCall, setSelectedFav, callAddNewFav } from '../actions/favActions'
-
 
 import './favorites.css';
 
-//export default function Favorites(props) {
 class SearchFavorites extends React.Component {
 
 
@@ -55,16 +52,16 @@ class SearchFavorites extends React.Component {
 
             <div>
 
-                <form className='searchForFavs' onSubmit={event => this.searchLocation(event)}>
-                    <h2>Add a new Favorite!</h2>
+                <form className='searchForFavs' id='searchForFavsForm' onSubmit={event => this.searchLocation(event)}>
+                    <h2 className='searchTitle'>Add a new Favorite!</h2>
 
-                    <p>Enter resturant name:</p>
-                    <input type='text' ref={resturantName => (this.resturantName = resturantName)} />
+                    <p className='searchFormText'>Enter resturant name:</p>
+                    <input className='searchFormBox' type='text' role='textbox' id='resturantNameField' ref={resturantName => (this.resturantName = resturantName)} />
                     <br />
-                    <p>Enter City or Zipcode:</p>
-                    <input type='text' ref={resturantZip => (this.resturantZip = resturantZip)} />
+                    <p className='searchFormText'>Enter City or Zipcode:</p>
+                    <input className='searchFormBox' type='text' role='textbox' id='userLocationField' ref={resturantZip => (this.resturantZip = resturantZip)} />
                     <br /><br />
-                    <span id='errorMessage'>{this.props.errorMessage}</span>
+                    <span id='errorMessage' role='alert' >{this.props.errorMessage}</span>
                     <br /><br />
 
                     <button type='submit' name='submit' id='searchButton' className='searchButton dpe_button'>Search</button>
@@ -75,16 +72,16 @@ class SearchFavorites extends React.Component {
 
                 {console.log('props.newFavs: ', this.props.newFavorites)}
 
-                <form className='saveToFavsForm' onSubmit={event => this.saveToFavs(event)}>
+                <form className='saveToFavsForm' id='saveToFavsForm' onSubmit={event => this.saveToFavs(event)}>
                     <ul>
-                        <span className='userMessage'>{this.props.userMessage}</span>
-                        
+                        <span className='userMessage' role='alert'>{this.props.userMessage}</span>
+
                         {this.props.newFavorites.map(data =>
                             <li key={data.resturantYelpId} className='mapDisplayResults'>
-                                <input type='radio' className='mapDisplayRadio' name='mapDisplayRadio' value={data.resturantYelpId}
+                                <input type='radio' id='newFavSelect' className='mapDisplayRadio' name='mapDisplayRadio' value={data.resturantYelpId}
                                     onChange={event => this.changeSelectedFavState(event)} />
                                 <a href={data.url} target='_blank'>{data.resturantName}:</a>
-                                <br /> {data.address}, {data.city}
+                                <br /> <span className='searchData'>{data.address}, {data.city}</span>
                             </li>
                         )}
                     </ul>
@@ -114,19 +111,3 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps)(SearchFavorites)
-
-/*
-
-
-Search
-
-require for search - name, user zip
-
-Results
-Show top 5 only
-Sort by Distance to entered zip - nice to have determin location
-Save to DB - 'userRef', 'resturantName', 'resturantZip', 'resturantCost', 'resturantYelpId'
-
-
-
-*/

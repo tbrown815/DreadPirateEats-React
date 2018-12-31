@@ -1,10 +1,131 @@
+
+.drawBoxLoginButton {
+  margin-left: 45.5%;
+  margin-right: auto;
+}
+
+
+.drawBoxGuestButton {
+  margin-left: 43.5%;
+  margin-right: auto;
+}
+
 .drawForm {
     margin-top: 5%;
     text-align: center;
 }
 
 .hangryTauntSection {
+  font-size: x-large;
+  text-shadow: 2px 2px #022b3b;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
 }
+
+.offerDisplay, .offerDisplay a {
+  color: #022b3b;
+  text-decoration: underline;
+  font-size: larger;
+  text-shadow: 1px 1px #2b718b;
+}
+
+.offerDisplay:visited, .liofferDisplaynk a:visited {
+  color: #022b3b;
+  text-decoration: underline;
+}
+
+.offerDisplay:hover, .offerDisplay a:hover {
+  color: #022b3b;
+  text-decoration: underline;
+}
+
+.offerDisplay:active, .offerDisplay a:active {
+  color: #022b3b;
+  text-decoration: underline;
+}
+
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+
+
+  li.offerDisplay {
+    padding-right: 16%; 
+    list-style-type: square;
+  }
+  
+  .drawBoxLoginButton {
+    margin-left: 34%;
+    margin-right: auto;
+  }
+  
+  .drawBoxGuestButton {
+    margin-left: 29%;
+    margin-right: auto;
+  }
+  
+  }
+
+
+@media only screen and (min-device-width: 480px) and (max-device-width: 500px) {
+
+
+  li.offerDisplay {
+    padding-right: 16%; 
+    list-style-type: square;
+  }
+  
+  .drawBoxLoginButton {
+    margin-top: 3%;
+    margin-left: 36%;
+    margin-right: auto;
+  }
+  
+  .drawBoxGuestButton {
+    margin-left: 32%;
+    margin-right: auto;
+  }
+  
+  }
+
+  @media only screen and (min-device-width: 501px) and (max-device-width: 1024px) {
+
+
+    li.offerDisplay {
+      padding-right: 16%; 
+      list-style-type: square;
+    }
+    
+    .drawBoxLoginButton {
+      margin-top: 3%;
+      margin-left: 42%;
+      margin-right: auto;
+    }
+    
+    .drawBoxGuestButton {
+      margin-left: 39%;
+      margin-right: auto;
+    }
+    
+    }
+
+    @media only screen and (min-device-width: 1025px) and (max-device-width: 1400px {
+
+
+      li.offerDisplay {
+        padding-right: 16%; 
+        list-style-type: square;
+      }
+      
+      .drawBoxLoginButton {
+        margin-top: 5%;
+        margin-left: 44%;
+        margin-right: auto;
+      }
+      
+      .drawBoxGuestButton {
+        margin-left: 42%;
+        margin-right: auto;
+      }
+      
+      }

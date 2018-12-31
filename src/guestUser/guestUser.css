@@ -1,9 +1,35 @@
+.loginTitle, .publicHangryTauntSection, .guestLocation {
+  text-shadow: 2px 2px #022b3b;
+}
 
+.loginTitle, .publicHangryTauntSection {
+  font-size: x-large;
+}
+
+.guestLocation {
+  font-size: large;
+}
+
+.loginTitle {
+  margin-top: 120px;
+
+}
+
+.guestDrawform {
+  margin-top: 120px;
+
+}
 
 
 
   @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
  
+
+li.offerDisplay {
+  padding-right: 16%; 
+  list-style-type: square;
+}
+
   
   
   }

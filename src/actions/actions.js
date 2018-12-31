@@ -6,18 +6,6 @@ import { storeAuthToken, clearAuthToken, storeUserToken, clearUserToken } from '
 
 require('dotenv').config();
 
-/*
-export const FIND_GRUB = 'FIND_GRUB'
-export const findGrub = () => ({
-    type: FIND_GRUB
-})
-
-export const RESTART_APP = 'RESTART_APP'
-export const restartApp = () => ({
-    type: RESTART_APP
-})
-*/
-
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS'
 export const logoutSuccess = () => ({
     type: LOGOUT_SUCCESS
@@ -38,11 +26,16 @@ export const returnToGame = () => ({
     type: RETURN_TO_GAME
 })
 
-//CAN DELETE IF WILL NOT USE
-export const CREATE_NEW_USER = 'CREATE_NEW_USER'
-export const createNewUser = (userObj) => ({
-    type: CREATE_NEW_USER,
-    userObj: userObj
+export const DISPLAY_ABOUT = 'DISPLAY_ABOUT'
+export const displayAbout = (oldLoginState) => ({
+    type: DISPLAY_ABOUT,
+    oldLoginState
+})
+
+export const CANCEL_ABOUT = 'CANCEL_ABOUT'
+export const cancelAbout = (oldLoginState) => ({
+    type: CANCEL_ABOUT,
+    oldLoginState
 })
 
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'

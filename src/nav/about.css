@@ -1,0 +1,42 @@
+.dpeListItem, .dpeInfoItem {
+    text-align: left;
+    font-size: large;
+    text-shadow: 2px 2px #022b3b;
+}
+
+.dpeListItem {
+    list-style-type: decimal;
+}
+
+.dpeInfoItem {
+    list-style-type: square;
+}
+
+.aboutTitle {
+    font-size: large;
+    text-shadow: 2px 2px #022b3b; 
+}
+
+.odpe_about {
+    width: 98%;
+    height: 250%;
+    margin-top: -4%;
+    }
+
+.origDPEBox {
+    height: 100% !important;
+    font-size: large;
+    text-shadow: 2px 2px #022b3b;
+
+}
+
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+
+    .odpe_about {
+        width: 98%;
+        height: 250%;
+        margin-top: -4%;
+        }
+    
+}

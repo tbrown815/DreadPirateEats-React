@@ -9,6 +9,7 @@ import UserLogin from './login_signup/userLogin';
 import UserSignUp from './login_signup/userSignUp';
 import Favorites from './favorites/favorites';
 import GuestUser from './guestUser/guestUser';
+import About from './nav/about'
 
 
 require('dotenv').config();
@@ -18,32 +19,31 @@ export function DreadPirate(props) {
   console.log('state: ', props)
 
 
-/*LOGGEDIN STATE*/
-/*
-1 = User login displayed
-2 = User sign up displayed -> on successful creation state moves to 3
-3 = Valid user is logged in
-4 = User favorites are displayed
-5 = Guest "login"
-6 = User is Guest
-*/
+  /*LOGGEDIN STATE*/
+  /*
+  1 = User login displayed
+  2 = User sign up displayed -> on successful creation state moves to 3
+  3 = Valid user is logged in
+  4 = User favorites are displayed
+  5 = Guest "login"
+  6 = User is Guest
+7 = Display About
+  */
 
   if (props.loggedIn === 0) {
     return (
       <main>
-
         <Nav />
 
         <br />
-        <div className='pirateImageSection'>
+        <div role='region' className='pirateImageSection'>
           <img src={require('./images/dreadPirate.png')} className='dreadPirateImage' alt='The Dread Pirate himself' />
         </div>
 
-      <br/>
-      <DrawBox />
+        <br />
+        <DrawBox />
 
       </main>
-
     )
   }
 
@@ -54,7 +54,7 @@ export function DreadPirate(props) {
         <Nav />
 
         <br />
-        <div className='pirateImageSection'>
+        <div role='region' className='pirateImageSection'>
           <UserLogin />
         </div>
 
@@ -71,7 +71,7 @@ export function DreadPirate(props) {
         <Nav />
 
         <br />
-        <div className='pirateImageSection'>
+        <div role='region' className='pirateImageSection'>
           <UserSignUp />
         </div>
 
@@ -89,7 +89,7 @@ export function DreadPirate(props) {
         <Nav />
 
         <br />
-        <div className='pirateImageSection'>
+        <div role='region' className='pirateImageSection'>
           <img src={require('./images/dreadPirate.png')} className='dreadPirateImage' alt='The Dread Pirate himself' />
         </div>
 
@@ -106,7 +106,7 @@ export function DreadPirate(props) {
         <Nav />
 
         <br />
-        <div className='pirateImageSection'>
+        <div role='region' className='pirateImageSection'>
           <Favorites />
         </div>
 
@@ -122,7 +122,7 @@ export function DreadPirate(props) {
         <Nav />
 
         <br />
-        <div className='pirateImageSection'>
+        <div role='region' className='pirateImageSection'>
           <img src={require('./images/dreadPirate.png')} className='dreadPirateImage' alt='The Dread Pirate himself' />
         </div>
         <div className='pirateImageSection'>
@@ -140,7 +140,7 @@ export function DreadPirate(props) {
 
         <Nav />
         <br />
-        <div className='pirateImageSection'>
+        <div role='region' className='pirateImageSection'>
           <img src={require('./images/dreadPirate.png')} className='dreadPirateImage' alt='The Dread Pirate himself' />
         </div>
 
@@ -152,6 +152,25 @@ export function DreadPirate(props) {
 
     )
   }
+
+  if (props.loggedIn === 7) {
+    return (
+      <main>
+
+        <Nav />
+
+        <br />
+        <div role='region' className='pirateImageSection'>
+          <About />
+        </div>
+
+
+      </main>
+
+    )
+  }
+
+
 } //end of export
 
 const mapStateToProps = state => ({
@@ -162,7 +181,7 @@ const mapStateToProps = state => ({
   errorMessage: state.errorMessage,
   grubJoints: state.grubJoints,
   publicSort: state.publicSort,
-  madeOffers: state. madeOffers,
+  madeOffers: state.madeOffers,
   restart: state.restart,
   theOffer: state.theOffer,
   numJoints: state.numJoints,
@@ -189,6 +208,7 @@ const mapStateToProps = state => ({
 4 = User favorites are displayed
 5 = Guest "login"
 6 = User is Guest
+7 = Display About
 */
 
 

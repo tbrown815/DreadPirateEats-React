@@ -1,16 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { REACT_APP_FAV_YELP_URL } from '../config'
-import { setErrorState } from '../actions/actions'
-import { performYelpCall, setSelectedFav, callAddNewFav, callViewFavs, searchNewFavs, getFavsSetState, updateFavCall,
-    cancelEditFavs } from '../actions/favActions'
+import { setSelectedFav, callViewFavs, searchNewFavs, getFavsSetState, updateFavCall } from '../actions/favActions'
 
 
 import './favorites.css';
 
 class UserFavorites extends React.Component {
 
-    
+
     componentDidMount() {
         console.log('userFavorites did mount')
         console.log('userFavs state: ', this.props)
@@ -33,7 +31,7 @@ class UserFavorites extends React.Component {
 
         console.log('selected: ', event.target.value)
         let selectedFav = event.target.value;
-    
+
         return this.props.dispatch(setSelectedFav(selectedFav))
 
     }
@@ -50,12 +48,12 @@ class UserFavorites extends React.Component {
         event.preventDefault();
         console.log('EDIT CALL')
 
-        
+
         let newFavName = this.newFavName.value
         let favId = this.favId.value
         let userToken = this.props.userToken
         let authToken = this.props.authToken
-        
+
         console.log('newFavName: ', newFavName)
         console.log('favId: ', favId)
 
@@ -74,7 +72,7 @@ class UserFavorites extends React.Component {
 
     render() {
 
-        
+
 
         if (this.props.editFavState === 0) {
 
@@ -83,11 +81,11 @@ class UserFavorites extends React.Component {
                 <div>
                     <h2 className='favsTitle'>Your Dread Pirate Eats favorites!</h2>
                     <br />
-                    <form className='editFavs' onSubmit={event => this.editSelectedFavState(event)}>
+                    <form className='editFavs' id='editFavForm' onSubmit={event => this.editSelectedFavState(event)}>
 
-                        {this.props.noFavsMessage}<br />
+                        <span role='alert'>{this.props.noFavsMessage}</span><br />
                         {this.props.grubJoints.map(data =>
-                            <li key={data.resturantYelpId} className='mapDisplayResults'>
+                            <li role='listitem' key={data.resturantYelpId} className='mapDisplayResults'>
                                 <input type='radio' className='mapDisplayRadio' name='mapDisplayRadio' value={data.id}
                                     onChange={event => this.changeSelectedFavState(event)} />
                                 <a href={REACT_APP_FAV_YELP_URL + data.resturantAlias} target='_blank'>{data.resturantName}</a>
@@ -117,27 +115,27 @@ class UserFavorites extends React.Component {
                     <br />
                     <form className='editFavs' onSubmit={event => this.editFavCall(event)}>
 
-                        <span>Edit {this.props.editFavOjb.resturantName}</span>
+                        <span className='resturantToEdit'>Edit {this.props.editFavOjb.resturantName}</span>
                         <br />
-                            <li key={this.props.editFavOjb.id} className='editResults'>
-                                <p><input type='text' className='editFavTextBox' name='editFavTextBox' placeholder={this.props.editFavOjb.resturantName} 
-                                     ref={newFavName => (this.newFavName = newFavName)} /></p>
-                                    <input type='text' className='hidden'  value={this.props.editFavOjb.id}
-                                       readOnly ref={favId => (this.favId = favId)}/>
+                        <li role='listitem' key={this.props.editFavOjb.id} className='editResults'>
+                            <p><input type='text' className='editFavTextBox' id='editFavTextBox' name='editFavTextBox' placeholder={this.props.editFavOjb.resturantName}
+                                ref={newFavName => (this.newFavName = newFavName)} /></p>
+                            <input type='text' className='hidden' id='hiddenIdField' value={this.props.editFavOjb.id}
+                                readOnly ref={favId => (this.favId = favId)} />
 
-                            </li>
-                                         
+                        </li>
+
                         <br />
                         <button type='submit' name='submit' id='editButton' className='editButton'>Save Change</button>
                     </form>
-                    <br/>
-                       <button type='cancel' name='cancel' id='editCancelButton' className='editCancelButton dpe_button'
+                    <br />
+                    <button type='cancel' name='cancel' id='editCancelButton' className='editCancelButton dpe_button'
                         onClick={event => this.cancelEditFavCall(event)}>Cancel</button>
 
 
 
                     <br />
-                  
+
                 </div>
 
 

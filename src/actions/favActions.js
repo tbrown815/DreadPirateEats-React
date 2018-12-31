@@ -1,10 +1,8 @@
-import jwtDecode from 'jwt-decode';
 
 import { REACT_APP_FAVS_URL, REACT_APP_FAV_SEARCH_DETAIL_URL, REACT_APP_USERFAVS_URL } from '../config';
-import {setErrorState} from './actions'
-import {storeAuthToken, clearAuthToken, storeUserToken, clearUserToken} from '../localStore';
+import { setErrorState } from './actions'
 
-require ('dotenv').config();
+require('dotenv').config();
 
 export const VIEW_FAVS = 'VIEW_FAVS'
 export const viewFavs = (displayFavs, numJoints) => ({
@@ -76,74 +74,78 @@ export const updateFavCall = (newFavName, favId, userToken, authToken) => dispat
 
     return fetch(`${REACT_APP_FAVS_URL}${favId}`, {
         method: 'PATCH',
-        body: JSON.stringify({id, resturantName}),
+        body: JSON.stringify({ id, resturantName }),
         headers:
-            {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${authToken}`   
-            }
+        {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${authToken}`
+        }
     })
-    .then(res => {
-        let resObj = res.json()
-        return resObj;
+        .then(res => {
+            let resObj = res.json()
+            return resObj;
 
-    })
-
-    .then(resObj => {
-        
-            let checkObj ={code: resObj.code, reason: resObj.reason, location: resObj.location,
-                message: resObj.message}
-                
-                console.log('resObj action: ', checkObj)
-                
-                if(checkObj.reason === 'SUCCESS') {
-                    console.log('SUCCESS')
-                    dispatch(callViewFavs(userToken, authToken))
-                 }
-                 else {
-                     dispatch(cancelEditFavs())
-                 }
         })
-        
+
+        .then(resObj => {
+
+            let checkObj = {
+                code: resObj.code, reason: resObj.reason, location: resObj.location,
+                message: resObj.message
+            }
+
+            console.log('resObj action: ', checkObj)
+
+            if (checkObj.reason === 'SUCCESS') {
+                console.log('SUCCESS')
+                dispatch(callViewFavs(userToken, authToken))
+            }
+            else {
+                dispatch(cancelEditFavs())
+            }
+        })
+
 }
 
 export const getFavsSetState = (findFav, authToken) => dispatch => {
 
     return fetch(`${REACT_APP_FAVS_URL}${findFav}`, {
         method: 'GET',
-        headers: 
-            {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${authToken}`
-            }
+        headers:
+        {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${authToken}`
+        }
     })
-    .then(res => {
-       let resObj = res.json();
+        .then(res => {
+            let resObj = res.json();
 
-       return resObj;
-    })
-    .then(resObj => setFavObject(resObj, dispatch))
+            return resObj;
+        })
+        .then(resObj => setFavObject(resObj, dispatch))
 
 }
 
- const setFavObject = (resObj, dispatch) => {
+const setFavObject = (resObj, dispatch) => {
     console.log('resObj: ', resObj)
-    
-    let favOjb ={id: resObj.id, resturantYelpId: resObj.resturantYelpId, resturantName: resObj.resturantName,
-        resturantAlias: resObj.alias}
 
-        dispatch(editFavsState(favOjb))
-    
+    let favOjb = {
+        id: resObj.id, resturantYelpId: resObj.resturantYelpId, resturantName: resObj.resturantName,
+        resturantAlias: resObj.alias
     }
 
+    dispatch(editFavsState(favOjb))
+
+}
+
 export const performYelpCall = (resturantName, resturantZip, publicSort) => dispatch => {
-    if(resturantName === undefined || resturantName === null || resturantName === '') {
- 
+    if (resturantName === undefined || resturantName === null || resturantName === '') {
+
         dispatch(setErrorState('Please enter the resturant name.'))
     }
 
-    else if(resturantZip === undefined || resturantZip === null || resturantZip === '') {
-       
+    else if (resturantZip === undefined || resturantZip === null || resturantZip === '') {
+
         dispatch(setErrorState('Please enter your zip code.'))
     }
 
@@ -151,51 +153,53 @@ export const performYelpCall = (resturantName, resturantZip, publicSort) => disp
 
         return fetch(`${REACT_APP_FAV_SEARCH_DETAIL_URL}`, {
             method: 'POST',
-            body: JSON.stringify({resturantName, resturantZip, publicSort}),
-            headers: {'Content-Type': 'application/json'}
+            body: JSON.stringify({ resturantName, resturantZip, publicSort }),
+            headers: { 'Content-Type': 'application/json' }
         })
-        .then(res => res.json())
-        .then(({businesses}) => mapResultsHandler(businesses, dispatch))
-        
+            .then(res => res.json())
+            .then(({ businesses }) => mapResultsHandler(businesses, dispatch))
+
     }
 }//END persormYelpCall
 
 const mapResultsHandler = (businesses, dispatch) => {
-    
+
     console.log('businesses: ', businesses)
 
-    let results = businesses.map(business => ({resturantYelpId: business.id, url: business.url, resturantName: business.name,
-            address: business.location.address1, city: business.location.city, cost: business.price, resturantAlias: business.alias}))
+    let results = businesses.map(business => ({
+        resturantYelpId: business.id, url: business.url, resturantName: business.name,
+        address: business.location.address1, city: business.location.city, cost: business.price, resturantAlias: business.alias
+    }))
 
     let displayResults = [];
-    
+
     let loopLength;
 
     let userMessage;
 
-        if(businesses.length < 1) {
-            userMessage = '0 Results - Please refine your search'
-        }
+    if (businesses.length < 1) {
+        userMessage = '0 Results - Please refine your search'
+    }
 
-        else if (businesses.length > 6) {
-             loopLength = 6;
-        }
-        else {
-            loopLength = businesses.length;
-        };
+    else if (businesses.length > 6) {
+        loopLength = 6;
+    }
+    else {
+        loopLength = businesses.length;
+    };
 
-      for (let i=0; i < loopLength; i++) {
+    for (let i = 0; i < loopLength; i++) {
 
         displayResults = [...displayResults, results[i]]
 
-        }
-      
-        console.log('displayResults: ', displayResults)
-
-        dispatch(displayNewFavs(displayResults, userMessage))
     }
-            
-            
+
+    console.log('displayResults: ', displayResults)
+
+    dispatch(displayNewFavs(displayResults, userMessage))
+}
+
+
 export const callAddNewFav = (resturant, userToken, authToken) => dispatch => {
     let resturantYelpId = resturant[0].resturantYelpId;
     let resturantName = resturant[0].resturantName;
@@ -204,19 +208,21 @@ export const callAddNewFav = (resturant, userToken, authToken) => dispatch => {
     console.log('actionuserToken: ', userToken)
     console.log('actionauthToken: ', authToken)
 
-        return fetch(`${REACT_APP_FAVS_URL}`, {
-            method: 'POST',
-            body: JSON.stringify({userRef: userToken, resturantYelpId: resturantYelpId, resturantName: resturantName,
-                resturantAlias: resturantAlias}),
-            headers: 
-                {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${authToken}`
-            
-                }
-        })
+    return fetch(`${REACT_APP_FAVS_URL}`, {
+        method: 'POST',
+        body: JSON.stringify({
+            userRef: userToken, resturantYelpId: resturantYelpId, resturantName: resturantName,
+            resturantAlias: resturantAlias
+        }),
+        headers:
+        {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${authToken}`
+
+        }
+    })
         .then(res => dispatch(cancelAddFavs()))
-        
+
 }//END callAddNewFav
 
 export const callViewFavs = (userToken, authToken) => dispatch => {
@@ -228,40 +234,42 @@ export const callViewFavs = (userToken, authToken) => dispatch => {
         {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${authToken}`
-    
+
         }
     })
-    .then(res => res.json())
-    .then(({userFavs}) => mapFavResultsHandler(userFavs, dispatch))
+        .then(res => res.json())
+        .then(({ userFavs }) => mapFavResultsHandler(userFavs, dispatch))
 }//END callViewFavs
 
 const mapFavResultsHandler = (userFavs, dispatch) => {
-    
+
     console.log('userFavs: ', userFavs)
 
     if (userFavs === undefined || userFavs === null) {
 
         let noFavs = 'You have no favorites.  Click below to add!'
-        
+
         dispatch(noFavsError(noFavs))
     }
 
     else {
 
-    let favResults = userFavs.map(userFav => ({id: userFav.id, resturantYelpId: userFav.resturantYelpId, 
-            resturantName: userFav.resturantName, resturantAlias: userFav.resturantAlias}))
+        let favResults = userFavs.map(userFav => ({
+            id: userFav.id, resturantYelpId: userFav.resturantYelpId,
+            resturantName: userFav.resturantName, resturantAlias: userFav.resturantAlias
+        }))
 
-    let displayFavs = [];
-      
-      for (let i=0; i < userFavs.length; i++) {
+        let displayFavs = [];
 
-        displayFavs = [...displayFavs, favResults[i]]
+        for (let i = 0; i < userFavs.length; i++) {
+
+            displayFavs = [...displayFavs, favResults[i]]
 
         }
         let numJoints = displayFavs.length
-      
+
         console.log('displayFavs: ', displayFavs)
 
         dispatch(viewFavs(displayFavs, numJoints))
-    }   
     }
+}

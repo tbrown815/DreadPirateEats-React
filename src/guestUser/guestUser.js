@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
 import { guestLoginCall, publicGrubSearch, resetGuestState } from '../actions/guestActions';
 import { cancelState } from '../actions/actions'
 
@@ -91,7 +90,6 @@ class GuestUser extends React.Component {
             }
 
             if (publicDrawCount === publicNumJoints) {
-                //publicHangryTaunt = `It's yer last stand ya scurvy dog!`
                 publicRestart = true
 
                 this.props.dispatch(publicGrubSearch(publicHangryTaunt, publicMadeOffers, publicRestart, publicTheOffer))
@@ -126,7 +124,6 @@ class GuestUser extends React.Component {
             }
 
             if (publicDrawCount === 4) {
-                //publicHangryTaunt = `It's yer last stand ya scurvy dog!`
                 publicRestart = true
 
                 this.props.dispatch(publicGrubSearch(publicHangryTaunt, publicMadeOffers, publicRestart, publicTheOffer))
@@ -145,15 +142,15 @@ class GuestUser extends React.Component {
 
                 <div className='pirateImageSection'>
                     <h2 className='loginTitle'>Ye be a vistor aboard me ship!</h2>
-                    <form className='logInForm' onSubmit={event => this.guestLogin(event)}>
-                        <p>Enter your location (City or Zip):</p>
-                        <input type='text' ref={userLoc => (this.userLoc = userLoc)} />
+                    <form className='logInForm' id='logInForm' onSubmit={event => this.guestLogin(event)}>
+                        <p className='guestLocation'>Enter your location (City or Zip):</p>
+                        <input type='text' id='userLocationField' ref={userLoc => (this.userLoc = userLoc)} />
                         <br />
-                        <span id='errorMessage'>{this.props.errorMessage}</span>
+                        <span id='errorMessage' role='alert'>{this.props.errorMessage}</span>
                         <br />
                         <button type='submit' name='submit' id='logInButton' className='logInButton'>Play as Guest</button>
                     </form>
-                    <p className='cancel'><button id='cancelButton' className='cancelButton'onClick={event => this.cancel(event)}>Cancel</button></p>  
+                    <p className='cancel'><button id='cancelButton' className='cancelButton' onClick={event => this.cancel(event)}>Cancel</button></p>
                     <br /><br />
 
                 </div>
@@ -166,22 +163,22 @@ class GuestUser extends React.Component {
             if (!this.props.publicRestart) {
                 return (
                     <div>
-                        <div className='drawForm'>
-                            <form onSubmit={event => this.guestDraw(event)}>
+                        <div className='drawForm guestDrawform'>
+                            <form id='drawForm' onSubmit={event => this.guestDraw(event)}>
                                 <button type='submit' name='submit' id='drawButton' className='drawbutton dpe_button'>Whar do ye want to eat?</button>
                             </form>
                         </div>
 
 
                         <div className='publicHangryTauntSection'>
-                            {this.props.noFavsMessage}
+                            <span role='alert'>{this.props.noFavsMessage}</span>
                             <br />
-                            {this.props.publicHangryTaunt}
+                            <span role='alert'>{this.props.publicHangryTaunt}</span>
 
                             <br />
-                            <ul>
+                            <ul role='list'>
                                 {this.props.publicMadeOffers.map(offer =>
-                                    <li key={offer.resturantName} className='offerDisplay' >
+                                    <li role='listitem' key={offer.resturantName} className='offerDisplay' >
                                         <a href={offer.url} target='_blank'>{offer.resturantName}</a>
                                     </li>
                                 )}
@@ -194,23 +191,23 @@ class GuestUser extends React.Component {
             if (this.props.publicRestart) {
                 return (
                     <div>
-                        <div className='drawForm'>
+                        <div className='drawForm guestDrawform'>
                             <form onSubmit={event => this.guestReset(event)}>
                                 <button type='submit' name='reset' id='restartButton' className='restartButton dpe_button'>Restart the game?</button>
                             </form>
-                            <p className='cancel'><button id='cancelButton' className='cancelButton'onClick={event => this.cancel(event)}>Cancel</button></p>  
+                            <p className='cancel'><button id='cancelButton' className='cancelButton' onClick={event => this.cancel(event)}>Cancel</button></p>
 
                         </div>
 
 
                         <div className='publicHangryTauntSection'>
                             <br />
-                            <span> Ye time is up, walk thee plank! </span>
+                            <span role='alert'> Ye time is up, walk thee plank! </span>
 
                             <br />
-                            <ul>
+                            <ul role='list'>
                                 {this.props.publicMadeOffers.map(offer =>
-                                    <li key={offer.resturantName} className='offerDisplay' >
+                                    <li role='listitem' key={offer.resturantName} className='offerDisplay' >
                                         <a href={offer.url} target='_blank'>{offer.resturantName}</a>
                                     </li>
                                 )}
@@ -242,8 +239,5 @@ const mapStateToProps = state => ({
     publicDrawCount: state.publicDrawCount,
     noFavsMessage: state.noFavsMessage
 })
-
-//noFavsMessage
-
 
 export default connect(mapStateToProps)(GuestUser)
