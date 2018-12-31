@@ -55,13 +55,13 @@ export const guestLoginCall = (userLocation, sortForPub) => dispatch => {
 
     else {
 
-        let resturantZip = userLocation;
+        let restaurantZip = userLocation;
         let publicSort = sortForPub;
-        let resturantName = ''
+        let restaurantName = ''
 
         return fetch(`${REACT_APP_FAV_SEARCH_DETAIL_URL}`, {
             method: 'POST',
-            body: JSON.stringify({ resturantZip, publicSort, resturantName }),
+            body: JSON.stringify({ restaurantZip, publicSort, restaurantName }),
             headers: { 'Content-Type': 'application/json' }
         })
             .then(res => res.json())
@@ -75,8 +75,8 @@ const mapResultsHandler = (businesses, dispatch) => {
     console.log('businesses: ', businesses)
 
     let results = businesses.map(business => ({
-        resturantYelpId: business.id, url: business.url, resturantName: business.name,
-        address: business.location.address1, city: business.location.city, cost: business.price, resturantAlias: business.alias
+        restaurantYelpId: business.id, url: business.url, restaurantName: business.name,
+        address: business.location.address1, city: business.location.city, cost: business.price, restaurantAlias: business.alias
     }))
 
     let guestFavs = [];
@@ -107,7 +107,7 @@ const mapResultsHandler = (businesses, dispatch) => {
 const saveGuestFavs = (guestFavs) => dispatch => {
 
 
-    let guestFavState = guestFavs.map(guestFav => ({ resturantName: guestFav.resturantName, address: guestFav.address, city: guestFav.city, url: guestFav.url }))
+    let guestFavState = guestFavs.map(guestFav => ({ restaurantName: guestFav.restaurantName, address: guestFav.address, city: guestFav.city, url: guestFav.url }))
 
     let publicNumJoints = guestFavState.length
     console.log('guestFavState: ', guestFavState)

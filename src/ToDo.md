@@ -1,11 +1,5 @@
 
-
-Accessibility
-Move About to a component
 Tests
-SHIFT+CTRL+I on all docs
-Add Yelp credits
-CSS clean-up 
 Review state params and remove unused
 Clean up console.logs, commented code, 
 
@@ -35,6 +29,11 @@ Tests
 
 
 -==Done==-
+Add Yelp credits
+Accessibility
+Move About to a component
+SHIFT+CTRL+I on all docs
+CSS clean-up 
 email required for form
 Add code to fix error on 0 favs
 Add ability to save rest alias to DB to build URL on display Favs page

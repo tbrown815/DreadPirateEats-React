@@ -50,11 +50,6 @@ p {
   display: block;
 }
 
-li.offerDisplay {
-  padding-right: 3%; 
-  list-style-type: square;
-}
-
 input {
   border-color: silver;
 }

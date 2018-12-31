@@ -175,6 +175,7 @@ export function DreadPirate(props) {
 
 const mapStateToProps = state => ({
   loggedIn: state.loggedIn,
+  oldLoginState: state.oldLoginState,
   authToken: state.authToken,
   userToken: state.userToken,
   currentUser: state.currentUser,

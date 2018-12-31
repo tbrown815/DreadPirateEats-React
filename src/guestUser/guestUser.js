@@ -45,7 +45,7 @@ class GuestUser extends React.Component {
 
         let publicTheOffer = this.props.publicJoints[randomVal]
 
-        let publicMadeOffers = [...this.props.publicMadeOffers, { resturantName: publicTheOffer.resturantName, url: publicTheOffer.url }]
+        let publicMadeOffers = [...this.props.publicMadeOffers, { restaurantName: publicTheOffer.restaurantName, url: publicTheOffer.url }]
 
         let publicDrawCount = this.props.publicMadeOffers.length + 1;
 
@@ -143,8 +143,8 @@ class GuestUser extends React.Component {
                 <div className='pirateImageSection'>
                     <h2 className='loginTitle'>Ye be a vistor aboard me ship!</h2>
                     <form className='logInForm' id='logInForm' onSubmit={event => this.guestLogin(event)}>
-                        <p className='guestLocation'>Enter your location (City or Zip):</p>
-                        <input type='text' id='userLocationField' ref={userLoc => (this.userLoc = userLoc)} />
+                        <p className='guestLocation'>Enter your location (City or Zip Code):</p>
+                        <input type='number' className='userLocationField' id='userLocationField' min='00000' max='99999' ref={userLoc => (this.userLoc = userLoc)} />
                         <br />
                         <span id='errorMessage' role='alert'>{this.props.errorMessage}</span>
                         <br />
@@ -178,12 +178,15 @@ class GuestUser extends React.Component {
                             <br />
                             <ul>
                                 {this.props.publicMadeOffers.map(offer =>
-                                    <li key={offer.resturantName} className='offerDisplay' >
-                                        <a href={offer.url} target='_blank'>{offer.resturantName}</a>
+                                    <li key={offer.restaurantName} className='offerDisplay' >
+                                        <a href={offer.url} target='_blank'>{offer.restaurantName}</a>
                                     </li>
                                 )}
                             </ul>
                         </div>
+                        <br /><br />
+                        <span className='yelpInfo'>Search and Restaurant info provided by:
+                        <a href='https://www.yelp.com' target='_blank'><img className='yelpImg' src={require('../images/Yelp_trademark_RGB_outline.png')} /></a></span> 
                     </div>
                 )
             }
@@ -207,8 +210,8 @@ class GuestUser extends React.Component {
                             <br />
                             <ul>
                                 {this.props.publicMadeOffers.map(offer =>
-                                    <li key={offer.resturantName} className='offerDisplay' >
-                                        <a href={offer.url} target='_blank'>{offer.resturantName}</a>
+                                    <li key={offer.restaurantName} className='offerDisplay' >
+                                        <a href={offer.url} target='_blank'>{offer.restaurantName}</a>
                                     </li>
                                 )}
                             </ul>

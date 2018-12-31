@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { loginUser, logoutUser, returnToGame, signupUser, displayAbout } from '../actions/actions'
+import { loginUser, logoutUser, returnToGame, signupUser, displayAbout, cancelAbout } from '../actions/actions'
 import { editFavs } from '../actions/favActions'
 
 import './nav.css'
@@ -42,8 +42,16 @@ class Nav extends React.Component {
         event.preventDefault();
         
         let oldLoginState = this.props.loggedIn;
-
+console.log('oldLoginState: ', oldLoginState)
         this.props.dispatch(displayAbout(oldLoginState))
+    }
+
+    clickReturn(event) {
+        event.preventDefault();
+        
+        let oldLoginState = this.props.prevLoggedIn;
+
+        this.props.dispatch(cancelAbout(oldLoginState))
     }
 
     render() {
@@ -143,9 +151,7 @@ class Nav extends React.Component {
                     <nav className='topNav'>
                         <h1 className='navTitle'>Dread Pirate Eats</h1>
                         <ul>
-                        <li><span className='link'onClick={event => this.clickAbout(event)}>[About]</span></li>
-                            <li><span className='link' onClick={event => this.signUpClick(event)}>[Join the Crew!]</span></li>
-                            <li><span className='link' onClick={event => this.loginClick(event)}>[LogIn]</span></li>
+                            <li><span className='link' onClick={event => this.clickReturn(event)}>[Return]</span></li>
                         </ul>
                     </nav>
 

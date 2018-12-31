@@ -23,12 +23,12 @@ input.mapDisplayResults {
     margin-right: 13%;
 }
 
-.favsTitle, .resturantToEdit {
+.favsTitle, .restaurantToEdit {
     font-size: xx-large;
     text-shadow: 2px 2px #2b718b;
 }
 
-.resturantToEdit {
+.restaurantToEdit {
     font-size: x-large;
     text-shadow: 2px 2px #2b718b;
 }
@@ -72,4 +72,13 @@ input.mapDisplayResults {
   .searchData {
     font-size: x-large;
     text-shadow: 2px 2px #2b718b;  
+  }
+
+  .yelpInfo {
+    font-size: large;
+    text-shadow: 2px 2px #022b3b;
+  }
+
+  .yelpImg {
+      width: 30%;
   }

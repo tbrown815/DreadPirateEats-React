@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { loginUser } from '../actions/actions';
-import { callViewFavs } from '../actions/favActions'
+import { loginUser, displayAbout } from '../actions/actions';
+import { callViewFavs, editFavs } from '../actions/favActions'
 import { grubSearch, callRestart } from '../actions/grubActions'
 import { guestLogin } from '../actions/guestActions'
 
@@ -36,7 +36,7 @@ class DrawBox extends React.Component {
 
         let theOffer = this.props.grubJoints[randomVal]
 
-        let madeOffers = [...this.props.madeOffers, { resturantName: theOffer.resturantName, resturantAlias: `https://www.yelp.com/biz/${theOffer.resturantAlias}` }]
+        let madeOffers = [...this.props.madeOffers, { restaurantName: theOffer.restaurantName, restaurantAlias: `https://www.yelp.com/biz/${theOffer.restaurantAlias}` }]
 
         let numOffers = this.props.madeOffers.length + 1;
 
@@ -151,6 +151,21 @@ class DrawBox extends React.Component {
         this.props.dispatch(guestLogin())
     }
 
+    editUserFavs(event) {
+        event.preventDefault();
+
+        this.props.dispatch(editFavs())
+    }
+
+    clickAbout(event) {
+        event.preventDefault();
+        
+        let oldLoginState = this.props.loggedIn;
+
+        this.props.dispatch(displayAbout(oldLoginState))
+    }
+
+
     render() {
 
         if (this.props.loggedIn === 0) {
@@ -158,10 +173,10 @@ class DrawBox extends React.Component {
             return (
                 <div>
                     <div className='homeDecision'>
-                        <button className='drawBoxLoginButton homeDecisionButton dpe_button' id='LoginToStart' aria-pressed='false' 
+                        <button className='drawBoxLoginButton homeDecisionButton dpe_button' id='LoginToStart' aria-pressed='false'
                             onClick={event => this.loginClick(event)}>Login to start</button>
                         <br /><br />
-                        <button className='drawBoxGuestButton homeDecisionButton dpe_button' id='ContinueAsGuest' aria-pressed='false' 
+                        <button className='drawBoxGuestButton homeDecisionButton dpe_button' id='ContinueAsGuest' aria-pressed='false'
                             onClick={event => this.continueGuest(event)}>Continue as Guest</button>
 
                     </div>
@@ -172,30 +187,55 @@ class DrawBox extends React.Component {
         }
 
         if (!this.props.restart) {
-            return (
-                <div>
-                    <div className='drawForm'>
-                        <form id='drawForm' onSubmit={event => this.onDraw(event)}>
-                            <button type='submit' name='submit' id='drawButton' className='drawbutton dpe_button' 
-                                id='DrawResturantButton' aria-pressed='false'>Whar do ye want to eat?</button>
-                        </form>
-                    </div>
 
-                    <br />
-                    <div className='hangryTauntSection'>
-                        <span role='alert'>{this.props.hangryTaunt}</span>
+            if (this.props.grubJoints.length < 1) {
+                return (
+                    <div>
+                        <div className='drawForm'>
+                            <p className='newUserNoFavs'>Click below to add favorites!</p>
+
+                            <form id='drawForm' onSubmit={event => this.editUserFavs(event)}>
+                                <button type='submit' name='submit' id='drawButton' className='drawbutton dpe_button'
+                                    id='DrawResturantButton' aria-pressed='false'>Add favorites?</button>
+                            </form>
+                            <br/>
+                            <button className='newPlayer' onClick={event => this.clickAbout(event)}>Not sure how to play?</button>
+                        </div>
 
                         <br />
-                        <ul>
-                            {this.props.madeOffers.map(offer =>
-                                <li key={offer.resturantName} className='offerDisplay' >
-                                    <a href={offer.resturantAlias} target='_blank'>{offer.resturantName}</a>
-                                </li>
-                            )}
-                        </ul>
+
                     </div>
-                </div>
-            )
+
+                )
+
+            }
+
+            else {
+                return (
+                    <div>
+                        <div className='drawForm'>
+                            <form id='drawForm' onSubmit={event => this.onDraw(event)}>
+                                <button type='submit' name='submit' id='drawButton' className='drawbutton dpe_button'
+                                    id='DrawResturantButton' aria-pressed='false'>Whar do ye want to eat?</button>
+                            </form>
+                        </div>
+
+                        <br />
+                        <div className='hangryTauntSection'>
+                            <span role='alert'>{this.props.hangryTaunt}</span>
+
+                            <br />
+                            <ul>
+                                {this.props.madeOffers.map(offer =>
+                                    <li key={offer.restaurantName} className='offerDisplay' >
+                                        <a href={offer.restaurantAlias} target='_blank'>{offer.restaurantName}</a>
+                                    </li>
+                                )}
+                            </ul>
+                        </div>
+                    </div>
+                )
+            }
         }
 
         if (this.props.restart) {
@@ -203,7 +243,7 @@ class DrawBox extends React.Component {
                 <div>
                     <div className='drawForm'>
                         <form id='drawForm' onSubmit={event => this.restartApp(event)}>
-                            <button type='submit' name='reset' id='restartButton' className='restartButton dpe_button' 
+                            <button type='submit' name='reset' id='restartButton' className='restartButton dpe_button'
                                 id='RestartGame' aria-pressed='false'>Restart the game?</button>
                         </form>
                         <br />
@@ -212,8 +252,8 @@ class DrawBox extends React.Component {
                             <br />
                             <ul>
                                 {this.props.madeOffers.map(offer =>
-                                    <li key={offer.resturantName} className='offerDisplay' >
-                                        <a href={offer.resturantAlias} target='_blank'>{offer.resturantName}</a>
+                                    <li key={offer.restaurantName} className='offerDisplay' >
+                                        <a href={offer.restaurantAlias} target='_blank'>{offer.restaurantName}</a>
                                     </li>
                                 )}
                             </ul>

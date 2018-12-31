@@ -24,3 +24,7 @@
   color: red;
   text-shadow: 2px 2px #022b3b;
 }
+
+input {
+  font-size: x-large;
+}

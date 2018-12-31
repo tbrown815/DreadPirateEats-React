@@ -20,6 +20,9 @@
 
 }
 
+.userLocationField {
+  font-size: x-large;
+}
 
 
   @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
@@ -27,7 +30,7 @@
 
 li.offerDisplay {
   padding-right: 16%; 
-  list-style-type: square;
+  list-style-type: none;
 }
 
   

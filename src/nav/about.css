@@ -12,7 +12,13 @@
     list-style-type: square;
 }
 
+.dpeAbout{
+    text-align: center;
+
+}
+
 .aboutTitle {
+    text-align: center;
     font-size: large;
     text-shadow: 2px 2px #022b3b; 
 }
@@ -28,6 +34,10 @@
     font-size: large;
     text-shadow: 2px 2px #022b3b;
 
+}
+
+.returnButton {
+    margin-bottom: 30px;
 }
 
 

@@ -10,11 +10,11 @@ class SearchFavorites extends React.Component {
     searchLocation(event) {
         event.preventDefault();
         console.log('search')
-        const resturantName = this.resturantName.value;
-        const resturantZip = this.resturantZip.value;
+        const restaurantName = this.restaurantName.value;
+        const restaurantZip = this.restaurantZip.value;
         const publicSort = this.props.publicSort;
 
-        return this.props.dispatch(performYelpCall(resturantName, resturantZip, publicSort))
+        return this.props.dispatch(performYelpCall(restaurantName, restaurantZip, publicSort))
     }
 
     saveToFavs(event2) {
@@ -25,16 +25,16 @@ class SearchFavorites extends React.Component {
         let userToken = this.props.userToken
         let authToken = this.props.authToken
 
-        console.log('resturantId to save: ', yelpID)
+        console.log('restaurantId to save: ', yelpID)
 
-        let resturant = this.props.newFavorites.filter(data => {
-            return data.resturantYelpId === yelpID
+        let restaurant = this.props.newFavorites.filter(data => {
+            return data.restaurantYelpId === yelpID
         })
 
-        console.log('resturant to save: ', resturant)
+        console.log('restaurant to save: ', restaurant)
 
 
-        return this.props.dispatch(callAddNewFav(resturant, userToken, authToken))
+        return this.props.dispatch(callAddNewFav(restaurant, userToken, authToken))
     }
 
     changeSelectedFavState(event) {
@@ -55,11 +55,11 @@ class SearchFavorites extends React.Component {
                 <form className='searchForFavs' id='searchForFavsForm' title='searchForFavsForm' onSubmit={event => this.searchLocation(event)}>
                     <h2 className='searchTitle'>Add a new Favorite!</h2>
 
-                    <p className='searchFormText'>Enter resturant name:</p>
-                    <input className='searchFormBox' type='text' id='resturantNameField' title='resturantNameField' ref={resturantName => (this.resturantName = resturantName)} />
+                    <p className='searchFormText'>Enter restaurant name:</p>
+                    <input className='searchFormBox' type='text' id='restaurantNameField' title='restaurantNameField' ref={restaurantName => (this.restaurantName = restaurantName)} />
                     <br />
-                    <p className='searchFormText'>Enter City or Zipcode:</p>
-                    <input className='searchFormBox' type='text'  id='userLocationField' title='userLocationField' ref={resturantZip => (this.resturantZip = resturantZip)} />
+                    <p className='searchFormText'>Enter City or ZIP Code:</p>
+                    <input className='searchFormBox' type='number' min='00000' max='99999' id='userLocationField' title='userLocationField' ref={restaurantZip => (this.restaurantZip = restaurantZip)} />
                     <br /><br />
                     <span id='errorMessage' role='alert' >{this.props.errorMessage}</span>
                     <br /><br />
@@ -77,10 +77,10 @@ class SearchFavorites extends React.Component {
                     <ul>
 
                         {this.props.newFavorites.map(data =>
-                            <li key={data.resturantYelpId} className='mapDisplayResults'>
-                                <input type='radio' id='newFavSelect' title='newFavSelect' className='mapDisplayRadio' name='mapDisplayRadio' value={data.resturantYelpId}
+                            <li key={data.restaurantYelpId} className='mapDisplayResults'>
+                                <input type='radio' id='newFavSelect' title='newFavSelect' className='mapDisplayRadio' name='mapDisplayRadio' value={data.restaurantYelpId}
                                     onChange={event => this.changeSelectedFavState(event)} />
-                                <a href={data.url} target='_blank'>{data.resturantName}:</a>
+                                <a href={data.url} target='_blank'>{data.restaurantName}:</a>
                                 <br /> <span className='searchData'>{data.address}, {data.city}</span>
                             </li>
                         )}
@@ -90,7 +90,8 @@ class SearchFavorites extends React.Component {
                     <br /><br />
 
                 </form>
-
+                <span className='yelpInfo'>Search and Restaurant info provided by:
+                        <a href='https://www.yelp.com' target='_blank'><img className='yelpImg' src={require('../images/Yelp_trademark_RGB_outline.png')} /> </a></span> 
             </div>
 
 

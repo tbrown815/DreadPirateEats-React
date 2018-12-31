@@ -27,13 +27,13 @@ export const returnToGame = () => ({
 })
 
 export const DISPLAY_ABOUT = 'DISPLAY_ABOUT'
-export const displayAbout = (oldLoginState) => ({
+export const displayAbout = oldLoginState => ({
     type: DISPLAY_ABOUT,
     oldLoginState
 })
 
 export const CANCEL_ABOUT = 'CANCEL_ABOUT'
-export const cancelAbout = (oldLoginState) => ({
+export const cancelAbout = oldLoginState => ({
     type: CANCEL_ABOUT,
     oldLoginState
 })

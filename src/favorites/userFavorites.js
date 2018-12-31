@@ -86,10 +86,10 @@ class UserFavorites extends React.Component {
                         <span role='alert'>{this.props.noFavsMessage}</span><br />
                         <ul>
                         {this.props.grubJoints.map(data =>
-                            <li key={data.resturantYelpId} className='mapDisplayResults'>
-                                <input type='radio' className='mapDisplayRadio' title={data.resturantName} name='mapDisplayRadio' value={data.id}
+                            <li key={data.restaurantYelpId} className='mapDisplayResults'>
+                                <input type='radio' className='mapDisplayRadio' title={data.restaurantName} name='mapDisplayRadio' value={data.id}
                                     onChange={event => this.changeSelectedFavState(event)} />
-                                <a href={REACT_APP_FAV_YELP_URL + data.resturantAlias} target='_blank'>{data.resturantName}</a>
+                                <a href={REACT_APP_FAV_YELP_URL + data.restaurantAlias} target='_blank'>{data.restaurantName}</a>
 
                             </li>
                         )}
@@ -98,10 +98,12 @@ class UserFavorites extends React.Component {
                         <button type='submit' name='submit' id='editButton' className='editButton dpe_button'>Edit Favorite</button>
                     </form>
 
-
                     <br />
                     <button id='addFavsButton' className='addFavsButton'
                         onClick={event => this.updateFavsState(event)}>Add new Favorites!</button>
+                    <br /><br />
+                    <span className='yelpInfo'>Search and Restaurant info provided by:
+                    <a href='https://www.yelp.com' target='_blank'><img className='yelpImg' src={require('../images/Yelp_trademark_RGB_outline.png')} /></a></span> 
 
                 </div>
 
@@ -117,10 +119,10 @@ class UserFavorites extends React.Component {
                     <br />
                     <form className='editFavs' onSubmit={event => this.editFavCall(event)}>
 
-                        <span className='resturantToEdit'>Edit {this.props.editFavOjb.resturantName}</span>
+                        <span className='restaurantToEdit'>Edit {this.props.editFavOjb.restaurantName}</span>
                         <br />
                         <li key={this.props.editFavOjb.id} className='editResults'>
-                            <p><input type='text' className='editFavTextBox' id='editFavTextBox' name='editFavTextBox' placeholder={this.props.editFavOjb.resturantName}
+                            <p><input type='text' className='editFavTextBox' id='editFavTextBox' name='editFavTextBox' placeholder={this.props.editFavOjb.restaurantName}
                                 ref={newFavName => (this.newFavName = newFavName)} /></p>
                             <input type='text' className='hidden' id='hiddenIdField' value={this.props.editFavOjb.id}
                                 readOnly ref={favId => (this.favId = favId)} />
@@ -186,7 +188,7 @@ require for search - name, user zip
 Results
 Show top 5 only
 Sort by Distance to entered zip - nice to have determin location
-Save to DB - 'userRef', 'resturantName', 'resturantZip', 'resturantCost', 'resturantYelpId'
+Save to DB - 'userRef', 'restaurantName', 'restaurantZip', 'restaurantCost', 'restaurantYelpId'
 
 
 

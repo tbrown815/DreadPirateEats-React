@@ -69,12 +69,12 @@ export const noFavsError = (noFavs) => ({
 
 export const updateFavCall = (newFavName, favId, userToken, authToken) => dispatch => {
 
-    let resturantName = newFavName;
+    let restaurantName = newFavName;
     let id = favId;
 
     return fetch(`${REACT_APP_FAVS_URL}${favId}`, {
         method: 'PATCH',
-        body: JSON.stringify({ id, resturantName }),
+        body: JSON.stringify({ id, restaurantName }),
         headers:
         {
             'Content-Type': 'application/json',
@@ -130,21 +130,21 @@ const setFavObject = (resObj, dispatch) => {
     console.log('resObj: ', resObj)
 
     let favOjb = {
-        id: resObj.id, resturantYelpId: resObj.resturantYelpId, resturantName: resObj.resturantName,
-        resturantAlias: resObj.alias
+        id: resObj.id, restaurantYelpId: resObj.restaurantYelpId, restaurantName: resObj.restaurantName,
+        restaurantAlias: resObj.alias
     }
 
     dispatch(editFavsState(favOjb))
 
 }
 
-export const performYelpCall = (resturantName, resturantZip, publicSort) => dispatch => {
-    if (resturantName === undefined || resturantName === null || resturantName === '') {
+export const performYelpCall = (restaurantName, restaurantZip, publicSort) => dispatch => {
+    if (restaurantName === undefined || restaurantName === null || restaurantName === '') {
 
-        dispatch(setErrorState('Please enter the resturant name.'))
+        dispatch(setErrorState('Please enter the restaurant name.'))
     }
 
-    else if (resturantZip === undefined || resturantZip === null || resturantZip === '') {
+    else if (restaurantZip === undefined || restaurantZip === null || restaurantZip === '') {
 
         dispatch(setErrorState('Please enter your zip code.'))
     }
@@ -153,7 +153,7 @@ export const performYelpCall = (resturantName, resturantZip, publicSort) => disp
 
         return fetch(`${REACT_APP_FAV_SEARCH_DETAIL_URL}`, {
             method: 'POST',
-            body: JSON.stringify({ resturantName, resturantZip, publicSort }),
+            body: JSON.stringify({ restaurantName, restaurantZip, publicSort }),
             headers: { 'Content-Type': 'application/json' }
         })
             .then(res => res.json())
@@ -167,8 +167,8 @@ const mapResultsHandler = (businesses, dispatch) => {
     console.log('businesses: ', businesses)
 
     let results = businesses.map(business => ({
-        resturantYelpId: business.id, url: business.url, resturantName: business.name,
-        address: business.location.address1, city: business.location.city, cost: business.price, resturantAlias: business.alias
+        restaurantYelpId: business.id, url: business.url, restaurantName: business.name,
+        address: business.location.address1, city: business.location.city, cost: business.price, restaurantAlias: business.alias
     }))
 
     let displayResults = [];
@@ -200,10 +200,10 @@ const mapResultsHandler = (businesses, dispatch) => {
 }
 
 
-export const callAddNewFav = (resturant, userToken, authToken) => dispatch => {
-    let resturantYelpId = resturant[0].resturantYelpId;
-    let resturantName = resturant[0].resturantName;
-    let resturantAlias = resturant[0].resturantAlias;
+export const callAddNewFav = (restaurant, userToken, authToken) => dispatch => {
+    let restaurantYelpId = restaurant[0].restaurantYelpId;
+    let restaurantName = restaurant[0].restaurantName;
+    let restaurantAlias = restaurant[0].restaurantAlias;
 
     console.log('actionuserToken: ', userToken)
     console.log('actionauthToken: ', authToken)
@@ -211,8 +211,8 @@ export const callAddNewFav = (resturant, userToken, authToken) => dispatch => {
     return fetch(`${REACT_APP_FAVS_URL}`, {
         method: 'POST',
         body: JSON.stringify({
-            userRef: userToken, resturantYelpId: resturantYelpId, resturantName: resturantName,
-            resturantAlias: resturantAlias
+            userRef: userToken, restaurantYelpId: restaurantYelpId, restaurantName: restaurantName,
+            restaurantAlias: restaurantAlias
         }),
         headers:
         {
@@ -255,8 +255,8 @@ const mapFavResultsHandler = (userFavs, dispatch) => {
     else {
 
         let favResults = userFavs.map(userFav => ({
-            id: userFav.id, resturantYelpId: userFav.resturantYelpId,
-            resturantName: userFav.resturantName, resturantAlias: userFav.resturantAlias
+            id: userFav.id, restaurantYelpId: userFav.restaurantYelpId,
+            restaurantName: userFav.restaurantName, restaurantAlias: userFav.restaurantAlias
         }))
 
         let displayFavs = [];
