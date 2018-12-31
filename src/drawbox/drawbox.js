@@ -159,7 +159,7 @@ class DrawBox extends React.Component {
 
     clickAbout(event) {
         event.preventDefault();
-        
+
         let oldLoginState = this.props.loggedIn;
 
         this.props.dispatch(displayAbout(oldLoginState))
@@ -198,7 +198,7 @@ class DrawBox extends React.Component {
                                 <button type='submit' name='submit' id='drawButton' className='drawbutton dpe_button'
                                     id='DrawResturantButton' aria-pressed='false'>Add favorites?</button>
                             </form>
-                            <br/>
+                            <br />
                             <button className='newPlayer' onClick={event => this.clickAbout(event)}>Not sure how to play?</button>
                         </div>
 
