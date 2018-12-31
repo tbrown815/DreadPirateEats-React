@@ -15,7 +15,7 @@
     text-align: center;
 }
 
-.hangryTauntSection {
+.hangryTauntSection, .newUserNoFavs {
   font-size: x-large;
   text-shadow: 2px 2px #022b3b;
   text-align: center;
