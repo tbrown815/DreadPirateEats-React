@@ -11,13 +11,15 @@ import Favorites from './favorites/favorites';
 import GuestUser from './guestUser/guestUser';
 import About from './nav/about'
 
+import {userStillLoggedIn, logoutUser} from './actions/actions'
+
 
 require('dotenv').config();
 
-export function DreadPirate(props) {
+//export function DreadPirate(props) {
 
-  console.log('state: ', props)
-
+  class DreadPirate extends React.Component {
+    
 
   /*LOGGEDIN STATE*/
   /*
@@ -30,7 +32,28 @@ export function DreadPirate(props) {
 7 = Display About
   */
 
-  if (props.loggedIn === 0) {
+ componentDidMount() {
+
+  let authToken = localStorage.getItem('authToken')
+
+  if(authToken) {
+    
+    this.props.dispatch(userStillLoggedIn(authToken))
+  }
+
+  else {
+    this.props.dispatch(logoutUser())
+  }
+
+
+}
+
+
+render() {
+
+  console.log('state: ', this.props)
+
+  if (this.props.loggedIn === 0) {
     return (
       <main>
         <Nav />
@@ -47,7 +70,7 @@ export function DreadPirate(props) {
     )
   }
 
-  if (props.loggedIn === 1) {
+  if (this.props.loggedIn === 1) {
     return (
       <main>
 
@@ -64,7 +87,7 @@ export function DreadPirate(props) {
     )
   }
 
-  if (props.loggedIn === 2) {
+  if (this.props.loggedIn === 2) {
     return (
       <main>
 
@@ -81,7 +104,7 @@ export function DreadPirate(props) {
     )
   }
 
-  if (props.loggedIn === 3) {
+  if (this.props.loggedIn === 3) {
 
     return (
       <main>
@@ -99,7 +122,7 @@ export function DreadPirate(props) {
     )
   }
 
-  if (props.loggedIn === 4) {
+  if (this.props.loggedIn === 4) {
     return (
       <main>
 
@@ -115,7 +138,7 @@ export function DreadPirate(props) {
     )
   }
 
-  if (props.loggedIn === 5) {
+  if (this.props.loggedIn === 5) {
     return (
       <main>
 
@@ -134,7 +157,7 @@ export function DreadPirate(props) {
     )
   }
 
-  if (props.loggedIn === 6) {
+  if (this.props.loggedIn === 6) {
     return (
       <main>
 
@@ -153,7 +176,7 @@ export function DreadPirate(props) {
     )
   }
 
-  if (props.loggedIn === 7) {
+  if (this.props.loggedIn === 7) {
     return (
       <main>
 
@@ -169,6 +192,8 @@ export function DreadPirate(props) {
 
     )
   }
+
+}
 
 
 } //end of export

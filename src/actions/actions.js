@@ -112,6 +112,15 @@ export const logoutUser = () => dispatch => {
     dispatch(logoutSuccess())
 }
 
+export const userStillLoggedIn = (authToken) => dispatch => {
+    const decodedToken = jwtDecode(authToken)
+    dispatch(setAuthToken(authToken))
+    dispatch(loginSuccess(decodedToken.user))
+    storeAuthToken(authToken)
+    storeUserToken(decodedToken.user.id)
+
+}
+
 
 export const createUserCheck = (username, email, password, passwordConf) => dispatch => {
     console.log('createUserCheck')
