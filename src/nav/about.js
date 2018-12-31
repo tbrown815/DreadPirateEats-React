@@ -20,17 +20,17 @@ class About extends React.Component {
 
             <div id='odpe_about' className='odpe_about'>
                 <div >
-                    <h2 role='banner' className='aboutTitle'>About Dread Pirate Eats!</h2>
+                    <h2 className='aboutTitle'>About Dread Pirate Eats!</h2>
                     <h4>How to play the Dread Pirate Eats game-</h4>
 
-                    <ul role='list' className='dpeList'>
-                        <li role='listitem' className='dpeListItem'>Click the button to draw a resturant.</li>
-                        <li role='listitem' className='dpeListItem'>You receive 3 initial selections to choose from.</li>
-                        <li role='listitem' className='dpeListItem'>Your 4th selection is your "Last Stand", this is your final selection and if used is the option you must choose.</li>
+                    <ul className='dpeList'>
+                        <li className='dpeListItem'>Click the button to draw a resturant.</li>
+                        <li className='dpeListItem'>You receive 3 initial selections to choose from.</li>
+                        <li className='dpeListItem'>Your 4th selection is your "Last Stand", this is your final selection and if used is the option you must choose.</li>
                     </ul>
-                    <h4 role='banner' className='aboutTitle'>History of the Dread Pirate Eats-</h4>
+                    <h4 className='aboutTitle'>History of the Dread Pirate Eats-</h4>
                     <p role='contentinfo' className='dpeInfo'>
-                        <ul role='list' className='dpeList'>
+                        <ul className='dpeList'>
                         <li className='dpeInfoItem'>The Dread Pirate Eats game started around 2009.  My wife and I found that either neither of us cared where we went
                         to eat OR one of us was feeling too picky with the others' suggestions.  Out of this issue the Dread Pirate Eats was born!</li>
                         <br /><br />
@@ -40,7 +40,7 @@ class About extends React.Component {
                         </ul>            
                         </p>
                     <div className='origDPEBox'>
-                        <h4 role='banner'>The original Dread Pirate Eats!</h4>
+                        <h4>The original Dread Pirate Eats!</h4>
                         <img src={require('../images/origDPE.jpg')} alt='the original dread pirate eats' className='origDPE' />
                     </div>
                 </div>

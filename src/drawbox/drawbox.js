@@ -186,9 +186,9 @@ class DrawBox extends React.Component {
                         <span role='alert'>{this.props.hangryTaunt}</span>
 
                         <br />
-                        <ul role='list'>
+                        <ul>
                             {this.props.madeOffers.map(offer =>
-                                <li role='listitem' key={offer.resturantName} className='offerDisplay' >
+                                <li key={offer.resturantName} className='offerDisplay' >
                                     <a href={offer.resturantAlias} target='_blank'>{offer.resturantName}</a>
                                 </li>
                             )}
@@ -210,9 +210,9 @@ class DrawBox extends React.Component {
                         <div className='hangryTauntSection'>
                             <span role='alert'> Ye time is up, walk thee plank! </span>
                             <br />
-                            <ul role='list'>
+                            <ul>
                                 {this.props.madeOffers.map(offer =>
-                                    <li role='listitem' key={offer.resturantName} className='offerDisplay' >
+                                    <li key={offer.resturantName} className='offerDisplay' >
                                         <a href={offer.resturantAlias} target='_blank'>{offer.resturantName}</a>
                                     </li>
                                 )}

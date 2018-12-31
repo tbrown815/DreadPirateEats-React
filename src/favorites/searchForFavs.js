@@ -52,14 +52,14 @@ class SearchFavorites extends React.Component {
 
             <div>
 
-                <form className='searchForFavs' id='searchForFavsForm' onSubmit={event => this.searchLocation(event)}>
+                <form className='searchForFavs' id='searchForFavsForm' title='searchForFavsForm' onSubmit={event => this.searchLocation(event)}>
                     <h2 className='searchTitle'>Add a new Favorite!</h2>
 
                     <p className='searchFormText'>Enter resturant name:</p>
-                    <input className='searchFormBox' type='text' role='textbox' id='resturantNameField' ref={resturantName => (this.resturantName = resturantName)} />
+                    <input className='searchFormBox' type='text' id='resturantNameField' title='resturantNameField' ref={resturantName => (this.resturantName = resturantName)} />
                     <br />
                     <p className='searchFormText'>Enter City or Zipcode:</p>
-                    <input className='searchFormBox' type='text' role='textbox' id='userLocationField' ref={resturantZip => (this.resturantZip = resturantZip)} />
+                    <input className='searchFormBox' type='text'  id='userLocationField' title='userLocationField' ref={resturantZip => (this.resturantZip = resturantZip)} />
                     <br /><br />
                     <span id='errorMessage' role='alert' >{this.props.errorMessage}</span>
                     <br /><br />
@@ -72,13 +72,13 @@ class SearchFavorites extends React.Component {
 
                 {console.log('props.newFavs: ', this.props.newFavorites)}
 
-                <form className='saveToFavsForm' id='saveToFavsForm' onSubmit={event => this.saveToFavs(event)}>
-                    <ul>
+                <form className='saveToFavsForm' id='saveToFavsForm'  title='saveToFavsForm' onSubmit={event => this.saveToFavs(event)}>
                         <span className='userMessage' role='alert'>{this.props.userMessage}</span>
+                    <ul>
 
                         {this.props.newFavorites.map(data =>
                             <li key={data.resturantYelpId} className='mapDisplayResults'>
-                                <input type='radio' id='newFavSelect' className='mapDisplayRadio' name='mapDisplayRadio' value={data.resturantYelpId}
+                                <input type='radio' id='newFavSelect' title='newFavSelect' className='mapDisplayRadio' name='mapDisplayRadio' value={data.resturantYelpId}
                                     onChange={event => this.changeSelectedFavState(event)} />
                                 <a href={data.url} target='_blank'>{data.resturantName}:</a>
                                 <br /> <span className='searchData'>{data.address}, {data.city}</span>

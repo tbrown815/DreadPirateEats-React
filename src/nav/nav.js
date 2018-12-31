@@ -54,11 +54,11 @@ class Nav extends React.Component {
 
                 <header>
 
-                    <nav className='topNav' role='navigation'>
-                        <h1 role='banner' className='navTitle'>Dread Pirate Eats</h1>
-                        <ul role='list'>
-                            <li role='listitem'><span className='link'onClick={event => this.clickAbout(event)}>[About]</span></li>
-                            <li role='listitem'><span className='link' onClick={event => this.loginClick(event)}>[LogIn]</span></li>
+                    <nav className='topNav'>
+                        <h1 className='navTitle'>Dread Pirate Eats</h1>
+                        <ul>
+                            <li><span className='link'onClick={event => this.clickAbout(event)}>[About]</span></li>
+                            <li><span className='link' onClick={event => this.loginClick(event)}>[LogIn]</span></li>
                         </ul>
                     </nav>
 
@@ -72,10 +72,10 @@ class Nav extends React.Component {
             return (
                 <header>
 
-                    <nav className='topNav' role='navigation'>
-                        <h1 role='banner' className='navTitle'>Dread Pirate Eats</h1>
-                        <ul role='list'>
-                        <li role='listitem'><span className='link'onClick={event => this.clickAbout(event)}>[About]</span></li>
+                    <nav className='topNav'>
+                        <h1 className='navTitle'>Dread Pirate Eats</h1>
+                        <ul>
+                        <li><span className='link'onClick={event => this.clickAbout(event)}>[About]</span></li>
                         </ul>
                     </nav>
 
@@ -89,12 +89,12 @@ class Nav extends React.Component {
             return (
                 <header>
 
-                    <nav className='topNav' role='navigation'>
-                        <h1 role='banner' className='navTitle'>Dread Pirate Eats</h1>
-                        <ul role='list'>
-                            <li role='listitem'><span className='link' onClick={event => this.logoutClick(event)}>[Logout]</span></li>
-                            <li role='listitem'><span className='link'onClick={event => this.clickAbout(event)}>[About]</span></li>
-                            <li role='listitem'><span className='link' onClick={event => this.editUserFavs(event)}>[Favorites]</span></li>
+                    <nav className='topNav'>
+                        <h1 className='navTitle'>Dread Pirate Eats</h1>
+                        <ul>
+                            <li><span className='link' onClick={event => this.logoutClick(event)}>[Logout]</span></li>
+                            <li><span className='link'onClick={event => this.clickAbout(event)}>[About]</span></li>
+                            <li><span className='link' onClick={event => this.editUserFavs(event)}>[Favorites]</span></li>
                         </ul>
                     </nav>
 
@@ -106,12 +106,12 @@ class Nav extends React.Component {
             return (
                 <header>
 
-                    <nav className='topNav' role='navigation'>
-                        <h1 role='banner' className='navTitle'>Dread Pirate Eats</h1>
-                        <ul role='list'>
-                            <li role='listitem'><span className='link' onClick={event => this.logoutClick(event)}>[Logout]</span></li>
-                            <li role='listitem'><span className='link'onClick={event => this.clickAbout(event)}>[About]</span></li>
-                            <li role='listitem'><span className='link' onClick={event => this.returnGame(event)}>[Play Game]</span></li>
+                    <nav className='topNav'>
+                        <h1 className='navTitle'>Dread Pirate Eats</h1>
+                        <ul>
+                            <li><span className='link' onClick={event => this.logoutClick(event)}>[Logout]</span></li>
+                            <li><span className='link'onClick={event => this.clickAbout(event)}>[About]</span></li>
+                            <li><span className='link' onClick={event => this.returnGame(event)}>[Play Game]</span></li>
                         </ul>
                     </nav>
 
@@ -123,12 +123,12 @@ class Nav extends React.Component {
             return (
                 <header>
 
-                    <nav className='topNav' role='navigation'>
-                        <h1 role='banner' className='navTitle'>Dread Pirate Eats</h1>
-                        <ul role='list'>
-                        <li role='listitem'><span className='link'onClick={event => this.clickAbout(event)}>[About]</span></li>
-                            <li role='listitem'><span className='link' onClick={event => this.signUpClick(event)}>[Join the Crew!]</span></li>
-                            <li role='listitem'><span className='link' onClick={event => this.loginClick(event)}>[LogIn]</span></li>
+                    <nav className='topNav'>
+                        <h1 className='navTitle'>Dread Pirate Eats</h1>
+                        <ul>
+                        <li><span className='link'onClick={event => this.clickAbout(event)}>[About]</span></li>
+                            <li><span className='link' onClick={event => this.signUpClick(event)}>[Join the Crew!]</span></li>
+                            <li><span className='link' onClick={event => this.loginClick(event)}>[LogIn]</span></li>
                         </ul>
                     </nav>
 
@@ -140,12 +140,12 @@ class Nav extends React.Component {
             return (
                 <header>
 
-                    <nav className='topNav' role='navigation'>
-                        <h1 role='banner' className='navTitle'>Dread Pirate Eats</h1>
-                        <ul role='list'>
-                        <li role='listitem'><span className='link'onClick={event => this.clickAbout(event)}>[About]</span></li>
-                            <li role='listitem'><span className='link' onClick={event => this.signUpClick(event)}>[Join the Crew!]</span></li>
-                            <li role='listitem'><span className='link' onClick={event => this.loginClick(event)}>[LogIn]</span></li>
+                    <nav className='topNav'>
+                        <h1 className='navTitle'>Dread Pirate Eats</h1>
+                        <ul>
+                        <li><span className='link'onClick={event => this.clickAbout(event)}>[About]</span></li>
+                            <li><span className='link' onClick={event => this.signUpClick(event)}>[Join the Crew!]</span></li>
+                            <li><span className='link' onClick={event => this.loginClick(event)}>[LogIn]</span></li>
                         </ul>
                     </nav>
 

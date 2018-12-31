@@ -176,9 +176,9 @@ class GuestUser extends React.Component {
                             <span role='alert'>{this.props.publicHangryTaunt}</span>
 
                             <br />
-                            <ul role='list'>
+                            <ul>
                                 {this.props.publicMadeOffers.map(offer =>
-                                    <li role='listitem' key={offer.resturantName} className='offerDisplay' >
+                                    <li key={offer.resturantName} className='offerDisplay' >
                                         <a href={offer.url} target='_blank'>{offer.resturantName}</a>
                                     </li>
                                 )}
@@ -205,9 +205,9 @@ class GuestUser extends React.Component {
                             <span role='alert'> Ye time is up, walk thee plank! </span>
 
                             <br />
-                            <ul role='list'>
+                            <ul>
                                 {this.props.publicMadeOffers.map(offer =>
-                                    <li role='listitem' key={offer.resturantName} className='offerDisplay' >
+                                    <li key={offer.resturantName} className='offerDisplay' >
                                         <a href={offer.url} target='_blank'>{offer.resturantName}</a>
                                     </li>
                                 )}
