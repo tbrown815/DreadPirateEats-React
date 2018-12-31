@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import { REACT_APP_TEST_USERNAME, REACT_APP_TEST_PASSWORD } from '../config';
 import { signupUser, userLogin, cancelState } from '../actions/actions';
 
 import './userLogin.css';
@@ -19,8 +20,8 @@ class UserLogin extends React.Component {
     bypassLogin(event) {
         event.preventDefault();
 
-        const username = 'ricksanchez'
-        const password = 'test9033'
+        const username = REACT_APP_TEST_USERNAME
+        const password = REACT_APP_TEST_PASSWORD
 
         return this.props.dispatch(userLogin(username, password))
 
