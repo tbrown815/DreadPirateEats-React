@@ -58,7 +58,7 @@ class SearchFavorites extends React.Component {
                     <p className='searchFormText'>Enter restaurant name:</p>
                     <input className='searchFormBox' type='text' id='restaurantNameField' title='restaurantNameField' ref={restaurantName => (this.restaurantName = restaurantName)} />
                     <br />
-                    <p className='searchFormText'>Enter City or ZIP Code:</p>
+                    <p className='searchFormText'>Enter ZIP Code:</p>
                     <input className='searchFormBox' type='number' min='00000' max='99999' id='userLocationField' title='userLocationField' ref={restaurantZip => (this.restaurantZip = restaurantZip)} />
                     <br /><br />
                     <span id='errorMessage' role='alert' >{this.props.errorMessage}</span>

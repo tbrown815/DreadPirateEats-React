@@ -143,7 +143,7 @@ class GuestUser extends React.Component {
                 <div className='pirateImageSection'>
                     <h2 className='loginTitle'>Ye be a vistor aboard me ship!</h2>
                     <form className='logInForm' id='logInForm' onSubmit={event => this.guestLogin(event)}>
-                        <p className='guestLocation'>Enter your location (City or Zip Code):</p>
+                        <p className='guestLocation'>Enter your Zip Code:</p>
                         <input type='number' className='userLocationField' id='userLocationField' min='00000' max='99999' ref={userLoc => (this.userLoc = userLoc)} />
                         <br />
                         <span id='errorMessage' role='alert'>{this.props.errorMessage}</span>
