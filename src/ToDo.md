@@ -1,5 +1,4 @@
 
-Add Delete option for Favs page
 Front tests
 Review state params and remove unused
 Clean up console.logs, commented code, console warnings
@@ -25,6 +24,9 @@ If time-
 
 
 -==Done==-
+
+Add Delete option for Favs page
+Fix radio button 2 click 
 API tests
 Add Yelp credits
 Accessibility

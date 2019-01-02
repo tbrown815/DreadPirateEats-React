@@ -38,7 +38,7 @@ class SearchFavorites extends React.Component {
     }
 
     changeSelectedFavState(event) {
-        event.preventDefault();
+      //  event.preventDefault();
 
         console.log('selected: ', event.target.value)
         let selectedFav = event.target.value;

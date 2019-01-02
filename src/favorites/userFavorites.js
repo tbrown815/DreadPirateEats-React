@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { REACT_APP_FAV_YELP_URL } from '../config'
-import { setSelectedFav, callViewFavs, searchNewFavs, getFavsSetState, updateFavCall } from '../actions/favActions'
+import { setSelectedFav, callViewFavs, searchNewFavs, getFavsSetState, updateFavCall, callDelFavs } from '../actions/favActions'
 
 
 import './favorites.css';
@@ -27,7 +27,7 @@ class UserFavorites extends React.Component {
     }
 
     changeSelectedFavState(event) {
-        event.preventDefault();
+       // event.preventDefault();
 
         console.log('selected: ', event.target.value)
         let selectedFav = event.target.value;
@@ -58,6 +58,16 @@ class UserFavorites extends React.Component {
         console.log('favId: ', favId)
 
         return this.props.dispatch(updateFavCall(newFavName, favId, userToken, authToken))
+    }
+
+    deleteFavCall(event) {
+        event.preventDefault();
+
+        let authToken = this.props.authToken
+        let userToken = this.props.userToken
+        let favId = this.props.selectedFavorite
+
+        this.props.dispatch(callDelFavs(authToken, userToken, favId))
     }
 
     cancelEditFavCall(event) {
@@ -133,6 +143,9 @@ class UserFavorites extends React.Component {
                         <button type='submit' name='submit' id='editButton' className='editButton'>Save Change</button>
                     </form>
                     <br />
+                    <button type='delete' name='delete' id='editDeleteButton' className='editDeleteButton dpe_button'
+                        onClick={event => this.deleteFavCall(event)}>Delete Favorite</button>
+                    <br /><br />
                     <button type='cancel' name='cancel' id='editCancelButton' className='editCancelButton dpe_button'
                         onClick={event => this.cancelEditFavCall(event)}>Cancel</button>
 

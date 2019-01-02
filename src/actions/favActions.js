@@ -150,6 +150,7 @@ export const performYelpCall = (restaurantName, restaurantZip, publicSort) => di
     }
 
     else {
+        publicSort = publicSort[0]
 
         return fetch(`${REACT_APP_FAV_SEARCH_DETAIL_URL}`, {
             method: 'POST',
@@ -273,3 +274,26 @@ const mapFavResultsHandler = (userFavs, dispatch) => {
         dispatch(viewFavs(displayFavs, numJoints))
     }
 }
+
+export const callDelFavs = (authToken, userToken, favId) => dispatch => {
+    console.log('callViewFavs')
+
+    return fetch(`${REACT_APP_FAVS_URL}${favId}`, {
+        method: 'DELETE',
+        headers:
+        {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${authToken}`
+
+        }
+    })
+    .then(res => {
+        let resObj = res.json();
+
+        console.log('resObj: ', resObj);
+
+        dispatch(callViewFavs(userToken, authToken))
+    })
+
+
+}//END callDelFavs
