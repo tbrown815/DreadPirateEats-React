@@ -51,9 +51,9 @@ export const setAuthToken = authToken => ({
 })
 
 export const ERROR_STATE = 'ERROR_STATE'
-export const setErrorState = errorMessage => ({
+export const setErrorState = (errorMessage) => ({
     type: ERROR_STATE,
-    errorMessage
+    errorMessage: errorMessage
 })
 
 export const CANCEL_STATE = 'CANCEL_STATE'

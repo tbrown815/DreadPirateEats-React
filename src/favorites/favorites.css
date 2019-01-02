@@ -16,7 +16,7 @@ input.mapDisplayResults {
     margin-left: -5%;
 }
 
-.userMessage {
+.userMessage, .warning {
     font-size: large;
     color: red;
     text-shadow: 2px 2px #022b3b;

@@ -200,6 +200,7 @@ render() {
 
 const mapStateToProps = state => ({
   loggedIn: state.loggedIn,
+  editFavState: state.editFavState,
   oldLoginState: state.oldLoginState,
   authToken: state.authToken,
   userToken: state.userToken,

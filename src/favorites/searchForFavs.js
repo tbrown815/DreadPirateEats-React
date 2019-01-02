@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import { setErrorState } from '../actions/actions'
 import { performYelpCall, setSelectedFav, callAddNewFav } from '../actions/favActions'
 
 import './favorites.css';
@@ -27,6 +28,12 @@ class SearchFavorites extends React.Component {
 
         console.log('restaurantId to save: ', yelpID)
 
+        if(yelpID === null || yelpID === undefined || yelpID === '') {
+            return this.props.dispatch(setErrorState('Please search for and select a restaurant'))
+
+        }
+
+        else {
         let restaurant = this.props.newFavorites.filter(data => {
             return data.restaurantYelpId === yelpID
         })
@@ -36,6 +43,7 @@ class SearchFavorites extends React.Component {
 
         return this.props.dispatch(callAddNewFav(restaurant, userToken, authToken))
     }
+    }
 
     changeSelectedFavState(event) {
       //  event.preventDefault();
@@ -44,6 +52,7 @@ class SearchFavorites extends React.Component {
         let selectedFav = event.target.value;
 
         return this.props.dispatch(setSelectedFav(selectedFav))
+        
     }
 
 
@@ -61,7 +70,7 @@ class SearchFavorites extends React.Component {
                     <p className='searchFormText'>Enter ZIP Code:</p>
                     <input className='searchFormBox' type='number' min='00000' max='99999' id='userLocationField' title='userLocationField' ref={restaurantZip => (this.restaurantZip = restaurantZip)} />
                     <br /><br />
-                    <span id='errorMessage' role='alert' >{this.props.errorMessage}</span>
+                    <span id='errorMessage' role='alert' className = 'warning'>{this.props.errorMessage}</span>
                     <br /><br />
 
                     <button type='submit' name='submit' id='searchButton' className='searchButton dpe_button'>Search</button>
@@ -85,6 +94,8 @@ class SearchFavorites extends React.Component {
                             </li>
                         )}
                     </ul>
+                    <span id='errorMessage' role='alert' className = 'warning'>{this.props.errorMessage}</span>
+
                     <br />
                     <button type='submit' name='submit' id='saveToFavsButton' className='saveToFavsButton dpe_button'>Save Selected</button>
                     <br /><br />

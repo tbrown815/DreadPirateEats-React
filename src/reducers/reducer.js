@@ -195,7 +195,8 @@ export default (state = initialState, action) => {
         console.log('SEARCH_NEW_FAVS')
 
         return Object.assign({}, state, {
-            favState: 1
+            favState: 1,
+            errorMessage: null
 
         })
     }
@@ -240,7 +241,8 @@ export default (state = initialState, action) => {
         console.log('CANCEL_ADD_FAVS')
 
         return Object.assign({}, state, {
-            favState: 0
+            favState: 0,
+            errorMessage: null
         })
     }
 
@@ -257,7 +259,8 @@ export default (state = initialState, action) => {
 
         return Object.assign({}, state, {
             editFavState: 1,
-            editFavOjb: action.favOjb
+            editFavOjb: action.favOjb,
+            errorMessage: null
         })
     }
 

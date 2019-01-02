@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { REACT_APP_FAV_YELP_URL } from '../config'
+import {setErrorState} from '../actions/actions'
 import { setSelectedFav, callViewFavs, searchNewFavs, getFavsSetState, updateFavCall, callDelFavs } from '../actions/favActions'
 
 
@@ -41,7 +42,13 @@ class UserFavorites extends React.Component {
         let findFav = this.props.selectedFavorite;
         let authToken = this.props.authToken
 
+        if(findFav === null || findFav === undefined || findFav === '') {
+            return this.props.dispatch(setErrorState('Please select a favorite'))
+
+        }
+        else {
         return this.props.dispatch(getFavsSetState(findFav, authToken))
+        }
     }
 
     editFavCall(event) {
@@ -92,8 +99,9 @@ class UserFavorites extends React.Component {
                     <h2 className='favsTitle'>Your Dread Pirate Eats favorites!</h2>
                     <br />
                     <form className='editFavs' id='editFavForm' title='searchForm' onSubmit={event => this.editSelectedFavState(event)}>
+                    
+                        <span role='alert' className = 'warning'>{this.props.noFavsMessage}</span><br />
 
-                        <span role='alert'>{this.props.noFavsMessage}</span><br />
                         <ul>
                         {this.props.grubJoints.map(data =>
                             <li key={data.restaurantYelpId} className='mapDisplayResults'>
@@ -104,6 +112,7 @@ class UserFavorites extends React.Component {
                             </li>
                         )}
                         </ul>
+                        <span role='alert' className = 'warning'>{this.props.errorMessage}</span><br />
                         <br />
                         <button type='submit' name='submit' id='editButton' className='editButton dpe_button'>Edit Favorite</button>
                     </form>

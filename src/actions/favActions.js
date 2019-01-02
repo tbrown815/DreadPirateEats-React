@@ -123,7 +123,7 @@ export const getFavsSetState = (findFav, authToken) => dispatch => {
             return resObj;
         })
         .then(resObj => setFavObject(resObj, dispatch))
-
+    
 }
 
 const setFavObject = (resObj, dispatch) => {
@@ -202,6 +202,7 @@ const mapResultsHandler = (businesses, dispatch) => {
 
 
 export const callAddNewFav = (restaurant, userToken, authToken) => dispatch => {
+    
     let restaurantYelpId = restaurant[0].restaurantYelpId;
     let restaurantName = restaurant[0].restaurantName;
     let restaurantAlias = restaurant[0].restaurantAlias;
