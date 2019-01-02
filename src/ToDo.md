@@ -1,10 +1,18 @@
 
-Tests
+Add Delete option for Favs page
+Front tests
 Review state params and remove unused
-Clean up console.logs, commented code, 
+Clean up console.logs, commented code, console warnings
 
 No Favs message didn't display in Prod.
 
+API-
+
+
+Remove unused code
+shift+ctrl+I on all files
+Clean up console.logs, commented code, console warnings
+Clean up server side error messages and locations
 
 
 If time-
@@ -13,22 +21,11 @@ If time-
 -shorten username requirement
 -get zip code when creating so that basic search can occur w/o favs
 -change username to email
-
-
-
-`
-API-
-
-Server side validation of pass/passConf
-Clean up server side error messages and locations
-
-
-Tests
-
-
+-Server side validation of pass/passConf
 
 
 -==Done==-
+API tests
 Add Yelp credits
 Accessibility
 Move About to a component
