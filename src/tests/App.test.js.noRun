@@ -1,0 +1,15 @@
+import React from 'react';
+
+import { shallow, mount, render, configure } from 'enzyme';
+import store from '../store';
+
+//import {DreadPirate} from '../App';
+import DreadPirate from '../App';
+
+
+describe('<DreadPirate />', () => {
+
+    it('render without crashing', () => {
+        shallow(<DreadPirate store={store}/>).dive();
+    })
+})

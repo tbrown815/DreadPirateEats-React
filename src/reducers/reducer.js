@@ -342,8 +342,3 @@ export default (state = initialState, action) => {
     return state;
 
 } //end of export
-
-//function for error message alert display
-function errFunc(xhr) {
-    return alert(`${xhr.responseJSON.reason}: ${xhr.responseJSON.location} ${xhr.responseJSON.message}`)
-}

@@ -9,7 +9,7 @@ import { guestLogin } from '../actions/guestActions'
 import './drawbox.css'
 
 
-class DrawBox extends React.Component {
+export class DrawBox extends React.Component {
 
 
     componentDidMount() {

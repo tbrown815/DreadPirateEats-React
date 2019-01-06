@@ -5,7 +5,7 @@ import { signupUser, userLogin, cancelState } from '../actions/actions';
 
 import './userLogin.css';
 
-class UserLogin extends React.Component {
+export class UserLogin extends React.Component {
 
     loginCheck(event) {
         event.preventDefault();

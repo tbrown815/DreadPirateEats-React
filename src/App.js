@@ -18,7 +18,7 @@ require('dotenv').config();
 
 //export function DreadPirate(props) {
 
-  class DreadPirate extends React.Component {
+export class DreadPirate extends React.Component {
     
 
   /*LOGGEDIN STATE*/
