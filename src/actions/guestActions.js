@@ -72,8 +72,6 @@ export const guestLoginCall = (userLocation, sortForPub) => dispatch => {
 
 const mapResultsHandler = (businesses, dispatch) => {
 
-    console.log('businesses: ', businesses)
-
     let results = businesses.map(business => ({
         restaurantYelpId: business.id, url: business.url, restaurantName: business.name,
         address: business.location.address1, city: business.location.city, cost: business.price, restaurantAlias: business.alias
@@ -110,13 +108,11 @@ const saveGuestFavs = (guestFavs) => dispatch => {
     let guestFavState = guestFavs.map(guestFav => ({ restaurantName: guestFav.restaurantName, address: guestFav.address, city: guestFav.city, url: guestFav.url }))
 
     let publicNumJoints = guestFavState.length
-    console.log('guestFavState: ', guestFavState)
 
     dispatch(guestSuccess(guestFavState, publicNumJoints))
 }
 
 export const publicGrubSearch = (publicHangryTaunt, publicMadeOffers, publicRestart, publicTheOffer) => dispatch => {
-    console.log('publicGrubSearch CALLED')
 
     dispatch(publicFindGrub(publicHangryTaunt, publicMadeOffers, publicRestart, publicTheOffer))
 }

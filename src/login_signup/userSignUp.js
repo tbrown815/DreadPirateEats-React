@@ -6,7 +6,7 @@ import { loginUser, createUserCheck, cancelState } from '../actions/actions';
 
 import './userSignUp.css';
 
-class UserSignUp extends React.Component {
+export class UserSignUp extends React.Component {
 
 
     userCheck(event) {
@@ -46,13 +46,13 @@ class UserSignUp extends React.Component {
                 <h2 className='signupLoginTitle'>Join thee crew!</h2>
                 <form className='signUpForm' id='signUpForm' onSubmit={event => this.userCheck(event)}>
                     <p>Enter your username:</p>
-                    <input type='text' name='username' id='username' ref={username => (this.username = username)} />
+                    <input type='text' name='username' id='username' className='usernameField' ref={username => (this.username = username)} />
                     <p className='signupFormText'>Enter your e-mail address:</p>
-                    <input type='email' name='email' id='email' ref={email => (this.email = email)} />
+                    <input type='email' name='email' id='email' className='emailField' ref={email => (this.email = email)} />
                     <p className='signupFormText'>Enter your password:</p>
-                    <input type='password' name='password' id='password' ref={password => (this.password = password)} />
+                    <input type='password' name='password' id='password' className='passwordField' ref={password => (this.password = password)} />
                     <p className='signupFormText'>Confirm your password:</p>
-                    <input type='password' name='passwordConf' id='passwordConf' ref={passwordConf => (this.passwordConf = passwordConf)} />
+                    <input type='password' name='passwordConf' id='passwordConf' className='passwordConfField' ref={passwordConf => (this.passwordConf = passwordConf)} />
                     <br /><br />
                     <span id='errorMessage' role='alert'>{this.props.errorMessage}</span>
                     <br /><br />

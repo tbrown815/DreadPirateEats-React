@@ -6,7 +6,7 @@ import { editFavs } from '../actions/favActions'
 import './nav.css'
 
 
-class Nav extends React.Component {
+export class Nav extends React.Component {
 
     loginClick(event) {
         event.preventDefault();
@@ -42,7 +42,6 @@ class Nav extends React.Component {
         event.preventDefault();
         
         let oldLoginState = this.props.loggedIn;
-console.log('oldLoginState: ', oldLoginState)
         this.props.dispatch(displayAbout(oldLoginState))
     }
 
@@ -65,8 +64,8 @@ console.log('oldLoginState: ', oldLoginState)
                     <nav className='topNav'>
                         <h1 className='navTitle'>Dread Pirate Eats</h1>
                         <ul>
-                            <li><span className='link'onClick={event => this.clickAbout(event)}>[About]</span></li>
-                            <li><span className='link' onClick={event => this.loginClick(event)}>[LogIn]</span></li>
+                            <li><span className='link aboutLink'onClick={event => this.clickAbout(event)}>[About]</span></li>
+                            <li><span className='link loginLink' onClick={event => this.loginClick(event)}>[LogIn]</span></li>
                         </ul>
                     </nav>
 
@@ -83,7 +82,7 @@ console.log('oldLoginState: ', oldLoginState)
                     <nav className='topNav'>
                         <h1 className='navTitle'>Dread Pirate Eats</h1>
                         <ul>
-                        <li><span className='link'onClick={event => this.clickAbout(event)}>[About]</span></li>
+                        <li><span className='link aboutLink' onClick={event => this.clickAbout(event)}>[About]</span></li>
                         </ul>
                     </nav>
 
@@ -100,9 +99,9 @@ console.log('oldLoginState: ', oldLoginState)
                     <nav className='topNav'>
                         <h1 className='navTitle'>Dread Pirate Eats</h1>
                         <ul>
-                            <li><span className='link' onClick={event => this.logoutClick(event)}>[Logout]</span></li>
-                            <li><span className='link'onClick={event => this.clickAbout(event)}>[About]</span></li>
-                            <li><span className='link' onClick={event => this.editUserFavs(event)}>[Favorites]</span></li>
+                            <li><span className='link logoutLink' onClick={event => this.logoutClick(event)}>[Logout]</span></li>
+                            <li><span className='link aboutLink'onClick={event => this.clickAbout(event)}>[About]</span></li>
+                            <li><span className='link favsLink' onClick={event => this.editUserFavs(event)}>[Favorites]</span></li>
                         </ul>
                     </nav>
 
@@ -117,9 +116,9 @@ console.log('oldLoginState: ', oldLoginState)
                     <nav className='topNav'>
                         <h1 className='navTitle'>Dread Pirate Eats</h1>
                         <ul>
-                            <li><span className='link' onClick={event => this.logoutClick(event)}>[Logout]</span></li>
-                            <li><span className='link'onClick={event => this.clickAbout(event)}>[About]</span></li>
-                            <li><span className='link' onClick={event => this.returnGame(event)}>[Play Game]</span></li>
+                            <li><span className='link logoutLink' onClick={event => this.logoutClick(event)}>[Logout]</span></li>
+                            <li><span className='link aboutLink'onClick={event => this.clickAbout(event)}>[About]</span></li>
+                            <li><span className='link playLink' onClick={event => this.returnGame(event)}>[Play Game]</span></li>
                         </ul>
                     </nav>
 
@@ -134,9 +133,9 @@ console.log('oldLoginState: ', oldLoginState)
                     <nav className='topNav'>
                         <h1 className='navTitle'>Dread Pirate Eats</h1>
                         <ul>
-                        <li><span className='link'onClick={event => this.clickAbout(event)}>[About]</span></li>
-                            <li><span className='link' onClick={event => this.signUpClick(event)}>[Join the Crew!]</span></li>
-                            <li><span className='link' onClick={event => this.loginClick(event)}>[LogIn]</span></li>
+                        <li><span className='link aboutLink'onClick={event => this.clickAbout(event)}>[About]</span></li>
+                            <li><span className='link joinLink' onClick={event => this.signUpClick(event)}>[Join the Crew!]</span></li>
+                            <li><span className='link loginLink' onClick={event => this.loginClick(event)}>[LogIn]</span></li>
                         </ul>
                     </nav>
 
@@ -151,7 +150,7 @@ console.log('oldLoginState: ', oldLoginState)
                     <nav className='topNav'>
                         <h1 className='navTitle'>Dread Pirate Eats</h1>
                         <ul>
-                            <li><span className='link' onClick={event => this.clickReturn(event)}>[Return]</span></li>
+                            <li><span className='link returnLink' onClick={event => this.clickReturn(event)}>[Return]</span></li>
                         </ul>
                     </nav>
 

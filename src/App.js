@@ -18,7 +18,7 @@ require('dotenv').config();
 
 //export function DreadPirate(props) {
 
-  class DreadPirate extends React.Component {
+export class DreadPirate extends React.Component {
     
 
   /*LOGGEDIN STATE*/
@@ -50,8 +50,6 @@ require('dotenv').config();
 
 
 render() {
-
-  console.log('state: ', this.props)
 
   if (this.props.loggedIn === 0) {
     return (
@@ -216,7 +214,6 @@ const mapStateToProps = state => ({
   userMessage: state.userMessage,
   publicHangryTaunt: state.publicHangryTaunt,
   randomCheck: state.randomCheck,
-  publicSort: state.publicSort,
   publicJoints: state.publicJoints,
   publicNumJoints: state.publicNumJoints,
   publicMadeOffers: state.publicMadeOffers,

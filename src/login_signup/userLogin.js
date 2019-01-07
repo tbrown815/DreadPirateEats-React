@@ -5,7 +5,7 @@ import { signupUser, userLogin, cancelState } from '../actions/actions';
 
 import './userLogin.css';
 
-class UserLogin extends React.Component {
+export class UserLogin extends React.Component {
 
     loginCheck(event) {
         event.preventDefault();
@@ -47,10 +47,10 @@ class UserLogin extends React.Component {
                 <h2 className='userLoginTitle'>Login to Dread Pirate Eats!</h2>
                 <form className='logInForm' id='logInForm' onSubmit={event => this.loginCheck(event)}>
                     <p className='loginFormText'>Enter your username:</p>
-                    <input type='text' id='usernameField' name='username' id='username' ref={username => (this.username = username)} />
+                    <input type='text' id='usernameField' name='username' className='usernameField' ref={username => (this.username = username)} />
                     <br />
                     <p className='loginFormText'>Enter your password:</p>
-                    <input type='password' id='passwordField' name='password' id='password' ref={password => (this.password = password)} />
+                    <input type='password' id='passwordField' name='password' className='passwordField' ref={password => (this.password = password)} />
                     <br /><br />
                     <span role='alert' id='errorMessage'>{this.props.errorMessage}</span>
                     <br /><br />
@@ -61,7 +61,7 @@ class UserLogin extends React.Component {
                     onClick={event => this.signUpScreen(event)}>Join Now!</button>
                 <p className='cancel'><button id='cancelButton' className='cancelButton' onClick={event => this.cancel(event)}>Cancel</button></p>
                 <br />
-                <p className='cancel'><button id='cancelButton' className='cancelButton'
+                <p className='bypass'><button id='bypassButton' className='bypassButton'
                     onClick={event => this.bypassLogin(event)}>BYPASS LOGIN</button></p>
 
             </div>

@@ -64,8 +64,6 @@ export const cancelState = () => ({
 
 
 export const userLogin = (username, password) => dispatch => {
-    console.log('username: ', username)
-    console.log('password: ', password)
 
     if (username === undefined || username === null || username === '') {
 
@@ -95,7 +93,6 @@ export const userLogin = (username, password) => dispatch => {
 }   // END USERLOGIN
 
 const setTokenHandler = (authToken, dispatch) => {
-    console.log('setToken: ', authToken)
     const decodedToken = jwtDecode(authToken)
     dispatch(setAuthToken(authToken))
     dispatch(setErrorState('Login successful, please standby.'))
@@ -123,12 +120,6 @@ export const userStillLoggedIn = (authToken) => dispatch => {
 
 
 export const createUserCheck = (username, email, password, passwordConf) => dispatch => {
-    console.log('createUserCheck')
-    console.log('username: ', username)
-    console.log('email: ', email)
-    console.log('password: ', password)
-    console.log('passwordConf: ', passwordConf)
-
 
     if (username === undefined || username === null || username === '') {
 
@@ -161,11 +152,6 @@ export const createUserCheck = (username, email, password, passwordConf) => disp
 } //END createUserCheck
 
 export const createPassCheck = (username, email, password, passwordConf) => dispatch => {
-    console.log('createPassCheck')
-    console.log('username: ', username)
-    console.log('email: ', email)
-    console.log('password: ', password)
-    console.log('passwordConf: ', passwordConf)
 
     if (password === '' && passwordConf === '') {
 
@@ -195,10 +181,6 @@ export const createPassCheck = (username, email, password, passwordConf) => disp
 } //END createPassCheck
 
 export const createUserFlow = (username, email, password) => dispatch => {
-    console.log('createPassCheck')
-    console.log('username: ', username)
-    console.log('email: ', email)
-    console.log('password: ', password)
 
     return fetch(`${REACT_APP_CREATE_USER_URL}`, {
         method: 'POST',
@@ -208,7 +190,6 @@ export const createUserFlow = (username, email, password) => dispatch => {
         .then(res => res.json())
         .then(res => {
             if (res.reason === 'ERROR') {
-                console.log('ERROR')
 
                 return dispatch(setErrorState(`${res.location} ${res.message}`))
             }
