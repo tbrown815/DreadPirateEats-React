@@ -94,10 +94,7 @@ export const updateFavCall = (newFavName, favId, userToken, authToken) => dispat
                 message: resObj.message
             }
 
-            console.log('resObj action: ', checkObj)
-
             if (checkObj.reason === 'SUCCESS') {
-                console.log('SUCCESS')
                 dispatch(callViewFavs(userToken, authToken))
             }
             else {
@@ -127,7 +124,6 @@ export const getFavsSetState = (findFav, authToken) => dispatch => {
 }
 
 const setFavObject = (resObj, dispatch) => {
-    console.log('resObj: ', resObj)
 
     let favOjb = {
         id: resObj.id, restaurantYelpId: resObj.restaurantYelpId, restaurantName: resObj.restaurantName,
@@ -164,8 +160,6 @@ export const performYelpCall = (restaurantName, restaurantZip, publicSort) => di
 
 const mapResultsHandler = (businesses, dispatch) => {
 
-    console.log('businesses: ', businesses)
-
     let results = businesses.map(business => ({
         restaurantYelpId: business.id, url: business.url, restaurantName: business.name,
         address: business.location.address1, city: business.location.city, cost: business.price, restaurantAlias: business.alias
@@ -194,8 +188,6 @@ const mapResultsHandler = (businesses, dispatch) => {
 
     }
 
-    console.log('displayResults: ', displayResults)
-
     dispatch(displayNewFavs(displayResults, userMessage))
 }
 
@@ -204,9 +196,6 @@ export const callAddNewFav = (restaurant, userToken, authToken) => dispatch => {
     let restaurantYelpId = restaurant[0].restaurantYelpId;
     let restaurantName = restaurant[0].restaurantName;
     let restaurantAlias = restaurant[0].restaurantAlias;
-
-    console.log('actionuserToken: ', userToken)
-    console.log('actionauthToken: ', authToken)
 
     return fetch(`${REACT_APP_FAVS_URL}`, {
         method: 'POST',
@@ -226,7 +215,6 @@ export const callAddNewFav = (restaurant, userToken, authToken) => dispatch => {
 }//END callAddNewFav
 
 export const callViewFavs = (userToken, authToken) => dispatch => {
-    console.log('callViewFavs')
 
     return fetch(`${REACT_APP_USERFAVS_URL}${userToken}`, {
         method: 'GET',
@@ -242,8 +230,6 @@ export const callViewFavs = (userToken, authToken) => dispatch => {
 }//END callViewFavs
 
 const mapFavResultsHandler = (userFavs, dispatch) => {
-
-    console.log('userFavs: ', userFavs)
 
     if (userFavs === undefined || userFavs === null) {
 
@@ -267,8 +253,6 @@ const mapFavResultsHandler = (userFavs, dispatch) => {
 
         }
         let numJoints = displayFavs.length
-
-        console.log('displayFavs: ', displayFavs)
 
         dispatch(viewFavs(displayFavs, numJoints))
     }

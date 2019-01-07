@@ -51,8 +51,6 @@ export class DreadPirate extends React.Component {
 
 render() {
 
-  console.log('state: ', this.props)
-
   if (this.props.loggedIn === 0) {
     return (
       <main>
@@ -215,7 +213,6 @@ const mapStateToProps = state => ({
   userMessage: state.userMessage,
   publicHangryTaunt: state.publicHangryTaunt,
   randomCheck: state.randomCheck,
-  publicSort: state.publicSort,
   publicJoints: state.publicJoints,
   publicNumJoints: state.publicNumJoints,
   publicMadeOffers: state.publicMadeOffers,

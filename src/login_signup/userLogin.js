@@ -47,10 +47,10 @@ export class UserLogin extends React.Component {
                 <h2 className='userLoginTitle'>Login to Dread Pirate Eats!</h2>
                 <form className='logInForm' id='logInForm' onSubmit={event => this.loginCheck(event)}>
                     <p className='loginFormText'>Enter your username:</p>
-                    <input type='text' id='usernameField' name='username' id='username' className='usernameField' ref={username => (this.username = username)} />
+                    <input type='text' id='usernameField' name='username' className='usernameField' ref={username => (this.username = username)} />
                     <br />
                     <p className='loginFormText'>Enter your password:</p>
-                    <input type='password' id='passwordField' name='password' id='password' className='passwordField' ref={password => (this.password = password)} />
+                    <input type='password' id='passwordField' name='password' className='passwordField' ref={password => (this.password = password)} />
                     <br /><br />
                     <span role='alert' id='errorMessage'>{this.props.errorMessage}</span>
                     <br /><br />

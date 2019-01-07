@@ -13,13 +13,11 @@ export const findGrub = (hangryTaunt, madeOffers, restart, theOffer) => ({
 })
 
 export const grubSearch = (hangryTaunt, madeOffers, restart, theOffer, userToken, authToken) => dispatch => {
-    console.log('grubSearch CALLED')
 
     dispatch(findGrub(hangryTaunt, madeOffers, restart, theOffer))
 }
 
 export const callRestart = (userToken, authToken) => dispatch => {
-    console.log('RESTART CALLED')
 
     dispatch(callViewFavs(userToken, authToken))
 

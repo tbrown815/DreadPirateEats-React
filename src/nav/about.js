@@ -8,7 +8,6 @@ export class About extends React.Component {
 
     clickReturn(event) {
         event.preventDefault();
-        console.log('this.props.prevLoggedIn: ', this.props.prevLoggedIn)
         if (this.props.prevLoggedIn === undefined) {
 
             let oldLoginState = 0;

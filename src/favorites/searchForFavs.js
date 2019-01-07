@@ -9,7 +9,6 @@ export class SearchFavorites extends React.Component {
 
     searchLocation(event) {
         event.preventDefault();
-        console.log('search')
         const restaurantName = this.restaurantName.value;
         const restaurantZip = this.restaurantZip.value;
         const publicSort = this.props.publicSort;
@@ -25,22 +24,17 @@ export class SearchFavorites extends React.Component {
         let userToken = this.props.userToken
         let authToken = this.props.authToken
 
-        console.log('restaurantId to save: ', yelpID)
 
         let restaurant = this.props.newFavorites.filter(data => {
             return data.restaurantYelpId === yelpID
         })
-
-        console.log('restaurant to save: ', restaurant)
 
 
         return this.props.dispatch(callAddNewFav(restaurant, userToken, authToken))
     }
 
     changeSelectedFavState(event) {
-        event.preventDefault();
 
-        console.log('selected: ', event.target.value)
         let selectedFav = event.target.value;
 
         return this.props.dispatch(setSelectedFav(selectedFav))
@@ -70,8 +64,6 @@ export class SearchFavorites extends React.Component {
                 <br />
                 <h2>Search Results</h2>
 
-                {console.log('props.newFavs: ', this.props.newFavorites)}
-
                 <form className='saveToFavsForm' id='saveToFavsForm'  title='saveToFavsForm' onSubmit={event => this.saveToFavs(event)}>
                         <span className='userMessage' role='alert'>{this.props.userMessage}</span>
                     <ul>
@@ -80,7 +72,7 @@ export class SearchFavorites extends React.Component {
                             <li key={data.restaurantYelpId} className='mapDisplayResults'>
                                 <input type='radio' id='newFavSelect' title='newFavSelect' className='mapDisplayRadio' name='mapDisplayRadio' value={data.restaurantYelpId}
                                     onChange={event => this.changeSelectedFavState(event)} />
-                                <a href={data.url} target='_blank'>{data.restaurantName}:</a>
+                                <a href={data.url} target='_blank' rel='noopener noreferrer'>{data.restaurantName}:</a>
                                 <br /> <span className='searchData'>{data.address}, {data.city}</span>
                             </li>
                         )}
@@ -91,7 +83,7 @@ export class SearchFavorites extends React.Component {
 
                 </form>
                 <span className='yelpInfo'>Search and Restaurant info provided by:
-                        <a href='https://www.yelp.com' target='_blank'><img className='yelpImg' src={require('../images/Yelp_trademark_RGB_outline.png')} /> </a></span> 
+                        <a href='https://www.yelp.com' target='_blank' rel='noopener noreferrer'><img className='yelpImg' src={require('../images/Yelp_trademark_RGB_outline.png')} alt='Yelp logo' /> </a></span> 
             </div>
 
 
@@ -103,7 +95,6 @@ const mapStateToProps = state => ({
     userToken: state.userToken,
     authToken: state.authToken,
     errorMessage: state.errorMessage,
-    userToken: state.userToken,
     newFavorites: state.newFavorites,
     selectedFavorite: state.selectedFavorite,
     publicSort: state.publicSort,

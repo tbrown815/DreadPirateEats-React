@@ -42,7 +42,6 @@ export class Nav extends React.Component {
         event.preventDefault();
         
         let oldLoginState = this.props.loggedIn;
-console.log('oldLoginState: ', oldLoginState)
         this.props.dispatch(displayAbout(oldLoginState))
     }
 

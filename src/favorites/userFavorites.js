@@ -10,8 +10,6 @@ export class UserFavorites extends React.Component {
 
 
     componentDidMount() {
-        console.log('userFavorites did mount')
-        console.log('userFavs state: ', this.props)
 
         let userToken = this.props.userToken
         let authToken = this.props.authToken
@@ -29,7 +27,6 @@ export class UserFavorites extends React.Component {
     changeSelectedFavState(event) {
      //   event.preventDefault();
 
-        console.log('selected: ', event.target.value)
         let selectedFav = event.target.value;
 
         return this.props.dispatch(setSelectedFav(selectedFav))
@@ -46,16 +43,11 @@ export class UserFavorites extends React.Component {
 
     editFavCall(event) {
         event.preventDefault();
-        console.log('EDIT CALL')
-
 
         let newFavName = this.newFavName.value
         let favId = this.favId.value
         let userToken = this.props.userToken
         let authToken = this.props.authToken
-
-        console.log('newFavName: ', newFavName)
-        console.log('favId: ', favId)
 
         return this.props.dispatch(updateFavCall(newFavName, favId, userToken, authToken))
     }
@@ -89,7 +81,7 @@ export class UserFavorites extends React.Component {
                             <li key={data.restaurantYelpId} className='mapDisplayResults'>
                                 <input type='radio' className='mapDisplayRadio' title={data.restaurantName} name='mapDisplayRadio' value={data.id}
                                     onChange={event => this.changeSelectedFavState(event)} />
-                                <a href={REACT_APP_FAV_YELP_URL + data.restaurantAlias} target='_blank'>{data.restaurantName}</a>
+                                <a href={REACT_APP_FAV_YELP_URL + data.restaurantAlias} target='_blank' rel='noopener noreferrer'>{data.restaurantName}</a>
 
                             </li>
                         )}
@@ -103,7 +95,7 @@ export class UserFavorites extends React.Component {
                         onClick={event => this.updateFavsState(event)}>Add new Favorites!</button>
                     <br /><br />
                     <span className='yelpInfo'>Search and Restaurant info provided by:
-                    <a href='https://www.yelp.com' target='_blank'><img className='yelpImg' src={require('../images/Yelp_trademark_RGB_outline.png')} /></a></span> 
+                    <a href='https://www.yelp.com' target='_blank' rel='noopener noreferrer'><img className='yelpImg' src={require('../images/Yelp_trademark_RGB_outline.png')} alt='Yelp logo' /></a></span> 
 
                 </div>
 

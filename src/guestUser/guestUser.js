@@ -14,8 +14,6 @@ export class GuestUser extends React.Component {
         let randomVal = Math.floor(Math.random() * parseInt(this.props.publicSort.length)) + 0;
         let sortForPub = this.props.publicSort[randomVal]
 
-        console.log('sortForPub: ', sortForPub)
-
         const userLocation = this.userLoc.value
 
         return this.props.dispatch(guestLoginCall(userLocation, sortForPub))
@@ -40,9 +38,6 @@ export class GuestUser extends React.Component {
 
         let randomVal = Math.floor(Math.random() * parseInt(this.props.publicJoints.length)) + 0;
 
-        console.log('randomVal: ', randomVal)
-
-
         let publicTheOffer = this.props.publicJoints[randomVal]
 
         let publicMadeOffers = [...this.props.publicMadeOffers, { restaurantName: publicTheOffer.restaurantName, url: publicTheOffer.url }]
@@ -57,14 +52,8 @@ export class GuestUser extends React.Component {
 
         let publicNumJoints = this.props.publicNumJoints;
 
-        console.log('publicTheOffer: ', publicTheOffer)
-
-        console.log('updatedGrub: ', updatedGrub)
-
-        console.log('publicDrawCount: ', publicDrawCount)
 
         if (publicNumJoints < 5) {
-            console.log('publicNumJoints < 5: ', publicNumJoints)
             if (publicDrawCount < publicNumJoints) {
                 publicHangryTaunt = `Draw again ya scoundrel!`
                 publicRestart = false
@@ -97,7 +86,6 @@ export class GuestUser extends React.Component {
             }
         }
         else {
-            console.log('publicNumJoints >= 5: ', publicNumJoints)
 
             if (publicDrawCount < publicNumJoints) {
                 publicHangryTaunt = `Draw again ya scoundrel!`
@@ -179,14 +167,14 @@ export class GuestUser extends React.Component {
                             <ul>
                                 {this.props.publicMadeOffers.map(offer =>
                                     <li key={offer.restaurantName} className='offerDisplay' >
-                                        <a href={offer.url} target='_blank'>{offer.restaurantName}</a>
+                                        <a href={offer.url} target='_blank' rel='noopener noreferrer'>{offer.restaurantName}</a>
                                     </li>
                                 )}
                             </ul>
                         </div>
                         <br /><br />
                         <span className='yelpInfo'>Search and Restaurant info provided by:
-                        <a href='https://www.yelp.com' target='_blank'><img className='yelpImg' src={require('../images/Yelp_trademark_RGB_outline.png')} /></a></span> 
+                        <a href='https://www.yelp.com' target='_blank' rel='noopener noreferrer'><img className='yelpImg' src={require('../images/Yelp_trademark_RGB_outline.png')} alt='yelp logo' /></a></span> 
                     </div>
                 )
             }
@@ -211,7 +199,7 @@ export class GuestUser extends React.Component {
                             <ul>
                                 {this.props.publicMadeOffers.map(offer =>
                                     <li key={offer.restaurantName} className='offerDisplay' >
-                                        <a href={offer.url} target='_blank'>{offer.restaurantName}</a>
+                                        <a href={offer.url} target='_blank' rel='noopener noreferrer'>{offer.restaurantName}</a>
                                     </li>
                                 )}
                             </ul>
