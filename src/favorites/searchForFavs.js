@@ -79,7 +79,7 @@ export class SearchFavorites extends React.Component {
 
                         {this.props.newFavorites.map(data =>
                             <li key={data.restaurantYelpId} className='mapDisplayResults'>
-                                <input type='radio' id='newFavSelect' title='newFavSelect' className='mapDisplayRadio' name='mapDisplayRadio' value={data.restaurantYelpId}
+                                <input type='radio' id='newFavSelect' title='newFavSelect' className='mapDisplayRadio radioButton' name='mapDisplayRadio' value={data.restaurantYelpId}
                                     onChange={event => this.changeSelectedFavState(event)} />
                                 <a href={data.url} target='_blank' rel='noopener noreferrer'>{data.restaurantName}:</a>
                                 <br /> <span className='searchData'>{data.address}, {data.city}</span>

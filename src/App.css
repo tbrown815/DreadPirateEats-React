@@ -1,12 +1,15 @@
+
 body {
   background-image: url('./images/ocean_bgimg.jpg');
-  background-size: auto;
-  background-position: right top;
+  background-size: 350% 350%;
+  background-position: left top;
+  background-repeat: no-repeat;
+
   font-family: 'Ubuntu Mono', monospace !important;
   color: whitesmoke;
   font-weight: bolder;
-
 }
+
 
 button {
   border: 20;
@@ -74,8 +77,13 @@ input {
   text-decoration: underline;
 }
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+.radioButton{
+  width:15px !important;
+  height:15px!important;
+  }
 
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  
 .pirateImageSection{
   margin-top: 0px;
 }

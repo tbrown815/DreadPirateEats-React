@@ -96,7 +96,7 @@ export class UserFavorites extends React.Component {
                         <ul>
                         {this.props.grubJoints.map(data =>
                             <li key={data.restaurantYelpId} className='mapDisplayResults'>
-                                <input type='radio' className='mapDisplayRadio' title={data.restaurantName} name='mapDisplayRadio' value={data.id}
+                                <input type='radio' className='mapDisplayRadio radioButton' title={data.restaurantName} name='mapDisplayRadio' value={data.id}
                                     onChange={event => this.changeSelectedFavState(event)} />
                                 <a href={REACT_APP_FAV_YELP_URL + data.restaurantAlias} target='_blank' rel='noopener noreferrer'>{data.restaurantName}</a>
 
