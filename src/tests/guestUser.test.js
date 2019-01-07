@@ -97,8 +97,6 @@ describe('<GuestUser />', () => {
         const wrapper = mount(<GuestUser grubJoints={TEST_GRUBJOINTS} noFavsMessage={noFavsMessage} publicMadeOffers={TEST_MADEOFFERS}
             publicSort={TEST_PUBLICSORT} loggedIn={loggedIn} publicRestart={publicRestart} />)
 
-        console.log('wrapper: ', wrapper)
-
         expect(grubJoints.length).toEqual(TEST_GRUBJOINTS.length)
         expect(grubJoints).toEqual(TEST_GRUBJOINTS)
         expect(publicMadeOffers.length).toEqual(TEST_MADEOFFERS.length)

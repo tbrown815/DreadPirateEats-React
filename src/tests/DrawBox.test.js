@@ -53,7 +53,6 @@ describe('<DrawBox />', () => {
         const wrapper = mount(<DrawBox dispatch={dispatch} grubJoints={TEST_GRUBJOINTS}
             madeOffers={TEST_MADEOFFERS} publicSort={TEST_PUBLICSORT} />)
             
-            console.log('wrapper: ', wrapper)
             
             expect(grubJoints.length).toEqual(TEST_GRUBJOINTS.length)
             expect(grubJoints).toEqual(TEST_GRUBJOINTS)

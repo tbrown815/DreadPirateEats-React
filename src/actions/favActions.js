@@ -26,13 +26,7 @@ export const CANCEL_EDIT_FAVS = 'CANCEL_EDIT_FAVS'
 export const cancelEditFavs = () => ({
     type: CANCEL_EDIT_FAVS
 })
-/*
-export const ADD_NEW_FAV = 'ADD_NEW_FAV'
-export const addNewFav = (addNewFav) => ({
-    type: ADD_NEW_FAV,
-    addNewFav
-})
-*/
+
 export const CANCEL_ADD_FAVS = 'CANCEL_ADD_FAVS'
 export const cancelAddFavs = () => ({
     type: CANCEL_ADD_FAVS
@@ -272,7 +266,6 @@ export const callDelFavs = (authToken, userToken, favId) => dispatch => {
         }
     })
     .then(res => {
-        let resObj = res.json();
 
         dispatch(callViewFavs(userToken, authToken))
     })

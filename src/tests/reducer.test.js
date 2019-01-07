@@ -217,13 +217,18 @@ describe('reducer', () => {
 
     it('SEARCH_NEW_FAVS Should set favstate to 1', () => {
 
+        let errorMessage = test_errorMessage
+        
         let state = {
-            favState: 0
+            favState: 0,
+            errorMessage: errorMessage
         }
+
 
         state = reducer(state, searchNewFavs())
         expect(state).toEqual({
-            favState: 1
+            favState: 1,
+            errorMessage: null
 
         })
     })
@@ -296,15 +301,19 @@ describe('reducer', () => {
 
     it('CANCEL_ADD_FAVS set favState = 0', () => {
 
+        let errorMessage = test_errorMessage
+
         let state = {
-            favState: null
+            favState: null,
+            errorMessage: errorMessage
         }
 
         let favState = 0
 
         state = reducer(state, cancelAddFavs())
         expect(state).toEqual({
-            favState: favState
+            favState: favState,
+            errorMessage: null
         })
     })
 
@@ -323,10 +332,12 @@ describe('reducer', () => {
     })
 
     it('EDIT_FAVS_STATE set editFavState = 1', () => {
+        let errorMessage = test_errorMessage
 
         let state = {
             editFavState: null,
-            editFavOjb: null
+            editFavOjb: null,
+            errorMessage: errorMessage
         }
 
         let editFavState = 1;
@@ -335,7 +346,8 @@ describe('reducer', () => {
         state = reducer(state, editFavsState(favOjb))
         expect(state).toEqual({
             editFavState: editFavState,
-            editFavOjb: favOjb
+            editFavOjb: favOjb,
+            errorMessage: null
         })
     })
 
