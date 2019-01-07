@@ -6,7 +6,7 @@ import { setSelectedFav, callViewFavs, searchNewFavs, getFavsSetState, updateFav
 
 import './favorites.css';
 
-class UserFavorites extends React.Component {
+export class UserFavorites extends React.Component {
 
 
     componentDidMount() {
@@ -27,7 +27,7 @@ class UserFavorites extends React.Component {
     }
 
     changeSelectedFavState(event) {
-        event.preventDefault();
+     //   event.preventDefault();
 
         console.log('selected: ', event.target.value)
         let selectedFav = event.target.value;
@@ -163,33 +163,3 @@ const mapStateToProps = state => ({
 })
 
 export default connect(mapStateToProps)(UserFavorites)
-
-/*
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Search
-
-require for search - name, user zip
-
-Results
-Show top 5 only
-Sort by Distance to entered zip - nice to have determin location
-Save to DB - 'userRef', 'restaurantName', 'restaurantZip', 'restaurantCost', 'restaurantYelpId'
-
-
-
-*/

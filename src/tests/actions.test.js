@@ -4,11 +4,7 @@ import {
     ERROR_STATE, setErrorState, CANCEL_STATE, cancelState
     } from '../actions/actions'
 
-describe('displayAbout', () => {
-
-    const username = 'ricksanchez'
-    const password = 'test9033'
-
+describe('action test', () => {
 
     it('Return LOGOUT_SUCCESS', () => {
         const action = logoutSuccess()

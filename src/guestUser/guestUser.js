@@ -5,7 +5,7 @@ import { cancelState } from '../actions/actions'
 
 import './guestUser.css'
 
-class GuestUser extends React.Component {
+export class GuestUser extends React.Component {
 
 
     guestLogin(event) {
@@ -148,7 +148,7 @@ class GuestUser extends React.Component {
                         <br />
                         <span id='errorMessage' role='alert'>{this.props.errorMessage}</span>
                         <br />
-                        <button type='submit' name='submit' id='logInButton' className='logInButton'>Play as Guest</button>
+                        <button type='submit' name='submit' id='logInButton' className='logInButton playAsGuestStart'>Play as Guest</button>
                     </form>
                     <p className='cancel'><button id='cancelButton' className='cancelButton' onClick={event => this.cancel(event)}>Cancel</button></p>
                     <br /><br />

@@ -4,7 +4,7 @@ import { performYelpCall, setSelectedFav, callAddNewFav } from '../actions/favAc
 
 import './favorites.css';
 
-class SearchFavorites extends React.Component {
+export class SearchFavorites extends React.Component {
 
 
     searchLocation(event) {
@@ -56,15 +56,15 @@ class SearchFavorites extends React.Component {
                     <h2 className='searchTitle'>Add a new Favorite!</h2>
 
                     <p className='searchFormText'>Enter restaurant name:</p>
-                    <input className='searchFormBox' type='text' id='restaurantNameField' title='restaurantNameField' ref={restaurantName => (this.restaurantName = restaurantName)} />
+                    <input className='searchFormBox restaurantNameBox' type='text' id='restaurantNameField' title='restaurantNameField' ref={restaurantName => (this.restaurantName = restaurantName)} />
                     <br />
                     <p className='searchFormText'>Enter ZIP Code:</p>
-                    <input className='searchFormBox' type='number' min='00000' max='99999' id='userLocationField' title='userLocationField' ref={restaurantZip => (this.restaurantZip = restaurantZip)} />
+                    <input className='searchFormBox userLocationFieldBox' type='number' min='00000' max='99999' id='userLocationField' title='userLocationField' ref={restaurantZip => (this.restaurantZip = restaurantZip)} />
                     <br /><br />
                     <span id='errorMessage' role='alert' >{this.props.errorMessage}</span>
                     <br /><br />
 
-                    <button type='submit' name='submit' id='searchButton' className='searchButton dpe_button'>Search</button>
+                    <button type='submit' name='submit' id='searchButton' className='favSearchButton searchButton dpe_button'>Search</button>
                 </form>
 
                 <br />

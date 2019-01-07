@@ -195,11 +195,11 @@ export class DrawBox extends React.Component {
                             <p className='newUserNoFavs'>Click below to add favorites!</p>
 
                             <form id='drawForm' onSubmit={event => this.editUserFavs(event)}>
-                                <button type='submit' name='submit' id='drawButton' className='drawbutton dpe_button'
-                                    id='DrawResturantButton' aria-pressed='false'>Add favorites?</button>
+                                <button type='submit' name='submit' id='drawButton' className='addFavsButton dpe_button'
+                                    id='addFavsButton' aria-pressed='false'>Add favorites?</button>
                             </form>
                             <br />
-                            <button className='newPlayer' onClick={event => this.clickAbout(event)}>Not sure how to play?</button>
+                            <button className='newPlayerAbout' onClick={event => this.clickAbout(event)}>Not sure how to play?</button>
                         </div>
 
                         <br />
