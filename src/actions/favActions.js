@@ -261,7 +261,6 @@ const mapFavResultsHandler = (userFavs, dispatch) => {
 }
 
 export const callDelFavs = (authToken, userToken, favId) => dispatch => {
-    console.log('callViewFavs')
 
     return fetch(`${REACT_APP_FAVS_URL}${favId}`, {
         method: 'DELETE',
@@ -274,8 +273,6 @@ export const callDelFavs = (authToken, userToken, favId) => dispatch => {
     })
     .then(res => {
         let resObj = res.json();
-
-        console.log('resObj: ', resObj);
 
         dispatch(callViewFavs(userToken, authToken))
     })

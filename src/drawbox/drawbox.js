@@ -41,7 +41,7 @@ export class DrawBox extends React.Component {
 
         let restart;
 
-        let updatedGrub = this.props.grubJoints.splice(randomVal, 1)
+        this.props.grubJoints.splice(randomVal, 1)
 
         let numJoints = this.props.numJoints;
 

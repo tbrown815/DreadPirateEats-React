@@ -48,7 +48,7 @@ export class GuestUser extends React.Component {
 
         let publicRestart;
 
-        let updatedGrub = this.props.publicJoints.splice(randomVal, 1)
+        this.props.publicJoints.splice(randomVal, 1)
 
         let publicNumJoints = this.props.publicNumJoints;
 

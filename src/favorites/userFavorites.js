@@ -26,7 +26,6 @@ export class UserFavorites extends React.Component {
     }
 
     changeSelectedFavState(event) {
-     //   event.preventDefault();
 
         let selectedFav = event.target.value;
 
