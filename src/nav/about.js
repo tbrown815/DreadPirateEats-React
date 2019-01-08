@@ -43,7 +43,7 @@ export class About extends React.Component {
                             <li className='dpeInfoItem'>The Dread Pirate Eats game started in 2009 when my wife and
                             I struggled to agree on a restaurant for date night. Out of this issue, the Dread Pirate Eats was born!</li>
                             <br /><br />
-                            <li className='dpeInfoItem'>We wrote names of our favorite and new resturants on pieces of paper, loaded them
+                            <li className='dpeInfoItem'>We wrote names of our favorite and new restaurants on pieces of paper, loaded them
                             into an old pirate cookie jar, and created the rules for the game. Nine years later, the Dread Pirate Eats gets a digital upgrade!</li>
 
                         </ul>
