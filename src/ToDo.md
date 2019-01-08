@@ -1,6 +1,5 @@
 
 Review state params and remove unused
-Clean up console.logs, commented code, console warnings
 
 No Favs message didn't display in Prod.
 
@@ -23,6 +22,7 @@ If time-
 
 
 -==Done==-
+Clean up console.logs, commented code, console warnings
 Add Delete option for Favs page
 Front tests
 API tests
