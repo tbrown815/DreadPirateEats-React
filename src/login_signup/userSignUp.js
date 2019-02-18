@@ -45,8 +45,8 @@ export class UserSignUp extends React.Component {
             <div className='pirateImageSection'>
                 <h2 className='signupLoginTitle'>Join thee crew!</h2>
                 <form className='signUpForm' id='signUpForm' onSubmit={event => this.userCheck(event)}>
-                    <p>Enter your username:</p>
-                    <input type='text' name='username' id='username' className='usernameField' ref={username => (this.username = username)} />
+                    <p className='signupFormText'>Enter your username:</p>
+                    <input type='text' name='username' id='username' ref={username => (this.username = username)} />
                     <p className='signupFormText'>Enter your e-mail address:</p>
                     <input type='email' name='email' id='email' className='emailField' ref={email => (this.email = email)} />
                     <p className='signupFormText'>Enter your password:</p>

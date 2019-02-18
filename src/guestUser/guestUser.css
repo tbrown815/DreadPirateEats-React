@@ -1,5 +1,9 @@
 .loginTitle, .publicHangryTauntSection, .guestLocation {
-  text-shadow: 2px 2px #022b3b;
+  text-shadow: 2px 2px #030005;
+}
+
+.publicHangryTauntSection {
+  color: #e8eaf2;
 }
 
 .loginTitle, .publicHangryTauntSection {

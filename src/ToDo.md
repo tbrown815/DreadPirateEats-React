@@ -1,4 +1,17 @@
 
+
+good grasp of linked lists and difference between linked lists and arrays
+
+linked lists asked alot in real interveiws
+
+
+
+
+
+
+
+Add a spinner so people know it's working!!
+
 Review state params and remove unused
 
 No Favs message didn't display in Prod.

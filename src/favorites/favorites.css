@@ -38,19 +38,20 @@ input.mapDisplayResults {
 }
 
 .mapDisplayResults a {
-    color: #022b3b;
+    color: #5887c8;
     text-decoration: underline;
     font-size: xx-large;
-    text-shadow: 1px 1px #2b718b;
+    text-shadow: 2px 1px #030005;
   }
   
   .mapDisplayResults a:visited {
-    color: #022b3b;
+    color: #5887c8;
     text-decoration: underline;
   }
   
   .mapDisplayResults a:hover {
-    color: #022b3b;
+    color: #e8eaf2;
+    text-shadow: 2px 1px #022b3b;
     text-decoration: underline;
   }
   
