@@ -22,9 +22,9 @@ describe('<About />', () => {
 
         form.update()
 
-        form.find('.clickReturnButton').simulate('click')
+        form.find('.returnButtone').simulate('click')
 
-        expect(form.find('.clickReturnButton').length).toEqual(1)
+        expect(form.find('.returnButtone').length).toEqual(1)
         expect(form.instance().clickReturn).toHaveBeenCalled()
     })
 
