@@ -29,7 +29,7 @@ export class About extends React.Component {
 
             <div id='odpe_about' className='odpe_about'>
                 <div >
-                    <h2 className='dpeAbout'>About Dread Pirate Eats!</h2>
+                    <h2 className='dpeAbout'>About The Dread Pirate Eats!</h2>
                     <h4 className='aboutTitle'>How to play the Dread Pirate Eats</h4>
 
                     <ul className='dpeList'>

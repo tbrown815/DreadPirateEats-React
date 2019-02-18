@@ -1,7 +1,16 @@
+.dpeListItem, .dpeInfoItem, .aboutTitle, .origDPEBox {
+    text-shadow: 2px 2px #022b3b;
+}
+
+.dpeAbout {
+    font-family: 'Bangers', cursive !important;
+    font-size: 50px;
+    text-shadow: 3px 3px #022b3b;
+}
+
 .dpeListItem, .dpeInfoItem {
     text-align: left;
     font-size: large;
-    text-shadow: 2px 2px #022b3b;
 }
 
 .dpeListItem {
@@ -14,13 +23,11 @@
 
 .dpeAbout{
     text-align: center;
-
 }
 
 .aboutTitle {
     text-align: center;
     font-size: large;
-    text-shadow: 2px 2px #022b3b; 
 }
 
 .odpe_about {
@@ -32,8 +39,6 @@
 .origDPEBox {
     height: 100% !important;
     font-size: large;
-    text-shadow: 2px 2px #022b3b;
-
 }
 
 .returnButton {
@@ -41,12 +46,27 @@
 }
 
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+@media only screen and (min-device-width: 481px) and (max-device-width: 1400px) {
+
+
+    .dpeAbout {
+        width: 370px;
+        margin-top: 100px;
+    }
+    
+}
+
+@media only screen and (min-device-width: 0px) and (max-device-width: 480px) {
 
     .odpe_about {
         width: 98%;
         height: 250%;
         margin-top: -4%;
         }
+
+    .dpeAbout {
+        font-size: xx-large;
+        font-family: 'Ubuntu Mono', monospace !important;
+    }
     
 }
