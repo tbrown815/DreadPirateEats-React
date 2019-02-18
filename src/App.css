@@ -1,10 +1,25 @@
 body {
-  background-image: url('./images/ocean_bgimg.jpg');
-  background-size: auto;
-  background-position: right top;
   font-family: 'Ubuntu Mono', monospace !important;
   color: whitesmoke;
   font-weight: bolder;
+
+}
+
+
+.bg {
+  background-image: url("./images/pirateship.svg");
+
+
+  /* scaling */
+  width: 100%;
+  height: 110%;
+
+  /* position */
+  position: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  z-index: -1;
 
 }
 
@@ -16,7 +31,7 @@ button {
   padding-left: 10px;
   padding-right: 10px;
   font-weight: bold;
-  background-color: #2b718b;
+  background-color: #5887c8;
   color: whitesmoke;
   font-size: large;
   text-shadow: 1px 1px #022b3b;

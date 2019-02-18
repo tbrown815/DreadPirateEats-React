@@ -62,6 +62,14 @@ class UserLogin extends React.Component {
                 <br />
                 <p className='cancel'><button id='cancelButton' className='cancelButton'
                     onClick={event => this.bypassLogin(event)}>BYPASS LOGIN</button></p>
+                <br />
+                <p className='testData'>
+                    <span>User test data:</span>
+                    <br />
+                    <span>Username: ricksanchez</span>
+                    <br />
+                    <span>Password: test9033</span>
+                </p>
 
             </div>
 

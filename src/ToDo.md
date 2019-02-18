@@ -1,5 +1,17 @@
 
-Tests
+
+good grasp of linked lists and difference between linked lists and arrays
+
+linked lists asked alot in real interveiws
+
+
+
+
+
+
+
+Add a spinner so people know it's working!!
+
 Review state params and remove unused
 Clean up console.logs, commented code, 
 

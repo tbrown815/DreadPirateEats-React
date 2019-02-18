@@ -55,6 +55,7 @@ class About extends React.Component {
                     </div>
                 </div>
                 <p className='returnButton'><button id='returnButton' className='returnButton' onClick={event => this.clickReturn(event)}>Return</button></p>
+                <p className='link'><a href="https://www.freepik.com/free-photos-vectors/background" target='_blank'>Background vector created by freepik - www.freepik.com</a></p>
             </div>
         )
     }

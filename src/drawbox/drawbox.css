@@ -16,18 +16,19 @@
 }
 
 .hangryTauntSection {
+  color: #e8eaf2;
   font-size: x-large;
-  text-shadow: 2px 2px #022b3b;
+  text-shadow: 2px 2px #030005;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
 }
 
 .offerDisplay, .offerDisplay a {
-  color: #022b3b;
+  color: #e8eaf2;
   text-decoration: underline;
   font-size: larger;
-  text-shadow: 1px 1px #2b718b;
+  text-shadow: 2px 1px #030005;
 }
 
 .offerDisplay:visited, .liofferDisplaynk a:visited {
@@ -36,7 +37,8 @@
 }
 
 .offerDisplay:hover, .offerDisplay a:hover {
-  color: #022b3b;
+  color: #5887c8;
+  text-shadow: 2px 1px #030005;
   text-decoration: underline;
 }
 
