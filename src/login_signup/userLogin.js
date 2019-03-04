@@ -7,6 +7,7 @@ import './userLogin.css';
 
 export class UserLogin extends React.Component {
 
+    //passes user/pass to userLogin action
     loginCheck(event) {
         event.preventDefault();
 
@@ -17,6 +18,7 @@ export class UserLogin extends React.Component {
         return this.props.dispatch(userLogin(username, password))
     }
 
+    //allows testers to quickly bypass the login flow
     bypassLogin(event) {
         event.preventDefault();
 

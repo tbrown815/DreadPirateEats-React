@@ -7,7 +7,7 @@ import './guestUser.css'
 
 export class GuestUser extends React.Component {
 
-
+    //ask for user location
     guestLogin(event) {
         event.preventDefault();
 
@@ -32,13 +32,16 @@ export class GuestUser extends React.Component {
 
         this.props.dispatch(cancelState())
     }
+    //the draw work flow
 
     guestDraw(event) {
         event.preventDefault();
+        //determines random value to draw from the users fav array
 
         let randomVal = Math.floor(Math.random() * parseInt(this.props.publicJoints.length)) + 0;
 
         let publicTheOffer = this.props.publicJoints[randomVal]
+        //tracks for display of offers made
 
         let publicMadeOffers = [...this.props.publicMadeOffers, { restaurantName: publicTheOffer.restaurantName, url: publicTheOffer.url }]
 
@@ -47,11 +50,13 @@ export class GuestUser extends React.Component {
         let publicHangryTaunt;
 
         let publicRestart;
+        //removes the restaurant from the current game, it will load back to state on reset
 
         this.props.publicJoints.splice(randomVal, 1)
 
         let publicNumJoints = this.props.publicNumJoints;
 
+        //taunt the user based on number of draws
 
         if (publicNumJoints < 5) {
             if (publicDrawCount < publicNumJoints) {
@@ -125,7 +130,7 @@ export class GuestUser extends React.Component {
     render() {
 
         if (this.props.loggedIn < 6) {
-
+            //Display initial guest page requesting zipcode
             return (
 
                 <div className='pirateImageSection'>
@@ -147,7 +152,7 @@ export class GuestUser extends React.Component {
         }
 
         if (this.props.loggedIn === 6) {
-
+            //displays the draw form for guests
             if (!this.props.publicRestart) {
                 return (
                     <div>
@@ -174,14 +179,15 @@ export class GuestUser extends React.Component {
                         </div>
                         <br /><br />
                         <div className='yelpsection'>
-                        <p className='yelpInfo'>Search info provided by:</p>
-                        <a href='https://www.yelp.com' target='_blank' rel='noopener noreferrer'><img className='yelpImg' src={require('../images/Yelp_trademark_RGB_outline.png')} alt='yelp logo' /></a> 
+                            <p className='yelpInfo'>Search info provided by:</p>
+                            <a href='https://www.yelp.com' target='_blank' rel='noopener noreferrer'><img className='yelpImg' src={require('../images/Yelp_trademark_RGB_outline.png')} alt='yelp logo' /></a>
                         </div>
                     </div>
                 )
             }
 
             if (this.props.publicRestart) {
+                //displays the restart flow for guests
                 return (
                     <div>
                         <div className='drawForm guestDrawform'>
@@ -208,8 +214,8 @@ export class GuestUser extends React.Component {
                         </div>
                         <br /><br />
                         <div className='yelpsection'>
-                        <p className='yelpInfo'>Search info provided by:</p>
-                        <a href='https://www.yelp.com' target='_blank' rel='noopener noreferrer'><img className='yelpImg' src={require('../images/Yelp_trademark_RGB_outline.png')} alt='yelp logo' /></a> 
+                            <p className='yelpInfo'>Search info provided by:</p>
+                            <a href='https://www.yelp.com' target='_blank' rel='noopener noreferrer'><img className='yelpImg' src={require('../images/Yelp_trademark_RGB_outline.png')} alt='yelp logo' /></a>
                         </div>
                     </div>
                 )

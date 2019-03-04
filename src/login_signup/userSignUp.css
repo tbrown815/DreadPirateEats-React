@@ -1,34 +1,33 @@
-
-.signupLoginTitle, .signupFormText {
-  text-shadow: 2px 2px #022b3b;
+.signupLoginTitle,
+.signupFormText {
+    text-shadow: 2px 2px #022b3b;
 }
 
-
 .loginSection {
-  width: 100%;
-  text-align: center;
+    width: 100%;
+    text-align: center;
 }
 
 .signUpForm {
-  width: 100%;
+    width: 100%;
 }
 
 .signupLoginTitle {
-  font-size: xx-large;
-  margin-top: 10%;
-
+    font-size: xx-large;
+    margin-top: 10%;
 }
 
 .signupFormText {
-  font-size: x-large;
+    font-size: x-large;
 }
 
-#alertMessage, #errorMessage {
-  font-size: large;
-  color: red;
-  text-shadow: 2px 2px #022b3b;
+#alertMessage,
+#errorMessage {
+    font-size: large;
+    color: red;
+    text-shadow: 2px 2px #022b3b;
 }
 
 input {
-  font-size: x-large;
+    font-size: x-large;
 }

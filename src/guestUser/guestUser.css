@@ -1,38 +1,39 @@
-.loginTitle, .publicHangryTauntSection, .guestLocation {
-  text-shadow: 2px 2px #030005;
+.loginTitle,
+.publicHangryTauntSection,
+.guestLocation {
+    text-shadow: 2px 2px #030005;
 }
 
 .publicHangryTauntSection {
-  color: #e8eaf2;
-  text-align: center;
+    color: #e8eaf2;
+    text-align: center;
 }
 
-.loginTitle, .publicHangryTauntSection {
-  font-size: x-large;
+.loginTitle,
+.publicHangryTauntSection {
+    font-size: x-large;
 }
 
 .guestLocation {
-  font-size: large;
+    font-size: large;
 }
 
 .loginTitle {
-  margin-top: 120px;
-
+    margin-top: 120px;
 }
 
 .guestDrawform {
-  margin-top: 120px;
-
+    margin-top: 120px;
 }
 
 .userLocationField {
-  font-size: x-large;
+    font-size: x-large;
 }
 
 .yelpsection {
-  text-align: center;
+    text-align: center;
 }
 
 .publicOfferSection {
-  padding: 0;
+    padding: 0;
 }

@@ -46,7 +46,7 @@ export class UserFavorites extends React.Component {
             return this.props.dispatch(getFavsSetState(findFav, authToken))
         }
     }
-
+    //saves changes to the fav
     editFavCall(event) {
         event.preventDefault();
 
@@ -57,7 +57,7 @@ export class UserFavorites extends React.Component {
 
         return this.props.dispatch(updateFavCall(newFavName, favId, userToken, authToken))
     }
-
+    //deletes the fav
     deleteFavCall(event) {
         event.preventDefault();
 
@@ -83,7 +83,7 @@ export class UserFavorites extends React.Component {
 
 
         if (this.props.editFavState === 0) {
-
+            //display user favs
             return (
 
                 <div className='userFavsPage'>
@@ -122,7 +122,7 @@ export class UserFavorites extends React.Component {
         }
 
         if (this.props.editFavState === 1) {
-
+            //displays fav edit sections, allowing user to edit/delete
             return (
 
                 <div className='userFavsPage'>
