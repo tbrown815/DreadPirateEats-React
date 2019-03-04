@@ -8,7 +8,7 @@ import './favorites.css';
 
 export function Favorites(props) {
 
-
+    //current favorites or search functions displayed depending on favState
     if (props.favState === 0) {
         return (
 

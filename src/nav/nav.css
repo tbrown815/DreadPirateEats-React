@@ -7,17 +7,6 @@ nav {
     margin-top: -2%;
     }
 
-nav ul {
-    margin-right: 5%;
-    }
-
-nav li {
-    display: block;
-    float: right;
-    margin-top: 3%;
-    padding-left: 10px;
-    }
-  
 nav .navTitle {
     display: block;
     float: left;
@@ -67,37 +56,110 @@ nav .navTitle {
     text-align: center;
     }
 
+    @media only screen and (min-device-width: 0px) and (max-device-width: 425px) {
 
-@media only screen and (min-device-width: 0px) and (max-device-width: 480px) {
+        nav {
+            width: 100%;
+            height: 100px;
+            margin-top: -6%;
+            }
+        
+        nav li {
+            display: inline-block;
+            float: left;
+            margin-top: -6%;
+            margin-bottom: 6%;
+            margin-left: -5%;
+            margin-right: 2%;
+            padding-right: 20px;
+            }
+        
+        nav .navTitle {
+            float: left;
+            font-size: 40px;
+            margin-top: 3%;
+            color: whitesmoke;
+            text-shadow: 4px 4px #022b3b;
+            font-family: 'Ubuntu Mono', monospace !important;
+    
+            }
+    
+        .origDPE {
+            width: 100%;
+            transform: rotate(-90deg);
+            padding-top: 90px;
+            padding-bottom: 100px;
+            
+        }
+    
+    }
+
+    @media only screen and (min-device-width: 426px) and (max-device-width: 450px) {
+
+        nav {
+            width: 100%;
+            height: 100px;
+            margin-top: -6%;
+            }
+        .navList{
+            padding-top: 15%;
+
+        }
+        
+        nav li {
+            display: inline-block;
+            float: right;
+            margin-bottom: 1%;
+            margin-left: 1%;
+            margin-right: 2%;
+            padding-right: 2px;
+            }
+        
+        nav .navTitle {
+            float: left;
+            font-size: 40px;
+            margin-top: 3%;
+            color: whitesmoke;
+            text-shadow: 4px 4px #022b3b;
+            font-family: 'Ubuntu Mono', monospace !important;
+    
+            }
+    
+        .origDPE {
+            width: 100%;
+            transform: rotate(-90deg);
+            padding-top: 90px;
+            padding-bottom: 100px;
+            
+        }
+    
+    }
+
+@media only screen and (min-device-width: 451px) and (max-device-width: 480px) {
 
     nav {
         width: 100%;
         height: 100px;
-        margin-top: -4%;
+        margin-top: -6%;
         }
     
     nav li {
-        display: block;
+        display: inline-block;
         float: right;
-        margin-top: -4%;
-        padding-left: 1px;
+        margin-top: 4%;
+        margin-right: 2%;
+        padding-left: 5px;
         }
-        
+    
     nav .navTitle {
-        display: block;
         float: left;
         font-size: 40px;
-        margin-left: 10%;
         margin-top: 3%;
         color: whitesmoke;
         text-shadow: 4px 4px #022b3b;
         font-family: 'Ubuntu Mono', monospace !important;
 
         }
-
-    .modalContent > div {
-        width: 80%;
-    }
 
     .origDPE {
         width: 100%;
@@ -107,17 +169,52 @@ nav .navTitle {
         
     }
 
-    .loginLink {
-        margin-right: 0px;
+}
+
+
+@media only screen and (min-device-width: 481px) {
+
+    nav {
+        width: 100%;
+        height: 100px;
+        margin-top: -4%;
+        }
+    
+    nav li {
+        display: inline-block;
+        float: right;
+        margin-top: 4%;
+        margin-right: 2%;
+        padding-left: 5px;
+        }
+    
+    nav .navTitle {
+        float: left;
+        font-size: 50px;
+        margin-top: 5%;
+        color: whitesmoke;
+        text-shadow: 4px 4px #022b3b;
+
+        }
+
+    .origDPE {
+        width: 100%;
+        transform: rotate(-90deg);
+        padding-top: 90px;
+        padding-bottom: 100px;
+        
     }
 
 }
 
+@media only screen and (min-device-width: 1440px) {
+   
+    nav .navTitle{
+        font-size: 80px;
 
-.hidden {
-    visibility: hidden;
-  }
-  
-  .show {
-    visibility: visible;
-  }
+    }
+    nav li {
+        font-size: 30px;
+    }
+}
+

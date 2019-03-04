@@ -164,7 +164,7 @@ export class GuestUser extends React.Component {
                             <span role='alert'>{this.props.publicHangryTaunt}</span>
 
                             <br />
-                            <ul>
+                            <ul className='publicOfferSection'>
                                 {this.props.publicMadeOffers.map(offer =>
                                     <li key={offer.restaurantName} className='offerDisplay' >
                                         <a href={offer.url} target='_blank' rel='noopener noreferrer'>{offer.restaurantName}</a>
@@ -173,8 +173,10 @@ export class GuestUser extends React.Component {
                             </ul>
                         </div>
                         <br /><br />
-                        <span className='yelpInfo'>Search and Restaurant info provided by:
-                        <a href='https://www.yelp.com' target='_blank' rel='noopener noreferrer'><img className='yelpImg' src={require('../images/Yelp_trademark_RGB_outline.png')} alt='yelp logo' /></a></span> 
+                        <div className='yelpsection'>
+                        <p className='yelpInfo'>Search info provided by:</p>
+                        <a href='https://www.yelp.com' target='_blank' rel='noopener noreferrer'><img className='yelpImg' src={require('../images/Yelp_trademark_RGB_outline.png')} alt='yelp logo' /></a> 
+                        </div>
                     </div>
                 )
             }
@@ -196,13 +198,18 @@ export class GuestUser extends React.Component {
                             <span role='alert'> Ye time is up, walk thee plank! </span>
 
                             <br />
-                            <ul>
+                            <ul className='publicOfferSection'>
                                 {this.props.publicMadeOffers.map(offer =>
                                     <li key={offer.restaurantName} className='offerDisplay' >
                                         <a href={offer.url} target='_blank' rel='noopener noreferrer'>{offer.restaurantName}</a>
                                     </li>
                                 )}
                             </ul>
+                        </div>
+                        <br /><br />
+                        <div className='yelpsection'>
+                        <p className='yelpInfo'>Search info provided by:</p>
+                        <a href='https://www.yelp.com' target='_blank' rel='noopener noreferrer'><img className='yelpImg' src={require('../images/Yelp_trademark_RGB_outline.png')} alt='yelp logo' /></a> 
                         </div>
                     </div>
                 )

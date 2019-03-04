@@ -11,15 +11,13 @@ import Favorites from './favorites/favorites';
 import GuestUser from './guestUser/guestUser';
 import About from './nav/about'
 
-import {userStillLoggedIn, logoutUser} from './actions/actions'
+import { userStillLoggedIn, logoutUser } from './actions/actions'
 
 
 require('dotenv').config();
 
-//export function DreadPirate(props) {
-
 export class DreadPirate extends React.Component {
-    
+
 
   /*LOGGEDIN STATE*/
   /*
@@ -32,166 +30,163 @@ export class DreadPirate extends React.Component {
 7 = Display About
   */
 
- componentDidMount() {
+  //when app loads check for authToken, if no authToken log the user out
+  componentDidMount() {
 
-  let authToken = localStorage.getItem('authToken')
+    let authToken = localStorage.getItem('authToken')
 
-  if(authToken) {
-    
-    this.props.dispatch(userStillLoggedIn(authToken))
+    if (authToken) {
+
+      this.props.dispatch(userStillLoggedIn(authToken))
+    }
+
+    else {
+      this.props.dispatch(logoutUser())
+    }
+
+
   }
 
-  else {
-    this.props.dispatch(logoutUser())
-  }
+
+  render() {
+    //render components based on loggedIn state
+    if (this.props.loggedIn === 0) {
+      return (
+        <main>
+          <Nav />
+
+          <br />
+          <div role='region' className='pirateImageSection'>
+            <img src={require('./images/dreadPirate.png')} className='dreadPirateImage' alt='The Dread Pirate himself' />
+          </div>
+
+          <br />
+          <DrawBox />
+
+        </main>
+      )
+    }
+
+    if (this.props.loggedIn === 1) {
+      return (
+        <main>
+
+          <Nav />
+
+          <br />
+          <div role='region' className='loginSection'>
+            <UserLogin />
+          </div>
 
 
-}
+        </main>
+
+      )
+    }
+
+    if (this.props.loggedIn === 2) {
+      return (
+        <main>
+
+          <Nav />
+
+          <br />
+          <div role='region' className='loginSection'>
+            <UserSignUp />
+          </div>
 
 
-render() {
+        </main>
 
-  if (this.props.loggedIn === 0) {
-    return (
-      <main>
-        <Nav />
+      )
+    }
 
-        <br />
-        <div role='region' className='pirateImageSection'>
-          <img src={require('./images/dreadPirate.png')} className='dreadPirateImage' alt='The Dread Pirate himself' />
-        </div>
+    if (this.props.loggedIn === 3) {
 
-        <br />
-        <DrawBox />
+      return (
+        <main>
 
-      </main>
-    )
-  }
+          <Nav />
 
-  if (this.props.loggedIn === 1) {
-    return (
-      <main>
+          <br />
+          <div role='region' className='pirateImageSection'>
+            <img src={require('./images/dreadPirate.png')} className='dreadPirateImage' alt='The Dread Pirate himself' />
+          </div>
 
-        <Nav />
+          <DrawBox />
+        </main>
 
-        <br />
-        <div role='region' className='pirateImageSection'>
-          <UserLogin />
-        </div>
+      )
+    }
 
+    if (this.props.loggedIn === 4) {
+      return (
+        <main>
 
-      </main>
+          <Nav />
 
-    )
-  }
+          <br />
+          <div role='region' className='favoriteSection'>
+            <Favorites />
+          </div>
 
-  if (this.props.loggedIn === 2) {
-    return (
-      <main>
+        </main>
 
-        <Nav />
+      )
+    }
 
-        <br />
-        <div role='region' className='pirateImageSection'>
-          <UserSignUp />
-        </div>
+    if (this.props.loggedIn === 5) {
+      return (
+        <main>
 
+          <Nav />
 
-      </main>
-
-    )
-  }
-
-  if (this.props.loggedIn === 3) {
-
-    return (
-      <main>
-
-        <Nav />
-
-        <br />
-        <div role='region' className='pirateImageSection'>
-          <img src={require('./images/dreadPirate.png')} className='dreadPirateImage' alt='The Dread Pirate himself' />
-        </div>
-
-        <DrawBox />
-      </main>
-
-    )
-  }
-
-  if (this.props.loggedIn === 4) {
-    return (
-      <main>
-
-        <Nav />
-
-        <br />
-        <div role='region' className='pirateImageSection'>
-          <Favorites />
-        </div>
-
-      </main>
-
-    )
-  }
-
-  if (this.props.loggedIn === 5) {
-    return (
-      <main>
-
-        <Nav />
-
-        <br />
-        <div role='region' className='pirateImageSection'>
-          <img src={require('./images/dreadPirate.png')} className='dreadPirateImage' alt='The Dread Pirate himself' />
-        </div>
-        <div className='pirateImageSection'>
+          <br />
+          <div role='region' className='pirateImageSection'>
+            <img src={require('./images/dreadPirate.png')} className='dreadPirateImage' alt='The Dread Pirate himself' />
+          </div>
           <GuestUser />
-        </div>
 
-      </main>
+        </main>
 
-    )
-  }
+      )
+    }
 
-  if (this.props.loggedIn === 6) {
-    return (
-      <main>
+    if (this.props.loggedIn === 6) {
+      return (
+        <main>
 
-        <Nav />
-        <br />
-        <div role='region' className='pirateImageSection'>
-          <img src={require('./images/dreadPirate.png')} className='dreadPirateImage' alt='The Dread Pirate himself' />
-        </div>
+          <Nav />
+          <br />
+          <div role='region' className='pirateImageSection'>
+            <img src={require('./images/dreadPirate.png')} className='dreadPirateImage' alt='The Dread Pirate himself' />
+          </div>
 
-        <div className='pirateImageSection'>
           <GuestUser />
-        </div>
 
-      </main>
+        </main>
 
-    )
+      )
+    }
+
+    if (this.props.loggedIn === 7) {
+      return (
+        <main>
+
+          <Nav />
+
+          <br />
+          <div role='region' className='pirateImageSection'>
+            <About />
+          </div>
+
+
+        </main>
+
+      )
+    }
+
   }
-
-  if (this.props.loggedIn === 7) {
-    return (
-      <main>
-
-        <Nav />
-
-        <br />
-        <div role='region' className='pirateImageSection'>
-          <About />
-        </div>
-
-
-      </main>
-
-    )
-  }
-
-}
 
 
 } //end of export

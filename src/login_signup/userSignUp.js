@@ -42,7 +42,7 @@ export class UserSignUp extends React.Component {
 
 
 
-            <div className='pirateImageSection'>
+            <div className='loginSection'>
                 <h2 className='signupLoginTitle'>Join thee crew!</h2>
                 <form className='signUpForm' id='signUpForm' onSubmit={event => this.userCheck(event)}>
                     <p className='signupFormText'>Enter your username:</p>

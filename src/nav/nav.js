@@ -63,7 +63,7 @@ export class Nav extends React.Component {
 
                     <nav className='topNav'>
                         <h1 className='navTitle'>Dread Pirate Eats</h1>
-                        <ul>
+                        <ul className='navList'>
                             <li><span className='link aboutLink'onClick={event => this.clickAbout(event)}>[About]</span></li>
                             <li><span className='link loginLink' onClick={event => this.loginClick(event)}>[LogIn]</span></li>
                         </ul>

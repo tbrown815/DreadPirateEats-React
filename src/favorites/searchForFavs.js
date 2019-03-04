@@ -13,7 +13,7 @@ export class SearchFavorites extends React.Component {
         const restaurantName = this.restaurantName.value;
         const restaurantZip = this.restaurantZip.value;
         const publicSort = this.props.publicSort;
-
+        // performYelpCall with provide restaurant name and zipcode
         return this.props.dispatch(performYelpCall(restaurantName, restaurantZip, publicSort))
     }
 
@@ -25,32 +25,34 @@ export class SearchFavorites extends React.Component {
         let userToken = this.props.userToken
         let authToken = this.props.authToken
 
-
-        if(yelpID === null || yelpID === undefined || yelpID === '') {
+        //if user clicks to save w/o a selection they will rcv error
+        if (yelpID === null || yelpID === undefined || yelpID === '') {
             return this.props.dispatch(setErrorState('Please search for and select a restaurant'))
 
         }
-
+        //select new fav callAddNewFav to add to user favs in DB
         else {
-        let restaurant = this.props.newFavorites.filter(data => {
-            return data.restaurantYelpId === yelpID
-        })
+            let restaurant = this.props.newFavorites.filter(data => {
+                return data.restaurantYelpId === yelpID
+            })
 
 
-        return this.props.dispatch(callAddNewFav(restaurant, userToken, authToken))
+            return this.props.dispatch(callAddNewFav(restaurant, userToken, authToken))
+        }
     }
-    }
-
+    //set the selected potential fav to state so it can be added in future action
     changeSelectedFavState(event) {
 
         let selectedFav = event.target.value;
 
         return this.props.dispatch(setSelectedFav(selectedFav))
-        
+
     }
 
 
     render() {
+
+        //search form displayed, once search submit results displayed below
         return (
 
             <div>
@@ -64,7 +66,7 @@ export class SearchFavorites extends React.Component {
                     <p className='searchFormText'>Enter ZIP Code:</p>
                     <input className='searchFormBox userLocationFieldBox' type='number' min='00000' max='99999' id='userLocationField' title='userLocationField' ref={restaurantZip => (this.restaurantZip = restaurantZip)} />
                     <br /><br />
-                    <span id='errorMessage' role='alert' className = 'warning'>{this.props.errorMessage}</span>
+                    <span id='errorMessage' role='alert' className='warning'>{this.props.errorMessage}</span>
                     <br /><br />
 
                     <button type='submit' name='submit' id='searchButton' className='favSearchButton searchButton dpe_button'>Search</button>
@@ -73,8 +75,8 @@ export class SearchFavorites extends React.Component {
                 <br />
                 <h2>Search Results</h2>
 
-                <form className='saveToFavsForm' id='saveToFavsForm'  title='saveToFavsForm' onSubmit={event => this.saveToFavs(event)}>
-                        <span className='userMessage' role='alert'>{this.props.userMessage}</span>
+                <form className='saveToFavsForm' id='saveToFavsForm' title='saveToFavsForm' onSubmit={event => this.saveToFavs(event)}>
+                    <span className='userMessage' role='alert'>{this.props.userMessage}</span>
                     <ul>
 
                         {this.props.newFavorites.map(data =>
@@ -86,7 +88,7 @@ export class SearchFavorites extends React.Component {
                             </li>
                         )}
                     </ul>
-                    <span id='errorMessage' role='alert' className = 'warning'>{this.props.errorMessage}</span>
+                    <span id='errorMessage' role='alert' className='warning'>{this.props.errorMessage}</span>
 
                     <br />
                     <button type='submit' name='submit' id='saveToFavsButton' className='saveToFavsButton dpe_button'>Save Selected</button>
@@ -94,7 +96,7 @@ export class SearchFavorites extends React.Component {
 
                 </form>
                 <span className='yelpInfo'>Search and Restaurant info provided by:
-                        <a href='https://www.yelp.com' target='_blank' rel='noopener noreferrer'><img className='yelpImg' src={require('../images/Yelp_trademark_RGB_outline.png')} alt='Yelp logo' /> </a></span> 
+                        <a href='https://www.yelp.com' target='_blank' rel='noopener noreferrer'><img className='yelpImg' src={require('../images/Yelp_trademark_RGB_outline.png')} alt='Yelp logo' /> </a></span>
             </div>
 
 

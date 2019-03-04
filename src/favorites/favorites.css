@@ -1,29 +1,31 @@
-ul, li {
+.favoriteSection img {
+    margin-top: 0;
+}
+
+.userFavsPage {
+    text-align: center;
+}
+
+.editFavForm .listFavs {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ul,
+li {
     list-style-type: none;
 }
 
-li.mapDisplayResults {
-    padding-top: 5px;
-    margin-left: 10%;
-    text-align: left;
-}
-
-input.mapDisplayResults {
-    margin-right: 175px;
-}
-
-.mapDisplayRadio {
-    margin-left: -5%;
-}
-
-.userMessage, .warning {
+.userMessage,
+.warning {
     font-size: large;
     color: red;
     text-shadow: 2px 2px #022b3b;
     margin-right: 13%;
 }
 
-.favsTitle, .restaurantToEdit {
+.favsTitle,
+.restaurantToEdit {
     font-size: xx-large;
     text-shadow: 2px 2px #2b718b;
 }
@@ -33,7 +35,8 @@ input.mapDisplayResults {
     text-shadow: 2px 2px #2b718b;
 }
 
-.editFavTextBox, .searchFormBox {
+.editFavTextBox,
+.searchFormBox {
     font-size: x-large;
 }
 
@@ -42,44 +45,128 @@ input.mapDisplayResults {
     text-decoration: underline;
     font-size: xx-large;
     text-shadow: 2px 1px #030005;
-  }
-  
-  .mapDisplayResults a:visited {
+}
+
+.mapDisplayResults a:visited {
     color: #5887c8;
     text-decoration: underline;
-  }
-  
-  .mapDisplayResults a:hover {
+}
+
+.mapDisplayResults a:hover {
     color: #e8eaf2;
     text-shadow: 2px 1px #022b3b;
     text-decoration: underline;
-  }
-  
-  .mapDisplayResults a:active {
+}
+
+.mapDisplayResults a:active {
     color: #022b3b;
     text-decoration: underline;
-  }
+}
 
-  .searchTitle {
+.searchTitle {
     font-size: xx-large;
     text-shadow: 2px 2px #2b718b;
-  }
+}
 
-  .searchFormText {
+.searchFormText {
     font-size: x-large;
     text-shadow: 2px 2px #2b718b;
-  }
+}
 
-  .searchData {
+.searchData {
     font-size: x-large;
-    text-shadow: 2px 2px #2b718b;  
-  }
+    text-shadow: 2px 2px #2b718b;
+}
 
-  .yelpInfo {
+.yelpInfo {
     font-size: large;
     text-shadow: 2px 2px #022b3b;
-  }
+}
 
-  .yelpImg {
-      width: 30%;
-  }
+@media only screen and (min-device-width: 0px) and (max-device-width: 425px) {
+    .favsTitle {
+        margin-top: 16%;
+    }
+    .listFavs {
+        width: 85%;
+    }
+    li.mapDisplayResults {
+        margin-left: auto;
+        padding-top: 5px;
+        text-align: left;
+    }
+    input.mapDisplayResults {
+        margin-right: 175px;
+        margin-left: auto;
+    }
+    .mapDisplayRadio {
+        margin-left: -5%;
+    }
+}
+
+@media only screen and (min-device-width: 426px) and (max-device-width: 1024px) {
+    .favsTitle {
+        margin-top: 7%;
+    }
+    .listFavs {
+        width: 50%;
+    }
+    li.mapDisplayResults {
+        margin-left: auto;
+        padding-top: 5px;
+        text-align: left;
+    }
+    input.mapDisplayResults {
+        margin-right: 175px;
+        margin-left: auto;
+    }
+    .mapDisplayRadio {
+        margin-left: -5%;
+    }
+}
+
+@media only screen and (min-device-width: 1025px) and (max-device-width: 1440px) {
+    .favsTitle {
+        margin-top: 9%;
+    }
+    .listFavs {
+        width: 30%;
+    }
+    li.mapDisplayResults {
+        margin-left: auto;
+        padding-top: 5px;
+        text-align: left;
+    }
+    input.mapDisplayResults {
+        margin-right: 175px;
+        margin-left: auto;
+    }
+    .mapDisplayRadio {
+        margin-left: -5%;
+    }
+}
+
+@media only screen and (min-device-width: 1441px) {
+    .favsTitle {
+        margin-top: 8%;
+    }
+    .listFavs {
+        width: 20%;
+    }
+    li.mapDisplayResults {
+        margin-left: auto;
+        padding-top: 5px;
+        text-align: left;
+    }
+    input.mapDisplayResults {
+        margin-right: 175px;
+        margin-left: auto;
+    }
+    .mapDisplayRadio {
+        margin-left: -5%;
+    }
+}
+
+.hidden {
+    visibility: hidden;
+}

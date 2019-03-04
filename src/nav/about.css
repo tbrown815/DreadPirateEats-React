@@ -1,4 +1,7 @@
-.dpeListItem, .dpeInfoItem, .aboutTitle, .origDPEBox {
+.dpeListItem,
+.dpeInfoItem,
+.aboutTitle,
+.origDPEBox {
     text-shadow: 2px 2px #022b3b;
 }
 
@@ -8,7 +11,8 @@
     text-shadow: 3px 3px #022b3b;
 }
 
-.dpeListItem, .dpeInfoItem {
+.dpeListItem,
+.dpeInfoItem {
     text-align: left;
     font-size: large;
 }
@@ -21,7 +25,7 @@
     list-style-type: square;
 }
 
-.dpeAbout{
+.dpeAbout {
     text-align: center;
 }
 
@@ -34,7 +38,7 @@
     width: 98%;
     height: 250%;
     margin-top: -4%;
-    }
+}
 
 .origDPEBox {
     height: 100% !important;
@@ -45,28 +49,41 @@
     margin-bottom: 30px;
 }
 
-
-@media only screen and (min-device-width: 481px) and (max-device-width: 1400px) {
-
-
-    .dpeAbout {
-        width: 370px;
-        margin-top: 100px;
-    }
-    
-}
-
 @media only screen and (min-device-width: 0px) and (max-device-width: 480px) {
-
     .odpe_about {
         width: 98%;
         height: 250%;
         margin-top: -4%;
-        }
-
+    }
     .dpeAbout {
+        float: left;
         font-size: xx-large;
         font-family: 'Ubuntu Mono', monospace !important;
+        margin-bottom: 10%;
     }
-    
+    .aboutTitle {
+        text-align: center;
+        font-size: large;
+        margin-top: 40%;
+    }
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 1400px) {
+    .dpeAbout {
+        margin-top: 100px;
+    }
+}
+
+@media only screen and (min-device-width: 1400px) {
+    .dpeAbout {
+        margin-top: 120px;
+    }
+
+    .odpe_about {
+        font-size: xx-large;
+    }
+
+    .creditLink {
+        font-size: small; 
+    }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { REACT_APP_FAV_YELP_URL } from '../config'
-import {setErrorState} from '../actions/actions'
+import { setErrorState } from '../actions/actions'
 import { setSelectedFav, callViewFavs, searchNewFavs, getFavsSetState, updateFavCall, callDelFavs } from '../actions/favActions'
 
 
@@ -9,7 +9,7 @@ import './favorites.css';
 
 export class UserFavorites extends React.Component {
 
-
+    //gets users favs
     componentDidMount() {
 
         let userToken = this.props.userToken
@@ -17,14 +17,14 @@ export class UserFavorites extends React.Component {
 
         this.props.dispatch(callViewFavs(userToken, authToken))
     }
-
+    //sets state for user to search for new favs
     updateFavsState(event) {
         event.preventDefault();
 
         this.props.dispatch(searchNewFavs())
 
     }
-
+    //set the selected potential fav to state so it can be modified in future action
     changeSelectedFavState(event) {
 
         let selectedFav = event.target.value;
@@ -32,18 +32,18 @@ export class UserFavorites extends React.Component {
         return this.props.dispatch(setSelectedFav(selectedFav))
 
     }
-
+    //using selecedFavstate selected fav can be modified
     editSelectedFavState(event) {
         event.preventDefault();
         let findFav = this.props.selectedFavorite;
         let authToken = this.props.authToken
 
-        if(findFav === null || findFav === undefined || findFav === '') {
+        if (findFav === null || findFav === undefined || findFav === '') {
             return this.props.dispatch(setErrorState('Please select a favorite'))
 
         }
         else {
-        return this.props.dispatch(getFavsSetState(findFav, authToken))
+            return this.props.dispatch(getFavsSetState(findFav, authToken))
         }
     }
 
@@ -86,24 +86,24 @@ export class UserFavorites extends React.Component {
 
             return (
 
-                <div>
+                <div className='userFavsPage'>
                     <h2 className='favsTitle'>Your Dread Pirate Eats favorites!</h2>
                     <br />
-                    <form className='editFavs' id='editFavForm' title='searchForm' onSubmit={event => this.editSelectedFavState(event)}>
-                    
-                        <span role='alert' className = 'warning'>{this.props.noFavsMessage}</span><br />
+                    <form className='editFavForm' id='editFavForm' title='searchForm' onSubmit={event => this.editSelectedFavState(event)}>
 
-                        <ul>
-                        {this.props.grubJoints.map(data =>
-                            <li key={data.restaurantYelpId} className='mapDisplayResults'>
-                                <input type='radio' className='mapDisplayRadio radioButton' title={data.restaurantName} name='mapDisplayRadio' value={data.id}
-                                    onChange={event => this.changeSelectedFavState(event)} />
-                                <a href={REACT_APP_FAV_YELP_URL + data.restaurantAlias} target='_blank' rel='noopener noreferrer'>{data.restaurantName}</a>
+                        <span role='alert' className='warning'>{this.props.noFavsMessage}</span><br />
 
-                            </li>
-                        )}
+                        <ul className='listFavs'>
+                            {this.props.grubJoints.map(data =>
+                                <li key={data.restaurantYelpId} className='mapDisplayResults'>
+                                    <input type='radio' className='mapDisplayRadio radioButton' title={data.restaurantName} name='mapDisplayRadio' value={data.id}
+                                        onChange={event => this.changeSelectedFavState(event)} />
+                                    <a href={REACT_APP_FAV_YELP_URL + data.restaurantAlias} target='_blank' rel='noopener noreferrer'>{data.restaurantName}</a>
+
+                                </li>
+                            )}
                         </ul>
-                        <span role='alert' className = 'warning'>{this.props.errorMessage}</span><br />
+                        <span role='alert' className='warning'>{this.props.errorMessage}</span><br />
                         <br />
                         <button type='submit' name='submit' id='editButton' className='editButton dpe_button'>Edit Favorite</button>
                     </form>
@@ -112,9 +112,10 @@ export class UserFavorites extends React.Component {
                     <button id='addFavsButton' className='addFavsButton'
                         onClick={event => this.updateFavsState(event)}>Add new Favorites!</button>
                     <br /><br />
-                    <span className='yelpInfo'>Search and Restaurant info provided by:
-                    <a href='https://www.yelp.com' target='_blank' rel='noopener noreferrer'><img className='yelpImg' src={require('../images/Yelp_trademark_RGB_outline.png')} alt='Yelp logo' /></a></span> 
-
+                    <div className='yelpsection'>
+                        <p className='yelpInfo'>Search info provided by:</p>
+                        <a href='https://www.yelp.com' target='_blank' rel='noopener noreferrer'><img className='yelpImg' src={require('../images/Yelp_trademark_RGB_outline.png')} alt='yelp logo' /></a>
+                    </div>
                 </div>
 
             )
@@ -124,7 +125,7 @@ export class UserFavorites extends React.Component {
 
             return (
 
-                <div>
+                <div className='userFavsPage'>
                     <h2 className='favsTitle'>Your Dread Pirate Eats favorites!</h2>
                     <br />
                     <form className='editFavs' onSubmit={event => this.editFavCall(event)}>
@@ -151,8 +152,11 @@ export class UserFavorites extends React.Component {
 
 
 
-                    <br />
-
+                    <br /><br />
+                    <div className='yelpsection'>
+                        <p className='yelpInfo'>Search info provided by:</p>
+                        <a href='https://www.yelp.com' target='_blank' rel='noopener noreferrer'><img className='yelpImg' src={require('../images/Yelp_trademark_RGB_outline.png')} alt='yelp logo' /></a>
+                    </div>
                 </div>
 
 

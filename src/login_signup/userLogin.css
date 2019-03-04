@@ -1,18 +1,20 @@
-.pirateImageSection{
-  height: 400px;
-  width: 390px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-
 .userLoginTitle, .loginFormText{
   text-shadow: 2px 2px #022b3b;
 }
 
 .userLoginTitle {
   font-size: xx-large;
+  margin-top: 10%;
 
+}
+
+.loginSection {
+  width: 100%;
+  text-align: center;
+}
+
+.loginForm {
+  width: 100%;
 }
 
 .loginFormText {

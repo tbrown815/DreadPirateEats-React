@@ -1,13 +1,12 @@
-
-.drawBoxLoginButton {
-  margin-left: 45.5%;
-  margin-right: auto;
+.homeDecision,
+.buttonSection {
+    width: 100%;
+    text-align: center;
 }
 
-
-.drawBoxGuestButton {
-  margin-left: 44%;
-  margin-right: auto;
+.homeDecision {
+    margin-top: 2%;
+    margin-bottom: 5%;
 }
 
 .drawForm {
@@ -16,118 +15,105 @@
 }
 
 .hangryTauntSection {
-  color: #e8eaf2;
-  font-size: x-large;
-  text-shadow: 2px 2px #030005;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.offerDisplay, .offerDisplay a {
-  color: #e8eaf2;
-  text-decoration: underline;
-  font-size: larger;
-  text-shadow: 2px 1px #030005;
-}
-
-.offerDisplay:visited, .liofferDisplaynk a:visited {
-  color: #022b3b;
-  text-decoration: underline;
-}
-
-.offerDisplay:hover, .offerDisplay a:hover {
-  color: #5887c8;
-  text-shadow: 2px 1px #030005;
-  text-decoration: underline;
-}
-
-.offerDisplay:active, .offerDisplay a:active {
-  color: #022b3b;
-  text-decoration: underline;
-}
-
-
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-
-
-  li.offerDisplay {
-    padding-right: 16%; 
-    list-style-type: none;
-  }
-  
-  .drawBoxLoginButton {
-    margin-left: 34%;
+    color: #e8eaf2;
+    font-size: x-large;
+    text-shadow: 2px 2px #030005;
+    text-align: center;
+    margin-left: auto;
     margin-right: auto;
-  }
-  
-  .drawBoxGuestButton {
-    margin-left: 29%;
-    margin-right: auto;
-  }
-  
-  }
+}
 
+.offerDisplay,
+.offerDisplay a {
+    color: #e8eaf2;
+    text-decoration: underline;
+    font-size: larger;
+    text-shadow: 2px 1px #030005;
+}
+
+.offerDisplay:visited,
+.liofferDisplaynk a:visited {
+    color: #022b3b;
+    text-decoration: underline;
+}
+
+.offerDisplay:hover,
+.offerDisplay a:hover {
+    color: #5887c8;
+    text-shadow: 2px 1px #030005;
+    text-decoration: underline;
+}
+
+.offerDisplay:active,
+.offerDisplay a:active {
+    color: #022b3b;
+    text-decoration: underline;
+}
+
+li.offerDisplay {
+    margin-bottom: 2%;
+}
+
+.offerSection {
+    padding: 0;
+}
+
+@media only screen and (min-device-width: 0px) and (max-device-width: 480px) {
+    li.offerDisplay {
+        list-style-type: none;
+    }
+    .offerDisplay {
+        font-size: medium;
+    }
+}
 
 @media only screen and (min-device-width: 480px) and (max-device-width: 500px) {
-
-
-  li.offerDisplay {
-    padding-right: 16%; 
-    list-style-type: none;
-  }
-  
-  .drawBoxLoginButton {
-    margin-top: 3%;
-    margin-left: 36%;
-    margin-right: auto;
-  }
-  
-  .drawBoxGuestButton {
-    margin-left: 32%;
-    margin-right: auto;
-  }
-  
-  }
-
-  @media only screen and (min-device-width: 501px) and (max-device-width: 1024px) {
-
-
     li.offerDisplay {
-      padding-right: 16%; 
-      list-style-type: none;
-    }
-    
-    .drawBoxLoginButton {
-      margin-top: 3%;
-      margin-left: 36%;
-      margin-right: auto;
-    }
-    
-    .drawBoxGuestButton {
-      margin-left: 31%;
-      margin-right: auto;
-    }
-    
-    }
-
-    @media only screen and (min-device-width: 1025px) and (max-device-width: 1400px) {
-
-
-      li.offerDisplay {
-        padding-right: 16%; 
         list-style-type: none;
-      }
-      
-      .drawBoxLoginButton {
-        margin-top: 5%;
-        margin-left: 44%;
-        margin-right: auto;
-      }
-      
-      .drawBoxGuestButton {
-        margin-left: 42%;
-        margin-right: auto;
-      }
-      
-      }
+    }
+}
+
+@media only screen and (min-device-width: 501px) and (max-device-width: 1024px) {
+    li.offerDisplay {
+        list-style-type: none;
+    }
+}
+
+@media only screen and (min-device-width: 1025px) and (max-device-width: 1400px) {
+    li.offerDisplay {
+        list-style-type: none;
+    }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    li.offerDisplay {
+        list-style-type: none;
+    }
+    .yelpsection img {
+        width: 20%;
+    }
+}
+
+@media only screen and (min-device-width: 430px) and (max-device-width: 700px) {
+    .yelpsection img {
+        width: 20%;
+    }
+}
+
+@media only screen and (min-device-width: 701px) and (max-device-width: 1024px) {
+    .yelpsection img {
+        width: 13%;
+    }
+}
+
+@media only screen and (min-device-width: 1025px) and (max-device-width: 1440px) {
+    .yelpsection img {
+        width: 10%;
+    }
+}
+
+@media only screen and (min-device-width: 1440px) {
+    .yelpsection img {
+        width: 8%;
+    }
+}

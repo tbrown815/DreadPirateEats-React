@@ -54,7 +54,7 @@ export class About extends React.Component {
                     </div>
                 </div>
                 <p className='returnButton'><button id='returnButton' className='returnButton returnButtone' onClick={event => this.clickReturn(event)}>Return</button></p>
-                <p className='link'><a href="https://www.freepik.com/free-photos-vectors/background" target='_blank' rel='noopener noreferrer'>Background vector created by freepik - www.freepik.com</a></p>
+                <p className='creditLink link'><a href="https://www.freepik.com/free-photos-vectors/background" target='_blank' rel='noopener noreferrer'>Background vector created by freepik - www.freepik.com</a></p>
             </div>
         )
     }

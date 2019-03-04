@@ -43,7 +43,7 @@ export class UserLogin extends React.Component {
     render() {
         return (
 
-            <div className='pirateImageSection'>
+            <div className='loginSection'>
                 <h2 className='userLoginTitle'>Login to Dread Pirate Eats!</h2>
                 <form className='logInForm' id='logInForm' onSubmit={event => this.loginCheck(event)}>
                     <p className='loginFormText'>Enter your username:</p>

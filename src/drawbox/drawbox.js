@@ -13,7 +13,7 @@ export class DrawBox extends React.Component {
 
 
     componentDidMount() {
-
+//check if public sort is < 2, if it is user is not public and will load user favs
         if (this.props.publicSort.length < 2) {
             let userToken = this.props.userToken
             let authToken = this.props.authToken
@@ -25,14 +25,14 @@ export class DrawBox extends React.Component {
     searchAgain(event) {
         this.onDraw(event)
     }
-
+//the draw work flow
     onDraw(event) {
         event.preventDefault();
-
+        //determines random value to draw from the users fav array
         let randomVal = Math.floor(Math.random() * parseInt(this.props.grubJoints.length)) + 0;
 
         let theOffer = this.props.grubJoints[randomVal]
-
+        //tracks for display of offers made
         let madeOffers = [...this.props.madeOffers, { restaurantName: theOffer.restaurantName, restaurantAlias: `https://www.yelp.com/biz/${theOffer.restaurantAlias}` }]
 
         let numOffers = this.props.madeOffers.length + 1;
@@ -40,7 +40,7 @@ export class DrawBox extends React.Component {
         let hangryTaunt;
 
         let restart;
-
+        //removes the restaurant from the current game, it will load back to state on reset
         this.props.grubJoints.splice(randomVal, 1)
 
         let numJoints = this.props.numJoints;
@@ -49,6 +49,7 @@ export class DrawBox extends React.Component {
 
         let authToken = this.props.authToken
 
+//taunt the user based on number of draws
         if (numJoints < 5) {
             if (numOffers < numJoints) {
                 hangryTaunt = `Draw again ya scoundrel!`
@@ -117,7 +118,7 @@ export class DrawBox extends React.Component {
 
     }
 
-
+    //once user is out of draws for the game they are prompted to reset
     restartApp(event) {
 
         event.preventDefault();
@@ -157,11 +158,11 @@ export class DrawBox extends React.Component {
 
 
     render() {
-
+        //display of login or guest buttons if user is not logged in
         if (this.props.loggedIn === 0) {
 
             return (
-                <div>
+                <div className='buttonSection'>
                     <div className='homeDecision'>
                         <button className='drawBoxLoginButton homeDecisionButton dpe_button' id='LoginToStart' aria-pressed='false'
                             onClick={event => this.loginClick(event)}>Login to start</button>
@@ -177,7 +178,7 @@ export class DrawBox extends React.Component {
         }
 
         if (!this.props.restart) {
-
+            //if the user has no favs they will be prompted to add them
             if (this.props.grubJoints.length < 1) {
                 return (
                     <div>
@@ -199,7 +200,7 @@ export class DrawBox extends React.Component {
                 )
 
             }
-
+            //if user has favs they will be able to play
             else {
                 return (
                     <div>
@@ -215,7 +216,7 @@ export class DrawBox extends React.Component {
                             <span role='alert'>{this.props.hangryTaunt}</span>
 
                             <br />
-                            <ul>
+                            <ul className='offerSection'>
                                 {this.props.madeOffers.map(offer =>
                                     <li key={offer.restaurantName} className='offerDisplay' >
                                         <a href={offer.restaurantAlias} target='_blank' rel='noopener noreferrer'>{offer.restaurantName}</a>
@@ -223,11 +224,16 @@ export class DrawBox extends React.Component {
                                 )}
                             </ul>
                         </div>
+                        <br /><br />
+                        <div className='yelpsection'>
+                            <p className='yelpInfo'>Search info provided by:</p>
+                            <a href='https://www.yelp.com' target='_blank' rel='noopener noreferrer'><img className='yelpImg' src={require('../images/Yelp_trademark_RGB_outline.png')} alt='yelp logo' /></a>
+                        </div>
                     </div>
                 )
             }
         }
-
+        //when the user is out of draws they are prompted to restart
         if (this.props.restart) {
             return (
                 <div>
@@ -240,13 +246,18 @@ export class DrawBox extends React.Component {
                         <div className='hangryTauntSection'>
                             <span role='alert'> Ye time is up, walk thee plank! </span>
                             <br />
-                            <ul>
+                            <ul className='offerSection'>
                                 {this.props.madeOffers.map(offer =>
                                     <li key={offer.restaurantName} className='offerDisplay' >
                                         <a href={offer.restaurantAlias} target='_blank' rel='noopener noreferrer'>{offer.restaurantName}</a>
                                     </li>
                                 )}
                             </ul>
+                        </div>
+                        <br /><br />
+                        <div className='yelpsection'>
+                            <p className='yelpInfo'>Search info provided by:</p>
+                            <a href='https://www.yelp.com' target='_blank' rel='noopener noreferrer'><img className='yelpImg' src={require('../images/Yelp_trademark_RGB_outline.png')} alt='yelp logo' /></a>
                         </div>
                     </div>
                 </div>)

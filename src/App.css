@@ -1,104 +1,104 @@
-
 body {
-  font-family: 'Ubuntu Mono', monospace !important;
-  color: whitesmoke;
-  font-weight: bolder;
+    font-family: 'Ubuntu Mono', monospace !important;
+    color: whitesmoke;
+    font-weight: bolder;
 }
 
-
 .bg {
-  background-image: url("./images/pirateship.svg.png");
+    background-image: url("./images/pirateship.svg.png");
+    /* scaling */
+    width: 100%;
+    height: 120%;
+    /* position */
+    position: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+}
 
+.pirateImageSection {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: -50px;
+}
 
-  /* scaling */
-  width: 100%;
-  height: 110%;
-
-  /* position */
-  position: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  z-index: -1;
-
+.pirateImageSection img {
+    width: 100%;
+    margin-top: 20%;
 }
 
 button {
-  border: 20;
-  border-color: #032d3b;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
-  font-weight: bold;
-  background-color: #5887c8;
-  color: whitesmoke;
-  font-size: large;
-  text-shadow: 1px 1px #022b3b;
-}
-
-.drawBoxLoginButton {
-  margin-left: 47%;
-  margin-right: auto;
-}
-
-.drawBoxGuestButton {
-  margin-left: 46%;
-  margin-right: auto;
-}
-
-
-.pirateImageSection{
-  height: 400px;
-  width: 390px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  margin-top: -50px;
-}
-
-.dreadPirateImage {
-  height: 100%;
+    border: 20;
+    border-color: #032d3b;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: bold;
+    background-color: #5887c8;
+    color: whitesmoke;
+    font-size: large;
+    text-shadow: 1px 1px #022b3b;
 }
 
 p {
-  display: block;
+    display: block;
 }
 
 input {
-  border-color: silver;
+    border-color: silver;
 }
 
-.link2, .link2 a {
-  color: black;
-  text-decoration: underline;
+.link2,
+.link2 a {
+    color: black;
+    text-decoration: underline;
 }
 
-.link2:visited, .link2 a:visited {
-  color: black;
-  text-decoration: underline;
+.link2:visited,
+.link2 a:visited {
+    color: black;
+    text-decoration: underline;
 }
 
-.link2:hover, .link2 a:hover {
-  color: black;
-  text-decoration: underline;
+.link2:hover,
+.link2 a:hover {
+    color: black;
+    text-decoration: underline;
 }
 
-.link2:active, .link2 a:active {
-  color: black;
-  text-decoration: underline;
+.link2:active,
+.link2 a:active {
+    color: black;
+    text-decoration: underline;
 }
 
-.radioButton{
-  width:15px !important;
-  height:15px!important;
-  }
-
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-  
-.pirateImageSection{
-  margin-top: 0px;
+.radioButton {
+    width: 15px !important;
+    height: 15px !important;
 }
 
+@media only screen and (min-device-width: 0px) and (max-device-width: 480px) {
+    .pirateImageSection {
+        width: 70%;
+    }
+}
 
+@media only screen and (min-device-width: 481px) and (max-device-width: 829px) {
+    .pirateImageSection {
+        width: 50%;
+    }
+}
+
+@media only screen and (min-device-width: 830px) and (max-device-width: 1440px) {
+    .pirateImageSection {
+        width: 30%;
+    }
+}
+
+@media only screen and (min-device-width: 1441px) {
+    .pirateImageSection {
+        width: 30%;
+    }
 }
