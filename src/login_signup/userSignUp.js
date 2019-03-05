@@ -8,7 +8,7 @@ import './userSignUp.css';
 
 export class UserSignUp extends React.Component {
 
-
+    //passes user entered values to action to verify data requirements and create user
     userCheck(event) {
         event.preventDefault();
 
@@ -21,7 +21,7 @@ export class UserSignUp extends React.Component {
     }
 
 
-
+    //sets state to display login flow
     callUserLogin(event) {
         event.preventDefault();
 

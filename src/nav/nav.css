@@ -1,11 +1,10 @@
-
 nav {
     font-size: larger;
     text-shadow: 2px 2px #022b3b;
     width: 100%;
     height: 100px;
     margin-top: -2%;
-    }
+}
 
 nav .navTitle {
     display: block;
@@ -16,26 +15,28 @@ nav .navTitle {
     color: whitesmoke;
     text-shadow: 4px 4px #022b3b;
     font-family: 'Bangers', cursive !important;
+}
 
-    }
-
-
-.link, .link a {
+.link,
+.link a {
     color: whitesmoke;
     text-decoration: underline;
 }
 
-.link:visited, .link a:visited {
+.link:visited,
+.link a:visited {
     color: whitesmoke;
     text-decoration: underline;
 }
 
-.link:hover, .link a:hover {
+.link:hover,
+.link a:hover {
     color: whitesmoke;
     text-decoration: underline;
 }
 
-.link:active, .link a:active {
+.link:active,
+.link a:active {
     color: whitesmoke;
     text-decoration: underline;
 }
@@ -51,106 +52,25 @@ nav .navTitle {
     padding-bottom: 100px;
 }
 
-
 .modalForm {
     text-align: center;
-    }
+}
 
-    @media only screen and (min-device-width: 0px) and (max-device-width: 425px) {
-
-        nav {
-            width: 100%;
-            height: 100px;
-            margin-top: -6%;
-            }
-        
-        nav li {
-            display: inline-block;
-            float: left;
-            margin-top: -6%;
-            margin-bottom: 6%;
-            margin-left: -5%;
-            margin-right: 2%;
-            padding-right: 20px;
-            }
-        
-        nav .navTitle {
-            float: left;
-            font-size: 40px;
-            margin-top: 3%;
-            color: whitesmoke;
-            text-shadow: 4px 4px #022b3b;
-            font-family: 'Ubuntu Mono', monospace !important;
-    
-            }
-    
-        .origDPE {
-            width: 100%;
-            transform: rotate(-90deg);
-            padding-top: 90px;
-            padding-bottom: 100px;
-            
-        }
-    
-    }
-
-    @media only screen and (min-device-width: 426px) and (max-device-width: 450px) {
-
-        nav {
-            width: 100%;
-            height: 100px;
-            margin-top: -6%;
-            }
-        .navList{
-            padding-top: 15%;
-
-        }
-        
-        nav li {
-            display: inline-block;
-            float: right;
-            margin-bottom: 1%;
-            margin-left: 1%;
-            margin-right: 2%;
-            padding-right: 2px;
-            }
-        
-        nav .navTitle {
-            float: left;
-            font-size: 40px;
-            margin-top: 3%;
-            color: whitesmoke;
-            text-shadow: 4px 4px #022b3b;
-            font-family: 'Ubuntu Mono', monospace !important;
-    
-            }
-    
-        .origDPE {
-            width: 100%;
-            transform: rotate(-90deg);
-            padding-top: 90px;
-            padding-bottom: 100px;
-            
-        }
-    
-    }
-
-@media only screen and (min-device-width: 451px) and (max-device-width: 480px) {
-
+@media only screen and (min-device-width: 0px) and (max-device-width: 425px) {
     nav {
         width: 100%;
         height: 100px;
         margin-top: -6%;
-        }
-    
+    }
     nav li {
         display: inline-block;
-        float: right;
-        margin-top: 4%;
+        float: left;
+        margin-top: -6%;
+        margin-bottom: 6%;
+        margin-left: -5%;
         margin-right: 2%;
-        padding-left: 5px;
-        }
-    
+        padding-right: 20px;
+    }
     nav .navTitle {
         float: left;
         font-size: 40px;
@@ -158,63 +78,110 @@ nav .navTitle {
         color: whitesmoke;
         text-shadow: 4px 4px #022b3b;
         font-family: 'Ubuntu Mono', monospace !important;
-
-        }
-
+    }
     .origDPE {
         width: 100%;
         transform: rotate(-90deg);
         padding-top: 90px;
         padding-bottom: 100px;
-        
     }
-
 }
 
-
-@media only screen and (min-device-width: 481px) {
-
+@media only screen and (min-device-width: 426px) and (max-device-width: 450px) {
     nav {
         width: 100%;
         height: 100px;
-        margin-top: -4%;
-        }
-    
+        margin-top: -6%;
+    }
+    .navList {
+        padding-top: 15%;
+    }
+    nav li {
+        display: inline-block;
+        float: right;
+        margin-bottom: 1%;
+        margin-left: 1%;
+        margin-right: 2%;
+        padding-right: 2px;
+    }
+    nav .navTitle {
+        float: left;
+        font-size: 40px;
+        margin-top: 3%;
+        color: whitesmoke;
+        text-shadow: 4px 4px #022b3b;
+        font-family: 'Ubuntu Mono', monospace !important;
+    }
+    .origDPE {
+        width: 100%;
+        transform: rotate(-90deg);
+        padding-top: 90px;
+        padding-bottom: 100px;
+    }
+}
+
+@media only screen and (min-device-width: 451px) and (max-device-width: 480px) {
+    nav {
+        width: 100%;
+        height: 100px;
+        margin-top: -6%;
+    }
     nav li {
         display: inline-block;
         float: right;
         margin-top: 4%;
         margin-right: 2%;
         padding-left: 5px;
-        }
-    
+    }
+    nav .navTitle {
+        float: left;
+        font-size: 40px;
+        margin-top: 3%;
+        color: whitesmoke;
+        text-shadow: 4px 4px #022b3b;
+        font-family: 'Ubuntu Mono', monospace !important;
+    }
+    .origDPE {
+        width: 100%;
+        transform: rotate(-90deg);
+        padding-top: 90px;
+        padding-bottom: 100px;
+    }
+}
+
+@media only screen and (min-device-width: 481px) {
+    nav {
+        width: 100%;
+        height: 100px;
+        margin-top: -4%;
+    }
+    nav li {
+        display: inline-block;
+        float: right;
+        margin-top: 4%;
+        margin-right: 2%;
+        padding-left: 5px;
+    }
     nav .navTitle {
         float: left;
         font-size: 50px;
         margin-top: 5%;
         color: whitesmoke;
         text-shadow: 4px 4px #022b3b;
-
-        }
-
+    }
     .origDPE {
         width: 100%;
         transform: rotate(-90deg);
         padding-top: 90px;
         padding-bottom: 100px;
-        
     }
-
 }
 
 @media only screen and (min-device-width: 1440px) {
-   
-    nav .navTitle{
+    nav .navTitle {
         font-size: 80px;
-
     }
     nav li {
         font-size: 30px;
     }
 }
-

@@ -27,7 +27,7 @@ export class DreadPirate extends React.Component {
   4 = User favorites are displayed
   5 = Guest "login"
   6 = User is Guest
-7 = Display About
+  7 = Display About
   */
 
   //when app loads check for authToken, if no authToken log the user out

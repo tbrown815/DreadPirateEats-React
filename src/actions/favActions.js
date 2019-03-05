@@ -60,7 +60,7 @@ export const noFavsError = (noFavs) => ({
     type: NO_FAVS,
     noFavs
 })
-
+//sends required fields to api to update selected fav
 export const updateFavCall = (newFavName, favId, userToken, authToken) => dispatch => {
 
     let restaurantName = newFavName;
@@ -97,7 +97,7 @@ export const updateFavCall = (newFavName, favId, userToken, authToken) => dispat
         })
 
 }
-
+//gets user fav and dispatch fav data to state
 export const getFavsSetState = (findFav, authToken) => dispatch => {
 
     return fetch(`${REACT_APP_FAVS_URL}${findFav}`, {
@@ -114,7 +114,7 @@ export const getFavsSetState = (findFav, authToken) => dispatch => {
             return resObj;
         })
         .then(resObj => setFavObject(resObj, dispatch))
-    
+
 }
 
 const setFavObject = (resObj, dispatch) => {
@@ -127,7 +127,7 @@ const setFavObject = (resObj, dispatch) => {
     dispatch(editFavsState(favOjb))
 
 }
-
+//calls API with required data which calls Yelp
 export const performYelpCall = (restaurantName, restaurantZip, publicSort) => dispatch => {
     if (restaurantName === undefined || restaurantName === null || restaurantName === '') {
 
@@ -153,6 +153,7 @@ export const performYelpCall = (restaurantName, restaurantZip, publicSort) => di
     }
 }//END persormYelpCall
 
+//maps result object returned by Yelp and dispatch call to display the list of results
 const mapResultsHandler = (businesses, dispatch) => {
 
     let results = businesses.map(business => ({
@@ -186,9 +187,9 @@ const mapResultsHandler = (businesses, dispatch) => {
     dispatch(displayNewFavs(displayResults, userMessage))
 }
 
-
+//calls API with selected new fav values to save to users fav list
 export const callAddNewFav = (restaurant, userToken, authToken) => dispatch => {
-    
+
     let restaurantYelpId = restaurant[0].restaurantYelpId;
     let restaurantName = restaurant[0].restaurantName;
     let restaurantAlias = restaurant[0].restaurantAlias;
@@ -210,6 +211,7 @@ export const callAddNewFav = (restaurant, userToken, authToken) => dispatch => {
 
 }//END callAddNewFav
 
+//calls api to return users saved favs
 export const callViewFavs = (userToken, authToken) => dispatch => {
 
     return fetch(`${REACT_APP_USERFAVS_URL}${userToken}`, {
@@ -224,7 +226,7 @@ export const callViewFavs = (userToken, authToken) => dispatch => {
         .then(res => res.json())
         .then(({ userFavs }) => mapFavResultsHandler(userFavs, dispatch))
 }//END callViewFavs
-
+//maps users favs to set to state for display
 const mapFavResultsHandler = (userFavs, dispatch) => {
 
     if (userFavs === undefined || userFavs === null) {
@@ -253,7 +255,7 @@ const mapFavResultsHandler = (userFavs, dispatch) => {
         dispatch(viewFavs(displayFavs, numJoints))
     }
 }
-
+//calls api to delete fav
 export const callDelFavs = (authToken, userToken, favId) => dispatch => {
 
     return fetch(`${REACT_APP_FAVS_URL}${favId}`, {
@@ -265,10 +267,10 @@ export const callDelFavs = (authToken, userToken, favId) => dispatch => {
 
         }
     })
-    .then(res => {
+        .then(res => {
 
-        dispatch(callViewFavs(userToken, authToken))
-    })
+            dispatch(callViewFavs(userToken, authToken))
+        })
 
 
 }//END callDelFavs

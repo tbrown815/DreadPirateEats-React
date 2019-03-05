@@ -46,21 +46,7 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
-
-    //NO LONGER USED COULD DELETE
-    /* 
-       if (action.type === RESTART_APP) {
-           return Object.assign({}, state, {
-               madeOffers: [],
-               theOffer: '',
-               randomCheck: ['x'],
-               hangryTaunt: 'Click ta draw ya scallywag!',
-               gameOn: true,
-               restart: false,
-               newFavorites: null
-           })
-       }
-   */
+    //set state values on logout
     if (action.type === LOGOUT_SUCCESS) {
         return Object.assign({}, state, {
             grubJoints: [],
@@ -86,23 +72,23 @@ export default (state = initialState, action) => {
             userMessage: null
         })
     }
-
+    //set login state for login page
     if (action.type === LOGIN_USER) {
-        
+
         return Object.assign({}, state, {
             loggedIn: 1
         })
     }
-
+    //set login state for guest start page (enter zip)
     if (action.type === GUEST_LOGIN) {
-        
+
         return Object.assign({}, state, {
             loggedIn: 5
         })
     }
-
+    //set state for guest game page
     if (action.type === GUEST_SUCCESS) {
-        
+
         return Object.assign({}, state, {
             loggedIn: 6,
             prevLoggedIn: 0,
@@ -117,9 +103,9 @@ export default (state = initialState, action) => {
             publicDrawCount: 0
         })
     }
-
+    //reset state for guest game
     if (action.type === GUEST_RESET) {
-        
+
         return Object.assign({}, state, {
             loggedIn: 5,
             prevLoggedIn: 0,
@@ -134,32 +120,32 @@ export default (state = initialState, action) => {
             publicDrawCount: 0
         })
     }
-
+    //set loggedIn state to display about and record previous state
     if (action.type === DISPLAY_ABOUT) {
-        
+
         return Object.assign({}, state, {
             loggedIn: 7,
             prevLoggedIn: action.oldLoginState
 
         })
     }
-
+    //sets loggedIn state to previous state when leaving about page
     if (action.type === CANCEL_ABOUT) {
-        
+
         return Object.assign({}, state, {
             loggedIn: action.oldLoginState
         })
     }
-
+    //set loggedIn state to display sign up page
     if (action.type === SIGNUP_USER) {
-        
+
         return Object.assign({}, state, {
             loggedIn: 2
         })
     }
-
+    //set loggedIn state for successful login to play game
     if (action.type === LOGIN_SUCCESS) {
-                
+
         return Object.assign({}, state, {
             currentUser: action.currentUser,
             userToken: action.currentUser.id,
@@ -169,27 +155,27 @@ export default (state = initialState, action) => {
 
         })
     }
-
+    //set favState to search for new favs
     if (action.type === SEARCH_NEW_FAVS) {
-        
+
         return Object.assign({}, state, {
             favState: 1,
             errorMessage: null
 
         })
     }
-
+    //set state to display new favs from search
     if (action.type === DISPLAY_NEW_FAVS) {
-        
+
         return Object.assign({}, state, {
             newFavorites: action.displayResults,
             userMessage: action.userMessage
 
         })
     }
-
+    //set state to display users existing favs
     if (action.type === VIEW_FAVS) {
-        
+
         return Object.assign({}, state, {
             grubJoints: action.displayFavs,
             noFavsMessage: null,
@@ -204,90 +190,91 @@ export default (state = initialState, action) => {
             newFavorites: []
         })
     }
-
+    //set state to record fav selected on radio click
     if (action.type === SET_SELECTED_FAV) {
-        
+
         return Object.assign({}, state, {
             selectedFavorite: action.selectedFav
         })
     }
-
+    //cancels add favs state
     if (action.type === CANCEL_ADD_FAVS) {
-        
+
         return Object.assign({}, state, {
             favState: 0,
             errorMessage: null
         })
     }
-
+    //set loggedIn state to display user favs
     if (action.type === EDIT_FAVS) {
-        
+
         return Object.assign({}, state, {
             loggedIn: 4
         })
     }
-
+    //set edit favs state for editing user favs
     if (action.type === EDIT_FAVS_STATE) {
-        
+
         return Object.assign({}, state, {
             editFavState: 1,
             editFavOjb: action.favOjb,
             errorMessage: null
         })
     }
-
+    //cancel edit favs 
     if (action.type === CANCEL_EDIT_FAVS) {
-        
+
         return Object.assign({}, state, {
             editFavState: 0,
             selectedFavorite: null
 
         })
     }
-
+    //cancel search favs
     if (action.type === CANCEL_SEARCH_FAVS) {
-        
+
         return Object.assign({}, state, {
             favState: 0
         })
     }
-
+    //set loggedIn state to return to game
     if (action.type === RETURN_TO_GAME) {
-        
+
         return Object.assign({}, state, {
             loggedIn: 3
         })
     }
+    //sets user auth token to state
     if (action.type === SET_AUTH_TOKEN) {
-        
+
         return Object.assign({}, state, {
             authToken: action.authToken
         })
     }
-
+    //set state for error messages
     if (action.type === ERROR_STATE) {
-        
+
         return Object.assign({}, state, {
             errorMessage: action.errorMessage
         })
     }
-
+    //cancel sets loggedIn back to default state
     if (action.type === CANCEL_STATE) {
-        
+
         return Object.assign({}, state, {
             loggedIn: 0
         })
     }
-
+    //sets state to display message when no user favs available
     if (action.type === NO_FAVS) {
-        
+
         return Object.assign({}, state, {
             noFavsMessage: action.noFavs
         })
     }
-
+    //sets state values for display/management of users game
     if (action.type === FIND_GRUB) {
-        
+
         return Object.assign({}, state, {
             hangryTaunt: action.hangryTaunt,
             madeOffers: action.madeOffers,
@@ -295,9 +282,9 @@ export default (state = initialState, action) => {
             randomCheck: action.randomCheck
         })
     }
-
+    //sets state values for display/management of guest game
     if (action.type === GUEST_FIND_GRUB) {
-        
+
         return Object.assign({}, state, {
             publicHangryTaunt: action.publicHangryTaunt,
             publicMadeOffers: action.publicMadeOffers,

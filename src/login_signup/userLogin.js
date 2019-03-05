@@ -29,7 +29,7 @@ export class UserLogin extends React.Component {
 
     }
 
-
+    //sets state to display sign up flow
     signUpScreen(event) {
         event.preventDefault();
 

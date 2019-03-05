@@ -62,7 +62,7 @@ export const cancelState = () => ({
 })
 
 
-
+//Action to pass user/pass for login
 export const userLogin = (username, password) => dispatch => {
 
     if (username === undefined || username === null || username === '') {
@@ -92,6 +92,7 @@ export const userLogin = (username, password) => dispatch => {
 
 }   // END USERLOGIN
 
+//Action to set auth/user tokens
 const setTokenHandler = (authToken, dispatch) => {
     const decodedToken = jwtDecode(authToken)
     dispatch(setAuthToken(authToken))
@@ -101,7 +102,7 @@ const setTokenHandler = (authToken, dispatch) => {
     storeUserToken(decodedToken.user.id)
 };
 
-
+//clears auth/user tokens from browser storage on logout
 export const logoutUser = () => dispatch => {
 
     clearAuthToken()
@@ -109,6 +110,7 @@ export const logoutUser = () => dispatch => {
     dispatch(logoutSuccess())
 }
 
+//if user session still in browser storage return user to logged in state on return
 export const userStillLoggedIn = (authToken) => dispatch => {
     const decodedToken = jwtDecode(authToken)
     dispatch(setAuthToken(authToken))
@@ -118,7 +120,7 @@ export const userStillLoggedIn = (authToken) => dispatch => {
 
 }
 
-
+//When creating user checks that values are present in the fields requested
 export const createUserCheck = (username, email, password, passwordConf) => dispatch => {
 
     if (username === undefined || username === null || username === '') {
@@ -151,6 +153,7 @@ export const createUserCheck = (username, email, password, passwordConf) => disp
 
 } //END createUserCheck
 
+//validates password requirements
 export const createPassCheck = (username, email, password, passwordConf) => dispatch => {
 
     if (password === '' && passwordConf === '') {
@@ -180,6 +183,7 @@ export const createPassCheck = (username, email, password, passwordConf) => disp
     }
 } //END createPassCheck
 
+//sends data entered to api for user creation
 export const createUserFlow = (username, email, password) => dispatch => {
 
     return fetch(`${REACT_APP_CREATE_USER_URL}`, {

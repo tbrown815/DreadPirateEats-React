@@ -6,6 +6,7 @@ import './about.css';
 
 export class About extends React.Component {
 
+    //Returns the user to the previous state
     clickReturn(event) {
         event.preventDefault();
         if (this.props.prevLoggedIn === undefined) {
