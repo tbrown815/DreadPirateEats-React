@@ -85,7 +85,7 @@ li.offerDisplay {
     }
 }
 
-@media only screen and (min-width: 320px) and (max-width: 480px) {
+@media only screen and (min-width: 320px) and (max-width: 429px) {
     li.offerDisplay {
         list-style-type: none;
     }

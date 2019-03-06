@@ -1,3 +1,7 @@
+.favoriteSection {
+    text-align: center;
+}
+
 .favoriteSection img {
     margin-top: 0;
 }
@@ -6,7 +10,7 @@
     text-align: center;
 }
 
-.editFavForm .listFavs {
+.editFavForm .listFavs, .saveToFavsForm .listFavs{
     margin-left: auto;
     margin-right: auto;
 }
@@ -102,6 +106,9 @@ li {
     .mapDisplayRadio {
         margin-left: -5%;
     }
+    .searchTitle {
+        margin-top: 15%
+    }
 }
 
 @media only screen and (min-width: 426px) and (max-width: 1024px) {
@@ -122,6 +129,12 @@ li {
     }
     .mapDisplayRadio {
         margin-left: -5%;
+    }
+}
+
+@media only screen and (min-width: 950px) and (max-width: 1439px) {
+    .searchTitle {
+        margin-top: 5%
     }
 }
 
@@ -146,7 +159,7 @@ li {
     }
 }
 
-@media only screen and (min-width: 1441px) {
+@media only screen and (min-width: 1440px) {
     .favsTitle {
         margin-top: 8%;
     }
@@ -164,6 +177,9 @@ li {
     }
     .mapDisplayRadio {
         margin-left: -5%;
+    }
+    .searchTitle {
+        margin-top: 8%
     }
 }
 

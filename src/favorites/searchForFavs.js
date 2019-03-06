@@ -77,7 +77,7 @@ export class SearchFavorites extends React.Component {
 
                 <form className='saveToFavsForm' id='saveToFavsForm' title='saveToFavsForm' onSubmit={event => this.saveToFavs(event)}>
                     <span className='userMessage' role='alert'>{this.props.userMessage}</span>
-                    <ul>
+                    <ul  className='listFavs'>
 
                         {this.props.newFavorites.map(data =>
                             <li key={data.restaurantYelpId} className='mapDisplayResults'>
@@ -95,8 +95,10 @@ export class SearchFavorites extends React.Component {
                     <br /><br />
 
                 </form>
-                <span className='yelpInfo'>Search and Restaurant info provided by:
-                        <a href='https://www.yelp.com' target='_blank' rel='noopener noreferrer'><img className='yelpImg' src={require('../images/Yelp_trademark_RGB_outline.png')} alt='Yelp logo' /> </a></span>
+                <div className='yelpsection'>
+                    <p className='yelpInfo'>Search and Restaurant info provided by:</p>
+                    <a href='https://www.yelp.com' target='_blank' rel='noopener noreferrer'><img className='yelpImg' src={require('../images/Yelp_trademark_RGB_outline.png')} alt='Yelp logo' /> </a>
+                </div>
             </div>
 
 
