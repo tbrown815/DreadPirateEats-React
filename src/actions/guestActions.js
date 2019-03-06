@@ -44,7 +44,7 @@ export const publicFindGrub = (publicHangryTaunt, publicMadeOffers, publicRestar
 
 })
 
-
+//guest "login" call - requests user zip for search 
 export const guestLoginCall = (userLocation, sortForPub) => dispatch => {
 
 
@@ -70,6 +70,7 @@ export const guestLoginCall = (userLocation, sortForPub) => dispatch => {
 
 }   // END guestLoginCall
 
+//map results from yelp search for display on frontend
 const mapResultsHandler = (businesses, dispatch) => {
 
     let results = businesses.map(business => ({
@@ -102,6 +103,7 @@ const mapResultsHandler = (businesses, dispatch) => {
     dispatch(saveGuestFavs(guestFavs))
 }// END mapRESULTS
 
+//"saves" guest favs to state 
 const saveGuestFavs = (guestFavs) => dispatch => {
 
 

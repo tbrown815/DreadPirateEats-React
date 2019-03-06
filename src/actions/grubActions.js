@@ -11,7 +11,7 @@ export const findGrub = (hangryTaunt, madeOffers, restart, theOffer) => ({
     restart: restart,
     theOffer: theOffer
 })
-
+//passes variables for users grubsearch
 export const grubSearch = (hangryTaunt, madeOffers, restart, theOffer, userToken, authToken) => dispatch => {
 
     dispatch(findGrub(hangryTaunt, madeOffers, restart, theOffer))

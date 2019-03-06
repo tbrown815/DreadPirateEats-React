@@ -49,7 +49,7 @@
     margin-bottom: 30px;
 }
 
-@media only screen and (min-device-width: 0px) and (max-device-width: 480px) {
+@media only screen and (min-width: 0px) and (max-width: 480px) {
     .odpe_about {
         width: 98%;
         height: 250%;
@@ -68,13 +68,13 @@
     }
 }
 
-@media only screen and (min-device-width: 481px) and (max-device-width: 1400px) {
+@media only screen and (min-width: 481px) and (max-width: 1400px) {
     .dpeAbout {
         margin-top: 100px;
     }
 }
 
-@media only screen and (min-device-width: 1400px) {
+@media only screen and (min-width: 1400px) {
     .dpeAbout {
         margin-top: 120px;
     }

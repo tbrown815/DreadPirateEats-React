@@ -79,25 +79,25 @@ input {
     height: 15px !important;
 }
 
-@media only screen and (min-device-width: 0px) and (max-device-width: 480px) {
+@media only screen and (min-width: 0px) and (max-width: 480px) {
     .pirateImageSection {
         width: 70%;
     }
 }
 
-@media only screen and (min-device-width: 481px) and (max-device-width: 829px) {
+@media only screen and (min-width: 481px) and (max-width: 829px) {
     .pirateImageSection {
         width: 50%;
     }
 }
 
-@media only screen and (min-device-width: 830px) and (max-device-width: 1440px) {
+@media only screen and (min-width: 830px) and (max-width: 1440px) {
     .pirateImageSection {
         width: 30%;
     }
 }
 
-@media only screen and (min-device-width: 1441px) {
+@media only screen and (min-width: 1441px) {
     .pirateImageSection {
         width: 30%;
     }
