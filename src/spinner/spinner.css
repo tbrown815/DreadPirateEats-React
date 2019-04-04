@@ -1,0 +1,38 @@
+.noSpinner {
+    height: 0;
+    width: 0;
+}
+
+.spinner {
+    position: fixed;
+    background-color: black;
+    z-index: 4;
+    opacity: .5;
+    width: 100%;
+    height: 100%;
+    top: 0; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+@keyframes pulse {
+    from {
+      font-size: 15px;
+    }
+  
+    to {
+        font-size: 30px;
+    }
+  }
+
+.psbText {
+    animation-name: pulse;
+    text-align: center;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;   
+    margin-top: 45%;
+    opacity: 1;
+
+}

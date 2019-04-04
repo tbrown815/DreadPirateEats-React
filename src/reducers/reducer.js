@@ -1,6 +1,6 @@
 import {
     LOGIN_USER, LOGOUT_SUCCESS, SIGNUP_USER, RETURN_TO_GAME, DISPLAY_ABOUT, CANCEL_ABOUT,
-    LOGIN_SUCCESS, SET_AUTH_TOKEN, ERROR_STATE, CANCEL_STATE
+    LOGIN_SUCCESS, SET_AUTH_TOKEN, ERROR_STATE, CANCEL_STATE, SPINNER
 } from '../actions/actions'
 
 import {
@@ -41,7 +41,8 @@ const initialState = {
     publicSort: ['rating', 'review_count', 'distance'],
     publicRestart: false,
     publicDrawCount: 0,
-    publicHangryTaunt: 'Click ta draw ya scallywag!'
+    publicHangryTaunt: 'Click ta draw ya scallywag!',
+    spinner: false
 
 }
 
@@ -292,6 +293,16 @@ export default (state = initialState, action) => {
             publicTheOffer: action.publicTheOffer
         })
     }
+
+    //enables or disables "spinner"
+    if (action === SPINNER) {
+        
+        return Object.assign({}, state, {
+            spinner: true
+        })
+    }
+
+
     return state;
 
 } //end of export

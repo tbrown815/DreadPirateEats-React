@@ -61,6 +61,11 @@ export const cancelState = () => ({
     type: CANCEL_STATE
 })
 
+export const SPINNER = 'SPINNER'
+export const spinner = () => ({
+    type: SPINNER
+})
+
 
 //Action to pass user/pass for login
 export const userLogin = (username, password) => dispatch => {
@@ -76,6 +81,8 @@ export const userLogin = (username, password) => dispatch => {
     }
 
     else {
+        dispatch(spinner())
+
         return fetch(`${REACT_APP_USER_LOGIN_URL}`, {
             method: 'POST',
             body: JSON.stringify({ username, password }),

@@ -10,6 +10,7 @@ import UserSignUp from './login_signup/userSignUp';
 import Favorites from './favorites/favorites';
 import GuestUser from './guestUser/guestUser';
 import About from './nav/about'
+import Spinner from './spinner/spinner'
 
 import { userStillLoggedIn, logoutUser } from './actions/actions'
 
@@ -49,10 +50,12 @@ export class DreadPirate extends React.Component {
 
 
   render() {
+    console.log('state ', this.props)
     //render components based on loggedIn state
     if (this.props.loggedIn === 0) {
       return (
         <main>
+          <Spinner />
           <Nav />
 
           <br />
@@ -215,7 +218,9 @@ const mapStateToProps = state => ({
   publicTheOffer: state.publicTheOffer,
   publicRestart: state.publicRestart,
   publicDrawCount: state.publicDrawCount,
-  noFavsMessage: state.noFavsMessage
+  noFavsMessage: state.noFavsMessage,
+  spinner: state.spinner
+
 
 })
 
