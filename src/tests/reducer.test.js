@@ -421,7 +421,8 @@ describe('reducer', () => {
 
         state = reducer(state, setErrorState(errorMessage))
         expect(state).toEqual({
-            errorMessage: errorMessage
+            errorMessage: errorMessage,
+            spinner: false
         })
     })
 
