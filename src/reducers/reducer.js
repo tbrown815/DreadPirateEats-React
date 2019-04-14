@@ -256,7 +256,9 @@ export default (state = initialState, action) => {
     if (action.type === ERROR_STATE) {
 
         return Object.assign({}, state, {
-            errorMessage: action.errorMessage
+            errorMessage: action.errorMessage,
+            spinner: false
+
         })
     }
     //cancel sets loggedIn back to default state
@@ -295,10 +297,10 @@ export default (state = initialState, action) => {
     }
 
     //enables or disables "spinner"
-    if (action === SPINNER) {
+    if (action.type === SPINNER) {
         
         return Object.assign({}, state, {
-            spinner: true
+            spinner: !state.spinner
         })
     }
 

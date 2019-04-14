@@ -73,6 +73,7 @@ export class DreadPirate extends React.Component {
     if (this.props.loggedIn === 1) {
       return (
         <main>
+          <Spinner />
 
           <Nav />
 
@@ -90,6 +91,7 @@ export class DreadPirate extends React.Component {
     if (this.props.loggedIn === 2) {
       return (
         <main>
+          <Spinner />
 
           <Nav />
 
@@ -108,6 +110,7 @@ export class DreadPirate extends React.Component {
 
       return (
         <main>
+          <Spinner />
 
           <Nav />
 
@@ -125,6 +128,7 @@ export class DreadPirate extends React.Component {
     if (this.props.loggedIn === 4) {
       return (
         <main>
+          <Spinner />
 
           <Nav />
 
@@ -141,6 +145,7 @@ export class DreadPirate extends React.Component {
     if (this.props.loggedIn === 5) {
       return (
         <main>
+          <Spinner />
 
           <Nav />
 
@@ -158,6 +163,7 @@ export class DreadPirate extends React.Component {
     if (this.props.loggedIn === 6) {
       return (
         <main>
+          <Spinner />
 
           <Nav />
           <br />
@@ -175,6 +181,7 @@ export class DreadPirate extends React.Component {
     if (this.props.loggedIn === 7) {
       return (
         <main>
+          <Spinner />
 
           <Nav />
 

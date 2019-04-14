@@ -1,6 +1,5 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import RotateLoader from 'react-spinners/RotateLoader'
 import './spinner.css'
 
 
