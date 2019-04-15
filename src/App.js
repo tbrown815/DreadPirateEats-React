@@ -34,6 +34,7 @@ export class DreadPirate extends React.Component {
   //when app loads check for authToken, if no authToken log the user out
   componentDidMount() {
 
+
     let authToken = localStorage.getItem('authToken')
 
     if (authToken) {
@@ -51,6 +52,8 @@ export class DreadPirate extends React.Component {
 
   render() {
     console.log('state ', this.props)
+    console.log('spinner state: ', this.props.spinner)
+
     //render components based on loggedIn state
     if (this.props.loggedIn === 0) {
       return (

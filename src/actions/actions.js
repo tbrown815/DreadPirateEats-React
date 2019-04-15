@@ -81,7 +81,7 @@ export const userLogin = (username, password) => dispatch => {
     }
 
     else {
-        //dispatch(spinner())
+        dispatch(spinner())
 
         return fetch(`${REACT_APP_USER_LOGIN_URL}`, {
             method: 'POST',
@@ -102,7 +102,7 @@ export const userLogin = (username, password) => dispatch => {
 //Action to set auth/user tokens
 const setTokenHandler = (authToken, dispatch) => {
     const decodedToken = jwtDecode(authToken)
-    //dispatch(spinner())
+    dispatch(spinner())
     dispatch(setAuthToken(authToken))
     dispatch(setErrorState('Login successful, please standby.'))
     dispatch(loginSuccess(decodedToken.user))
@@ -194,7 +194,7 @@ export const createPassCheck = (username, email, password, passwordConf) => disp
 //sends data entered to api for user creation
 export const createUserFlow = (username, email, password) => dispatch => {
 
-    //dispatch(spinner())
+    dispatch(spinner())
 
     return fetch(`${REACT_APP_CREATE_USER_URL}`, {
         method: 'POST',
