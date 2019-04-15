@@ -25,7 +25,6 @@ body {
 
 .pirateImageSection img {
     width: 100%;
-    margin-top: 20%;
 }
 
 button {
@@ -91,14 +90,26 @@ input {
     }
 }
 
-@media only screen and (min-width: 830px) and (max-width: 1440px) {
+@media only screen and (min-width: 830px) and (max-width: 2000px) {
     .pirateImageSection {
         width: 30%;
+        margin-top: 2%;
+
     }
 }
 
-@media only screen and (min-width: 1441px) {
+@media only screen and (min-width: 2001px) and (max-width: 2559px) {
     .pirateImageSection {
         width: 30%;
+        margin-top: 5%;
+
+    }
+}
+
+@media only screen and (min-width: 2560px) {
+    .pirateImageSection {
+        width: 30%;
+        margin-top: 10%;
+
     }
 }

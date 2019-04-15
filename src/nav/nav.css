@@ -179,9 +179,18 @@ nav .navTitle {
 
 @media only screen and (min-width: 1440px) {
     nav .navTitle {
-        font-size: 80px;
+        font-size: 65px;
     }
     nav li {
         font-size: 30px;
+    }
+}
+
+@media only screen and (min-width: 2001px) {
+    nav .navTitle {
+        font-size: 100px;
+    }
+    nav li {
+        font-size: 40px;
     }
 }
