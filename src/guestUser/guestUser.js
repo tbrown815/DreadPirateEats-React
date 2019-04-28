@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import {spinner} from '../actions/actions'
 import { guestLoginCall, publicGrubSearch, resetGuestState } from '../actions/guestActions';
 import { cancelState } from '../actions/actions'
 
@@ -15,6 +16,9 @@ export class GuestUser extends React.Component {
         let sortForPub = this.props.publicSort[randomVal]
 
         const userLocation = this.userLoc.value
+        console.log('login')
+
+        this.props.dispatch(spinner())
 
         return this.props.dispatch(guestLoginCall(userLocation, sortForPub))
 
@@ -22,6 +26,7 @@ export class GuestUser extends React.Component {
 
     guestReset(event) {
         event.preventDefault();
+        console.log('reset')
 
         return this.props.dispatch(resetGuestState())
     }
@@ -29,6 +34,7 @@ export class GuestUser extends React.Component {
 
     cancel(event) {
         event.preventDefault();
+        console.log('cancel')
 
         this.props.dispatch(cancelState())
     }
@@ -37,6 +43,7 @@ export class GuestUser extends React.Component {
     guestDraw(event) {
         event.preventDefault();
         //determines random value to draw from the users fav array
+        console.log('draw')
 
         let randomVal = Math.floor(Math.random() * parseInt(this.props.publicJoints.length)) + 0;
 

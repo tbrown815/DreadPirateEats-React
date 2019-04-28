@@ -101,7 +101,8 @@ export default (state = initialState, action) => {
             randomCheck: ['x'],
             publicHangryTaunt: 'Click ta draw ya scallywag!',
             publicRestart: false,
-            publicDrawCount: 0
+            publicDrawCount: 0,
+            spinner: false
         })
     }
     //reset state for guest game
