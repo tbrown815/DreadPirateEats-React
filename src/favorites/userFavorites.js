@@ -45,6 +45,8 @@ export class UserFavorites extends React.Component {
 
         }
         else {
+            this.props.dispatch(spinner())
+
             return this.props.dispatch(getFavsSetState(findFav, authToken))
         }
     }
@@ -57,6 +59,8 @@ export class UserFavorites extends React.Component {
         let userToken = this.props.userToken
         let authToken = this.props.authToken
 
+        this.props.dispatch(spinner())
+
         return this.props.dispatch(updateFavCall(newFavName, favId, userToken, authToken))
     }
     //deletes the fav
@@ -67,6 +71,8 @@ export class UserFavorites extends React.Component {
         let userToken = this.props.userToken
         let favId = this.props.selectedFavorite
 
+        this.props.dispatch(spinner())
+
         this.props.dispatch(callDelFavs(authToken, userToken, favId))
     }
 
@@ -75,6 +81,8 @@ export class UserFavorites extends React.Component {
 
         let userToken = this.props.userToken
         let authToken = this.props.authToken
+
+        this.props.dispatch(spinner())
 
         this.props.dispatch(callViewFavs(userToken, authToken))
 

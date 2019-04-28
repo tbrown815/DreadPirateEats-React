@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { setErrorState } from '../actions/actions'
+import { setErrorState, spinner } from '../actions/actions'
 import { performYelpCall, setSelectedFav, callAddNewFav } from '../actions/favActions'
 
 import './favorites.css';
@@ -13,6 +13,8 @@ export class SearchFavorites extends React.Component {
         const restaurantName = this.restaurantName.value;
         const restaurantZip = this.restaurantZip.value;
         const publicSort = this.props.publicSort;
+        
+        this.props.dispatch(spinner())
         // performYelpCall with provide restaurant name and zipcode
         return this.props.dispatch(performYelpCall(restaurantName, restaurantZip, publicSort))
     }
@@ -36,6 +38,7 @@ export class SearchFavorites extends React.Component {
                 return data.restaurantYelpId === yelpID
             })
 
+            this.props.dispatch(spinner())
 
             return this.props.dispatch(callAddNewFav(restaurant, userToken, authToken))
         }
