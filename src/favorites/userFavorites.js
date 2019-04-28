@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { REACT_APP_FAV_YELP_URL } from '../config'
-import { setErrorState } from '../actions/actions'
+import { setErrorState, spinner } from '../actions/actions'
 import { setSelectedFav, callViewFavs, searchNewFavs, getFavsSetState, updateFavCall, callDelFavs } from '../actions/favActions'
 
 
@@ -14,6 +14,8 @@ export class UserFavorites extends React.Component {
 
         let userToken = this.props.userToken
         let authToken = this.props.authToken
+
+        this.props.dispatch(spinner())
 
         this.props.dispatch(callViewFavs(userToken, authToken))
     }

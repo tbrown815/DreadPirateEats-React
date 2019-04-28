@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux'
-import { loginUser, createUserCheck, cancelState } from '../actions/actions';
+import { loginUser, createUserCheck, cancelState, spinner } from '../actions/actions';
 
 
 import './userSignUp.css';
@@ -16,6 +16,8 @@ export class UserSignUp extends React.Component {
         const email = this.email.value;
         const password = this.password.value;
         const passwordConf = this.passwordConf.value;
+
+        this.props.dispatch(spinner())
 
         return this.props.dispatch(createUserCheck(username, email, password, passwordConf))
     }

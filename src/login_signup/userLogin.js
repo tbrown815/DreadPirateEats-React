@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { REACT_APP_TEST_USERNAME, REACT_APP_TEST_PASSWORD } from '../config';
-import { signupUser, userLogin, cancelState } from '../actions/actions';
+import { signupUser, userLogin, cancelState, spinner } from '../actions/actions';
 
 import './userLogin.css';
 
@@ -14,6 +14,7 @@ export class UserLogin extends React.Component {
         const username = this.username.value;
         const password = this.password.value;
 
+       this.props.dispatch(spinner())
 
         return this.props.dispatch(userLogin(username, password))
     }
@@ -25,6 +26,7 @@ export class UserLogin extends React.Component {
         const username = REACT_APP_TEST_USERNAME
         const password = REACT_APP_TEST_PASSWORD
 
+        this.props.dispatch(spinner())
         return this.props.dispatch(userLogin(username, password))
 
     }

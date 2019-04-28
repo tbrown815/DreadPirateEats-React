@@ -1,6 +1,6 @@
 
 import { REACT_APP_FAVS_URL, REACT_APP_FAV_SEARCH_DETAIL_URL, REACT_APP_USERFAVS_URL } from '../config';
-import { setErrorState } from './actions'
+import { setErrorState, spinner } from './actions'
 
 require('dotenv').config();
 
@@ -66,6 +66,8 @@ export const updateFavCall = (newFavName, favId, userToken, authToken) => dispat
     let restaurantName = newFavName;
     let id = favId;
 
+   // dispatch(spinner())
+
     return fetch(`${REACT_APP_FAVS_URL}${favId}`, {
         method: 'PATCH',
         body: JSON.stringify({ id, restaurantName }),
@@ -99,6 +101,8 @@ export const updateFavCall = (newFavName, favId, userToken, authToken) => dispat
 }
 //gets user fav and dispatch fav data to state
 export const getFavsSetState = (findFav, authToken) => dispatch => {
+
+   // dispatch(spinner())
 
     return fetch(`${REACT_APP_FAVS_URL}${findFav}`, {
         method: 'GET',
@@ -141,6 +145,8 @@ export const performYelpCall = (restaurantName, restaurantZip, publicSort) => di
 
     else {
         publicSort = publicSort[0]
+
+      //  dispatch(spinner())
 
         return fetch(`${REACT_APP_FAV_SEARCH_DETAIL_URL}`, {
             method: 'POST',
@@ -194,6 +200,8 @@ export const callAddNewFav = (restaurant, userToken, authToken) => dispatch => {
     let restaurantName = restaurant[0].restaurantName;
     let restaurantAlias = restaurant[0].restaurantAlias;
 
+   // dispatch(spinner())
+
     return fetch(`${REACT_APP_FAVS_URL}`, {
         method: 'POST',
         body: JSON.stringify({
@@ -213,6 +221,8 @@ export const callAddNewFav = (restaurant, userToken, authToken) => dispatch => {
 
 //calls api to return users saved favs
 export const callViewFavs = (userToken, authToken) => dispatch => {
+
+    //dispatch(spinner())
 
     return fetch(`${REACT_APP_USERFAVS_URL}${userToken}`, {
         method: 'GET',
@@ -257,6 +267,8 @@ const mapFavResultsHandler = (userFavs, dispatch) => {
 }
 //calls api to delete fav
 export const callDelFavs = (authToken, userToken, favId) => dispatch => {
+
+   // dispatch(spinner())
 
     return fetch(`${REACT_APP_FAVS_URL}${favId}`, {
         method: 'DELETE',

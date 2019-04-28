@@ -170,7 +170,8 @@ export default (state = initialState, action) => {
 
         return Object.assign({}, state, {
             newFavorites: action.displayResults,
-            userMessage: action.userMessage
+            userMessage: action.userMessage,
+            spinner: false
 
         })
     }
@@ -188,7 +189,8 @@ export default (state = initialState, action) => {
             randomCheck: ['x'],
             hangryTaunt: 'Click ta draw ya scallywag!',
             restart: false,
-            newFavorites: []
+            newFavorites: [],
+            spinner: false
         })
     }
     //set state to record fav selected on radio click
@@ -203,7 +205,8 @@ export default (state = initialState, action) => {
 
         return Object.assign({}, state, {
             favState: 0,
-            errorMessage: null
+            errorMessage: null,
+            spinner: false
         })
     }
     //set loggedIn state to display user favs
@@ -219,7 +222,8 @@ export default (state = initialState, action) => {
         return Object.assign({}, state, {
             editFavState: 1,
             editFavOjb: action.favOjb,
-            errorMessage: null
+            errorMessage: null,
+            spinner: false
         })
     }
     //cancel edit favs 
@@ -227,7 +231,8 @@ export default (state = initialState, action) => {
 
         return Object.assign({}, state, {
             editFavState: 0,
-            selectedFavorite: null
+            selectedFavorite: null,
+            spinner: false
 
         })
     }
@@ -272,7 +277,8 @@ export default (state = initialState, action) => {
     if (action.type === NO_FAVS) {
 
         return Object.assign({}, state, {
-            noFavsMessage: action.noFavs
+            noFavsMessage: action.noFavs,
+            spinner: false
         })
     }
     //sets state values for display/management of users game
